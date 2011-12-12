@@ -1,0 +1,37 @@
+Sydney University Mathematics Notes
+===================================
+
+This repository contains lecture notes in LaTeX for almost all of the courses I took in my final two years of my undergraduate degree. 
+
+The courses are (in alphabetical order):
+
+* AMH3 - Interest Rate Models
+* AMH4 - Advanced Option Pricing
+* COMP 2907 - Algorithms and Complexity (with Giles Gardam)
+* MATH 3961 - Metric Spaces
+* MATH 3962 - Rings, Fields, and Galois Theory 
+* MATH 3964 - Complex Analysis (with Giles Gardam)
+* MATH 3968 - Differential Geometry
+* MATH 3969 - Measure Theory and Fourier Analysis
+* MATH 3975 - Financial Mathematics
+* MSH2 - Probability Theory
+* MSH7 - Applied Probability and SDEs
+* PMH3 - Functional Analysis
+* PMH8 - Spectral Theory and PDEs
+* STAT 3911 - Stochastic Processes and Time Series Analysis
+
+Contributing
+------------
+
+As you will soon see, typos/errors/omissions are rampant!  Any contributions to these notes are much appreciated.  Please use the usual fork/pull request model to submit these changes.
+
+Copyright
+---------
+
+If this free transmission of lecture notes violates copyright law, please send me an email and I will immediately remove the infringing content.
+
+Thanks
+------
+
+Thanks must go to the excellent lectures at Sydney University, who have made this possible.
+
