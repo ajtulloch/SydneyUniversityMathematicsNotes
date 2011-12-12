@@ -1,0 +1,455 @@
+% Created by Andrew Tulloch
+
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[10pt, oneside, reqno]{amsart}
+\usepackage{amsthm, amsmath, amssymb}
+\usepackage{setspace, graphicx, enumerate}
+% \usepackage{fullpage}
+% \usepackage[landscape, scale=0.85]{geometry}
+\onehalfspacing     
+
+% \usepackage{mathspec}
+% \setallmainfonts{Minion Pro}
+            
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+
+
+% \setlength{\columnsep}{50pt}
+% \setlength{\columnseprule}{2pt}
+
+%\setromanfont[Mapping=tex-text,Contextuals= 
+%{NoWordInitial,NoWordFinal,NoLineInitial,NoLineFinal}]{Hoefler Text}
+%\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Hoefler Text}
+%\setmonofont[Scale=MatchLowercase]{Andale Mono}
+
+
+	% AMS Theorems
+	\theoremstyle{plain}% default 
+	\newtheorem{thm}{Theorem}[section] 
+	\newtheorem{lem}[thm]{Lemma} 
+	\newtheorem{prop}[thm]{Proposition} 
+	\newtheorem*{cor}{Corollary} 
+
+
+\newcommand{\res}[2]{\text{Res}(#1,#2)}
+	\theoremstyle{definition} 
+		\newtheorem{defn}[thm]{Definition}
+		\newtheorem{conj}[thm]{Conjecture}
+		\newtheorem{exmp}[thm]{Example}
+	
+	\theoremstyle{remark} 
+		\newtheorem*{rem}{Remark} 
+		\newtheorem*{note}{Note} 
+		\newtheorem{case}{Case} 
+
+		\newcommand{\expc}[1]{\mathbb{E}\left[#1\right]}
+		\newcommand{\var}{\text{Var}}
+		\newcommand{\cov}{\text{Cov}}
+		\newcommand{\prob}[1]{\mathbb{P}(#1)}
+		\newcommand{\given}{ \, | \,}
+		\newcommand{\us}{0 \leq u \leq s}
+		\newcommand{\ts}[1]{\{ #1 \}}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\sigf}{\mathcal{F}}
+
+\newcommand{\dzz}{\, dz}
+\newcommand{\bigo}[1]{\mathcal{O}(#1)}
+
+\newcommand{\al}{\alpha}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\I}{\mathbb{I}}
+
+\renewcommand{\P}{\mathbb{P}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Ga}{\mathbb{G}}
+
+\newcommand{\aut}[1]{\text{Aut}{(#1)}}
+
+\newcommand{\gener}[1]{\langle #1 \rangle}
+\newcommand{\charr}[1]{\text{char}(#1)}
+\newcommand{\nth}{n\textsuperscript{th}}
+
+% \newcommand{\limsup}{\text{limsup}}
+
+\newcommand{\tworow}[2]{\genfrac{}{}{0pt}{}{#1}{#2}}
+\newcommand{\xdeg}[2]{[#1 : #2]}
+\newcommand{\gal}[2]{\text{Gal}(#1/#2)}
+\newcommand{\minpoly}[2]{m_{#1, #2}(x)}
+
+\newcommand{\mapping}[5]{\begin{align*}
+	#1 : \quad     #2 &\rightarrow #3 \\
+			#4  &\mapsto #5
+\end{align*}	
+}
+
+
+\def\cip{\,{\buildrel p \over \rightarrow}\,} 
+\def\cid{\,{\buildrel d \over \rightarrow}\,} 
+\def\cas{\,{\buildrel a.s. \over \rightarrow}\,} 
+
+\def\clp{\,{\buildrel L^p \over \rightarrow}\,} 
+
+\def\eqd{\,{\buildrel d \over =}\,} 
+\def\eqas{\,{\buildrel a.s. \over =}\,}
+\newcommand{\sigg}{\mathcal{G}}		
+\newcommand{\indic}[1]{\mathbf{1}_{\{ #1 \}} }
+		
+		
+		
+\title{AMH4 - Advanced Option Pricing}								% Document Title
+\author{Andrew Tulloch}
+%\date{}                                           % Activate to display a given date or no date
+
+
+\begin{document}
+\maketitle
+\section{Theory of Option Pricing} % (fold)
+\label{sec:theory_of_option_pricing}
+\begin{defn}[Brownian motion]
+	A process $W_t$ is a $\P$-Brownian motion if it satisfies
+	\begin{enumerate}
+		\item $W_t$ is continuous with $W_0 = 0$ (a.s.)
+		\item $W_t$ has stationary and independent increments.
+		\item For any $t > 0$, $W_t \sim N(0, t)$ under the probability measure $\P$.
+	\end{enumerate}
+\end{defn}
+
+\begin{thm}[Properties of conditional expectation]
+	Assume we have a probability space $(\Omega, \P)$ and $\sigma$-algebras $\sigg, \sigg_1, \sigg_2$.  Assume that $\sigg_2 \subset \sigg_1$.  Then 
+	\begin{enumerate}
+		\item If $X$ is a random variable, then \[
+			\E(X \given \sigg_2) = \E( \E(X \given \sigg_1) \given \sigg_2)
+		\]
+		\item If $Y$ is a $\sigg$-measurable random variable, then \[
+			\E(XY \given \sigg) = Y \E(X \given \sigg)
+		\]
+	\end{enumerate}
+\end{thm}
+\begin{defn}[Martingale]
+	A stochastic process $X_t$ is a $\sigf_t$-martingale if $\E(|X_t|) < \infty$ and \[
+		X_s = \E(X_t \given \sigf_s)
+	\] for all $s \leq t$.
+\end{defn}
+
+\begin{thm}[It\^o's lemma]
+	If $F(X_t, t)$ is $C_{2,1}$ and $dX_t = \alpha_t \, dt + \beta_t \, dW_t$, then \[
+		dF = (F_t + \alpha F_x + \frac{1}{2}\beta^2 F_{xx}) \, dt + \beta F_x \, dW_t 
+	\]
+\end{thm}
+
+\begin{lem}[Product and Quotient rule]
+	Let $X_t$ be an It\^o processes, so that \[
+		dX_t = \alpha dt + \beta dW_t.
+	\]  Let $F(X_t, t), G(X_t, t)$ be $C_{2, 1}$. Then \begin{align*}
+		d(FG) = (F\, dG + G \, dF) + \beta^2 F_x G_x \, dt \\
+		d(F/G) = \frac{G \, dF - F \, dG}{G^2} + \frac{\beta^2 G_x}{G^3}(FG_x - GF_x) \, dt
+	\end{align*}
+\end{lem}
+
+\begin{lem}[It\^o isometry]
+	If $\sigma_s \in L^2$, then \[
+		\E(\int_0^t \sigma_s \, dW_s)^2 = \E(\int_0^t \sigma^2 \, ds)
+	\]
+\end{lem}
+
+\begin{defn}[Local martingale]
+	$X_t$ is a local martingale if there exists a sequence of stopping times $\nu_n$ such that for every $n$, the process $X^n_t = X_{\min(\nu_n, t)}$ is a martingale.  
+\end{defn}
+
+\begin{thm}[Martingale representation theorem]
+	Let $\sigf_t$ be the natural filtration of a Brownian motion.  \begin{enumerate}
+		\item Any progressively measurable process $\sigma_t$ satisfying \[\P(\int_0^t \sigma_s^2 \, ds) < \infty = 1 \quad \forall t \] the process \[
+			t \mapsto \int_0^t \sigma_s \, dW_s
+		\] is a local martingale. 
+		\item If $X_t$ is an $L^2$ martingale, then there exists a progressively measurable process $\sigma_s$ such that \[
+			X_t = \int_0^t \sigma_s \, dW_s
+		\] 
+	\end{enumerate}
+	
+	Hence the Brownian martingales (martingales with respect to the Brownian filtration) are essentially the It\^o integrals.
+\end{thm}
+
+\begin{thm}[Girsanov]
+	Let $\lambda_t$ be progressively measurable with \[
+		\E\exp(\frac{1}{2} \int_0^T \lambda^2(t) \, dt) < \infty
+	\] Then there exists a measure $\P^\star$ such that \begin{enumerate}
+		\item $\P^\star$ is equivalent to $\P$, 
+		\item \[
+		\frac{dP^\star}{dP} = \exp( - \int_0^t \lambda_t \, dW_t - \frac{1}{2} \int_0^t	\lambda^2_t \, dt )
+		\]
+		\item $W^\star_t = W_t + \int_0^t \lambda_s \, ds$ is a $\P^\star$-Brownian motion
+	\end{enumerate} 
+	
+	As a partial corollary, if $\P^\star$ is equivalent to $\P$ then there exists a progressively measurable process $\lambda_t$ such that \[
+		W^\star_t = W_t + \int_0^t \lambda_s \, ds
+	\] is a Brownian motion under $\P^\star$.  
+\end{thm}
+
+\begin{cor}
+	We can then use Girsanov's theorem to transform a Brownian motion with drift to a martingale.  e.g.  Under $\P$, \begin{align*}
+		dX_t 	&= \mu_t \, dt + \sigma_t \, dW_t \\
+				&= \sigma_t d(W_t + \int_0^t \sigma_s^{-1} \mu_s \, ds) \\
+				&= \sigma_t dW^\star_t
+	\end{align*} where we set $\lambda_s = \sigma_s^{-1} \mu_s$ in Girsanov's theorem.
+\end{cor}
+
+\begin{thm}[Multivariate It\^o's lemma]
+	Let $dX_{i,t} = \alpha_i \, dt + \beta_i \, dW_{i,t}$ with $W_{i,t}$ correlated Brownian motions.  Then if $F(X_{1,t}, \dots, X_{n,t}, t)$ is $C_{2,1}$, then \[
+		dF = \left( F_t + \sum_{i=1}^n \alpha_i F_i + \frac{1}{2} \sum_{i=1}^n \sum_{j=1}^n \beta_i \beta_j \rho_{ij} F_{ij} \right) \, dt + \sum_{i=1}^n \beta_i F_i \, dW_i(t)
+	\]
+\end{thm}
+% section theory_of_option_pricing (end)
+
+\section{Black-Scholes PDE Method} % (fold)
+\label{sec:black_scholes_pde_method}
+
+\begin{thm}[Black-Scholes PDE]
+	Let $f(X_t, t)$ represent the price of a contingent claim on an asset $X_t$, where $X_t$ is assumed to follow geometric Brownian motion.  Under certain assumptions, we can derive the Black-Scholes PDE, \[
+		f_t = rf - r x f_x - \frac{1}{2} \sigma^2 x^2 f_{xx}
+	\]  
+\end{thm}
+
+Solving the Black-Scholes PDE along with initial conditions and payoff at expiration yields the function $f(X_t, t)$ which gives the option value at any time $t$ and any underlying value $X_t$.  
+
+% section black_scholes_pde_method (end)
+
+\section{Martingale method} % (fold)
+\label{sec:martinag}
+Consider a market with risky security $X_t$ and riskless security $B_t$.  
+\begin{defn}[Contingent claim]
+	A random variable $C_T : \Omega \rightarrow \R$, $\sigf_T$-measurable is called a contingent claim.  If $C_T$ is $\sigma(X_T)$-measurable it is \textbf{path-independent.}
+\end{defn}
+\begin{defn}[Strategy]
+	Let $\alpha_t$ represent number of units of $X_t$, and $\beta_t$ represent number of units of $B_t$.  If $\alpha_t, \beta_t$ are $\sigf_t$-adapted, then they are strategies in our market model.  Our strategy value $V_t$ at time $t$ is \[
+		V_t = \alpha_t X_t + \beta_t B_t
+	\]
+\end{defn}
+
+\begin{defn}[Self-financing strategy]
+	A strategy $(\alpha_t, \beta_t)$ is self financing if \[
+		dV_t = \alpha_t \, dX_t + \beta_t \, dB_t
+	\]  The intuition is that we make one investment at $t = 0$, and after that only rebalance between $X_t$ and $B_t$.  
+\end{defn}
+
+\begin{defn}[Admissible strategy]
+	$(\alpha_t, \beta_t)$ is an \textbf{admissible strategy} if it is self financing and $V_t \geq 0$ for all $0 \leq t \leq T$.  
+\end{defn}
+
+\begin{defn}[Arbitrage]
+	An arbitrage is an admissible strategy such that $V_0 = 0, V_T \geq 0$ and $\P(V_T > 0) > 0$.  
+\end{defn}
+
+\begin{defn}[Attainable claim]
+	A contingent claim $C_T$ is said to be attainable if there exists an admissible strategy $(\alpha_t, \beta_t)$ such that $V_T = C_T$.  In this case, the portfolio is said to replicate the claim.  By the law of one price, $C_t = V_t$ at all $t$.
+\end{defn}
+
+\begin{defn}[Complete]
+	The market is said to be \textbf{complete} if every contingent claim is attainable
+\end{defn}
+
+\begin{thm}[Harrison and Pliska]
+	Let $\P$ denote the real world measure of the underlying asset price $X_t$. If the market is arbitrage free, there exists an equivalent measure $\P^\star$, such that the discounted asset price $\hat X_t$ and every discounted attainable claim $\hat C_t$ are $\P^\star$-martingales.  Further, if the market is complete, then $\P^\star$ is unique.  In mathematical terms,\[
+		C_t = B_t \E^\star(B_T^{-1} C_T \given \sigf_t).
+	\] 
+	
+	$\P^\star$ is called the equivalent martingale measure (EMM) or the risk-neutral measure.  
+\end{thm}
+% section martinag (end)
+\section{Monte Carlo methods} % (fold)
+\label{sec:monte_carlo_methods}
+\subsection{Method of antithetic variances} % (fold)
+\label{sub:method_of_antithetic_variances}
+Instead of simulating $X$, also simulate a random variable $Z$ with the same variance and expectation as $X$, but is negatively correlated with $X$.  Then take as $Y$ the random variable \[
+	Y = \frac{X + Z}{2}
+\] Obviously $\E(Y) = \E(X)$.  On the other side, we have \begin{align*}
+\var(Y) &= \cov\left( \frac{X+Z}{2}, \frac{X + Z}{2} \right) \\
+		&= \frac{1}{4} \var(X) + 2 \cov(X, Z) + \var(Z) \leq \frac{1}{2} \var(X)	
+\end{align*}
+  So we can reduce variance by a factor of two.  
+
+
+\subsection{Control variate method} % (fold)
+\label{sub:control_variate}
+\begin{thm}
+	Suppose we seek to estimate $\theta = \E(Y)$ where $Y=h(X)$ is the outcome of a simulation.  Suppose that $Z$ is also an output of the simulation, and assume that $\E(Z)$ is known.  Let \[
+	c = \frac{\text{Cov}(Y, Z)}{\text{Var}(Z)}.\tag{$\ddag$}
+	\] Then \[
+		\hat \theta_c = Y + c(\E(Z) - Z) \tag{$\dagger$}
+	\] is an unbiased estimator of $\theta$, and if $\text{Cov}(Y, Z) \neq 0$, $\hat \theta_c$ has a lower variance than $\hat\theta = Y$, and indeed has the lowest variance for all estimators of the form \[
+		\hat \theta_\gamma = Y + \gamma(\E(Z) - Z) 
+	\]
+\end{thm} 
+\begin{proof}
+	We have \[
+		\text{Var}(\hat \theta_c) = \text{Var}(Y) + c^2 \text{Var}(Z) - 2c \, \text{Cov}(Y, Z). \tag{$\star$}
+	\]  From elementary methods of calculus, we see that $\var{\hat\theta_c}$ is minimised at \[
+		c = \frac{\text{Cov}(Y, Z)}{\text{Var}(Z)}
+	\]  Substituting in this value for $c$ in ($\star$), we obtain \begin{align*}
+		\text{Var}(\hat \theta_c) &= \var(Y)  - \frac{\cov(Y,Z)^2}{\var(Z)} \\
+									&= \var(\hat \theta)  - \frac{\cov(Y,Z)^2}{\var(Z)}
+	\end{align*}
+	and thus we only need $\cov(Y,Z) \neq 0$ to obtain our variance reduction.
+	
+	In practice, we do not know $\text{Cov}(Y,Z)$.  Thus, we have to do a number of \emph{burn-in} simulations to generate $Y$ and $Z$, and then compute an estimate $\hat c$ to use in the full simulation. 
+\end{proof}
+
+% subsection control_variate (end)
+% subsection method_of_antithetic_variances (end)
+% section monte_carlo_methods (end)
+
+\section{Numerical Simulation of Stochastic Differential Equations} % (fold)
+\label{sec:numerical_simulation_of_stochastic_differential_equations}
+\begin{thm}
+	Let \[
+		dX_t = a(t, X_t) \, dt + b(t, X_t) \, dB_t
+	\]
+	Assume $\E X_0 < \infty$.  $X_0$ is independent of $B_s$ and there exists a constant $c > 0$ such that \begin{enumerate}
+		\item $|a(t, x)| + |b(t, x)| \leq C(1 + |x|)$.  
+		\item $a(t, x), b(t, x)$ satisfy the Lipschitz condition in $x$, i.e.\[
+			|a(t,x)- a(t, y)| + |b(t, x) - b(t, y)| \leq C|x - y|
+		\] for all $t \in (0, T).  $
+	\end{enumerate}  Then there exists a \textbf{unique (strong) solution}. 
+\end{thm}
+
+\begin{defn}[Strong convergence]
+	A numberical scheme for solving an SE is said to converge with strong order $\gamma$, if for sufficiently small $\Delta$, we have \[
+		\E(|X(T) - X_N|) \leq K_T \Delta^\gamma
+	\]  This implies that the generated paths approximate the true paths of the SDE - and so one calls this path-wise convergence or strong convergence.  
+\end{defn}
+
+\begin{defn}[Weak convergence]
+	A numerical scheme for solving an SDE is said to converge with weak order $\beta$ if for sufficiently small $\Delta$ and each polynomial $g$, we have \[
+		|\E(g(X_T)) - \E(g(X_N))| \leq K_{g, T} \Delta^\beta
+	\]  Note that strong convergence always implies weak convergence.  
+	
+	Note also that strong convergence implies pathwise convergence.  This is true by Markov's inequality, we have \begin{align*}
+		\P(|X_n - X(T)| \geq \Delta^{\beta/2}) &o\leq \frac{\E(|X_n - X(T)|)}{\Delta^{\beta/2}} \\
+				&\leq C \frac{\Delta^{\beta}}{\Delta^{\beta/2}}
+	\end{align*}
+\end{defn}
+
+\begin{note}
+	\begin{enumerate}
+		\item Weak convergence is basically convergence in distribution, but it has no path-wise properties.
+		\item If terms like $\E(h(X_T))$ are computed via Monte Carlo, then the weak convergence concept is sufficient.  
+		\item If the option is a path dependent option, then strong convergence is the right concept, as the payoff depends on the whole path, rather than the distribution of the terminal value of the stock.  
+	\end{enumerate}
+\end{note}
+
+\begin{thm}[Euler-Maruyama scheme]
+	\begin{align*}
+		X_0 &= X(0) \\
+		X_{n+1} = X_{n} + a(t_n, X_n) \Delta t_n + b(t_n, X_n) \Delta W_n
+	\end{align*} where \begin{align*}
+		\Delta t_n &= t_{n+1} - t_n \\
+		\Delta W_n = W_{t_{n+1}} - W_{t_n}l
+	\end{align*}
+	
+	Euler-Maruyama has \textbf{strong convergence order $\gamma = \frac{1}{2}$} and \textbf{weak convergence order $\beta = 1$}.
+\end{thm}
+
+\begin{thm}[Milstein scheme]
+	Consider the homogenous scalar stochastic differential equation \[
+		dX_t = a(X_t) \, dt + b(X_t) \, dW_t
+	\]  
+	\begin{align*}
+		X_0 &= X(0) \\
+		X_{n+1} &= X_n + a(X_n) \Delta t_n + b(X_n) \Delta W_n + \frac{1}{2} b'(X_n)b(X_n)((\Delta W_n)^2 - \Delta t_n)
+	\end{align*}   
+	One can prove that the Milsten scheme has \textbf{strong and weak convergence order $\gamma = 1$.}
+\end{thm}
+% section numerical_simulation_of_stochastic_differential_equations (end)
+\section{Stochastic Optimal Control} % (fold)
+\label{sec:stochastic_optimal_control}
+
+\begin{defn}[Controlled stochastic differential equation]
+	\begin{align*}
+		dx(t) = f(t, x(t), u(t)) \, dt + \sigma(t,x(t), u(t)) \, dW(t)
+	\end{align*} where $u(t, \omega) = u(t, x(t, \omega))$ is a stochastic process, known as the \textbf{control}.  
+\end{defn}
+
+\begin{defn}[Admissible control]
+	A control $u$ is called admissible for the constraints if for every initial value $x_0 \in S$ the corresponding stochastic differential equation has a unique solution with $x(0) = x_0$ and $u(t, \omega) \in \mathcal U$ for all $t \in [0, \infty]$.  We denote the set of admissible controls with $\mathcal A$.  
+\end{defn}
+
+\begin{defn}[Stochastic optimal control problem]
+	We seek to solve \[
+		\max_{u \in \mathcal A} \E \left[ \int_0^T e^{-rt} B(t, x(t), u(t)) \, dt + e^{-rT}S(x(T)) \cdot \mathbf{1}_{T < \infty} \, dt\right]
+	\] under the dynamic constraint \[
+		dx(t) = f(t, x(t), u(t)) \, dt + \sigma(t, x(t), u(t)) \, dW(t)
+	\] with initial condition $x(0) = x_0$, and discount rate $r > 0$.  
+	
+	$B$ is called the benefit function, $S$ is called the final payoff, and the control $u$ is called the optimal control, and the optimal value is called the value of the problem.
+\end{defn}
+
+\begin{defn}[Value function] \[
+	\max_{u \in \mathcal A} \E \left[ \int_t^T e^{-r(s-t)} B(s, x(s), u(s)) \, ds + e^{-r(T-t)}S(x(T)) \cdot \mathbf{1}_{T < \infty} \, dt \given x(t) = x \right]
+	\] subject to \begin{align*}
+		dx(s) &= f(s, x(s), u(s)) \, ds + \sigma(s, x(s), u(s)) \, dW(s) \\
+		x(t) &= x
+	\end{align*}  
+	
+	Note that $V(0, x_0)$ is the value of the optimal control problem. $V(t, x)$ is the value of the problem, if we started at time $t$ with initial state $x$.  
+\end{defn}
+
+\begin{thm}[Hamilton-Jacobi-Bellman equation]
+	Assume $T < \infty$.  Let $V: [0, T] \times S \rightarrow R$ be a $C_{1, 2}$ function and assume it satisfies the HJB equation \begin{align*}
+		rV(t, x) - V_t(t, x) &= \max_{u \in \mathcal A} \left(B(t, x, u) + V_x(t, x) f(t, x, u(t)) + \frac{1}{2} \text{tr}(V_{xx}(t, x) \sigma(t, x, u) \sigma(t, x, u)^T) \right) \\
+		V(T, x) &= S(x).
+	\end{align*}  Let $\phi(t, x)$ be the set of maximisers of the right hand side and let $u^* \in \mathcal A$ such that $u^*(t, \omega) \in \phi(t, x(t, \omega))$ for all $t \in [ 0, T], \omega \in \Omega$. Then $u^*$ is the optimal control and $V$ is the value function for the stochastic optimal control problem.  
+\end{thm}
+
+\begin{thm}[Hamilton-Jacobi-Bellman equation, infinite time]
+	Consider the time homogenous, infinite time horizon problem \[
+		\max_{u \in \mathcal A} \E \left[ \int_0^\infty e^{-rt} B(x(t), u(t)) \, dt \right] 
+	\] subject to \[
+		dx(t) = f(x(t), u(t)) \, dt + \sigma(x(t), u(t)) \, dW_t.
+	\] Then the value function is independent of $t$, and so $V(t,x) = V(x)$, and the optimal control is of the type $u(t, x) = u(x)$.  The HBJ equation in this case becomes the ODE \[
+		rV(x) = \max_u \left( B(x, u) + V'(x) f(x, u) + \frac{1}{2} V''(x) \sigma(x, u)^2 \right)
+	\] 
+\end{thm}
+% section stochastic_optimal_control (end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

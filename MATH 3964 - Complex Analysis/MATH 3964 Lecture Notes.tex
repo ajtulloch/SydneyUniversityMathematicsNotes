@@ -1,0 +1,832 @@
+%
+%
+%  Created by Andrew Tulloch and Giles Gardam on 2009-11-04.
+%  Copyright (c) 2009 __MyCompanyName__. All rights reserved.
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[10pt, oneside, reqno]{amsart}
+\usepackage{geometry, setspace, graphicx, enumerate}
+\onehalfspacing                 
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+
+
+	% AMS Theorems
+	\theoremstyle{plain}% default 
+	\newtheorem{thm}{Theorem}[section] 
+	\newtheorem{lem}[thm]{Lemma} 
+	\newtheorem{prop}[thm]{Proposition} 
+	\newtheorem*{cor}{Corollary} 
+
+
+
+	\theoremstyle{definition} 
+		\newtheorem{defn}[thm]{Definition}
+		\newtheorem{conj}[thm]{Conjecture}
+		\newtheorem{exmp}[thm]{Example}
+	
+	\theoremstyle{remark} 
+		\newtheorem*{rem}{Remark} 
+		\newtheorem*{note}{Note} 
+		\newtheorem{case}{Case} 
+
+		\newcommand{\expc}[1]{\mathbb{E}\left[#1\right]}
+		\newcommand{\var}[1]{\text{Var}\left(#1\right)}
+		\newcommand{\cov}[1]{\text{Cov}\left(#1\right)}
+		\newcommand{\prob}[1]{\mathbb{P}(#1)}
+		\newcommand{\given}{ \, | \,}
+		\newcommand{\us}{0 \leq u \leq s}
+		\newcommand{\ts}[1]{\{ #1 \}}
+
+\newcommand{\dzz}{\, dz}
+\newcommand{\bigo}[1]{\mathcal{O}(#1)}
+\newcommand{\res}[2]{\text{Res}(#1,#2)}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Ga}{\mathbb{G}}
+
+
+\newcommand{\nth}{n\textsuperscript{th}}
+		
+		
+\title{MATH 3964 - Exam Notes}								% Document Title
+\author{Andrew Tulloch and Giles Gardam}
+%\date{}                                           % Activate to display a given date or no date
+
+
+\begin{document}
+\maketitle
+
+% \tableofcontents
+
+
+\section{Contour Integration and Cauchy's Theorem} % (fold)
+
+\subsection{Analytic functions} % (fold)
+\label{sec:analytic_functions}
+
+
+\begin{defn}
+	A function $f(z)$ is \textbf{differentiable} at $z_0$ if the limit \[
+		f'(z_0) = \lim_{\zeta \rightarrow z_0} \frac{f(\zeta) - f(z_0)}{\zeta - z_0}
+	\] exists independently of the path of approach.
+\end{defn}
+
+\begin{defn}
+	A function $f(z)$ is \textbf{analytic} on a region $D$ if it is differentiable everywhere on $D$.  Thus the derivative $f'(z)$ is a function defined on $D$.  a function is analytic at a particular point $z_0 \in \C$ if it is differentiable on some open neighbourhood of $z_0$.
+\end{defn}
+
+\begin{thm}
+	A necessary condition for $f(z)$ to be analytic is that if $f(z) = u + iv$, then 
+	\begin{align*}
+		v_y = u_x & v_x = -u_y
+	\end{align*}
+\end{thm}
+
+\begin{defn}
+	A function that is analytic throughout the whole complex plain is called an entire function.
+\end{defn}
+
+\begin{defn}
+	A point at which a locally analytic function $f(z)$ fails to be analytic is a \textbf{singularity} of $f(z)$.
+\end{defn}
+
+The easiest way to construct analytic functions is as sums of convergent power series.  Any power series in the complex domain \[
+	f(z) = \sum_{k=0}^\infty a_k (z-z_0)^k
+\] having positive or infinite radius of convergence $R$ converges to an analytic function in the interior of its disc of convergence, $|z-z_0| < R$.
+
+\begin{thm}
+	Every convergence power series is differentiable term by term in the interior of its disc.
+\end{thm}
+
+\begin{prop}
+	The $\nth$ derivative of $f(z)$ at $z = z_0$ is \[
+		f^{(n)}(z_0)  =n! a_n
+	\]
+\end{prop}
+
+The radius of convergence is given by either of the equivalent exact formulae:\[
+	R = \liminf_{n \rightarrow \infty} |a_n|^{-\frac{1}{n}} 
+\]
+or \[
+	\frac{1}{R} = \limsup_{n \rightarrow \infty} |a_n|^{\frac{1}{n}} 
+\]
+
+\begin{thm}
+	Every power series with a positive or infinite radius of convergence is differentiable term by term to all orders in the interior of its disc of convergence.
+\end{thm}
+
+% section analytic_functions (end)
+
+
+\subsection{Contour integration} % (fold)
+\label{sec:contour_integration}
+
+A contour in the complex-plane is just a curve, finite or infinite, which has an arrow or \textbf{orientation}.  We wish to assign a meaning to the \textbf{contour integral},\[
+	\int_C f(z) \dzz
+\]
+where $C$ is a contour and $f(z)$ is a function which is defined and piecewise continuous along  $C$
+
+\begin{lem}[Triangle inequality for contour integrals]
+	\[
+	\left| \int_C f(z) \dzz \right| \leq \int_C |f(z)| \, |dz|	
+	\]
+\end{lem}
+
+
+\begin{lem}[The ML formula]
+	If a contour $C$ has length $L$ and if $|f(z)| \leq M$ on $C$, then \[
+		\left| \int_C f(z) \dzz \right| \leq ML
+	\]
+\end{lem}
+
+\begin{lem}[Jordan's lemma]
+	Let $C_R$ be all or part of the semicircular contour $Re^{i \theta}$, where $\theta$ runs from $0$ to $\pi$. Suppose that $|f(z)| \leq M(R)$ on $C_R$ and $\lambda$ is a positive real number.  Let \[
+		I(R) = \int_{C_R} f(z) e^{i \lambda z} \dzz
+	\]
+	Then, we have the bound $|I(R)| = \bigo{M(R)}$
+\end{lem}
+% section contour_integration (end)
+
+\subsection{Cauchy's theorem and extensions} % (fold)
+\label{sec:cauchy_s_theorem_and_extensions}
+
+\begin{thm}[Cauchy's theorem]
+	If $f(z)$ is analytic on a simply connected region $D$ and if $C$ is any rectifiable closed contour or cycle in $D$, then \[
+		\int_C f(z) \dzz = 0.
+	\]
+\end{thm}
+	
+% section cauchy_s_theorem_and_extensions (end)
+	
+	
+\subsection{Cauchy's integral formula} % (fold)
+\label{sec:cauchy_s_integral_formula}
+
+\begin{thm}[Cauchy's integral formula]
+	Suppose $f(z)$ is analytic in a simply connected region $D$ and that $C$ is a positively oriented rectifiable Jordan curve in $D$.  Then \[
+		\frac{1}{2 \pi i} \int_C \frac{f(z)}{z - z_0} \dzz = \begin{cases}
+			f(z_0), & z_0 \in C \\
+			0,		& z_0 \notin C
+		\end{cases}
+	\]
+\end{thm}
+
+
+\begin{thm}[Analyticity of Cauchy integrals]
+	The function \[
+		g(z) = 	\frac{1}{2 \pi i} \int_C \frac{f(\zeta)}{\zeta- z} \, d \zeta
+	\]
+	is differentiable to all orders in $D$ and is therefore analytic in $D$.
+	It's $\nth$ derivative is \[
+		g^{(n)}(z) = 	\frac{n!}{2 \pi i} \int_C \frac{f(\zeta)}{(\zeta- z)^{n+1}} \, d \zeta	
+	\]
+\end{thm}
+	
+\begin{thm}
+	Suppose that $f(z)$ is analytic in a simply connected region $D$.  Then \[
+		f(z) = 	\frac{1}{2 \pi i} \int_C \frac{f(\zeta)}{\zeta- z} \, d \zeta	
+	\] and \[
+		f^{(n)}(z) = 	\frac{n!}{2 \pi i} \int_C \frac{f(\zeta)}{(\zeta- z)^{n+1}} \, d \zeta	
+	\]
+\end{thm}
+
+\begin{cor}
+	A function $f(z)$ has an antiderivative in a simply connected region $D$ if and only if $f(z)$ is analytic in $D$.
+\end{cor}
+
+\begin{thm}[Removable singularities theorem]
+	Suppose that $f(z)$ is analytic in a region $D$ except possibly at the point $z_1 \in D$.  At $z_1$, suppose that \[
+		\lim_{z \rightarrow z_1} (z - z_1) f(z) = 0
+	\]
+Then a value of $f(z_1)$ can be assigned so that f(z) becomes analytic at $z_1$.  
+\end{thm}
+
+
+\begin{defn}[Analyticitiy at infinity]
+	Suppose that $f(z)$ is analytic on an unbounded set and let $g(z) = f(1/z)$.  Then the point $\infty \in \C^{\star}$ is  point of analyticity of $f(z)$ if $z=0$ is a point of analyticity of $g(z)$.  Similarly, $z = \infty$ is a singularity of a particular type of $f(z)$ if $g(z)$ has a singularity of that same type at $z=0$. 
+\end{defn}
+
+
+\begin{defn}
+	 function $f(z)$ which has a singularity at $z_0$ and is analytic in a deleted neighbourhood of $z_0$ has a \textbf{pole} at $z_0$, or more specifically, a \textbf{pole of order $k$}, if $(z-z_0)^k f(z)$ is analytic and nonzero at $z_0$, where $k$ must be a positive integer according to the removable singularities theorem.  A pole of order one is a \textbf{simple pole}, a pole of order two is a \textbf{double pole}, and so on.
+\end{defn}
+
+\begin{defn}
+	A function is \textbf{meromorphic} if it is analytic in the whole complex plane $\C$ except for poles.  
+\end{defn}
+
+% section cauchy_s_integral_formula (end)
+
+
+\subsection{The Cauchy-Taylor theorem and analytic continuation} % (fold)
+\label{sec:the_cauchy_taylor_theorem_and_analytic_continuation}
+
+
+\begin{thm}[Cauchy-Taylor theorem]
+	Suppose that $f(z)$ is analytic at $z_0$ and the disc $D(R) = B(z_0,R)$ is the largest open disc on which $f(z)$ is analytic.  Then the Taylor series, \[
+		f(z) = \sum_{k=0}^\infty \frac{f^{(k)}(z_0)}{k!} (z - z_0)^k
+	\]
+	converges absolutely to $f(z)$ on $D(R)$ and uniformly on compact subsets.  
+\end{thm}
+
+\begin{thm}
+	Let $f(z) = \sum_{k=0}^\infty a_k (z-z_0)^k$ have a finite radius of convergence $R$.  The radius of convergence of a power series is the distance from the centre to the nearest singularity of its sum function $f(z)$.  
+\end{thm}
+
+\begin{thm}[Cauchy's inequality]
+	Let $f(z)$ analytic on an open disc $D(\rho)$ with centre $z_0$.  Then, if $|f(z)| \leq M(\rho)$, we have \[
+		\left|f^{(n)}(z_0) \right| \leq \frac{n! M(\rho)}{\rho^n}
+	\]
+	If a power series $\sum_{k=0}^\infty a_k (z-z_0)^k$ converges to $f(z)$, then \[
+		|a_n| \leq \frac{M(\rho)}{\rho^n}
+	\]
+\end{thm}[Liouville's theorem]
+If an entire function is bounded, or if it possibly grows at a rate such that $f(z)/z \rightarrow 0$ uniformly as $z \rightarrow \infty$, then $f(z)$ is constant.
+
+\begin{thm}[Uniqueness of analytic continuation]
+	Suppose that $f(z), g(z)$ are analytic in a common region $D$.  Let $H$ be a subset of $D$ that contains a convergent subsequence $\{z_k \}$ whose limit is in the interior of $D$.  If $f(z) = g(z), z \in H$, then $f(z) = g(z)$ everywhere in $D$.  
+\end{thm}
+
+
+% section the_cauchy_taylor_theorem_and_analytic_continuation (end)
+
+
+\subsection{Laurent's theorem and the residue theorem} % (fold)
+\label{sec:laurent_s_theorem_and_the_residue_theorem}
+
+
+\begin{thm}[Laurent's theorem]
+	Suppose that $f(z)$ is analytic in the open circular annulus $R_1 \leq |x - x_0| \leq R_2$.  Then $f(z)$ admits a power series expansion in both positive and negative powers (a \textbf{Laurent series}), \[
+		f(z) = \sum_{k=-\infty}^\infty a_k (z-z_0)^k
+	\] which is absolutely convergent in $D$ and uniformly convergent on compact subsets.  
+	
+	A formula for the coefficient $a_n$ is \[
+		a_n = \frac{1}{2\pi i} \int_{C(r)} \frac{f(\zeta)}{(\zeta - z_0)^{n+1}} \, d \zeta
+	\]
+\end{thm}
+
+\begin{defn}
+	If $z_0$ is a pole or isolated essential singularity of $f(z)$, then the \textbf{residue} of $f(z)$ at $z_0$ is the coefficient $a_{-1}$ of $(z-z_0)^{-1}$ in the Laurent expansion of $f(z)$ about $z_0$.  The notation for the residue is $\res{f}{z_0}$.
+\end{defn}
+
+\begin{thm}[Picard's first theorem]
+	A non-constant entire function has an image either the whole of the complex plane, with at most one exception.
+\end{thm}
+
+\begin{lem}
+	If $f(z)$ has a simple pole at $z_0$, then \[
+		\res{f}{z_0} = \lim_{z \rightarrow z_0} (z - z_0) f(z) = \left[(z-z_0) f(z) \right]_{z = z_0}
+	\]
+\end{lem}
+
+\begin{lem}
+	If $f(z)$ has a pole of order $k$ at $z_0$, then \[
+		\res{f}{z_0} = \frac{1}{(k-1)!}\left[\frac{d^{k-1}}{dz^{k-1}} \left((z-z_0)^k f(z)\right) \right]_{z = z_0}
+	\]
+\end{lem}
+
+\begin{lem}
+	If $f(z)$ and $h(z)$ are analytic at $z_0$ and $h(z)$ has a simple zero at $z_0$, then \[
+		\res{g/h}{z_0} = \frac{g(z_0)}{h'(z_0)}
+	\]
+\end{lem}
+
+
+\begin{thm}[Residue theorem]
+	Suppose that $f(z)$ is analytic inside an on a curve $C$ except for a finite number of poles or isolated essential singularities $z_i$ inside $C$.  Then \[
+		\int_C f(z) \dzz = 2 \pi i \sum_{i} \res{f}{z_i}
+	\]
+\end{thm}
+
+\begin{defn}[Residue at infinity]
+	Suppose that $f(z)$ is analytic everywhere outside of a bounded region, in which it admits a convergent Laurent series.  Then the residue of $f(z)$ at infinity is minus the coefficient $a_{-1}$, that is,\[
+		\res{f}{\infty} = -a_{-1}
+	\]
+\end{defn}
+% section laurent_s_theorem_and_the_residue_theorem (end)
+
+
+
+
+\subsection{The Gamma function $\Gamma(z)$} % (fold)
+\label{sec:the_gamma_function_gamma_z_}
+
+
+\begin{defn}
+	For $\Re(z)> 0$, define \[
+		\Gamma(z) = \int_0^\infty t^{z-1}e^{-t} dt
+	\]
+	The integral converges for $\Re(z)> 0$, and uniformly for $\Re(z) \leq \delta > 0$.  Hence $\Gamma(z)$ is analytic at least in the half-plane $\Re(z) > 0$.  
+\end{defn}
+
+\begin{lem}[Recurrence relation]
+	Integration by parts gives $\Gamma(z+1) = z \Gamma(z)$. This gives the analytic continuation to $\Re(z) > -1$.  Repeated application provides the analytic continuation to the whole plane except for simple poles at $z = 0, -1, -2, \dots$.
+\end{lem}
+
+
+\begin{defn}[Beta function]
+	For $\Re(\alpha), \Re(\beta) > 0$, define the function \[
+		B(\alpha, \beta) = \int_0^1 t^{\alpha - 1} (1-t)^{\beta - 1} \, dt
+	\]
+\end{defn}
+
+\begin{thm}
+We have the following relation
+\[ B(\alpha, \beta) = \frac{\Gamma(\alpha) \Gamma(\beta)}{\Gamma(\alpha + \beta)}
+\]
+\end{thm}
+
+\begin{lem}[Duplication formula]
+	\[
+		\Gamma(\alpha + \frac{1}{2}) = \frac{\Gamma(2\alpha) \sqrt(\pi)}{2^{2\alpha - 1} \Gamma(\alpha)}
+	\]
+\end{lem}
+
+\begin{lem}[Functional relation]
+	\[
+		\Gamma(z) \Gamma(1-z) = \frac{\pi}{\sin \pi z}
+	\]
+\end{lem}
+
+
+% section the_gamma_function_gamma_z_ (end)
+
+
+\subsection{The residue theorem} % (fold)
+\label{sec:the_residue_theorem}
+
+
+\begin{lem}
+	In all cases, including isolated essential singularities, \[
+		\res{f}{z_0}
+	\] is the coefficient of $\epsilon^{-1}$ in the Laurent expansion \[
+		f(z_0 + \epsilon) = \sum_{n \in \Z} a_n \epsilon^n
+	\]
+\end{lem}
+
+\begin{defn}[Residue at infinity]
+	Suppose that $f(z)$ is analytic everywhere outside of a bounded region, in which it admits a convergent Laurent series.  Then the residue of $f(z)$ at infinity is minus the coefficient $a_{-1}$, that is,\[
+		\res{f}{\infty} = -a_{-1}
+	\]
+	
+	If $f(z) \sim \frac{K}{|z^2|}$ as $|z| \rightarrow \infty$, then the residue at $\infty$ vanishes.
+\end{defn}
+
+
+
+\begin{thm}[Argument principle]
+	Suppose that $f(z)$ is analytic on and inside a positively oriented simple closed contour $C$.  Suppose also that $f(z) \neq 0$ on $C$.  Then \[
+		\frac{1}{2\pi} \Delta_C \arg f(z) = N - P
+	\] where $N$ is the total number of \textbf{zeroes} and $P$ is the total number of \textbf{poles} inside $C$, counting multiplicities.
+\end{thm}
+
+\begin{exmp}[Integration of rational functions]
+	Let $P(x)$ and $Q(x)$ be polynomials with $\deg P(x) = \deg Q(x) - 1$.  Then \[
+		\int_\R \frac{P(x)}{Q(x)} \, dx 
+ 	\] does not exist in the usual sense, but the limit \[
+ 		\lim_{R \rightarrow \infty} \int_{-R}^R \frac{P(x)}{Q(x)} \, dx
+ 	\] does exist.  This limit is called the principle value of the integral.
+
+ 	We then have 
+\[
+	P \int_{\R} \frac{P(x)}{Q(x)} \, dx = \pi i \,(\text{residue at $\infty$}) + 2 \pi i \sum (\text{residues in the upper half-plane})
+\]
+\end{exmp}
+
+\begin{exmp}[Poles on the real axis]
+	Let $f(x)$ be analytic with a pole on the real axis at $z = x_0$.  Then we have \[
+		P \int_a^b f(x) = \int_{C^+} f(z) dz + \pi i \res{f}{z_0}
+	\]
+\end{exmp}
+
+
+\begin{exmp}[Integrals of trigonometric functions]
+	Let $R(x,y)$ be a rational function bounded on the circle $|z| = 1$.  Then \[
+		\int_0^{2 \pi} R(\cos \theta, \sin \theta) \, d \theta = \int_{|z| = 1} \frac{1}{iz} R\left( \frac{z^2 + 1}{2z}, \frac{z^2 - 1}{2 i z} \right) \, dz
+	\] 
+\end{exmp}
+
+\begin{exmp}
+	The integrals \begin{align*}
+		\int_\R f(x) \cos \alpha x \, dx \\
+		\int_\R f(x) \sin \alpha x \, dx
+	\end{align*}
+	are the real and imaginary parts of \[
+		I = \int_\R f(x) e^{i \alpha x} \, dx
+	\]
+	
+\end{exmp}
+
+
+% section the_residue_theorem (end)
+
+
+% chapter contour_integration (end)
+\section{Analytic Theory of Differential Equations} % (fold)
+\label{cha:analytic_theory_of_differential_equations}
+
+
+
+\subsection{Existence and uniqueness} % (fold)
+\label{sec:existence_and_uniqueness}
+
+
+\begin{thm}[Existence and uniqueness of first order differential equations]
+	Let $f$ be an analytic function of two complex variables in the open polydisc $|z - z_0| < a$, $|w - w_0| < b$.
+	The first order differential equation,
+	\[
+		\frac{dw}{dz} = f(z,w)
+	\] has a unique analytic solution $w = w(z)$ such that $w = w_0$ when $ z = z_0$ in some disc $|z - z_0| < h, 0 < h \leq a$
+\end{thm}
+
+\begin{proof}
+	By repeated differentiation, we can constrict the formal Taylor series \[
+		w(z) = w_0 + \sum_{n=1}^\infty \frac{w^{(n)}(z_0)}{n!} (z - z_0)^n
+	\] in terms of $f$ and its derivatives, which satisfies the differential equation.  We can then show that this series has a positive radius of convergence.
+\end{proof}
+
+
+\subsection{Singular point analysis of nonlinear differential equations} % (fold)
+\label{sec:singular_point_analysis_of_nonlinear_differential_equations}
+
+\begin{defn}[Singular points of differential equations and their solutions]
+	Consider the $\nth$-order differential equation,\[
+		w^{(n)} = f(z, w, w', w'', \dots, w^{(n-1)})
+	\] where $f$ is a locally analytic function of its $n$ complex arguments.  A singular point of the differential equation is a point \[
+		(z_0, w_0, w'_0, \dots, w_0^{(n-1)}) \in \C^n
+	\]
+	at which $f$ is \textbf{not analytic} or a point where one or more of the arguments is \textbf{infinite}.
+	
+	A \textbf{fixed} singularity of a differential equation is a singular hyperplane $z = z_0$ or $z = \infty$
+\end{defn}
+
+\begin{defn}[Classification of singularities of solutions $w(z)$]
+	Singularities of the solutions are classified as \textbf{fixed} or \textbf{movable}.  A \textbf{movable singular point} is a singular point of $w(z)$ depending on one or more integration constants. 
+	A \textbf{fixed singular point} of $w(z)$ is independent of the integration constants and is included among the fixed singularities of the differential equation.
+\end{defn}
+	
+\begin{exmp}
+	\begin{enumerate}[(i)]
+		\item \[
+			w' = w^2
+		\] with solution $w = -\frac{1}{z - C}$.  This has a movable pole at $z = C$. 
+	
+	\item \[
+		w' = \frac{1}{w}
+	\] with solution $w = \pm \sqrt{2(z-C)}$.  This has a moveable quadratic branch point at $z = C$.
+	
+	
+	\item \[
+		w'' = \left(w'\right)^2
+	\] with solution $w = -\log (z - C_1) + C_2$, movable logarithmic branch point at $z = C_1$.
+
+	
+	\end{enumerate}
+	
+\end{exmp}
+
+% section existence_and_uniqueness (end)
+\subsection{Painlev\'e transcendents} % (fold)
+\label{sec:painlev'e_transcendents}
+
+
+Consider the differential equation \[
+	w'' = 6 w^2 + g(z)
+\]
+Attempting a Laurent-type expansion about a movable singularity $z = z_0$ leads us to find that the movable terms balance if and only if $p = 2$, $a_0 = 1$.  We then find the recurrence relation for $a_n$.  We find that it is of the form \[
+	(n+1)(n-6) a_n = f_n(a_0, a_1, \dots)
+\] and so there is a possible obstruction at $n = 6$ - a \textbf{resonance number}.  To resolve this, we introduce \textbf{logarithmic terms}.  
+
+This introduces a \textbf{log-pole} at $z_0$, a logarithmic branch point.  To avoid this, we find that we must set $g''(z_0) = 0$, and hence our original differential equation is \[
+	w'' = 6 w^2 + \alpha z + \beta
+\] called the Painlev\'e-I transcendent.  When $\alpha = 0$, the system admits the first integral $(w')^2 = 4w^3 + 2 \beta w + K$, which is solved with a \textbf{Weierstrass elliptic function}, having one double pole in each period parallelogram. 
+
+Consider the differential equation \[
+	w'' = 2w^3 + C(z) w + D(z).
+\]
+Similar analysis yields that $C''(z) = 0$, $D'(z) = 0$.  Hence, the differential equation \[
+	w'' = 2w^3 + (\alpha z + \beta)w + \gamma
+\]  When $\alpha = 0$, it has the first integral \[
+	(w')^2 = w^4 + \beta w^2 + 2 \gamma w + K
+\] which is solved by \textbf{Jacobi elliptic functions}.  Each period parallelogram has two simple poles, one with residue $a_0 = 1$, the other with $a_0 =  -1$.  When $\alpha \neq 0$, the DE above defines a new function known as the Painlev\'e-II transcendent.
+
+
+
+% section singular_point_analysis_of_nonlinear_differential_equations (end)
+
+
+
+% section painlev'e_transcendents (end)
+
+
+\subsection{Fuchsian theory} % (fold)
+\label{sec:fuchsian_theory}
+\[
+	w^{(n)} + p_1(z) w^{(n-1)} + \dots + p_n(z) w = R(z)
+\]
+The \textbf{fixed singularities} of the solution $w(z)$ are included among the singularities of the $p_i(z), i = 1, 2, \dots, n$, and $R(z)$ and possibly $z = \infty$.  Linear DE's \textbf{cannot have movable singularities}.
+
+\begin{thm}
+	Suppose $z_0$ is not a singularity of the $p_i(z)$ or $R(z)$.  Then the solution of the above linear DE satisfying initial conditions $w^(i) = w^(i)_0$ is analytic in a disc centred at $z_0$ with radius equal to the distance between $z_0$ and the nearest singularity of the $p_i(z)$ and $R(z)$. 
+\end{thm}
+
+\begin{defn}[Regular singular points]
+	Consider the linear homogenous DE \[
+		w^{(n)} + p_1(z) w^{(n-1)} + \dots + p_n(z) w = 0
+	\] where the $p_i(z)$ are rational functions.  The DE has a regular singular point at $t = z_1$ if 
+	\begin{itemize}
+		\item at least one of the $p_i$ has a pole at $z = z_1$
+		\item the \textbf{order} of the pole of $p_i(z)$ at $z = z_1$ is at most $i$ for all $i$.
+	\end{itemize}
+	We have $z = \infty$ is a \textbf{regular singular point} if \[
+		p_i(z) = \bigo{\frac{1}{z^i}}
+	\]  as $z \rightarrow \infty$ for all $i$.
+\end{defn}
+
+Near a regular singular point at $z = z_1,$ one or more particular solutions can be constructed as a power of $z - z_1$ times a convergent power series;
+\[
+	(z - z_0)^p \left\{ a_0 + a_1 (z - z_0) + \dots \right\}
+\]
+The leading powers $p$ satisfy the \textbf{indicinal equation} \[
+	p(p-1)(p-2)\dots(p-2+1) + q_1 p(p-1)(p-2)\dots(p-n+2) + q_{n-1}p + q_n = 0
+\] where $q_i = \lim_{z \rightarrow z_1}(z - z_1)^i p_i (z)$
+
+\begin{defn}[Fuchsian differential equation]
+	A Fuchsian DE is a linear homogenous DE  all of whose singular points are regular. 
+\end{defn}
+
+Hence \begin{itemize}
+	\item all the $p_i(z)$ are rational functions,
+	\item If $z_1$ is a pole of any of the $p_i$ then the order of the pole in $p_i$ is less than $p_i$ for all $i$,
+	\item as $z \rightarrow \infty$, \[
+		p_i(z) = \bigo{\frac{1}{z^i}}
+	\]
+\end{itemize}
+
+\begin{defn}[M\"obius transformations]
+	Fuchsian character is preserved under $\bar z = \frac{az + b}{cz + d}$ with $ad - bc \neq 0$.  The singular points change position, but their exponents are not affected
+\end{defn}
+
+If $z_1$ is a regular singular point, the transformation \[
+	\bar w = (z - z_1)^\lambda w
+\] has the following effect: 
+\begin{itemize}
+	\item all the exponents at $z_1$ are raised by $\lambda$,
+	\item all the exponents at $\infty$ are lowered by $\lambda$,
+	\item exponents are other points are not affected.
+\end{itemize}
+
+\begin{thm}[Quadratic transformation]
+	The transformation $z = \bar z ^2$ has the following effect:
+	\begin{itemize}
+		\item Exponents at $z = 0$ and $z = \infty$ are doubled.
+		\item A singular point at $z+1 \neq -$ splits into a pair of singular points at $\pm \sqrt{z_1}$ with the \textbf{same exponents}
+	\end{itemize}
+\end{thm}
+
+% section fuchsian_theory (end)
+
+
+\subsection{Hypergeometric functions} % (fold)
+\label{sec:hypergeometric_functions}
+The hypergeometric differential equation \[
+	z(1-z) w'' + (\gamma - (1 + \alpha + \beta)z)w' - \alpha \beta w = 0
+\] is a Fuchsian DE with regular points at 0, 1 and $\infty$, with exponents
+\begin{itemize}
+	\item[$z = 0$] exponents $0, 1 - \gamma$,
+	\item[$z = 1$] exponents $0, \gamma - \alpha - \beta$,
+	\item[$z = \infty$] exponents $\alpha, \beta$
+\end{itemize}
+
+The \textbf{hypergeometric function} $F(\alpha, \beta; \gamma; z)$ is the particular solution \[
+	F(\alpha, \beta; \gamma, z) = \sum_{n = 0}^\infty \frac{(\alpha)_n (\beta)}{(\gamma)_n n!} z^n 
+\] where $(\alpha)_n = \alpha (\alpha + 1)\dots(\alpha + n - 1) = \frac{\Gamma(\alpha + n)}{\Gamma(\alpha)}$.  
+
+The general solution of the hypergeometric equation is \[
+	y  = C_1 F(\alpha, \beta; \gamma, z) + C_2 z^{1 - \gamma} F(1 + \alpha - \gamma, 1 + \beta - \gamma; 2 -\gamma; z)
+\]
+
+We have an integral formula \[
+	F(\alpha, \beta; \gamma; z) = \frac{\Gamma(\gamma)}{\Gamma(\gamma - \beta)\Gamma(\beta)} \int_0^1 t^{\beta - 1} (1-t)^{\gamma - \beta - 1} (1- zt)^{- \alpha} \,dt
+\] valid for $\Re \gamma > \Re \beta > 0$, $|z| < 1$. but can be extended to $z \in \C = [1,\infty)$.
+
+\subsection{Gauss' formula at $z = 1$} % (fold)
+\label{sub:gauss_formula_at_z_1_}
+	\[
+		F(\alpha, \beta; \gamma; 1) = \frac{\Gamma(\gamma)\Gamma(\gamma - \alpha - \beta)}{\Gamma(\gamma - \alpha)\Gamma(\gamma - \beta)}
+	\] 
+\subsection{Kummer's formula at $z = -1$} % (fold)
+\label{sub:kummer_s_formula_at_z_1_}
+\[
+	F(\alpha, \beta; 1 + \beta - \alpha; -1) = \frac{1}{2} \frac{\Gamma(\frac{1}{2}\beta)\Gamma(1 + \beta - \alpha)}{\Gamma(\beta) \Gamma(1 + \frac{1}{2}\beta - \alpha)}
+\]
+
+\subsection{Evaluation at $z = \frac{1}{2}$} % (fold)
+\label{sub:evaluation_at_z_1_2_}
+	\[
+		F(\alpha, \beta; \gamma; \frac{1}{2}) = 2^\alpha F(\alpha, \gamma - \beta; \gamma; -1)
+	\]
+	\[
+		F(\alpha, \beta; \gamma; \frac{1}{2}) = \frac{\Gamma(\frac{1}{2}\gamma) \Gamma(\frac{1}{2}\gamma + \frac{1}{2})}{\Gamma(\frac{1}{2}\alpha + \frac{1}{2}\gamma)\Gamma(\frac{1}{2} - \frac{1}{2}\alpha + \frac{1}{2}\gamma)}
+	\]
+	\[
+		F(\alpha, \beta; \frac{1}{2}(\alpha + \beta +1); \frac{1}{2}) = \frac{ \sqrt{\pi} \Gamma(\frac{1}{2}\alpha + \frac{1}{2}\beta + \frac{1}{2})}{\Gamma(\frac{1}{2}\alpha + \frac{1}{2})\Gamma(\frac{1}{2}\beta + \frac{1}{2})}
+	\]
+
+% subsection evaluation_at_z_1_2_ (end)
+
+% subsection kummer_s_formula_at_z_1_ (end)
+% subsection gauss_formula_at_z_1_ (end)
+
+\subsection{Connection formulae} % (fold)
+\label{sub:connection_formulae}
+We have \begin{align*}
+	F(\alpha, \beta; 1 + \alpha + \beta - \gamma; 1 - z) = \\
+	 A \,F(\alpha, \beta; \gamma ;z) + \\
+	 B \, z^{1 - \gamma} F(1 + \alpha - \gamma, 1+ \beta - \gamma; 2 - \gamma; z)
+\end{align*}
+where \[
+	A = \frac{\Gamma(1 - \gamma)\Gamma(1 + \alpha + \beta - \gamma)}{\Gamma(1 + \alpha - \gamma)\Gamma(1 + \beta - \gamma)}
+\]\[
+	B = \frac{\Gamma(\gamma - 1)\Gamma(1 + \alpha + \beta - \gamma)}{\Gamma(\alpha)\Gamma(\beta)}
+\]
+
+\begin{align*}
+	F(\alpha, \beta; \gamma ; z) = \\
+	A_1 F(\alpha, \beta; 1 + \alpha + \beta - \gamma; 1 -z) + \\
+	 B_1 (1 - z)^{\gamma - \alpha - \beta} F(\gamma - \alpha, \gamma - \beta; 1 - \alpha - \beta + \gamma; 1 - z)	
+\end{align*}
+where \[
+	A_1 = \frac{\Gamma(\gamma)\Gamma(\gamma - \alpha - \beta)}{\Gamma(\gamma - \alpha)\Gamma(\gamma - \beta)}
+\]\[
+	B_1 = \frac{\Gamma(\gamma)\Gamma(\alpha + \beta - \gamma)}{\Gamma(\alpha)\Gamma(\beta))}
+\]
+
+There are various similar formula on page 44 of the notes.
+% subsection connection_formulae (end)
+% subsection subsection_name (end)
+% section hypergeometric_functions (end)
+
+
+\subsection{Elliptic functions} % (fold)
+\label{sec:elliptic_functions}
+
+There are three main approaches to the study of \textbf{elliptic functions}:
+\begin{itemize}
+	\item Inversion of elliptic integrals;
+	\item Nonlinear DE's;
+	\item Doubly periodic meromorphic functions.
+\end{itemize}
+
+\subsection{Elliptic integrals} % (fold)
+\label{sub:elliptic_integrals}
+Consider the class of indefinite integrals, \[
+	\int R(x, \sqrt{P(x)}) \, dx ,
+\] where $R$ is a rational function of two variables and $P$ is a polynomial without square factors.  When $P(x)$ has degree 3 or 4, a M\"obius transform of the polynomial $P(x)$ can be given one of several equivalent normalisations:
+\begin{itemize}
+	\item[\textbf{Jacobi}] $P(x) = (1-x^2(1-k^2 x^2))$,
+	\item[\textbf{Weierstrass}] $P(x) = 4x^3 - g_2 x - g_3$
+\end{itemize} 
+
+\textbf{Elliptic integral} of the \textbf{first kind:} \[
+	F(k, \phi) = \int_0^\phi \frac{d\theta}{\sqrt{1 - k^2 \sin^2 \theta}}
+\]
+\textbf{Elliptic integral} of the \textbf{second kind:} \[
+	E(k, \phi) = \int_0^\phi \sqrt{1 - k^2 \sin^2 \theta} \, d \theta
+\]
+\textbf{Elliptic integral} of the \textbf{third kind:} \[
+	\Pi(n,k \phi) = \int_0^\phi \frac{d \theta}{(1 + n^2 \sin^2 \theta) \sqrt{1 - k^2 \sin^2 \theta}}
+\]
+
+\textbf{Complete elliptic integral of the first kind:}\begin{align*}
+	K(k) &= F(k, \frac{\pi}{2}) \\
+			&= \int_0^1 \frac{dx}{\sqrt{1-x^2}\sqrt{1 - k^2 x^2}} \\
+			&= \frac{1}{2} \pi F(\frac{1}{2}, \frac{1}{2}, 1; k^2)
+\end{align*}
+
+\textbf{Complete elliptic integral of the second kind:}\begin{align*}
+	E(k) &= E(k, \frac{\pi}{2}) \\
+			&= \int_0^1 \frac{\sqrt{1-k^2x^2}}{\sqrt{1-x^2}} \, dx \\
+			&= \frac{1}{2} \pi F(-\frac{1}{2}, \frac{1}{2}, 1; k^2)
+\end{align*}
+
+
+\subsection{Inversion of elliptic integrals} % (fold)
+
+\newcommand{\sn}{\text{sn}\,}
+\newcommand{\cn}{\text{cn}\,}
+\newcommand{\dn}{\text{dn}\,}
+
+\label{sub:inversion_of_ellitpic_integrals}
+The \textbf{Jacobi elliptic function} $\sn z$ is defined by \[
+	\int_0^{\sn z} \frac{dt}{\sqrt{1 - t^2}\sqrt{1 - k^2 t^2}} = z
+\] or equivalently, by the differential equation \[
+	(w')^2 = (1-w^2)(1 - k^2 w^2) 
+\] with $w(0) = 0$ and $w'(0) > 0$.
+
+Then we define $\cn z, \dn z$ by \[
+	\cn z = \sqrt{1 - \sn^2 z}
+\]\[
+	\dn z = \sqrt{1 - k^2 \sn^2 z}
+\]
+
+\subsection{Doubly periodic meromorphic functions} % (fold)
+\label{sub:doubly_periodic_meromorphic_functions}
+ We define \[
+ 	\wp(z) = \frac{1}{z^2} + \sum_{\substack{m,n \in Z \\ m,n \neq 0}} \left( \frac{1}{z - mw - nw')^2} - \frac{1}{(mw + nw')^2} \right)
+ \] where $w$ and $w'$ are nonzero complex numbers with $w'/w$ not real.  It is easy to see that $\wp(z)$ is globally meromorphic with periods $w$ and $w'$.  
+
+If $f$ is any elliptic function, then $\int_C f(z) = 0$, where $C$ is the period parallelogram, as the integrals on opposite sides cancel.  Hence, the sum of the residues of all the poles in a period parallelogram.
+
+We have \[
+	\wp'(z) = -2 \sum_{m,n \in \Z} \frac{1}{(z - mw - nw')^3}
+\]
+
+Consider the \textbf{Laurent expansion} of $\wp$ and $\wp'$ about $z = 0$.  We have \[
+	\frac{1}{(z - mw - nw')^2} = \sum_{k = 0}^\infty \frac{(k+1)z^k}{(mw - nw'){k+2}}
+\]
+Defining $I_{2k} = \sum' \frac{1}{(mw + nw')^{2k}}$ gives \[
+	\wp(z) = \frac{1}{z^2} + 3I_4 z^2 + 5 I_6 z^4 + \dots
+\]
+\[
+	\wp'(z) = -\frac{2}{z^3} + 6I_4 z + 20 I_6 z^3
+\] where the radius of convergence is the minimum of $|w|$ and $|w'|$.
+
+Letting $g_2 = 60 I_4$, $g_3 = 140 I_6$, we obtain the DE \[
+	(w')^2 = 4w^3 - g_2 w - g_3
+\] with general solution $\wp(z - z_0)$. 
+
+We also have \[
+	\int^{\wp(z)} \frac{dt}{\sqrt{4t^3 - g_2 t - g_3}} = z
+\]
+
+
+\subsection{Jacobi elliptic functions} % (fold)
+\label{sub:jacobi_elliptic_functions}
+ We have \begin{align*}
+ 	\sn' z = \cn z \dn z \\
+	\cn' z = - \sn z \dn z \\
+	\dn' z = - k^2 \sn z \cn z
+ \end{align*} deduced from $\sn z$ satisfying $w' = \sqrt{1 - w^2}\sqrt{1 - k^2 w^2}$. 
+
+For identities of the Jacobi elliptic functions, see pages 57-67 in the notes.
+
+\subsection{Addition theorems} % (fold)
+\label{sub:addition_theorems}
+See pages 57-67 in the notes
+
+\subsection{Liouville theory} % (fold)
+\label{sub:liouville_theory}
+Let an elliptic function be defined as any \textbf{doubly periodic meromorphic function}.  
+\begin{defn}[Order]
+	The order of an elliptic function is the number of poles of $f(z)$ inside a period parallelogram, counting multiplicities (a pole of order $n$ is counted as $n$ poles.)  Then $\wp, \sn, \cn$ are elliptic functions of order $2$.  
+\end{defn}
+
+\begin{thm}
+	An elliptic function of order zero is constant.
+\end{thm}
+
+\begin{thm}
+	The sum of the residues of $f(z)$ at all poles in a period parallelogram is zero.
+\end{thm}
+
+\begin{thm}
+	The transcendental equation $f(z) = a$ where $f(z)$ is an elliptic function of order $m$ has exactly $m$ roots in every period parallelogram, counting multiplicities, for every $a \in \C$.  
+\end{thm}
+
+\begin{thm}
+	A M\"obius transformation leaves the order and periods of an elliptic function unchanged.  
+\end{thm}
+\begin{thm}
+	Any solution of $(w')^2 = aw^4 + bw^3 + cw^2 +dw + e$ with $a,b$ both not zero, no square factors, is an elliptic function of order 2.
+\end{thm}
+
+\subsection{Weierstrass' Theorem} % (fold)
+\label{sub:weierstrass_theorem}
+	Let $f(z)$ be an elliptic function of any order.  Then it has a unique representation \[
+		f(z) = R_1(\wp(z)) + R_2(\wp(z)) \wp'(z)
+	\] where $\wp(z)$ is the Weierstrass function having the same periods and $R_i$ rational functions.  
+
+
+% subsection weierstrass_theorem (end)% subsection liouville_theory (end)
+% subsection addition_theorems (end)
+% subsection jacobi_elliptic_functions (end)
+% subsection doubly_periodic_meromorphic_functions (end)
+% subsection inversion_of_ellitpic_integrals (end)
+% subsection elliptic_integrals (end)
+
+% section elliptic_functions (end)
+% chapter analytic_theory_of_differential_equations (end)
+
+
+
+
+
+\end{document}

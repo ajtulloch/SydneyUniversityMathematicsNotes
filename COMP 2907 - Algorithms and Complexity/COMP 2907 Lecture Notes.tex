@@ -1,0 +1,1478 @@
+%  
+%  COMP 2907 Exam Notes
+%
+%  Created by Andrew Tulloch on 2009-11-04.
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+% \documentclass[10pt]{amsart}
+\documentclass[10pt, oneside, reqno]{amsart}
+\usepackage{amsthm, amsmath, amssymb}
+
+\usepackage{geometry, setspace, enumerate}
+\onehalfspacing                 
+\usepackage[ruled,section]{algorithm}
+\usepackage{algpseudocode}
+
+% \usepackage{fontspec,xltxtra,xunicode}
+% \defaultfontfeatures{Mapping=tex-text}
+
+%\setromanfont[Mapping=tex-text,Contextuals= 
+%{NoWordInitial,NoWordFinal,NoLineInitial,NoLineFinal}]{Hoefler Text}
+%\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Hoefler Text}
+%\setmonofont[Scale=MatchLowercase]{Andale Mono}
+
+
+	% AMS Theorems
+	\theoremstyle{plain}% default 
+	\newtheorem{thm}{Theorem}[section] 
+	\newtheorem{prob}[thm]{Problem}
+	\newtheorem{question}[thm]{Question}
+	
+	\newtheorem{lem}[thm]{Lemma} 
+	\newtheorem{prop}[thm]{Proposition} 
+	\newtheorem*{cor}{Corollary} 
+
+	\theoremstyle{definition} 
+		\newtheorem{defn}[thm]{Definition}
+		\newtheorem{conj}[thm]{Conjecture}
+		\newtheorem{exmp}[thm]{Example}
+	
+	\theoremstyle{remark} 
+		\newtheorem*{rem}{Remark} 
+		\newtheorem*{note}{Note} 
+		\newtheorem{case}{Case} 
+
+\newcommand{\expc}[1]{\mathbb{E}\left[#1\right]}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Ga}{\mathbb{G}}
+
+
+\newcommand{\nth}{n\textsuperscript{th}}
+\newcommand{\bigo}[1]{\mathcal{O}(#1)}
+
+\setlength{\topmargin}{0.2cm}
+\setlength{\footskip}{0.2cm}
+\setlength{\hoffset}{-1cm}
+\setlength{\voffset}{-2cm}
+
+		
+		
+\title{COMP 2907 - Algorithms and Complexity \\  Exam Notes}								% Document Title
+\author{Andrew Tulloch and Giles Gardam}
+%\date{}                                           % Activate to display a given date or no date
+
+
+
+
+\begin{document}
+\maketitle
+
+\section{Introduction} % (fold)
+\label{sec:introduction}
+\begin{algorithm}[H]
+	\label{alg:dynamic_rising_trend}
+	\caption{Propose-and-reject algorithm for the stable matching problem}
+	\begin{algorithmic}[1]
+		\Procedure{StableMatching}{$M,W$}
+		\While{some man is free and hasn't proposed to every woman}
+			\State Choose such a man $m$
+			\State $w \leftarrow $ first woman on $m$'s list to whom $m$ has not yet proposed 
+			\If{w is free}
+				\State assign $m$ and $w$ to be engaged
+			\ElsIf{w preferms $m$ to her fiance $m'$}
+				\State assign $m$ and $w$ to be engaged, and $m'$ to be free
+			\Else
+				\State $w$ rejects $m$
+			\EndIf
+		\EndWhile
+	\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{thm}
+	The Gale-Shapley algorithm yields a stable matching in $\bigo{n^2}$ time. The matching it returns is man-optimal (all men simultaneously get matched to the best possible woman over all stable matchings), and is hence independent of the order in which free men are chosen to propose.
+\end{thm}
+
+\begin{defn}[Efficieny]
+	An algorithm is \emph{efficient} if its worst-case running time is polynomial.	
+\end{defn}
+
+\begin{defn}[$\mathcal{O}$, $\Theta$, $\Omega$]
+	We have the following bounds on the running time of an algorithm $T(n)$.
+	\begin{itemize}
+		\item $T(n)$ is $\bigo{f(n)}$ if there exists $c > 0$ such that $T(n) \leq c f(n)$ for $n$ sufficiently large.
+		\item $T(n)$ is $\Omega{f(n)}$ if there exists $c > 0$ such that $T(n) \geq c f(n)$ for $n$ sufficiently large.
+		
+		\item $T(n)$ is $\Theta(f(n))$ if it is both $\bigo{f(n)}$ and $\Omega(f(n))$.
+	\end{itemize}
+\end{defn}
+
+
+\subsection{Graphs} % (fold)
+\label{sub:graphs}
+
+\begin{defn}[Adjacency list]
+	An adjacency list is a node indexed array of lists.  It contains two representations of each edge.  Checking if $(u,v)$ is an edge takes $\bigo{\deg u}$ time, identifying all edges and space used are both $\bigo{n+m}$.  (Convention is that a graph has $n$ vertices and $m$ edges.)
+\end{defn}
+
+\begin{thm}[Trees]
+	An undirected graph is a \textbf{tree} if it is connected and does not contain a cycle.  
+	
+	Let $G$ be an undirected graph on $n$ nodes. Any two of the following statements imply the third.
+	\begin{itemize}
+		\item $G$ is connected.
+		\item $G$ does not contain a cycle.
+		\item $G$ has $n-1$ edges.
+	\end{itemize}
+\end{thm}
+
+
+\begin{thm}[\textsc{bfs} algorithm]
+	Explore outward from $s$ in all possible directions, adding nodes one ``layer'' at a time.  
+	\begin{itemize}
+		\item $L_0 = \{s\}$
+		\item $L_{i} = $ all nodes that do not belong to an earlier layer, and that have an edge to a node in $L_{i-1}$.
+	\end{itemize}
+\end{thm}
+
+\begin{thm}
+	\textsc{bfs} runs in $\bigo{m+n}$ time if the graph is given by its adjacency representation.
+\end{thm}
+
+\begin{defn}[Bipartite graph]
+	A graph is bipartite if the nodes can be coloured red and blue such that every edge has one red and one blue end.
+\end{defn}
+
+\begin{thm}
+	A graph is bipartite if and only if it does not contain an odd length cycle.
+\end{thm}
+
+\begin{defn}[Strongly connected]
+	A (directed) graph is strongly connected if for every pair of nodes $(u,v)$, there is a path from $u$ to $v$ and a path from $v$ to $u$.  Can be tested by \textsc{bfs} in $\bigo{m+n}$ time (exanding along `forward' edges in one pass and then along `backward' edges in the other).
+\end{defn}
+
+\begin{defn}[Directed acyclic graph]
+	A directed acyclic graph is a directed graph that contains no directed cycles.  
+\end{defn}
+
+\begin{lem}
+	A topological order is total ordering such that if an edge joins $u$ to $v$ then $u < v$.
+	$G$ has a topological order if and only if $G$ is a directed acyclic graph.
+\end{lem}
+
+% subsection graphs (end)
+
+% section introduction (end)
+
+
+
+\section{Greedy Algorithm} % (fold)
+\label{sec:greedy_algorithm}
+\subsection{Interval scheduling} % (fold)
+\label{sub:interval_scheduling}
+
+\begin{algorithm}[H]
+	\label{alg:dynamic_rising_trend}
+	\caption{Greedy algorithm for interval scheduling \textbf{P}}
+	\begin{algorithmic}[1]
+		\Procedure{IntervalScheduling}{$J$}
+			\State Sort jobs by finish times so that $f_1 \leq f_2 \leq \dots \leq f_n$.
+			\State $A \gets \emptyset$
+			\For{$j = 1$ to $n$}
+				\If{job $j$ compatible with $A$}
+					\State $A \gets A \cup \{j\}$
+				\EndIf
+			\EndFor
+			\State \textbf{return} $A$
+	\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{thm}
+	\textsc{IntervalScheduling} runs in $\bigo{n \log n}$ time.
+\end{thm}
+% subsection interval_scheduling (end)
+
+\subsection{Interval Partitioning} % (fold)
+\label{sub:interval_partitioning}
+
+\begin{algorithm}[H]
+	\label{alg:dynamic_rising_trend}
+	\caption{Greedy algorithm for interval partitioning}
+	\begin{algorithmic}[1]
+		\Procedure{IntervalPartitioning}{$J$}
+			\State Sort intervals by starting times so that $s_1 \leq s_2 \leq \dots \leq s_n$.
+			\State $d \gets 0$
+			\For{$j = 1$ to $n$}
+				\If{lecture $j$ compatible with some classroom $k$}
+					\State schedule lecture $j$ in classroom $k$
+				\Else
+					\State allocate a new classroom $d+1$
+					\State schedule lecture $j$ in classroom $d+1$
+					\State $d \gets d+1$
+				\EndIf
+			\EndFor
+	\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+% subsection interval_partitioning (end)
+
+\subsection{Some simple greedy algorithms} % (fold)
+\begin{itemize}
+\item For jobs with fixed deadlines and durations to be scheduled on one machine, we can minimize the maximum lateness going by earliest deadline first.
+\item For optimal caching, we evict the item that is requested farthest in the future.
+\item To minimize the number of fuel stops, the truck driver's algorithm chooses the furthest possible stop at each step.
+\item To find the best $k$-clustering, i.e. partition of nodes into $k$ sets which maximizes the minimum distance between nodes in different clusters, we can apply Kruskal's algorithm, ending when there are $k$ connected compnents.
+\end{itemize}
+% subsection some_simple_greedy_algorithms (end)
+\subsection{Dijkstra's algorithm} % (fold)
+\label{sub:dijkstra_s_algorithm}
+
+Given a directed graph $G = (V,E)$ with non-negative edge weights, finds the shortest path from a node $s$ to a target node $t$ (or any arbitrary node).
+\begin{itemize}
+	\item Maintain a set of \textbf{explored nodes} $S$ for which we have determined the shortest path distance $d(u)$ from $s$ to $u$.
+	\item Initialise $S = \{s\}, d(s) = 0$.
+	\item Repeatedly choose unexplored node $v$ which minimises \[
+		\pi(v) = \min_{(u,v): u \in S} d(u) + w_{uv},
+	\]
+	add $v$ to $S$, and set $d(v) = \pi(v)$.
+\end{itemize}
+
+\begin{thm}
+	\textsc{dijkstra} runs in $\bigo{m \log n}$ with a binary heap.
+\end{thm}
+% subsection dijkstra_s_algorithm (end)
+
+\subsection{Minimum spanning trees} % (fold)
+\label{sub:minimum_spanning_trees}
+
+\begin{defn}[Minimum spanning tree]
+	Given a connected graph $G = (V,E)$ with real-valued edge weights $w_{uv}$, an \textsc{mst} is a subset of the edges $T \subseteq E$ such that $T$ is a spanning tree whose sum of edge weights is minimised.
+\end{defn}
+
+\begin{thm}[Kruskal's algorithm]
+	Start with $T = \emptyset$.  Consider edges in ascending order of cost.  Insert edge $e$ in $T$ unless doing so would create a cycle.
+\end{thm}
+
+\begin{thm}[Reverse-Delete algorithm]
+	Start with $T = E$.  Consider edges in descending order of cost.  Delete edge $e$ from $T$ unless doing so would disconnect $T$.
+\end{thm}
+
+\begin{thm}[Prim's algorithm]
+	Start with some root node $s$ and greedily grow a tree from $s$ outward.  At each step, add the cheapest edge $e$ to $T$ that has exactly one endpoint in $T$.
+\end{thm}
+
+\begin{prop}[Cut property]
+	Let $S$ be any subset of nodes, and let $e$ be the minimum cost edge with exactly one endpoint in $S$.  Then the \textsc{mst} contains $e$.
+\end{prop}
+
+\begin{proof} Assume the contrary. Adding $e$ creates a cycle. Some other edge on the cut is more expensive than $e$, and removing it leaves a cheaper spanning tree.
+\end{proof}
+
+\begin{prop}[Cycle property]
+	Let $C$ be any cycle, and let $f$ be the maximum cost edge belonging to $C$.  Then the \textsc{mst} does not contain $f$.
+\end{prop}
+
+\begin{proof} Assume the contrary. Removing $f$ leaves two connected components, with one end of $f$ in each. Some other edge in the cycle is on the cut, and adding it gives us a cheaper spanning tree. 
+\end{proof}
+
+\begin{algorithm}[H]
+	\label{alg:dynamic_rising_trend}
+	\caption{Prim's algorithm for minimal spanning tree}
+	\begin{algorithmic}[1]
+		\Procedure{Prim}{$G, c$}
+			\ForAll{$v \in V$} $a[v] \gets \infty$ \EndFor
+			\State Initialise an empty priority queue $Q$
+			\ForAll{$v \in V$} Insert $v$ onto $Q$ \EndFor
+			\State Initialise a set of explored nodes $S \gets \phi$
+			
+			\While{$Q$ is not empty}
+				\State $u \gets $ delete minimum element from $Q$.
+				\State $S \gets S \cup \{u \}$
+				\ForAll{edges $e = (u,v)$ incident to $u$}
+					\If{$ v \notin S$ and $c_e < a[v]$}
+						\State decrease priority $a[v]$ to $c_e$
+					\EndIf
+				
+				\EndFor
+			\EndWhile
+	\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{thm}
+	\textsc{Prim} runs in $\bigo{n^2}$ with an array, $\bigo{m \log n}$ with a binary heap. 
+\end{thm}
+
+\begin{algorithm}[H]
+	\label{alg:dynamic_rising_trend}
+	\caption{Kruskal's algorithm for minimal spanning tree}
+	\begin{algorithmic}[1]
+		\Procedure{Kruskal}{$G, c$}
+			\State Sort edge weights so that $c_1 \leq c_2 \leq \dots \leq c_m$.
+			\State $T \gets \phi$
+			\ForAll{$u \in V$} make a set containing singleton $u$.
+			\EndFor
+			
+			\For{$i = 1$ to $m$}
+				\State $(u,v) = e_i$
+				\If{$u$ and $v$ are in different sets}
+					\State $T \gets T \cup \{e_i \}$
+					\State merge the sets containing $u$ and $v$
+				\EndIf
+			\EndFor
+			\State \textbf{return} $T$
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+% TODO Add a summary of the union-find data structure.
+
+% subsection minimum_spanning_trees (end)
+
+% section greedy_algorithm (end)
+
+
+\section{Divide \& Conquer} % (fold)
+\label{sec:divide_&_conquer}
+
+\begin{thm}[Master theorem]
+	If $T(n) \leq a T(n/b) + \bigo{n^d}$, then \[
+		T(n) = \begin{cases}
+			\bigo{n^d} & \text{if $a < b^d$}\\
+			\bigo{n^d \log n} &\text{if $a = b^d$}\\
+			\bigo{n^{\log_b a}} & \text{if $ a  > b^d$}
+		\end{cases}
+	\]
+\end{thm}
+\begin{algorithm}[H]
+	\label{alg:dynamic_rising_trend}
+	\caption{Counting inversions}
+	\begin{algorithmic}[1]
+		\Procedure{SortAndCount}{$L$}
+			\If{list $L$ has one element}
+				\State \textbf{return} 0 and the list $L$
+			\EndIf
+			
+			\State Divide $L$ into two halves $A$ and $B$
+			\State $(r_A, A) \gets \textsc{SortAndCount}(A)$
+			\State $(r_B, A) \gets \textsc{SortAndCount}(B)$
+			\State $(r, L) \gets \textsc{MergeAndCount}(A,B)$
+			
+			\State
+			\State \textbf{return} $r = r_A + r_B + r$ and the sorted list $L$
+	\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+
+
+\subsection{Closest pair of points} % (fold)
+\label{sub:closest_pair_of_points}
+
+\begin{algorithm}[H]
+	\label{alg:dynamic_rising_trend}
+	\caption{Finding the closest pair of points in a plane}
+	\begin{algorithmic}[1]
+		\Procedure{ClosestPair}{$L$}
+			\State \textbf{Compute} separation line $X$ such that half the points are on one side and half on the other side.
+			\State 
+			\State $\delta_1 = \textsc{ClosestPair}(\text{left half})$
+			\State $\delta_2 = \textsc{ClosestPair}(\text{right half})$
+			\State $\delta = \min(\delta_1, \delta_2)$
+			
+			\State
+			\State \textbf{Delete} all points further than $\delta$ from separation line $X$
+			\State \textbf{Sort} remaining points by $y$-coordinate
+			
+			\State \textbf{Scan} points in $y$ order and compare distance between each point and next 11 neighbours.  If any of these distances is less than $\delta$, update $\delta$
+			
+			\State 
+			\State \textbf{return} $\delta$
+	\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{thm}
+	Running time is $T(n) \leq 2 T(n/2) + \bigo{n \log n} \Rightarrow T(n) = \bigo{n \log^2 n}$
+\end{thm}
+
+
+\begin{rem}
+	Can be improved to run in $\bigo{n \log n}$ by pre-sorting and merging lists.
+\end{rem}
+% subsection closest_pair_of_points (end)
+
+\subsection{Multiplication} % (fold)
+\begin{thm} We can multiply two $n$-bit integers in $O(n^{\log_2 3})$ bit operations.
+\end{thm}
+\begin{rem} This is achieved recursively, putting $x=2^{n/2}x_1+x_0$, $y=2^{n/2}y_1+y_0$ and computing $xy = 2^n x_1 y_1 + 2^{n/2} \left( (x_1+x_0)(y_1+y_0) - x_1y_1 - x_0y_0) \right) + x_0 y_0$, so that the expensive computation is computing $3$ multiplications of two order $n/2$ integers; the shifts and additions take linear time. Note that $\log_2 3 =1.58496...$
+\end{rem}
+\label{sub:multiplication}
+
+\begin{thm}
+	Naive matrix multiplication is $\bigo{n^3}$.  Can be improved to $\bigo{n^{2.81}}$ by Strassen, and has been improved to $\bigo{n^{2.376}}$ by Coppersmith-Winograd.
+\end{thm}
+% subsection multiplication (end)
+
+% section divide_&_conquer (end)
+
+
+
+\section{Dynamic Programming} % (fold)
+\label{sec:dynamic_programming}
+
+
+\subsection{Weighted interval scheduling} % (fold)
+\label{sub:weighted_interval_scheduling}
+The following algorithm solves the weighted interval scheduling problem.
+The jobs must be sorted in ascending order by finishing time.
+We use the recurrence \[
+	f(j) = \begin{cases}
+		0 &\text{if $j = 0$} \\
+		\max \{v_j + f(p(j)), f(j-1) \} &\text{otherwise}
+	\end{cases}
+\] where $p(j)$ is the largest index $i < j$ such that job $i$ is compatible with job $j$, $0$ if there is no such $i$.
+
+\begin{algorithm}[H]
+	\label{alg:dynamic_rising_trend}
+	\caption{Weighted interval scheduling using dynamic programming}
+	\begin{algorithmic}[1]
+		\Procedure{WeightedInterval}{$L$}
+			\State Sort jobs by finish times so that $f_1 \leq f_2 \leq \dots \leq f_n$
+			\ForAll{$i = 1$ to $n$} 
+			\State Compute $p(i)$ 
+			\EndFor
+			
+			\State
+			
+			\ForAll{$j = 1$ to $n$}
+				\State $M[j] \gets \textsc{null}$
+			\EndFor	
+				
+			\Procedure{ComputeOpt}{$j$}
+			\If{$M[j]$ is \textsc{null}}
+				\State $M[j] = \max(w_j + \textsc{ComputeOpt}(p(j)), \textsc{ComputeOpt}(j-1))$
+			\EndIf
+			\State \textbf{return} $M[j]$
+			\EndProcedure
+			
+		\State \textbf{return} \textsc{ComputeOpt}($n$)
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+
+\begin{thm}
+	\textsc{WeightedInterval} runs in $\bigo{n \log n}$ time.
+\end{thm}
+
+\begin{rem}
+The runtime of \textsc{WeightedInterval} is $\bigo{n}$ if the jobs are already sorted by finish time and start time. We need them sorted by start time to compute the $p(j)$ in $\bigo{n}$, so we can just do one pass over the lists. Otherwise we get a $n \log n$ from doing repeated binary searches.
+\end{rem}
+% subsection weighted_interval_scheduling (end)
+
+
+\subsection{Segmented least squares} % (fold)
+\label{sub:segmented_least_squres}
+
+We use the recursion 
+\[
+	f(j) = \begin{cases}
+		0 &\text{if $j = 0$} \\
+	\displaystyle c + \min_{1 \leq i \leq j} \left\{ e(i,j) + f(i-1)\right\} &\text{otherwise}			\end{cases}
+\] where $f(j)$ is the minimum cost for points $p_1, p_2, \dots, p_j$, and $e(i,j)$ is the minimum sum of squares for points $p_i, p_{i+1},\dots, p_j$.
+
+\begin{thm}
+	Computing segmented least squares runs in $\bigo{n^3}$ time.  The bottleneck is computing $e(i,j)$ for all $n^2$ pairs. This can in fact be done in $\bigo{n^2}$ by trickery (it involves evaluating the $e(i,j)$ in increasing order of $j - i$), and brings the whole algorithm down to $\bigo{n^2}$.
+\end{thm}
+% subsection segmented_least_squres (end)
+
+
+\subsection{Knapsack problem} % (fold)
+\label{sub:knapsack_problem}
+
+\begin{defn}
+	$f(i,w)$ is the maximum profit subset of items $1, \dots, i$ with weight limit $w$.  
+\end{defn}
+
+We then have the following recursion:
+\[
+	f(i,w) = \begin{cases}
+		0 		&\text{if $i = 0$}\\
+		f(i-1,w)&\text{if $w_i > w$}\\
+		\max \left\{ f(i-1,w), v_i + f(i-1, w - w_i)\right\} &\text{otherwise}
+	\end{cases}
+\]
+
+
+\begin{thm}
+	The dynamic programming algorithm for the knapsack problems runs in time $\bigo{nW}$ (only pseudo-polynomial).
+\end{thm}
+
+\begin{rem}
+The decision version of knapsack is NP-complete. There is however a polynomial-time approximation algorithm that finds a feasible solution within $0.01\%$ of the optimum.
+\end{rem}
+% subsection knapsack_problem (end)
+
+\subsection{RNA secondary structure} % (fold)
+\label{sub:}
+
+\begin{defn}
+	$f(i,j)$ is the maximum number of base pairs in a secondary structure of the substring $x_i x_2\dots x_j$. Let $g(i, j)$ be the maximum number of base pairs in the case that $x_j$ is aligned with some element. Then $$g(i, j) = 1 + \max_{\substack{t:i \leq t < j-4 \\ b_t, b_j \text{complementary}}} f(i,t-1) + f(t+1, j-1).$$
+\end{defn}
+
+We use the recursion:
+\[
+	f(i,j) = \begin{cases}
+		0 &\text{if $i \geq j-4$}\\
+		\max \{f(i,j-1), g(i, j) \}
+	\end{cases}
+\]
+
+
+% subsection  (end)
+
+
+\subsection{Sequence alignment} % (fold)
+\label{sub:sequence_alignment}
+
+\begin{defn}
+	$f(i,j)$ is the minimum cost of aligning strings $x_1 x_2\dots x_i$ and $y_1 y_2 \dots y_j$
+\end{defn}
+
+We then have the recursion:
+\[
+	f(i,j) = \begin{cases}
+		j \delta 		&\text{if $i = 0$}\\
+		i \delta 		&\text{if $j = 0$}\\
+		\min \left\{ \alpha_{x_i,y_j} + f(i-1,j-1), \right. & \\
+		\ \ \left. \delta + f(i-1,j), \delta + f(i,j-1) \right\} &\text{otherwise} % apologies for that horrific formatting...
+	\end{cases}
+\]
+
+\begin{thm}
+	The naive implementation of the above algorithm can be implemented in $\Theta(mn)$ time and space  ($m$ and $n$ are lengths of given strings).
+\end{thm}
+
+\begin{lem}
+	By calculating the recurrence iteratively (not recursively), iterating over $i$ and only storing values of $f(i, j)$ for the current $i$ and $i-1$ , we can find the optimal \textbf{value} in $\bigo{m+n}$ space and $\Theta(m n)$ time. It is not possible to reconstruct the alignment this way however.
+\end{lem}
+
+\begin{rem}
+	By divide and conquer, we can find the optimal alignment in linear space as well. Essentially, we determine where the shortest path in the edit distance graph intersects the middle column by iterating over the elements $(i, \lfloor \frac{n}{2} \rfloor)$ in it, summing shortest distances to the two corners $(0, 0)$ and $(m, n)$. We then recurse on the left and right subproblems.
+\end{rem}
+% subsection sequence_alignment (end)
+
+\subsection{The Bellman-Ford algorithm for shortest paths} % (fold)
+\label{sub:the_bellman_ford_algorithm_for_shortest_paths}
+
+Dijkstra's algorithm failed in graphs with negative edge costs.  To remedy this, we introduce the Bellman-Ford algorithm.
+
+\begin{defn}
+	$f(i,v)$ is the length of the shortest $v-t$ path $P$ using at most $i$ edges.
+\end{defn}
+
+Then we have the recursion:
+\[
+	f(i,v) = \begin{cases}
+		0 						&\text{if $i = 0$ and $v=t$}\\
+		\infty 					&\text{if $i = 0$ and $v \neq t$}\\
+		\min \left\{ f(i-1,v), \displaystyle\min_{(v,w)\in E} \left\{f(i-1,w) + c_{vw}\right\} \right\} &\text{otherwise}
+	\end{cases}
+\]
+
+By only maintaining one array $M[v]$ equal to the shortest $v-t$ path we have found so far, we can reduce the running time to $\bigo{mn}$ and space to $\bigo{m+n}$.
+No need to check edges of the form $(v,w)$ unless $M[w]$ changed in the previous iteration.
+
+% subsection the_bellman_ford_algorithm_for_shortest_paths (end)
+
+\subsection{Negative cycles in a graph} % (fold)
+\label{sub:negative_cycles_in_a_graph}
+
+\begin{lem}
+	If $f(n,v) = f(n-1,v)$ for all $v$, then there are no negative cycles.
+\end{lem}
+
+\begin{lem}
+	If $f(n,v) < f(n-1,v)$ for some node $v$, then any shortest path from $v$ to $t$ contains a cycle $W$.  Moreover, $W$ has negative cost.
+\end{lem}
+
+\begin{thm}
+	We can detect negative cost cycles in $\bigo{mn}$ time. 
+	\begin{itemize}
+		\item Add a new node $t$ and connect all nodes to $t$ with a zero-cost edge.
+		\item Check if $f(n,v) = f(n-1,v)$ for all nodes $v$.
+		\begin{itemize}
+			\item If yes, then there are no negative cycles.
+			\item If no, then extract a cycle from shortest path from $v$ to $t$.
+		\end{itemize}
+	\end{itemize}
+\end{thm}
+% subsection negative_cycles_in_a_graph (end)
+
+% section dynamic_programming (end)
+
+
+\section{Network Flow} % (fold)
+\begin{defn}[$s-t$ cut]
+	An $s-t$ cut is a partition ($A,B$) of $V$ with $s \in A$ and $t \in B$.
+\end{defn}
+
+\begin{defn}
+The capacity of a cut $(A,B)$ is $\text{cap}(A,B) = \displaystyle\sum_{\text{$e$ out of $A$}}c(e)$
+\end{defn}
+
+\begin{prob}[Min $s-t$ cut problem]
+Find an $s-t$ cut of minimum capacity.
+\end{prob}
+
+\begin{defn}[Flow]
+	An $s-t$ flow is a function that satisfies:
+	\begin{itemize}
+		\item For each $e \in E: 0 \leq f(e) \leq c(e)$
+		\item For each $v \in V - \{s,t\}:  \displaystyle \sum_{\text{$e$ into $v$}}f(e)  = \displaystyle \sum_{\text{$e$ out of  $v$}}f(e)$
+	\end{itemize}
+	
+	The value of a flow $f$ is $v(f) = \displaystyle \sum_{\text{$e$ out of $s$}}f(e)$
+\end{defn}
+
+\begin{prob}[Max flow problem]
+	Find the $s-t$ flow of maximum value.
+\end{prob}
+
+\newcommand{\sumsub}[1]{\displaystyle\sum_{\text{#1}}}
+\begin{lem}[Flow value lemma]
+	Let $f$ be any flow, and let $(A,B)$ be any $s-t$ cut.  Then, the net flow sent across the cut is equal to the amount leaving $s$.\[
+		\sumsub{$e$ out of $A$} f(e) - \sumsub{$e$ into $A$}f(e) = v(f)
+	\]
+\end{lem}
+
+
+\begin{thm}[Weak duality]
+	Let $f$ be any flow, and let $(A,B)$ be any $s-t$ cut.  Then the value of the flow is at most the capacity of the cut, that is $v(f) \leq \text{cap}(A,B)$. 
+\end{thm}
+
+\begin{cor}
+	Let $F$ be any flow, and let $(A,B)$ be any cut.  If $v(f) = \text{cap}(A,B)$, then $f$ is a max flow and $(A,B)$ is a min cut.
+\end{cor}
+
+\begin{thm}[Max-flow Min-cut theorem]
+	The value of a max flow is equal to the value of the min cut.
+\end{thm}
+
+	
+\begin{defn}[Augmenting path]
+	\textbf{Original edge} $e = (u,v) \in E$.  Flow $f(e)$, capacity $c(e)$.
+	
+	\textbf{Residual edge}
+	\begin{itemize}
+		\item ``Undo'' flow sent. 
+		\item $e = (u,v)$ and $e^R = (v,u)$
+		\item Residual capacity given by \[
+			c_f(e) = \begin{cases}
+				c(e) - f(e) &\text{if $e \in E$},\\
+				f(e) 		&\text{if $e^R \in E$}
+			\end{cases}
+		\]
+	\end{itemize}
+	
+	\textbf{Residual graph} $G_f = (V, E_f)$.  Consists of the residual edges with positive residual capacity.\[
+		E_f = \{ e:f(e) < c(e)\} \cup \{ e^R : c(e) > 0\}
+	\]
+\end{defn}	
+	
+	\begin{algorithm}[H]
+		\label{alg:dynamic_rising_trend}
+		\caption{Augments a path \textbf{P}}
+		\begin{algorithmic}[1]
+					\Procedure{Augment}{$f, c, P$}
+			\State $b \leftarrow \text{bottleneck}(P)$			
+			\ForAll{$e \in P$}
+				\If{$e \in E$}  $f(e) \leftarrow f(e) + b$
+				\Else{}  $f(e^R) \leftarrow f(e) - b$
+				\EndIf
+			\EndFor
+			
+			\State \textbf{return} $f$
+		\EndProcedure
+		\end{algorithmic}
+	\end{algorithm}
+
+
+\begin{algorithm}[H]
+	\label{alg:dynamic_rising_trend}
+	\caption{Finds the maximum flow}
+	\begin{algorithmic}[1]
+	\Procedure{FordFulkerson}{$G, s, t, c$}
+
+		\ForAll{$e \in E$} $f(e) \leftarrow 0$
+		\EndFor
+		\State $G_f \leftarrow \text{residual graph}$
+		\While{there exists an augmenting path \textbf{P}}
+			\State $f \leftarrow \textsc{Augment}(f, c, P)$
+			\State update $G_f$
+		\EndWhile
+		\State \textbf{return} $f$
+	\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+
+\begin{thm}[Running time of the above algorithm]
+	Under the assumption that all capacities are integers between $1$ and $C$, we have that the algorithm terminates in at most $v(f^\star) \leq nC$ iterations.   
+\end{thm}
+
+\begin{cor}
+	If $C = 1$, \textsc{FordFulkerson} runs in $\bigo{mn}$ time
+\end{cor}
+
+
+\begin{cor}
+	The generic \textsc{FordFulkerson} algorithm is not polynomial in input size ($m,n, \log C$). Instances can be constructed which do take $\Theta(nC)$ iterations.
+\end{cor}
+
+
+\begin{thm}[Capacity Scaling algorithm for max-flow]
+	The following algorithm finds the max flow in $\bigo{m \log C}$ augmentations.  
+	
+	The intuition is as follows.
+	\begin{itemize}
+		\item Don't worry about finding exact highest bottleneck path.
+		\item Maintain a scaling parameter $\Delta$.  
+		\item Let $G_f(\Delta)$ be the subgraph of the residual graph consisting of only arcs with capacity at least $\Delta$.
+	\end{itemize}
+	
+\end{thm}
+\begin{algorithm}[H]
+	\label{alg:dynamic_rising_trend}
+	\caption{Capacity scaling algorithm}
+	\begin{algorithmic}[1]
+	\Procedure{ScalingMaxFlow}{$G, s, t, c$}
+
+		\ForAll{$e \in E$} $f(e) \leftarrow 0$
+		\EndFor
+		\State $\Delta \leftarrow \text{smallest power of $2$ greater than or equal to $C$}$
+		\State $G_f \leftarrow \text{residual graph}$
+		
+		\While{$\Delta \geq 1$}
+			\State $G_f(\Delta) \leftarrow \Delta-\text{residual graph}$
+			\While{ there exists an augmenting path \textbf{P} in $G_f(\Delta)$}
+				\State $f \leftarrow \textsc{Augment}(f, c, P)$
+				\State update $G_f(\Delta)$
+			\EndWhile
+			\State $\Delta \leftarrow \frac{\Delta}{2}$
+		\EndWhile
+		\State \textbf{return} $f$
+	\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{lem}
+	The outer loop repeats $1 + \log_2{C}$ times, as $\Delta$ decreases by a factor of $2$ each iteration.
+\end{lem}
+
+\begin{lem}
+	Let $f$ be the flow at the end of a $\Delta$ scaling phase.  Then the value of the maximum flow is at most $v(f) + m \Delta$. 
+\end{lem}
+
+\begin{lem}
+	There are at most $2m$ augmentations per scaling phase.
+\end{lem}
+\begin{thm}
+	The \textsc{ScalingMaxFlow} algorithm finds a max flow in $\bigo{m \log C}$ augmentations.  It can be implemented to run in $\bigo{m^2 \log C}$ time.
+\end{thm}
+
+
+\subsection{Bipartite matching} % (fold)
+\label{sub:bipartite_matching}
+\begin{prob}[Bipartite matching problem]
+	Consider the following.
+	\begin{itemize}
+		\item Input: undirected, \textbf{bipartite} graph $G = (L \cup R, E)$.
+		\item $M \subseteq E$ is a \textbf{matching} if each node appears in at most one edge in $M$.
+		\item Max matching: find a maximum cardinality matching.
+	\end{itemize}
+\end{prob}
+
+Convert the problem to a maximum flow problem.
+\begin{itemize}
+	\item Create digraph $G' = (L \cup R \cup \{s,t\}), E')$.
+	\item Direct all edges from $L$ to $R$, and assign unit capacity.
+	\item Add sources $s$ and unit capacity edges from each node in $R$ to $t$.
+\end{itemize}
+
+Then we have the result:
+\begin{thm}
+	The maximum cardinality matching in $G$ is equal to the value of the maximum flow in $G'$.
+\end{thm}
+
+\begin{defn}[Perfect matching]
+	A matching $M \subseteq E$ is \textbf{perfect} if each node appears in exactly one edge in $M$.
+\end{defn}
+
+\begin{thm}
+	Let $G = (L \cup R, E)$ be a bipartite graph with $|L| = |R|$.  Then $G$ has a perfect matching if and only if $|N(S)| \geq |S|$ for all subsets $S \subseteq L$ ($N(S)$ is the set of nodes adjacent to nodes in $S$).
+\end{thm}
+% subsection bipartite_matching (end)
+
+
+\subsection{Disjoint paths} % (fold)
+\label{sub:disjoint_paths}
+
+\begin{prob}[Edge disjoint paths]
+	Given a directed graph $G = (V,E)$ and two nodes $s$ and $t$, find the maximum number of edge disjoint $s-t$ paths
+\end{prob}
+
+\begin{defn}
+	Two paths are \textbf{edge-disjoint} if they have no edge in common.
+\end{defn}
+
+\begin{thm}[Solution]
+	Assign unit capacity to every edge.  Then the maximum number of edge disjoint $s-t$ paths equals the maximum flow value.
+\end{thm}
+
+\begin{prob}[Network connectivity]
+	Given a directed graph $G = (V,E)$ and two nodes $s$ and $t$, find the minimum number of edges whose removal disconnects $t$ from $s$.
+\end{prob}
+
+\begin{defn}
+	A set of edges $F \subseteq E$ disconnects $t$ from $s$ if all $s-t$ paths uses at least one edge in $F$.
+\end{defn}
+
+\begin{thm}
+	The maximum umber of edge disjoint $s-t$ paths is equal to the minimum number of edges whose removal disconnects $t$ from $S$.  
+\end{thm}
+
+
+
+
+
+% subsection disjoint_paths (end)
+
+
+\subsection{Circulation with demands and lower bounds} % (fold)
+\label{sub:circulation_with_demands_and_lower_bounds}
+
+\begin{defn}[Circulation]
+	A \textbf{circulation} is a function that satisfies 
+	\begin{itemize}
+		\item For each $e \in E: 0 \leq f(e) \leq c(e)$,
+		
+		\item For each $v \in V: \sumsub{$e$ into $v$} f(e) - \sumsub{$e$ out of $v$}f(e) = d(v)$.
+	\end{itemize}
+\end{defn}
+
+\begin{thm}
+	Necessary condition - sum of supplies equals the sum of demands.
+	\[
+		\sumsub{$v: d(v) > 0$} d(v) = \sumsub{$v: d(v) < 0$} -d(v) = D
+	\]
+\end{thm}
+
+\begin{thm}
+	Formulate as a circulation problem.
+	\begin{itemize}
+		\item Add new sources $s$ and sink $t$.
+		\item For every $v$ with $d(v) > 0$, add edge $(s,v)$ with capacity $-d(v)$.
+		\item For every $v$ with $d(v) < 0$, add edge $(v,t)$ with capacity $d(v)$
+	\end{itemize}
+	
+	Then we have the following theorem.
+	\begin{thm}
+		$G$ has a circulation if and only if $G'$ has a maximum flow over value $D$.
+ 	\end{thm}
+\end{thm}
+
+\begin{cor}
+	Given $G = (V,E,c,d)$, there does not exist a circulation if and only if there exists a partition $(A,B)$ of $G$ such that $\sum_{v \in B} d(v) > \text{cap}(A,B)$.
+\end{cor}
+
+\begin{thm}
+	When formulating a circulation problem with lower bounds, we do the following.
+	\begin{itemize}
+		\item For every $e \in E$, end $l(e)$ units of flow along edge $e$.
+		\item Update demands of both endpoints.
+	\end{itemize}
+\end{thm}
+\begin{thm}
+	There exists a circulation in $G$ if and only if there exists a circulation in $G'$.  If all demands, capacities and lower bounds in $G$ are integers, then there is a circulation in $G$ that is integer valued.
+\end{thm}
+
+% subsection circulation_with_demands_and_lower_bounds (end)
+\subsection{Survey design} % (fold)
+\label{sub:survey_design}
+
+\begin{prob}[Survey design] We must
+	\begin{itemize}
+		\item Design survey asking $n_1$ customers about $n_2$ products.
+		\item Can only survey customer $i$ about product $j$ if the own it.
+		\item Ask customer $i$ between $c_i$ and $c_i'$ questions.
+		\item Ask between $p_j$ and $p_j'$ customers about product $j$.
+	\end{itemize}
+	
+	Design a survey that meets these specifications, if possible.
+\end{prob}
+
+\begin{thm}
+	Formulate as a circulation problem with lower bounds.
+	\begin{itemize}
+		\item Include an edge $i_j$ if customer owns product $i$.  
+		\item Set $L = \text{set of customers}, R = \text{set of products}$.
+		\item Set $s \rightarrow i \in L$ with $f(e) = [c_i, c_i']$.
+		\item Set $j \in R \rightarrow t$ with $f(e) = [p_j, p_j']$
+	\end{itemize}
+\end{thm}
+
+% subsection survey_design (end)
+
+
+
+\subsection{Project selection} % (fold)
+\label{sub:project_selection}
+
+
+\begin{prob}[Project selection]
+	Consider the following.
+	\begin{itemize}
+		\item A set \textbf{P} of possible projects.  Project $v$ has revenue $p_v$.
+		\item Set of prerequisites $E$.  If $(v,w) \in E$, then we must do project $w$ to do project $v$.  
+	\end{itemize}
+	
+	Choose a feasible subset of projects to maximise revenue.
+\end{prob}
+
+\begin{defn}[Prerequisite graph]
+ 	A graph on the nodes of projects, with the following properties:
+\begin{itemize}
+	\item Include an edge from $v$ to $w$ if we must do project $w$ to do project $v$.  
+	\item Assign capacity $\infty$ to all prerequisite edges.
+	\item Add an edge $(s,v)$ with capacity $p_v$ if $p_v > 0$.
+	\item Add an edge $(v,t)$ with capacity $-p_v$ if $p_v < 0$.
+	\item Define $p_s = p_t = 0$.  
+\end{itemize}
+\end{defn}
+
+\begin{thm}
+	$(A,B)$ is a minimum cut if and only if $A - \{s\}$ is the optimal set of projects.
+\end{thm}
+
+% subsection project_selection (end)
+
+
+% section network_flow (end)
+
+
+
+\section{Reductions} % (fold)
+\label{sec:reductions}
+\begin{defn}[Polynomial time reduction]
+	Problem $X$ reduces to problem $Y$ if arbitrary instances of problem $X$ can be solved using:
+	\begin{itemize}
+		\item Polynomial number of standard computational steps, plus
+		\item Polynomial number of calls to an oracle that solves problem $Y$.
+	\end{itemize}
+	
+	We denote this as $X \leq_p Y$
+\end{defn}
+
+\begin{note}
+	We can use this to classify problems according to \textbf{relative} difficulty.  
+\end{note}
+
+\begin{lem}
+	If $X \leq_p Y$ and $Y$ can be solved in polynomial time, then $X$ can also be solved in polynomial time.
+\end{lem}
+
+\begin{note}
+	If $X \leq_p Y$ and $Y \leq_p X$, then we use the notation $X \equiv_p Y$.  In fact the binary relation $\leq_p$ is a partial order on the set of all problems, because it is reflexive, anti-symmetric, and transitive.
+\end{note}
+
+There are three basic strategies for polynomial time reduction.
+
+\begin{itemize}
+	\item Reduction by simple equivalence.
+	\item Reduction from special case to general case.
+	\item Reduction by encoding with gadgets.
+\end{itemize}
+
+\begin{prob}[\textsc{IndependentSet}]
+	Given a graph $G = (V,E)$ and an integer $k$, is there a subset of vertices $S \subseteq V$ such that $|S| \geq k$ and for each edge, at most one of its endpoints is in $S$?
+\end{prob}
+
+\begin{prob}[\textsc{VertexCover}]
+	Given a graph $G = (V,E)$ and an integer $k$, is there a subset of vertices $S \subseteq V$ such that $|S| \leq k$ and for each edge, at least one of its endpoints is in $S$?
+\end{prob}
+
+\begin{thm}
+	We claim \textsc{VertexCover} $\equiv_p$ \textsc{IndependentSet}. 
+\end{thm}
+
+\begin{proof}
+	$S$ is an independent set if and only if $V - S$ is a vertex cover.
+\end{proof}
+
+\begin{prob}[\textsc{SetCover}]
+	Given a set $U$ of elements, a collection $S_1, S_2,\dots, S_m$ of subsets of $U$, and an integer $k$, does there exists a collection of at most $\leq k$ of these sets whose union is equal to $U$?
+\end{prob}
+
+\begin{thm}
+	\textsc{VertexCover} $\leq_p$ \textsc{SetCover}
+\end{thm}
+\begin{proof}
+	Given a \textsc{VertexCover} instance $G = (V,E), k$, we can construct a set cover instance whose size equals the size of the vertex cover instance. Set $k = k$, $U = E, S_v = \{e \in E : e \text{ incident to } v\}$.
+	Then there is a set cover of size $\leq k$ if and only if there is a vertex cover of size $\leq k$.
+\end{proof}
+
+\begin{thm}
+	\textsc{3-sat} $\leq_p$ \textsc{IndependentSet}
+\end{thm}
+\begin{proof}
+	Given an instance $\Phi$ of \textsc{3-sat}, we construct an instance $(G,k)$ of \textsc{IndependentSet} that has an independent set of size $k$ if and only if $\Phi$ is satisfiable.  
+	\begin{itemize}
+		\item In each clause, connect all literals in a triangle.  
+		\item Connect literal to each of its negations.
+	\end{itemize}
+\end{proof}
+
+
+
+\begin{thm}[Self-reducibility]Consider the following.
+	\begin{itemize}
+		\item \textbf{Decision problem.}  Does there exist a vertex cover of size $\leq k$?
+		
+		\item \textbf{Search problem.}  Find vertex cover of minimum cardinality.
+		
+	\end{itemize}
+		
+		
+		By self-reducibility, we have that the search problem reduces to the decision problem. That is, search problem $\leq_p$ decision problem.  This applies to all (\textbf{NP}-complete) problems in this chapter. This is dependent on the number of possible values of the optimal (you cannot binary search an infinite set).
+\end{thm}
+
+% section reductions (end)
+
+
+
+
+\section{Complexity} % (fold)
+\label{sec:complexity}
+
+\begin{defn}[Complexity class \textbf{P}]
+	The class of decision problems for which there is a polynomial time algorithm.
+\end{defn}
+
+\begin{defn}[Certifier]
+	An algorithm $C(s,t)$ is a certifier for a problem $X$ if for every string $s$, $s \in X$ if and only if there exists a string $t$ such that $C(s,t)$ outputs \textsc{true}.  The string $t$ is known as a \emph{certificate} or \emph{witness}.  
+\end{defn}
+
+\begin{defn}[Complexity class \textbf{NP}]
+	The class of decision problems for which there is a polynomial time certifier - an algorithm $C(s,t)$ that is polynomial in time and $|t| \leq p(|s|)$ for some polynomial \textbf{P}.
+\end{defn}
+
+\begin{rem}
+	\textbf{NP} stands for \textbf{nondeterministic} polynomial time.
+\end{rem}
+
+\begin{exmp}[Certifiers and Certificates - \textsc{sat}]
+	Consider the problem \textsc{sat} - given a CNF (conjunctive normal form - the `\emph{and} combination of many \emph{or} clauses') formula $\Phi$, is there a satisfying assignment?
+	\begin{itemize}
+		\item \textbf{Certificate.} An assignment of truth values to the $n$ boolean variables.
+		\item \textbf{Certifier.} Check that each clause in $\Phi$ has at least one true literal.
+	\end{itemize}
+	
+	Conclusion: \textsc{sat} is in \textbf{NP}.
+\end{exmp}
+
+\begin{exmp}[Certifiers and Certificates - \textsc{HamiltonianCycle}]
+	Consider the problem \textsc{HamiltonianCycle} - given an undirected graph $G = (V,E)$, does there exist a simple cycle $C$ that visits every node?
+	\begin{itemize}
+		\item \textbf{Certificate.} An permutation of the $n$ nodes.
+		\item \textbf{Certifier.} Check that the permutation contains each node in $V$ exactly once, and that there is an edge between each pair of adjacent nodes in the permutation.
+	\end{itemize}
+	
+	
+	Conclusion: \textsc{HamiltonianCycle} is in \textbf{NP}.
+\end{exmp}
+
+
+\begin{defn}[Complexity class \textbf{EXP}]
+	The class of decision problems for which there is an exponential time algorithm
+\end{defn}
+
+\begin{thm}
+\[
+	\mathbf{P} \subseteq \mathbf{NP} \subseteq \mathbf{EXP}
+\]\end{thm}
+
+\subsection{\textbf{NP}-Completeness} % (fold)
+\label{sub:np_completeness}
+\begin{defn}[Polynomial transformation]
+A problem $X$ \textbf{polynomial transforms} to problem $Y$ if given any  input $x$ to $X$, we can construct an input $y$ in polynomial time such that $x$ is a \textsc{true} instance of $X$ if and only if $y$ is a \textsc{true} instance of $Y$. $|y|$ must be polynomial in $|x|$ as it is constructed in polynomial time. The definition of transformation is due to Karp, reduction to Cook.
+\end{defn}
+
+\begin{rem}
+	A polynomial transformation is a polynomial reduction with just one call to oracle for $Y$, exactly at the end of the algorithm for $X$. Almost all previous reductions were of this form.
+\end{rem}
+
+\begin{defn}[\textbf{NP}-complete]
+	A problem $Y$ in \textbf{NP} is \textbf{NP}-complete if for every problem $X$ in \textbf{NP}, $X \leq_p Y$.
+\end{defn}
+
+\begin{thm}
+	Suppose $Y$ is \textbf{NP}-complete.  Then $Y$ is solvable in polynomial time if and only if \textbf{P} = \textbf{NP}.
+\end{thm}
+
+\begin{exmp}[Establishing a problem $Y$ is \textbf{NP}-complete]
+	The following is sufficient.
+	\begin{itemize}
+		\item Show that $Y$ is in \textbf{NP}.
+		\item Choose an \textbf{NP}-complete problem $X$.
+		\item Show that $X \leq_p Y$. 
+	\end{itemize}
+\end{exmp}
+
+\begin{thm}
+	\textsc{3-sat} is \textbf{NP}-complete
+\end{thm}
+
+\begin{proof}
+	\textsc{circuit-sat} $\leq_p$ \textsc{3-sat}
+\end{proof}
+
+
+\begin{cor}
+	\textsc{VertexCover}, \textsc{IndependentSet}, and \textsc{SetCover} are all \textbf{NP}-complete.
+\end{cor}
+
+\begin{proof}
+	By reductions in the first part, we had that \textsc{3-sat} reduces to all of the above problems.  Hence, they are all \textbf{NP}-complete.
+\end{proof}
+% subsection np_completeness (end)
+
+\subsection{co-\textbf{NP} and the Asymmetry of \textbf{NP}} % (fold)
+\label{sub:coNP}
+
+\begin{defn}
+	Given a decision problem $X$, its complement $\overline{X}$ is the same problem with the \textsc{true} and \textsc{false} answers reversed.
+\end{defn}
+
+\begin{defn}[Complexity class \textbf{co-}\textbf{NP}]
+	Complements of decision problems in \textbf{NP}.
+\end{defn}
+
+\begin{question}
+	Does \textbf{NP} $=$ \textbf{co-\textbf{NP}}?
+\end{question}
+
+
+\begin{thm}
+	If \textbf{NP $\neq$ co-NP}, then \textbf{P $\neq$ NP}.
+\end{thm}
+
+\begin{thm}
+	\textbf{P $\subseteq$ NP $\cap$ \textbf{co-NP}}
+\end{thm}
+
+\begin{thm}
+	\textsc{primes} is in \textbf{NP $\cap$ co-NP}. In fact \textsc{primes} is in \textbf{P} (AKS 2002).
+\end{thm}
+
+\begin{thm}[\textsc{factor} is in \textbf{NP $\cap$ co-NP}]Consider the following problems.
+	
+	\textsc{factorize}.  Given an integer $x$, find its prime factorisation.
+	
+	\textsc{factor}.  Given two integers $x$ and $y$, does $x$ have a nontrivial factor less than $y$?
+		
+\begin{thm}
+	\textsc{factor} $\equiv_p$ \textsc{factorize}
+\end{thm}
+
+Then we have \textsc{factor} is in \textbf{NP $\cap$ co-NP}
+\end{thm}
+
+We have established the following sequence.\[
+	\textsc{primes} \leq_p \textsc{composites} \leq_p \textsc{factor}
+\]
+
+\begin{question}
+	Does \textsc{factor} $\leq_p$ \textsc{primes}?
+\end{question}
+% subsection co-\textbf{NP} and the Asymmetry of \textbf{NP} (end)
+
+
+\begin{defn}[\textbf{NP}-hard]
+	A decision problem such that every problem in \textbf{NP} reduces to it.  This problem is not necessarily in \textbf{NP}.
+\end{defn}
+
+
+
+% section complexity (end)
+
+
+\section{Dealing with Intractability} % (fold)
+\label{sec:dealing_with_intractability}
+Here, we attempt to solve special cases of \textbf{NP}-complete problems that arise in practice.  
+
+\subsection{Vertex Cover} % (fold)
+\label{sub:vertex_cover}
+
+% subsection vertex_cover (end)
+\begin{thm}
+	The following algorithm determines if $G$ has a vertex cover of size less than or equal to $k$ in $\bigo{2^k k n}$ time.
+\end{thm}
+
+\begin{algorithm}[H]
+	\label{alg:Vecter Cover}
+	\caption{Small vertex covers}
+	\begin{algorithmic}[1]
+		\Procedure{VertexCover}{$G, k$}
+			\If{$G$ contains no edges} {\textbf{return} \textsc{True}}
+			\EndIf
+			\If{$G$ contains more than $k |G|$ edges}
+			 \textbf{return} \textsc{False}
+			\EndIf
+			\State
+			\State Let $(u,v)$ be any edge of $G$
+			\State $a$ = \textsc{VertexCover}($G-\{u\}, k-1$)
+			\State $a$ = \textsc{VertexCover}($G-\{v\}, k-1$)
+			\State \textbf{return} $a$ \textbf{or} $b$
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{thm}
+	The above algorithm runs in time $\bigo{2^k k n}$.
+\end{thm}
+
+\subsection{Independent set on trees} % (fold)
+\label{sub:independent_set_on_trees}
+
+% subsection independent_set_on_trees (end)
+\begin{thm}
+	The following greedy algorithm finds a maximum cardinality independent set in forests (and hence trees).
+\end{thm}
+
+\begin{algorithm}[H]
+	\label{alg:Vecter Cover}
+	\caption{Finds an independent set in a tree or forest.}
+	\begin{algorithmic}[1]
+		\Procedure{IndependentSet}{$F$}
+			\State $S \gets \phi$
+			\While{$F$ has at least one edge}
+				\State Let $e = (u,v)$ be an edge with $v$ a leaf.
+				\State $S \gets S \cup \{ v\}$
+				\State $F \gets F - \{ u, v \}$
+			\EndWhile
+		\State \textbf{return} $S$
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{thm}
+	The above algorithm can run in time $\bigo{n}$ by considering nodes in postorder.
+\end{thm}
+
+\subsection{Weighted independent set on trees} % (fold)
+\label{sub:weighted_independent_set_on_trees}
+\begin{prob}
+	Given a tree and node weights $w_v > 0$, find an independent set $S$ that maximises $\sum_{v \in S} w_v$.
+\end{prob}
+
+\begin{thm}
+	Let $f_{in}(u)$ be the maximum weight independent set rooted at $u$ containing $u$, and let $f_{out}(u)$ be the maximum weight independent set rooted at $u$ not containing $u$.  Then we have the following:
+	\begin{align*}
+		f_{in}(u) &= w_u + \sum_{v \in \textsc{child}(u)} f_{out}(v) \\
+		f_{out}(u) &= \sum_{v \in \textsc{child}(u)} \max \{f_{in}(v), f_{out}(v)\}		
+	\end{align*}
+\end{thm}
+
+We can find the maximum weighted set by rooting the tree at a node $r$ and considering each node in postorder, and calculating $f_{in}$ and $f_{out}$ at each node $v$. This takes $\bigo{n}$ time.
+
+
+% subsection weighted_independent_set_on_trees (end)
+
+% section dealing_with_intractability (end)
+
+\section{Randomized and approximation algorithms} % (fold)
+\label{sec:probabilistic_algorithms}
+
+\subsection{Probability results} % (fold)
+The union bound is $P(\cup_i X_i) \leq \sum_i P(x_i)$.
+
+The Markov inequality for a non-negative $X$ is $P(X \geq a) \leq \frac{\expc X}{a}$.
+
+Chebyshev's inequality is $P(\left | X - \expc X \right | \geq a) \leq \frac {\textrm{Var}(X)}{a^2}$.
+
+The horrific Chernoff bound is $\sum\limits_{i = \lfloor \frac{n}{2} \rfloor + 1}^n \binom{n}{i}p^i (1 - p)^{n - i} \geq  1-e^{- 2n \left( {p - \frac{1}{2}} \right)^2}$.
+
+\subsection{Randomized algorithm for global minimum cut} % (fold)
+\label{sub:probabilistic_algorithm_for_global_minimum_cut}
+The following algorithm, known as the Contraction algorithm, finds the global minimum cut in an undirected graph.
+
+\begin{defn}[Global minimum cut]
+	The size of a cut $(A,B)$ of a graph $G$ is the number of edges with one end in $A$ and one end in $B$.
+\end{defn}
+
+
+\begin{algorithm}[H]
+	\label{alg:dynamic_rising_trend}
+	\caption{The Contraction algorithm for finding the global minimum cut}
+	\begin{algorithmic}[1]
+	\Procedure{Contraction}{$G$}
+		\ForAll{$v \in V$} $S[v] \gets v$ \EndFor
+		
+		\If{$|G| = 2$} \textbf{return} the cut $(S[v_1], S[v_2])$
+		
+		\Else
+			\State choose an edge $e = (u,v)$ from $G$ uniformly at random.
+			\State Set $G'$ equal to the graph resulting from the contraction of $e$, with a new node $w$ replacing $u$ and $v$.
+			\State $S[w] \gets S[u] \cup S[v]$ 
+			\State \textbf{return} \textsc{Contraction}($G'$)
+		\EndIf
+	\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{thm}
+	The algorithm returns the global minimum cut with probability ${n \choose 2}^{-1}$.  Running the algorithm ${n \choose 2} \log n$ returns a global minimum cut with probability greater than $1 - \frac{1}{n}$
+\end{thm}
+
+% subsection probabilistic_algorithm_for_global_minimum_cut (end)
+
+\subsection{Approximation algorithm for makespan scheduling} % (fold)
+\label{sub:approximation_algorithm_for_makespan_scheduling}
+\begin{prob}[Makespan scheduling]
+	We have $n$ jobs, each of which takes time $t_i$ to process, and $m$ machines.  Let $A_j$ be the set of jobs assigned to machine $j$.  Let $L_j = \sum_{i \in A_j} t_i$ be the \textbf{load} of machine $j$.  The \emph{makespan} of an assignment is the maximum load on any machine.  
+\end{prob}
+
+
+\begin{algorithm}[H]
+	\label{alg:dynamic_rising_trend}
+	\caption{Longest Processing Time (\textsc{lpt}) makespan approximation}
+	\begin{algorithmic}[1]
+	\Procedure{lpt}{$J$}
+		\State Sort jobs $J$ so that $t_1 \geq t_2 \geq \dots \geq t_n$.
+		\State $A_j \gets \emptyset$
+		\State $L_j \gets 0$.
+		\For{$i = 1$ to $n$}
+			\State $j \gets \text{argmin}_k L_k$
+			\State $A_j \gets A_j \cup i$
+			\State $L_j \gets L_j + t_i$
+		\EndFor
+	\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{thm}
+	If there are at most $m$ jobs, \textsc{lpt} scheduling is optimal.
+\end{thm}
+\begin{thm}
+	\textsc{lpt} scheduling is a $\frac{3}{2}$-approximation.  Careful analysis shows that \textsc{lpt} scheduling is a $\frac{4}{3}$-approximation
+\end{thm}
+
+
+
+% subsection approximation_algorithm_for_makespan_scheduling (end)
+
+
+\subsection{Randomized algorithm for \textsc{max-3-sat}} % (fold)
+\label{sub:probablistic_algorithm_for_}
+
+\begin{prob}[\textsc{max-3-sat}]
+	Given a \textsc{3-sat} instance, find a truth assignment that satisfies as many clauses as possible.
+\end{prob}
+
+\begin{lem}
+	As \textsc{3-sat} is \textbf{NP}-complete, this is an \textbf{NP}-hard search problem. 
+\end{lem}
+
+\begin{thm}
+	We can find an approximate solution by setting each variable \textsc{true} with probability $\frac{1}{2}$.  The expected number of clauses satisfied by a random assignment is within a factor of $\frac{7}{8}$ of the optimal solution.
+\end{thm}
+
+\begin{proof}
+	Each clause is satisfied with probability $1 - \left(\frac{1}{2}\right)^3 = \frac{7}{8}$.  Let $Z_i$ be a random variable equal to 1 if clause $i$ is satisfied, and $0$ otherwise.  Then, by linearity of expectation, we have\[
+		\expc{Z} = \expc{Z_1} + \expc{Z_2} + \dots + \expc{Z_k} = \frac{7}{8}k
+	\]  Since no assignment can satisfy more than $k$ clauses. 
+\end{proof}
+% subsection probablistic_algorithm_for_ (end)
+\subsection{Randomized algorithm for database access} % (fold)
+\label{sub:randomized_algorithm_for_database_access}
+
+% subsection randomized_algorithm_for_database_access (end)
+\begin{prob}
+	Suppose we have $n$ processes $P_1, \dots, P_n$ attempting to access a single shared database.  The database has the property that it can be accessed by at most one process in a single time period, and if two or more processes attempt to access the database, all processes are locked out for the period.
+\end{prob}
+
+\begin{thm}
+	Using a randomized algorithm where a process attempts to access the database with probability $\frac{1}{n}$ at each time step, we have the following: with probability at least $1-\frac{1}{n}$, all processes succeed in accessing the database at least once within $t = e \lceil e n \rceil \ln n$ rounds. 
+\end{thm}
+
+\subsection{Approximation algorithm for the travelling salesman problem} % (fold)
+\label{sub:approximation_algorithm_for_the_travelling_salesman_problem}
+In the case of the metric-\textsc{tsp}, where the edge weights satisfy the triangle inequality, we have the following simple algorithm for a 2-approximation for \textsc{tsp}.  
+
+ 
+\begin{algorithm}[H]
+	\label{alg:dynamic_rising_trend}
+	\caption{2-Approximation for \textsc{Metric-tsp}}
+	\begin{algorithmic}[1]
+	\Procedure{Approx-Metric-tsp}{$G$}
+		\State Compute a minimal spanning tree $T$ of $G$
+		\State Root $T$ arbitraryily and traverse in pre-order (i.e. \textsc{dfs}): $v_1, v_2, \dots, v_n$.
+		\State \textbf{return} \textsc{tour: $v_1 \rightarrow v_2 \rightarrow \dots \rightarrow v_n \rightarrow v_1$}
+	\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{lem}
+	Let $\textsc{A}(G)$ be the approximation returned by the above algorithm on the graph $G$.  Then $\textsc{A}(G) \leq  2 \times \textsc{MST}(G)$.
+\end{lem}
+
+\begin{lem}
+	Let $\textsc{OPT}(G)$ be the optimal solution for our \textsc{metric-tsp} instance.  Then  $\textsc{MST}(G) \leq \textsc{opt}(G)$. 
+\end{lem}
+\begin{thm}
+	We then have $\textsc{A}(G) \leq 2 \times \textsc{OPT}(G)$ - that is, the above algorithm is a 2-approximation for \textsc{Metric-tsp}
+\end{thm}
+
+
+
+% subsection approximation_algorithm_for_the_travelling_salesman_problem (end)
+
+% section probabilistic_algorithms (end)
+
+\subsection{Some NP-complete problems}
+
+The following are some decision problems which are NP-complete.
+\linebreak
+\begin{tabular}{p{2in}p{2in}p{2in}}
+\begin{itemize}
+\item 3SAT
+\item Vertex cover
+\item Independent set
+\item Clique
+\end{itemize}
+&
+\begin{itemize}
+\item Travelling salesman
+\item Hamiltonian path
+\item Hamiltonian circuit
+\item Max cut
+\end{itemize}
+&
+\begin{itemize}
+\item Longest path
+\item Knapsack
+\item Subset sum
+\end{itemize}
+\end{tabular}
+
+\end{document}

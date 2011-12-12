@@ -1,0 +1,803 @@
+%
+%  untitled
+%
+%  Created by Andrew Tulloch on 2009-11-04.
+%  Copyright (c) 2009 __MyCompanyName__. All rights reserved.
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+\documentclass[10pt, oneside, reqno]{amsart}
+\usepackage{geometry, setspace, graphicx, enumerate}
+\onehalfspacing                 
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+
+%\setromanfont[Mapping=tex-text,Contextuals= 
+%{NoWordInitial,NoWordFinal,NoLineInitial,NoLineFinal}]{Hoefler Text}
+%\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Hoefler Text}
+%\setmonofont[Scale=MatchLowercase]{Andale Mono}
+
+% \setcounter{section}{3}
+% \setcounter{subsection}{1}
+
+
+	% AMS Theorems
+	\theoremstyle{plain}% default 
+	\newtheorem{thm}{Theorem}[subsection] 
+	\newtheorem{lem}[thm]{Lemma} 
+	\newtheorem{prop}[thm]{Proposition} 
+	\newtheorem*{cor}{Corollary} 
+
+	\theoremstyle{definition} 
+		\newtheorem{defn}[thm]{Definition}
+		\newtheorem{conj}[thm]{Conjecture}
+		\newtheorem{exmp}[thm]{Example}
+	
+	\theoremstyle{remark} 
+		\newtheorem*{rem}{Remark} 
+		\newtheorem*{note}{Note} 
+		\newtheorem{case}{Case} 
+
+
+		
+		
+		\newcommand{\expc}[1]{\mathbb{E}\left[#1\right]}
+		\newcommand{\expp}[1]{\mathbb{E}_{\rnm}\left[#1\right]}
+		
+		\newcommand{\var}[1]{\text{Var}\left(#1\right)}
+		\newcommand{\cov}[1]{\text{Cov}\left(#1\right)}
+		\newcommand{\prob}[1]{\mathbb{P}(#1)}
+		\newcommand{\given}{ \, | \,}
+		\newcommand{\us}{0 \leq u \leq s}
+		\newcommand{\ts}[1]{\{ #1 \}}
+
+\newcommand{\al}{\alpha}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Ga}{\mathbb{G}}
+
+\newcommand{\sumni}{\sum_{i=1}^n}
+
+\newcommand{\tilp}{\tilde{p}}
+\newcommand{\rnm}{\tilde{\mathbb{P}}}
+
+\newcommand{\aut}[1]{\text{Aut}{(#1)}}
+
+\newcommand{\gener}[1]{\langle #1 \rangle}
+\newcommand{\charr}[1]{\text{char}(#1)}
+\newcommand{\nth}{n\textsuperscript{th}}
+
+\newcommand{\tworow}[2]{\genfrac{}{}{0pt}{}{#1}{#2}}
+\newcommand{\xdeg}[2]{[#1 : #2]}
+\newcommand{\gal}[2]{\text{Gal}(#1/#2)}
+\newcommand{\minpoly}[2]{m_{#1, #2}(x)}
+
+\newcommand{\mapping}[5]{\begin{align*}
+	#1 : \quad     #2 &\rightarrow #3 \\
+			#4  &\mapsto #5
+\end{align*}	
+}
+
+
+\addtolength{\textwidth}{0.9in}
+\addtolength{\hoffset}{-0.45in}
+\addtolength{\textheight}{0.9in}
+\addtolength{\voffset}{-0.9in}
+
+
+% \includeonly{MATH3975-Chap1, MATH3975-Chap2}
+		
+		
+\title{MATH 3975 - Financial Mathematics \\ Exam Notes}								% Document Title
+\author{Andrew Tulloch}
+%\date{}                                           % Activate to display a given date or no date
+
+
+\begin{document}
+\maketitle
+
+
+%!TEX root = /Users/ajtulloch/Documents/University 2010/MATH 3975 - Financial Mathematics/Exam Notes/MATH 3975 - Master Notes.tex
+
+
+\section{Introduction to Markets} % (fold)
+\label{sec:introduction_to_markets}
+\subsection{Introduction} % (fold)
+\label{sub:introduction}
+
+\begin{defn}[Time Value of Money]
+	The \textbf{future value} $F(0,t)$ is defined to be the value at time $t > 0$ of \$1 invested at time $0$.  
+	
+	The \textbf{present value} or \textbf{discount factor} $P(0,t)$ is the amount invested at time $0$ such that its value at time $t$ is equal to \$1.  
+\end{defn}
+
+To avoid arbitrage, we must have $P(0,t) = F^{-1}(0,t)$ for all $t$.
+
+\begin{prop}
+	We must have the following relationship for $P(t,T)$ and $F(t,T)$.
+	\begin{align*}
+		F(t,T) &= \frac{F(0,T)}{F(0,t)} \\
+		P(t,T) &= \frac{P(0,T)}{P(0,t)}
+	\end{align*}
+\end{prop}
+
+\begin{defn}[Spot rate]
+	The spot rate $r(t)$ is defined as \[
+		F(t,t + \Delta) = 1 + r(t) \Delta
+	\]
+\end{defn}
+
+\begin{prop}
+	We have \[
+		P(0,T) = \prod_{i=1}^n (1 + r_i)^{-1}
+	\] in the discrete case, and in the continuous case, we have \[
+		P(t,T) = e^{- \int_t^T r(s) ds}
+	\]
+
+\end{prop}
+
+% subsection introduction (end)
+
+
+\subsection{Riskless Securities and Bonds} % (fold)
+\label{sub:riskless_securities_and_bonds}
+\begin{thm}[Fundamental Theorem of Riskless Security Pricing]
+	If interest rates are deterministic, the arbitrage free price of a riskless security is given by
+	\[
+		S_0 = \sum_{i=1}^n P(0,t_i) C_i
+	\]
+\end{thm}
+
+
+% subsection riskless_securities_and_bonds (end)
+
+% section introduction_to_markets (end)
+%!TEX root = /Users/ajtulloch/Documents/University 2010/MATH 3975 - Financial Mathematics/Exam Notes/MATH 3975 - Master Notes.tex
+
+\newcommand{\tst}{(x,\phi)}
+
+\section{Single Period Market Models} % (fold)
+\label{sec:single_period_market_models}
+
+A single period market model is the most elementary model.  Only a single period is considered.  At times $t=0$ and $1$ market prices are recorded.
+
+\begin{quote}
+\emph{	Single period market models are the atoms of Financial Mathematics
+}\end{quote}
+
+We assume that we have a finite sample space \[
+	\Omega = \{ \omega_1, \omega_2, \dots, \omega_k \}
+\]
+
+\subsection{The most elementary market model} % (fold)
+\label{sub:the_most_elementary_market_model}
+
+Assume the sample space consists of two states, $H$ and $T$, with $\prob{H} = p$ and $ \prob{T} = 1-p$.  Define the price of the stock at time $0$ to be $S_0$, and let $S_1$ be a random variable depending on $H$ and $T$.  Let $u = \frac{S_1(H)}{S_0}$ and $d = \frac{S_1(T)}{S_0}$.  
+
+
+\begin{defn}[Trading strategy]
+	A trading strategy $(x,\phi)$ is a pair wheere $x$ is the total initial investment at $t=0$, and $\phi$ denotes the number of shares bought at $t = 0$.  Given a strategy $(x,\phi)$, the agent invests the remaining money $x - \phi S_0$ in a money market account.  We note this amount may be negative (borrowing from the money market account).
+\end{defn}
+
+\begin{defn}[Value process]
+	The value process of the trading strategy $(x,\phi)$ in ou elementary market model is given by $(V_0(x,\phi), V_1(x,\phi))$ where $V_0(x,\phi) = x$ and \[
+		V_1 = (x - \phi S_0)(1+r) +\phi S_1
+	\]
+\end{defn}
+
+\begin{defn}[Arbitrage]
+	An arbitrage is a trading strategy that begins with no money, has zero probability of losing money, and has a positive probability of making money.
+	
+	More rigorously, we have a trading strategy $(x,\phi)$ is an arbitrage if
+	\begin{itemize}
+		\item $x = V_0(x,\phi) = 0$, 
+		\item $V_1(x,\phi) \geq 0$,
+		\item $\expc{V_1(x,\phi)} > 0$. 
+	\end{itemize}
+
+\end{defn}
+
+\begin{prop}
+	To rule out arbitrage in our model, we must have $d < 1+r < u$.  
+\end{prop}
+
+\begin{proof}
+	If this inequality is violated, consider the following strategies.
+	\begin{itemize}
+		\item 	If $d \geq 1+r$, borrow $S_0$ from the money market.
+		\item If $u \leq 1+r$, short $S_0$ and invest in the money market.
+	\end{itemize}
+	
+	These are both arbitrages and the proposition is proven.
+\end{proof}
+
+
+We have the following theorem, giving the converse of the above proposition
+\begin{thm}
+	The condition $d < 1+r < u$ is a necessary and sufficient no arbitrage condition.  That is,
+	\[
+		\text{No arbitrage} \iff d < 1+r < u
+	\]
+\end{thm}
+
+
+\begin{defn}[Replicating strategy or hedge]
+	A \textbf{replicating strategy} or \textbf{hedge} for the option $h(S_1)$ in our elementary single period market model is a trading strategy $(x,\phi)$ satisfying $V_1(x,\phi) = h(S_1)$.  That is,
+	\begin{align*}
+		(x-\phi S_0)(1+r) + \phi S_1(H) 	&= h(S_1(H))\\
+		(x - \phi S_0)(1+r) + \phi S_1(T) 	&= h(S_1(T))
+	\end{align*}
+\end{defn}
+
+\begin{thm}
+	Let $h(S_1)$ be an option in our market model, and let $(x,\phi)$ be a replicating strategy for $h(S_1)$. Then $x$ is the only price for the option at time $t=0$ which does not allow arbitrage.  
+\end{thm}
+
+
+To find a replicating strategy for an arbitrary option, define \begin{align*}
+	\phi &= \frac{h(S_1(H)) - h(S_1(T))}{S_1(H) - S_1(T)} \\
+	\tilp &= \frac{1 + r - d}{u - d}
+\end{align*}
+
+Then by solving the above two equations for $x$, we have \[
+	x = \mathbb{E}_{\rnm}\left[\frac{1}{1+r} h(S_1)\right] = \frac{1}{1+r}\left[\tilp h(S_1(H)) + (1-\tilp) h(S_1(T))\right]
+\]
+
+% subsection the_most_elementary_market_model (end)
+
+
+\subsection{A general single period market model} % (fold)
+\label{sub:a_general_single_period_market_model}
+
+% subsection a_general_single_period_market_model (end)
+
+\begin{defn}[Trading strategy]
+	A \textbf{trading strategy} for an agent in our general single period market model is a pair $(x,\phi)$, where $\phi = (\phi^1, \dots,\phi^n) \in \R^n$ specifying the initial investment in the $i$-th stock.
+\end{defn}
+
+
+\begin{defn}[Value and gains process]
+	Let the \textbf{value process} of the trading strategy $(x,\phi)$ is given $(V_0(x,\phi), V_1(x,\phi))$ where $V_0(x,\phi) = x$ and \[
+		V_1(x,\phi) = (x - \sum_{i=1}^n \phi^i S_0^i)(1+r) + \sum_{i=1}^n \phi^i S_1^i
+	\]
+
+	The \textbf{gains process} is defined as \[
+		G(x,\phi) = (x - \sum_{i=1}^n \phi^i S^i_0) r + \sum_{i=1}^n \phi^i \Delta S^i
+	\]
+	where $\Delta S^i$ is defined as \[
+		\Delta S^i = S^i_1 - S^i_0
+	\]
+\end{defn}
+
+We have the simple result \[
+	V_1(x,\phi) = V_0(x,\phi) + G(x,\phi)
+\]
+
+To study the prices of the stocks in relation to the money market account, we introduce the \textbf{discounted stock prices} $\hat{S}^i_t$ defined as follows: \begin{align*}
+	\hat{S}^i_0 = S^i_0 \\
+	\hat{S}^i_1 = \frac{1}{1+r} S^i_1
+\end{align*}
+
+\begin{defn}[Discounted value and gains process]
+We define the \textbf{discounted value process} $\hat{V}(x,\phi)$ by \begin{align*}
+	\hat{V}_0 (x,\phi) &= x \\
+	\hat{V}_1 (x,\phi) &= (x - \sumni \phi^i S^i_0) + \sumni \phi^i \hat{S}^i_1
+\end{align*}
+and the discounted ains process $\hat{G}(x,\phi)$ as \[
+	\hat{G}(x,\phi) = \sumni \phi^i \Delta \hat{S}^i
+\] with $\Delta \hat{S}^i = \hat{S}^i_1 - \hat{S}^i_0$.
+\end{defn}
+
+We then have the relation \[
+	\hat{V}_1(x,\phi) = \hat{V}_0(x,\phi) + \hat{G}(x,\phi)
+\]
+
+
+\begin{defn}[Arbitrage]
+	
+	A trading strategy $(x,\phi)$ is an arbitrage in our general single period market model if
+	\begin{itemize}
+		\item $x = V_0(x,\phi) = 0$, 
+		\item $V_1(x,\phi) \geq 0$,
+		\item $\expc{V_1(x,\phi)} > 0$. 
+	\end{itemize}
+	
+	Alternatively, if a trading strategy satisfies the first two conditions above, it is an arbitrage if the following condition is satisfied: \[
+		\text{There exists } \omega \in \Omega \text{ with } V_1(x,\phi) > 0.
+	\]
+
+Alternatively, we can replace all references to $V$ in the above definition with $\hat{V}$.
+\end{defn}
+
+\begin{defn}[Risk neutral measure]
+	A measure $\rnm$ on $\Omega$ is a \textbf{risk neutral measure} if 
+	\begin{itemize}
+		\item $\rnm(\omega) > 0$ for all $\omega \in \Omega$
+		\item $\mathbb{E}_{\rnm} \left[\Delta \hat{S}^i \right] = 0$ for all $i$
+	\end{itemize}
+\end{defn}
+
+\begin{thm}[Fundamental Theorem of Asset Pricing]
+	In the general single period market model, there are no arbitrages if and only if there exists a risk neutral measure for the market model.
+\end{thm}
+
+
+\begin{defn}[Alternative definition of arbitrage]
+	Define the set $\mathbb{W}$ by the following:\[
+			\mathbb{W} = \{ X \in \R^k \given X = \hat{G}(x,\phi) \text{ for some trading strategy } (x,\phi) \}
+		\]
+		Then, letting $\mathbb{A}$ be given as \[
+			\mathbb{A} = \{ X \in \R^k \given X \geq 0, X \neq 0 \}
+		\]
+		Then we have a definition of arbitrage:
+		\[
+			\text{no arbitrage } \iff \mathbb{W} \cap \mathbb{A} = \emptyset
+		\]
+\end{defn}	
+
+\begin{defn}[Set of risk neutral measures]
+	Now, consider the orthogonal component $\mathbb{W}^\perp$, defined as \[
+		\mathbb{W}^\perp = \{ Y \in \R^k \given \langle X,Y \rangle = 0 \text{ for all } X \in \R^k \},
+	\] the set of vectors in $\R^k$ perpendicular to all elements of $\mathbb{W}$.  Furthermore, defining $\mathcal{P}^+$ as\[
+		\mathcal{P}^+  = \{ X \in \R^k \given \sum_{i = 1}^k X_i = 1, X_i > 0 \}
+	\] 
+\end{defn}
+	
+	Then we have the following theorem.
+	\begin{thm}A measure $\rnm$ is a risk neutral measure on $\Omega$ if and only if $\rnm \in \mathcal{P}^+ \cap \mathbb{W}^\perp$.
+	\end{thm}
+	
+	We denote the set of risk neutral measures $\mathbb{M} = \mathcal{P}^+ \cap \mathbb{W}^\perp$.
+
+
+
+
+\begin{defn}[Contingent claim]
+	A \textbf{contingent claim} in our general single period market model is a random variable $X$ on $\Omega$ representing a payoff at time $t = 1$.
+\end{defn}
+
+\begin{prop}
+	Let $X$ be a contingent claim in our general single period market model, and let $(x,\phi)$ be a hedging strategy for $X$, so that $V_1(x,\phi) = X$ then the only price of $X$ which complies with the no arbitrage principle is $x = V_0(x,\phi)$.
+\end{prop}
+
+
+\begin{defn}[Attainable contingent claim]
+	A contingent claim is \textbf{attainable} if there exists a trading strategy $(x,\phi)$ which replicates $X$, so that $V_1(x,\phi)$.
+\end{defn}	
+
+\begin{thm}
+	Let $X$ be an attainable contingent claim and $\rnm$ be an arbitrary risk neutral measure.  Then the price $x$ of $X$ at time $t = 0$ can be computed by the formula \[
+		x = \expp{\frac{1}{1+r} X}
+	\]
+\end{thm}
+\begin{cor}
+	This theorem tells us that in particular, for any risk neutral measure in our model, we get the same value when taking the expectation above.
+\end{cor}
+
+
+\begin{defn}
+	We say that a price $x$ for the contingent claim $X$ \textbf{complies with the no arbitrage principle} if the extended model, which consists of the original assets $S^1,\dots,S^n$ and an additional asset $S^{n+1}$ which satisfies $S^{n+1}_0 = x$ and $S^{n+1}_1 = X$ is arbitrage free.
+\end{defn}
+
+The following proposition shows that when using the risk neutral measure to price a contingent claim, one obtains a price which complies with the no-arbitrage principle.
+
+\begin{prop}
+	Let $X$ be a possibly unattainable contingent claim and $\rnm$ any risk neutral measure for our general single period market model.  Then \[
+		x = \expp{\frac{1}{1+r}X}
+	\]
+	defines a price for the contingent claim at time $t=0$ which complies with the no-arbitrage principle.
+\end{prop}
+
+\begin{defn}[Complete market]
+A financial market is called \textbf{complete} if for any contingent claim $X$ there exists a replicating strategy $(x,\phi)$.  A model which is not complete is called \textbf{incomplete.}
+\end{defn}
+
+
+\begin{prop}
+	Assume a general single period market model consisting of stocks $S^1, \dots, S^n$
+ and a money market account modelled on the state space $\Omega = \{ \omega_1,\dots,\omega_k $ is arbitrage free.  Then this model is complete if and only if the $k \times (n+1)$ matrix $A$ given by \[
+ 	A = \begin{pmatrix}
+ 		1 +r & S^1_1 (\omega_1) & \ldots & S^n_1(\omega_1) \\
+ 		1 +r & S^1_1 (\omega_2) & \ldots & S^n_1(\omega_2) \\
+		\vdots & \vdots 		& \ddots & \vdots  \\
+ 		1 +r & S^1_1 (\omega_k) & \ldots & S^n_1(\omega_k) \\
+
+ 	\end{pmatrix}
+ \] has full rank, that is, $\text{rank}(A) = k$.
+\end{prop}
+
+\begin{proof}
+	First, a matrix $A$ has full rank if and only if for every $X \in \R^k$, the equation $AZ = X$ has a solution $Z \in \R^{n+1}$.  
+	
+	Secondly, we have \[
+		 \begin{pmatrix}
+	 		1 +r & S^1_1 (\omega_1) & \ldots & S^n_1(\omega_1) \\
+	 		1 +r & S^1_1 (\omega_2) & \ldots & S^n_1(\omega_2) \\
+			\vdots & \vdots 		& \ddots & \vdots  \\
+	 		1 +r & S^1_1 (\omega_k) & \ldots & S^n_1(\omega_k) \\
+
+	 	\end{pmatrix} 
+		\begin{pmatrix}
+			x - \sumni \phi^i S_0^i \\
+			\phi^1 \\
+			\vdots \\
+			\phi^n
+		\end{pmatrix}
+		= 
+		\begin{pmatrix}
+			V_1(x,\phi)(\omega_1) \\
+			V_1(x,\phi)(\omega_2) \\
+			\vdots \\
+			V_1(x,\phi)(\omega_k) \\
+			
+		\end{pmatrix}
+	\]
+	This shows that computing a replicating strategy for a contingent claim $X$ is the same as to solve the equation $AZ = X$, and the proposition follows
+\end{proof}
+
+\begin{prop}
+	A contingent claim $X$ is attainable, if and only if $\expp{\frac{1}{1+r}X}$ takes the same value for all $\rnm \in \mathbb{M}$.
+\end{prop}
+
+\begin{thm}
+	Under the assumption that the model is arbitrage free, it is complete, if and only if $\mathbb{M}$ consists of only one element - i.e., there is a unique risk measure.
+\end{thm}
+% section single_period_market_models (end)
+
+\subsection{Single Period Investment} % (fold)
+\label{sec:single_period_investment}
+
+\begin{defn}A continuously differentialble function $u: \R^+ \rightarrow \R$ is called a risk averse utility function if it has the following two properties:
+	\begin{itemize}
+		\item $u$ is strictly increasing - that is, $u'(x) > 0$ for all $x \in \R^+$
+		\item $u$ is strictly concave - that is, $u(\lambda x + (1-\lambda)y) > \lambda u(x) + (1-\lambda)u(y)$
+	\end{itemize}
+		In the case that $u''(x)$ exists, the second condition in the above definition is equivalent to $u''(x) < 0$ for all $x \in \R^+$.  Sometimes one assumes in addition the condition:
+		\begin{itemize}
+			\item $\lim_{x \rightarrow 0} u'(x) = +\infty$ and $\lim_{x \rightarrow \infty} u'(x) = 0$
+		\end{itemize}
+\end{defn}
+
+
+\begin{exmp}[Utility functions]
+	The following are all risk averse utility functions:
+	\begin{enumerate}
+		\item Logarithmic utility: $u(x) = \log(x)$
+		\item Exponential utility: $u(x) = 1 - e^{-\lambda x}$
+		\item Power utility: $u(x) = \frac{1}{1- \gamma}x^{1-\gamma}$ with $\gamma > 0, \gamma \neq 1$
+		\item Square root utility: $u(x) = \sqrt{x}$
+	\end{enumerate}
+\end{exmp}
+
+\begin{prop}[Principle of expected utility]
+	We assume the following axiom of agents behaviour - that of maximising expected utility.\[
+		X \text{ is preferred to } Y \iff \expc{u(X)} \geq \expc{u(Y)}
+	\]
+\end{prop}
+
+From Jensen's inequality, we have that for every risk averse utility function $u$ and risky payoff $X$, \[
+	\expc{u(X)} \leq u(\expc{X})
+\]
+
+\begin{defn}[Certainty equivalent price]
+	The certain value $X_0 \in \R$ that makes an investor indifferent between $X_0$ and a risky payoff $X$ is called the \textbf{certaintly equivalent price} of $X$, that is, \[
+		u(X_0) = \expc{u(X)}
+	\] or equivalently, \[
+		X_0 = u^{-1} \left(\expc{u(X)}\right)
+	\]
+\end{defn}
+
+\begin{lem}
+	The certainty equivalent price of a risky payoff is invariant under a positive linear transformation of the utility function $u(x)$. 
+\end{lem}
+
+
+
+
+\begin{defn}[Risk premium]
+	We have that $X_0 < \expc{X}$, and the difference between the two is called the \textbf{risk premium} $\rho$, that is, \[
+		\rho = \expc{X} - u^{-1} \left( \expc{u(X)} \right) 
+	\]
+We can write the equation above as \[
+	u(\expc{X} - \rho) = \expc{u(X)}
+\]
+\end{defn}
+
+\begin{defn}[Measures of risk aversion]
+	We define the following risk aversion coefficients, as a measure of how risk averse the investor is.
+	The \textbf{absolute risk aversion} $\rho_{abs}$, given by \[
+		\rho_{abs} = - \frac{u''(x)}{u'(x)}
+	\]   and the \textbf{relative risk aversion} $\rho_{rel}$, given by \[
+		\rho_{rel} = - \frac{ x u''(x)}{u'(x)}
+	\]  
+\end{defn}
+
+We now seek to find the optimal investment in a market, which can be translated as finding a trading strategy $\tst$ such that $\expc{u(V_1 \tst)}$ achieves an optimal value.
+
+\begin{defn}
+	A trading strategy $(x,\phi^\star)$ is a solution to the optimal portfolio problem with initial investment $x$ and utility function $u$, if \[
+		\expc{u(V_1(x,\phi^\star))} = \max_{\phi} \expc{u(V_1 \tst)}
+	\]
+\end{defn}
+
+\begin{prop}
+	If there exists a solution to the optimal portfolio problem, then there can not exist an arbitrage in the market.
+\end{prop}
+
+\begin{prop}
+	Let $\tst$ be a solution to the optimal portfolio problem with intial wealth $x$ and utility function $u$, then the measure $\Q$ defined by \[
+		\Q(\omega) = \frac{\prob{\omega} u'(V_1 \tst(\omega_i))}{\expc{u'(V_1 \tst)}}
+	\]
+\end{prop}
+
+Assume that our model is complete.  In this case, there is a unique risk neutral measure which we denote by $\rnm$.
+
+\begin{defn}
+	We define the set of attainable wealths from initial investment $x > 0$ by \[
+		\mathbb{W}_x = \left\{ W  \in \R^k \given \expp{\frac{1}{1+r}W} = x \right\}
+	\]
+	
+	Our optimisation problem is hence: \begin{align*}
+		\text{maximise } \quad &\expc{u(W)} \\
+		\text{subject to } \quad &W \in \mathbb{W}_x
+	\end{align*}
+\end{defn}
+
+
+To solve this problem, we use the Lagrange multiplier method.  To do this, consider the Lagrange function \[
+	\mathcal{L}(W,\lambda) = \expc{u(W)} - \lambda\left(\expp{\frac{1}{1+r}W} - x \right)
+\]
+
+By introducing the \textbf{state price density} \[
+	L(\omega) = \frac{\Q(\omega)}{\mathbb{P}(\omega)},
+\] we can write the Lagrange function as \[
+	\mathcal{L}(W,\lambda) = \sum_{i=1}^k \prob{\omega_i} \left[ u(W(\omega_i)) - \lambda\left(L(\omega_i) \frac{1}{1+r} W(\omega_i) - x \right)\right]
+\]
+
+Computing partial derivatives with respect to $W_i = W(\omega_i)$ and setting them equal to zero, multiplying with $\prob{\omega_i}$ and summing over $i$, we deduce that \[
+	\lambda = \expc{(1+r) u'(W)}
+\] and (denoting the inverse function of $u'(x)$ by $I(x)$) \[
+	W(\omega) = I \left(\lambda \frac{L(\omega)}{1+r}\right)
+\]
+
+Since we have \[
+	\expp{\frac{1}{1+r}W} = x
+\] and substituting the expression from the above equation into the last equation, we obtain\[
+	\expp{\frac{1}{1+r} I \left(\lambda \frac{L}{1+r}\right)} = x
+\]
+% subsection single_period_investment (end)
+%!TEX root = /Users/ajtulloch/Documents/University 2010/MATH 3975 - Financial Mathematics/Exam Notes/MATH 3975 - Master Notes.tex
+
+\renewcommand{\F}{\mathcal{F}}
+
+\newcommand{\ott}{0 \leq t \leq T}
+
+\section{Multi period Market Models} % (fold)
+\label{sec:multi_period_market_models}
+\subsection{The general model} % (fold)
+\label{sub:the_general_model}
+
+
+\begin{defn}[Specification of the general model]
+	The two most important new features of multi period market models are:
+	\begin{itemize}
+		\item Agents can buy and sell assets not only at the beginning of the trading period, but at any time $t$ out of a discrete set of trading times $t \in \{0,1,2,\dots,T \}$.
+		\item Agents can gather information over time, since they can observe prices.  Hence, they can make their investment decisions at time $t=1$ dependent on the prices of the asset at time $t=1$.
+	\end{itemize}
+\end{defn}
+
+Throughout, we assume we are working on a finite state space $\Omega$ on which there is defined a probability measure $\mathbb{P}$.
+
+\begin{defn}[$\sigma$-algebra]
+	A collection $\mathcal{F}$ of subsets of the state space $\Omega$ is called a $\sigma$-algebra if the following conditions hold:
+	\begin{itemize}
+		\item $\Omega \in \mathcal{F}$
+		\item If $F \in \mathcal{F}$, then $F^c \in \F$
+		\item If $F_i \in \F$ for $i \in \mathbb{N}$, then $\bigcup_{i=1}^\infty F_i \in \F$.
+	\end{itemize}
+\end{defn}
+
+\begin{defn}[Partition of a $\sigma$-algebra]
+	Let $I$ denote some index set.  A \textbf{partition} of a $\sigma$-algebra $\F$ is a collection of sets $\emptyset \neq A_i \in \F$ for $i \in I$, such that 
+	\begin{itemize}
+		\item Every set $F \in \F$ can be written as a union of some of the $A_i$.
+		\item The sets $A_i$ are pairwise disjoint.
+	\end{itemize}
+\end{defn}
+
+\begin{defn}
+	A random variable $X : \Omega \rightarrow \R$ is called $\F$-\textbf{measurable}, if for every closed interval $[a,b] \subset \R$, the preimage under $X$ belongs to $\F$, that is,
+	\[
+		X^{-1}([a,b]) \in \F
+	\]
+\end{defn}
+
+\begin{prop}Let $X : \Omega \rightarrow \R$ be a random variable and $(A_i)$ a partition of the $\sigma$-algebra $\F$, then $X$ is $\F$-measurable if and only if $X$ is constant on each of the sets of the partition, that is, there exist $c_j \in \R$ for all $j \in I$ such that \[
+	X(\omega) = c_j \text{ for all } \omega \in A_j
+\]	
+\end{prop}
+
+\begin{defn}
+	A sequence $(\F_t)_{0 \leq t \leq T}$ of $\sigma$-algebras on $\Omega$ is called a \textbf{filtration} if $\F_s \subset \F_t$ whenever $s < t$.
+\end{defn}
+
+\begin{defn}
+	A family $(X_t)$ with $0 \leq t \leq T$ consisting of random variables, is called a \textbf{stochastic process}.  If $(\F_t)_{0 \leq t \leq T}$ is a filtration, the stochastic process $(X_t)$ is called $(\F_t)$-\textbf{adapted} if for all $t$ we have that $X_t$ is $\F_t$-measurable.
+\end{defn}
+
+\begin{defn}Let $(X_t)_{0 \leq t \leq T}$ be a stochastic process on $(\Sigma, \F, \mathbb{P})$.  Define\[
+	\F^X_t = \sigma \left(X^{-1}_u ([a,b]) \given 0 \leq u \leq t, a \leq b \right)
+\]
+This is the smallest $\sigma$-algebra which contains all the sets $X^{-1}_u([a,b])$ where $0 \leq u \leq t$ and $a \leq b$.  Clearly $(\F^X_s)$ is a filtration.  It follows immediately from the definition that $(X_t)$ is $(\F^X_t)$ adapted.  $(F^X_t)$ is called the filtration \textbf{generated} by the process $X$.
+	
+\end{defn}
+
+
+\begin{defn}[Value process]
+	The \textbf{value process} corresponding to the trading strategy $\phi = (\phi_t)_{0 \leq t \leq T}$ is the stochastic process $(V_t(\phi))_{0 \leq t \leq T}$ where \[
+		V_t(\phi) = \phi^0_t B_t + \sumni \phi^i_t S_t^i
+	\]
+\end{defn}
+
+\begin{defn}
+	A trading strategy $\phi = (\phi_t)$ is called \textbf{self financing} if for all $t = 0,\dot,T-1$,\[
+		\phi^0_t B_{t+1} + \sumni \phi^i_t S^i_{t+1} = \phi^0_{t+1} B_{t+1} + \sumni \phi^i_{t+1} S^i_{t+1}
+	\]
+\end{defn}
+
+\begin{lem}
+	For a self-financing trading strategy $\phi = (\phi_t)$, the value process can be alternatively computed via \[
+		V_t(\phi) = \phi_{t-1}^0 B_t + \sumni \phi^i_{t-1} S^i_t
+	\]
+\end{lem}
+
+
+\begin{defn}[General multi period market model]
+		A general multi period market model is given by the following data.
+		\begin{itemize}
+			\item A probability space $(\Sigma, \F, \mathbb{P})$ together with a filtration $(\F_t)_{0 \leq t \leq T}$ of $\F$.
+			\item A money market account $(B_t)$ which evolvs according to $B_t = (1 +r)^t$.
+			\item A number of financial assets $(S^1_t), \dots, (S^n_t)$ which are assumed to be $(\F_t)$-adapted stochastic processes.  
+			\item A set $\mathcal{T}$ of self financing and $(\F_t)$-adapted trading strategies. 
+		\end{itemize}
+\end{defn}
+
+
+\begin{defn}
+		Assume we are given a general multi period market model as described above.  The \textbf{increment process} $(\Delta S^i_{t})$ is defined as \[
+			\Delta S_t^i = S^i_t - S^i_{t-1}
+		\]
+		and \[
+			\Delta B_t = B_t - B_{t-1} =  r B_{t-1} 
+		\]
+\end{defn}
+
+\begin{defn}[Gains process]
+	Given a trading strategy $\phi$, the corresponding \textbf{gains process} $(G_t(\phi))_{\ott}$ is given by \[
+		G_t(\phi) = \sum_{s=0}^{t-1} \phi_s^0 \Delta B_{s+1} + \sumni \sum_{s=0}^{t-1} \phi_s^i \Delta S^i_{s+1}
+	\]
+\end{defn} 
+
+\begin{prop}
+	An adapted trading strategy $\phi = (\phi)_{\ott}$ is self financing, if and only if any of the two equivalent statements hold 
+	\begin{itemize}
+		\item $V_t(\phi) = V_0(\phi) + G_t(\phi)$
+		\item $\hat{V}_t(\phi) = \hat{V}_0(\phi) + \hat{G}_t(\phi)$
+	\end{itemize}
+	for all $\ott$.  Here $\hat{V}_t$ and $\hat{G}_t$ denote the discounted value and gains process, as defined in the following definition.
+\end{prop}
+
+\begin{defn}[Discount processes]
+	The discounted prices are given by \[
+		\hat{S}^i_t = \frac{S^i_t}{B_t}
+	\] and discounted gains, discounted value process, and discounted gains process are all defined analogously.  
+\end{defn}
+
+
+% subsection the_general_model (end)
+
+\subsection{Properties of the general multi period market model} % (fold)
+\label{sub:properties_of_the_general_multi_period_market_model}
+Here, we redefine the general concepts of financial mathematics, such as arbitrage, hedging, in the context of a multi period market model.
+
+\begin{defn}[Arbitrage]
+	A (self-financing) trading strategy $\phi = (\phi)_{\ott}$ is called an arbitrage if \begin{itemize}
+		\item $V_0(\phi) = 0$
+		\item $V_T(\phi) \geq 0$
+		\item $\expc{V_T(\phi)} > 0$
+	\end{itemize}
+\end{defn}
+
+\begin{defn}[Contingent claim] A \textbf{contingent claim} in a multi period market model is an $\F_T$-measurable random variable $X$ on $\Omega$ representing a payoff at terminal time $T$.  A \textbf{hedging strategy} for $X$ in our model is a trading strategy $\phi \in \mathcal{T}$ such that \[
+	V_T(\phi) = X,
+\] that is, the terminal value of the trading strategy is equal to the payoff of the contingent claim.
+\end{defn}
+
+\begin{prop}Let $X$ be a contingent claim in a multi period market model, and let $\phi \in \mathcal{T}$ be a hedging strategy for $X$, then the only price of $X$ at time $t$ which complies with the no arbitrage principle is $V_t(\phi)$.  In particular, the price at the beginning of the trading period at time $t = 0$ is the total initial investment in the hedge.
+\end{prop}
+
+\begin{defn}[Attainable contingent claim] A contingent claim $X$ is called \textbf{attainableat} in $\mathcal{T}$, if there exists a trading strategy $\phi \in \mathcal{T}$ which replicates $X$, that is, $V_T(\phi) = X$.
+\end{defn}
+
+\begin{defn}[Complete market] 
+	A general multi period market model is called \textbf{complete}, if and only if for any contingent claim $X$ there exists a replicating strategy $\phi$.  A model which is not complete is called \textbf{incomplete}.	
+\end{defn}
+
+\begin{defn}[Conditional expectation]
+	Let $(\Omega, \F, \mathbb{P})$ be a finite probability space and $X$ an $\F$-measurable random variable.  Assume that $\mathcal{G}$ is a $\sigma$-algebra which is contained in $\F$.  Denoting the unique partition of $\mathcal{G}$ with $(A_i)_{i \in I}$, the \textbf{conditional expectation} $\expc{X \given \mathcal{G}}$ of $X$ with respect to $\mathcal{G}$ is defined as the random variable which satisfies \[
+		\expc{X \given \mathcal{G}}(\omega) = \sum_{x} x \prob{X = x \given A_i}
+	\] whenever $\omega \in A_i$. 
+	
+	We then have the following identity: \[
+		\int_G X \, d\mathbb{P} = \int_G \expc{X \given \mathcal{G}} \, d \mathbb{P}
+	\] for any $G \in \mathcal{G}$.
+\end{defn}
+
+\begin{prop}
+Let $(\Omega, \F, \mathbb{P})$ be a finite probability space and $X$ an $\F$-measurable random variable.  Let $\mathcal{G},\mathcal{G}_1,\mathcal{G}_2$ be sub-$\sigma$-algebras.  Assume furthermore that $\mathcal{G}_2 \subset \mathcal{G}_1$.  Then
+\begin{itemize}
+	\item \textbf{Tower property.}\[
+		\expc{X \given \mathcal{G}_2} = \expc{\expc{X \given \mathcal{G}_1} \given \mathcal{G}_2}
+	\]
+	\item \textbf{Taking out what is known.}  If $Y:\Omega \rightarrow \R$ is $\mathcal{G}$-measurable, then \[
+		\expc{YX \given \mathcal{G}} = Y \expc{X \given \mathcal{G}}
+	\]
+	\item If $\mathcal{G} = \{ \emptyset, \Omega \}$ is the trivial $\sigma$-algebra, then \[
+		\expc{X \given \mathcal{G}} = \expc{X}
+	\]
+\end{itemize}
+\end{prop}
+
+
+\begin{defn}[Risk neutral measure]
+	A measure $\rnm$ on $\Omega$ is called a \textbf{risk neutral measure} for a general multi period market model if 
+	\begin{itemize}
+		\item $\rnm(\omega) > 0$ for all $\omega \in \Omega$
+		\item $\expp{\Delta \hat{S}^i_t \given \F_{t-1}} = 0$ for $i = 1,\dots,n$ and for all $1 \leq t \leq T$.
+	\end{itemize}
+\end{defn}
+
+An alternative formulation of the second condition in the previous definition is \[
+	\expp{\frac{1}{1+r}S^i_{t+1} \given \F_t} = S^i_t
+\]
+
+\begin{defn}[Martingale]
+	A $\F_t$-adapted process $(X_t)$ on a probability space $(\Omega, \F, \mathbb{P})$ is called a \textbf{martingale} if for all $s < t$, \[
+		\expc{X_t \given \F_s} = X_s
+	\]
+\end{defn}
+
+\begin{lem}
+	Let $\rnm$ be a risk neutral measure.  Then the discounted stock prices $(\hat{S}^i_t)$ for $i = 1,\dots,n$ are martingales under $\rnm$.
+\end{lem}
+
+\begin{prop}Let $\phi \in \mathcal{T}$ be a trading strategy.  Then the discounted value process $(\hat{V}_t(\phi))$ and the discounted gains process $\hat{G}_t(\phi)$ are martingales under any risk neutral measure $\rnm$.
+	
+\end{prop}
+
+\begin{thm}[Fundamental Theorem of Asset Pricing]
+	Given a general multi period market model, if there is a risk neutral measure, then there are no arbitrage strategies $\phi \in \mathcal{T}$.  Conversely, if there are no arbitrages among self financing and adapted trading strategies, then there exists a risk neutral measure.
+\end{thm}
+
+\begin{defn}We say that an adapted stochastic process $(X_t)$ is a price process for the contingent claim $X$ which \textbf{complies with the no arbitrage principle}, if there is no adapted and self financing arbitrage strategy in the extended model, which consists of the original stocks $(S_t^1),\dots,(S_t^n)$ and an additional asset given by $S^{n+1}_t = X_t$ for $0 \leq t \leq T-1$ and $S^{n+1}_T = X$. 
+\end{defn}
+
+\begin{prop}
+	Let $X$ be a possibly unattainable contingent claim and $\rnm$ a risk neutral measure for a general multi period market model.  Then \[
+		X_t = B_t \expp{\frac{X}{B_T} \given \F_t}
+	\] defines a price for the contingent claim consistent with the no arbitrage principle.
+\end{prop}
+
+\begin{thm}
+	Under the assumption that a general multi period market model is arbitrage free, it is complete, if and only if there is a unique risk neutral measure.
+\end{thm}
+% subsection properties_of_the_general_multi_period_market_model (end)
+
+% section multi_period_market_models (end)
+\input{MATH3975-Chap4}
+
+
+
+\end{document}
