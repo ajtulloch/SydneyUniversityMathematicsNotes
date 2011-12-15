@@ -15,8 +15,9 @@ Then, to generate the PDFs, simply run
     
     rake build
 
-which automatically runs `LaTeX` on each file and outputs the PDF in the directory `PDFs`. 
+which automatically runs `LaTeX` on each file and outputs the generated PDF files in the directory `PDFs`.
 
+To run these utilities, you must have Git, Ruby, Rake, and XeTeX installed on your system.
 
 Course List
 ------------
@@ -25,10 +26,10 @@ The courses are (in alphabetical order):
 
 * AMH3 - Interest Rate Models
 * AMH4 - Advanced Option Pricing
-* COMP 2907 - Algorithms and Complexity (with Giles Gardam)
+* COMP 2907 - Algorithms and Complexity with [Giles Gardam](https://github.com/gilesgardam))
 * MATH 3961 - Metric Spaces
 * MATH 3962 - Rings, Fields, and Galois Theory 
-* MATH 3964 - Complex Analysis (with Giles Gardam)
+* MATH 3964 - Complex Analysis (with [Giles Gardam](https://github.com/gilesgardam))
 * MATH 3968 - Differential Geometry
 * MATH 3969 - Measure Theory and Fourier Analysis
 * MATH 3975 - Financial Mathematics
