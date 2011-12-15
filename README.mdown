@@ -3,9 +3,7 @@ Sydney University Mathematics Notes
 
 This repository contains lecture notes in LaTeX for almost all of the courses I took in my final two years of my undergraduate degree. 
 
-Course List
------------
-In alphabetical order,
+The courses are (in alphabetical order):
 
 * AMH3 - Interest Rate Models
 * AMH4 - Advanced Option Pricing
@@ -30,10 +28,10 @@ As you will soon see, typos/errors/omissions are rampant!  Any contributions to 
 Copyright
 ---------
 
-If this transmission of transcribed lecture notes violates copyright law, please send me an email and I will immediately remove any infringing content.
+If this free transmission of lecture notes violates copyright law, please send me an email and I will immediately remove the infringing content.
 
 Thanks
 ------
 
-Thanks must go to the excellent faculty at Sydney University, who have made this possible.
+Thanks must go to the excellent lectures at Sydney University, who have made this possible.
 
