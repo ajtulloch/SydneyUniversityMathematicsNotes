@@ -49,7 +49,7 @@
 \newcommand{\al}{\alpha}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
+\newcommand{\Com}{\mathbb{C}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\Ga}{\mathbb{G}}
@@ -75,6 +75,7 @@
 \end{align*}	
 }
 		
+\usepackage{hyperref}
 		
 \title{MATH 3969 - Measure Theory and Fourier Analysis \\ Exam Notes}								% Document Title
 \author{Andrew Tulloch}
@@ -838,7 +839,7 @@ We call $g$ the \textbf{density of $\nu$ with respect to $\mu$}.
 
 
 \begin{defn}[Translation of a function]
- 	Let $f: \R^N \rightarrow \C$ be a function and $t \in \R^N$ a fixed vector. We define the translation operator $\tau_t$ by \[
+ 	Let $f: \R^N \rightarrow \Com$ be a function and $t \in \R^N$ a fixed vector. We define the translation operator $\tau_t$ by \[
  		\tau_t f(x) = f(x-t)
  	\]
 \end{defn}
@@ -853,17 +854,17 @@ We call $g$ the \textbf{density of $\nu$ with respect to $\mu$}.
 \end{rem}
 
 \begin{lem}
-	Let $f : \R^N \rightarrow \C$ be measurable and set 
+	Let $f : \R^N \rightarrow \Com$ be measurable and set 
 	\begin{align*}
 		F_1(x,y) &= f(x) \\
 		F_2(x,y) &= f(y-x)
 	\end{align*}
 	
-	Then $F_1, F_2 : \R^N \times \R^N \rightarrow \C$ are measurable.
+	Then $F_1, F_2 : \R^N \times \R^N \rightarrow \Com$ are measurable.
 \end{lem}
 
 \begin{defn}[Convolution]
-	Let $f,g : \R^N \rightarrow \C$ be measurable.  We define the \textbf{convolution} $f \star g : \R^N \rightarrow \C$ by \[
+	Let $f,g : \R^N \rightarrow \Com$ be measurable.  We define the \textbf{convolution} $f \star g : \R^N \rightarrow \Com$ by \[
 		(f \star g) (x) = \int_{\R^N} f(x-y) g(y) \, dy
 	\]
 	wherever the integral exists
@@ -888,7 +889,7 @@ We call $g$ the \textbf{density of $\nu$ with respect to $\mu$}.
 \end{thm}
 
 \begin{thm}[Young's inequality]
-	Let $1 \leq p \leq \infty$.  If $f \in L^p(\R^N, \C)$ and $g \in L^1(\R^N, \C)$, then $f \star g$ exists almost everywhere and $f \star g \in L^p(\R^N, \C)$.  Moverover, \[
+	Let $1 \leq p \leq \infty$.  If $f \in L^p(\R^N, \Com)$ and $g \in L^1(\R^N, \Com)$, then $f \star g$ exists almost everywhere and $f \star g \in L^p(\R^N, \Com)$.  Moverover, \[
 		\|f \star g \|_p \leq \|f\|_p \|g \|_1
 	\]
 \end{thm}
@@ -975,7 +976,7 @@ We call $g$ the \textbf{density of $\nu$ with respect to $\mu$}.
 \label{sec:the_fourier_transform}
 
 \begin{defn}[Fourier transform]
-	Let $f \in L^1(\R^N, \C)$.  We call \[
+	Let $f \in L^1(\R^N, \Com)$.  We call \[
 		\hat{f}(t) = \int_{\R^N} f(x) e^{-2 \pi i x \cdot t} \, dx
 	\]
 \end{defn}
@@ -983,7 +984,7 @@ We call $g$ the \textbf{density of $\nu$ with respect to $\mu$}.
 \begin{thm}
 	We have 
 	\begin{itemize}
-		\item $\hat{f} : \R^N \rightarrow \C$ is continuous,
+		\item $\hat{f} : \R^N \rightarrow \Com$ is continuous,
 		\item $\|\hat f \|_\infty \leq \|f \|_1$
 	\end{itemize}
 \end{thm}
@@ -993,7 +994,7 @@ We call $g$ the \textbf{density of $\nu$ with respect to $\mu$}.
 \end{prop}
 
 \begin{prop}
-	Let $f \in L^1(\R^N, \C), x_0 \in \R^N$ and $\alpha \in R, \alpha > 0$. 
+	Let $f \in L^1(\R^N, \Com), x_0 \in \R^N$ and $\alpha \in R, \alpha > 0$. 
 	\begin{enumerate}[(i)]
 		\item If $g(x) = f(x - x_0)$, then $\hat g (t) = e^{-2 \pi i x_0 \cdot t} \hat f (t)$,
 		\item If $g(x) = f(\alpha x)$, then $\hat g (t) = \frac{1}{\alpha^N} \hat f \left( \frac{x}{\alpha}\right)$,
@@ -1006,16 +1007,16 @@ We call $g$ the \textbf{density of $\nu$ with respect to $\mu$}.
 \end{defn}
 
 \begin{thm}[Riemann-Lebesgue]
-	If $f \in L^1(\R^N, \C)$, then $\hat f \in C_0(\R^N, \C)$ and $\| \hat f \|_\infty \leq \|f \|_1$.
+	If $f \in L^1(\R^N, \Com)$, then $\hat f \in C_0(\R^N, \Com)$ and $\| \hat f \|_\infty \leq \|f \|_1$.
 \end{thm}
 
 \begin{thm}
-	If $f,g \in L^1(\R^N, \C)$ then $f \star g \in L^1(\R^N, \C)$ and \[
+	If $f,g \in L^1(\R^N, \Com)$ then $f \star g \in L^1(\R^N, \Com)$ and \[
 		\hat{f \star g} = \hat f \, \hat g
 	\]
 \end{thm}
 \begin{prop}
-	Let $f,g \in L^1(\R^N, \C)$.  Then \[
+	Let $f,g \in L^1(\R^N, \Com)$.  Then \[
 		\int_{\R^N} \hat f g \, dx = \int_{\R^N} f \hat g \, dx
 	\]
 \end{prop}
@@ -1024,15 +1025,15 @@ We call $g$ the \textbf{density of $\nu$ with respect to $\mu$}.
 	Let $\phi(x) = e^{- \pi |x|^2}$ and $\phi_n(x) = n^N \phi(n x)$.  Then \[
 		\int_{\R^N} \hat f (t) e^{2 \pi i x \cdot t} \phi\left(\frac{t}{n} \right) \, dt = (f \star \phi_n) (x)
 	\]
-	for all $f \in L^1(\R^N,\C), x \in \R^N$, and $n \in \mathbb{N}$.
+	for all $f \in L^1(\R^N,\Com), x \in \R^N$, and $n \in \mathbb{N}$.
 \end{lem}
 
 \begin{thm}[Fourier inversion formula]
-	Let $f \in L^1(\R^N, \C)$. Then 
+	Let $f \in L^1(\R^N, \Com)$. Then 
 	\begin{enumerate}[(i)]
 		\item \[
 			\lim_{n \rightarrow \infty} \int_{\R^N} \hat f (t) e^{2 \pi i x \cdot t} e^{- \pi \frac{|t|^2}{n^2}} \, dt = f
-		\] in $L^1(\R^N, \C)$.
+		\] in $L^1(\R^N, \Com)$.
 		\item If $f$ is continuous at $x$, then \[
 			\lim_{n \rightarrow \infty} \int_{\R^N} \hat f (t) e^{2 \pi i x \cdot t} e^{- \pi \frac{|t|^2}{n^2}} \, dt = f(x)
 		\]
@@ -1071,9 +1072,9 @@ We call $g$ the \textbf{density of $\nu$ with respect to $\mu$}.
 \end{rem}
 
 \begin{thm}
-	Let $f \in L^2(\R^N, \C)$.  Then \[
+	Let $f \in L^2(\R^N, \Com)$.  Then \[
 		\lim_{n \rightarrow \infty} \int_{\R^N} \hat f (t) e^{2 \pi i x \cdot t} e^{- \pi \frac{|t|^2}{n^2}} \, dt = f
-	\] in $L^2(\R^N, \C)$.
+	\] in $L^2(\R^N, \Com)$.
 \end{thm}
 
 \begin{thm}

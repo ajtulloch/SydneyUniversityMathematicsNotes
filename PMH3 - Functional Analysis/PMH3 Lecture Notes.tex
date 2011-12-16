@@ -56,9 +56,9 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\K}{\mathbb{K}}
 \newcommand{\N}{\mathbb{N}}
-\renewcommand{\H}{\mathcal{H}}
+\newcommand{\Hil}{\mathcal{H}}
 
-\newcommand{\C}{\mathbb{C}}
+\newcommand{\Com}{\mathbb{C}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\Ga}{\mathbb{G}}
@@ -81,7 +81,7 @@
 \end{align*}	
 }
 
-\newcommand{\hilb}{(\H, \langle \cdot, \cdot, \rangle )}
+\newcommand{\hilb}{(\Hil, \langle \cdot, \cdot, \rangle )}
 \renewcommand{\phi}{\varphi}
 		
 		
@@ -93,6 +93,8 @@
 \newcommand{\spans}{\text{span}\ }
 \newcommand{\im}{\textsc{Im\ }}
 \renewcommand{\ker}{\textsc{Ker\ }}
+
+\usepackage{hyperref}
 
 \title{PMH3 - Functional Analysis \\ Lecture Notes}								% Document Title
 \author{James Parkinson}
@@ -663,8 +665,8 @@ Discussion of Dual operators
 \end{proof}
 
 
-\begin{thm}[Hahn-Banach over $\C$]
-	Suppose that $c$ is a seminorm on a complex vector space $X$ and let $M$ sub a subspace of $X$.  If $f_0 \in \text{Hom}(M, \C)$ is such that $|f_0(x) | \leq p(x)$ for all $x \in M$, then there exists an extension $f \in \text{Hom}(X, \C)$ such that $f|_M = f_0$ and $|f(x)| \leq p(x)$ for all $x \in X$.  
+\begin{thm}[Hahn-Banach over $\Com$]
+	Suppose that $c$ is a seminorm on a complex vector space $X$ and let $M$ sub a subspace of $X$.  If $f_0 \in \text{Hom}(M, \Com)$ is such that $|f_0(x) | \leq p(x)$ for all $x \in M$, then there exists an extension $f \in \text{Hom}(X, \Com)$ such that $f|_M = f_0$ and $|f(x)| \leq p(x)$ for all $x \in X$.  
 \end{thm} 
 
 \begin{proof}
@@ -678,7 +680,7 @@ Discussion of Dual operators
 	\] 
 	for all $x \in M$.  We now consider $X$ as a vector space over $\R$, $X_\R$.  Now considering $M_\R$ as a subspace of $X_\R$.  GSince $g_0 \in \text{Hom}(M_\R, \R)$ and $g_0(x) \leq |f_0(x)| \leq p(x)$ and so by the real Hahn-Banach, there exists $g \in \text{Hom}(X_\R, \R)$ such that $g|_{M_\R} = g_0$ and $g(x) \leq p(x)$ for all $x \in X_\R$.  Now set $F(x) = g(x) - ig(ix)$ for all $x \in X_\R$.  Then by showing $f(ix) = if(x)$, we have that $f$ is linear.  
 	
-	We now show $|f(x)| \leq p(x)$.  For a fixed $x \in X$ choose $\lambda \in \C$ such that $\lambda f(x) = |f(x)|$.  Then since $|f(x)| \in \R$ and by definition of $f$, we have \[
+	We now show $|f(x)| \leq p(x)$.  For a fixed $x \in X$ choose $\lambda \in \Com$ such that $\lambda f(x) = |f(x)|$.  Then since $|f(x)| \in \R$ and by definition of $f$, we have \[
 		|f(x)| = \lambda f(x) | = f(\lambda x) = g(\lambda x) \leq p(\lambda x) = |\lambda p(x) = p(x)
 	\] as required.  
  \end{proof}
@@ -772,7 +774,7 @@ Discussion of Dual operators
 	If $(X, \| \cdot \|)$ is a normed vector space which satisfies parallelogram identity then $X$ is an inner product space with inner products defined by the polarisation equation \[
 	\langle x, y \rangle =	\begin{cases} 
 			\frac{1}{4} \left( \| x + y \|^2 - \| x - y \|^2 \right) 	& \K = \R \\
-			\frac{1}{4}\left( \| x + y\|^2 - \| x - y \|^2 + i\| x + iy \|^2 - i\|x - iy\|^2 \right)										 		& \K = \C
+			\frac{1}{4}\left( \| x + y\|^2 - \| x - y \|^2 + i\| x + iy \|^2 - i\|x - iy\|^2 \right)										 		& \K = \Com
 		\end{cases}
 	\]
 \end{rem}
@@ -784,7 +786,7 @@ Discussion of Dual operators
 \end{defn}
 
 \begin{thm}[Projection]
-	Let $(\H, \langle \cdot, \cdot, \rangle )$ be a Hilbert space.  Let $M \subseteq \H$ be closed and convex.  Let $x \in \H$.  THen there exists a unique point $m_x \in M$ which is closest to $x$, i.e. \[
+	Let $(\Hil, \langle \cdot, \cdot, \rangle )$ be a Hilbert space.  Let $M \subseteq \Hil$ be closed and convex.  Let $x \in \Hil$.  THen there exists a unique point $m_x \in M$ which is closest to $x$, i.e. \[
 		\| x - m_x \| = \inf_{m \in M} \| x - m \| = d
  	\]  
 \end{thm}
@@ -801,7 +803,7 @@ Discussion of Dual operators
 	\end{align*} and as $m_k/2 + m_l/2 \in M$, we have $\| \frac{ m_k + m_l}{2} - x \|^2  \geq d^2$.  Then 
 	\begin{align*}
 			\| m_k - m_l \|^2 \leq 2 ( \frac{1}{k} + \frac{1}{l})
-	\end{align*} Thus $(m_k)$ is Cauchy.  So $m_k \rightarrow m_x \in M$ as $\H$ is complete and $M$ is closed.  We then have \[
+	\end{align*} Thus $(m_k)$ is Cauchy.  So $m_k \rightarrow m_x \in M$ as $\Hil$ is complete and $M$ is closed.  We then have \[
 		\| x - m_x \| = d 
 	\] and so now we show that $m_x$ is unique.  
 	
@@ -811,14 +813,14 @@ Discussion of Dual operators
 \end{proof}
 
 \begin{defn}[Projection operator]
-Let $\hilb$ be a Hilbert space.  Let $M \subseteq \H$ be closed and convex.  Define \[
-	P_M : \H \rightarrow \H
-\] by $P_M(x) = m_x$ from above. This is the projection of $\H$ onto $M$.
+Let $\hilb$ be a Hilbert space.  Let $M \subseteq \Hil$ be closed and convex.  Define \[
+	P_M : \Hil \rightarrow \Hil
+\] by $P_M(x) = m_x$ from above. This is the projection of $\Hil$ onto $M$.
 \end{defn}
 
 \begin{defn}[Orthogonal decomposition]	
-	If $S \subseteq \H$, let \[
-		S^\perp = \{ x \in \H
+	If $S \subseteq \Hil$, let \[
+		S^\perp = \{ x \in \Hil
  \, | \langle x, y \rangle = 0 \quad \forall y \in S. 
 \] We call $S^\perp$ the orthogonal component.
 \end{defn}
@@ -829,11 +831,11 @@ Let $\hilb$ be a Hilbert space.  Let $M \subseteq \H$ be closed and convex.  Def
 \label{sec:lecture_9_monday_28_march}
 
 \begin{thm}[From previous lecture]
-	If $M \subseteq \H$, then the projection of $\H$ onto $M$ is \mapping{P_m}{\H}{\H}{x}{m_x} where $m_x \in M$ is the unique element with $\| x - m_x \| = \inf_{m \in M} \| x - m \|$.  
+	If $M \subseteq \Hil$, then the projection of $\Hil$ onto $M$ is \mapping{P_m}{\Hil}{\Hil}{x}{m_x} where $m_x \in M$ is the unique element with $\| x - m_x \| = \inf_{m \in M} \| x - m \|$.  
 \end{thm}
 
 \begin{lem}
-	Let $M \subseteq \H$ be closed subspace.  Then $x - P_M x \in M^{\perp}$ for all $x \in \H$.
+	Let $M \subseteq \Hil$ be closed subspace.  Then $x - P_M x \in M^{\perp}$ for all $x \in \Hil$.
 \end{lem}
 
 \begin{proof}
@@ -854,9 +856,9 @@ Let $\hilb$ be a Hilbert space.  Let $M \subseteq \H$ be closed and convex.  Def
 
 \begin{thm}
 	The following theorem is the key fundamental result.  
-	Let $\hilb$ be a Hilbert space.  Let $M$ be a closed subspace of $\H$.  Then \[
-		 \H = M \oplus M^\perp.
-	\]  That is, each $x \in \H$ can be written in exactly one way as $x = m + m^\perp$ with $m \in M$, $m^\perp \in M^\perp$. 
+	Let $\hilb$ be a Hilbert space.  Let $M$ be a closed subspace of $\Hil$.  Then \[
+		 \Hil = M \oplus M^\perp.
+	\]  That is, each $x \in \Hil$ can be written in exactly one way as $x = m + m^\perp$ with $m \in M$, $m^\perp \in M^\perp$. 
 \end{thm}
 
 \begin{proof}
@@ -871,9 +873,9 @@ Let $\hilb$ be a Hilbert space.  Let $M \subseteq \H$ be closed and convex.  Def
 \end{proof} 
 
 \begin{cor}
-	Let $M \subseteq \H$ be a closed subspace.  Then we have
+	Let $M \subseteq \Hil$ be a closed subspace.  Then we have
 	\begin{enumerate}[(a)]
-		\item $P_M \in \mathcal{L}(\H, \H)$.
+		\item $P_M \in \mathcal{L}(\Hil, \Hil)$.
 		\item $\| P_M \| \leq 1$.
 		\item $\text{Im}P_m = M, \ker P_M = M^\perp$.
 		\item $P^2_M = P_M$.
@@ -898,14 +900,14 @@ Let $\hilb$ be a Hilbert space.  Let $M \subseteq \H$ be closed and convex.  Def
 \subsection{The dual of a Hilbert space} % (fold)
 \label{sub:the_dual_of_a_hilbert_space}
 
-If $y \in \H$ is fixed, then the map \mapping{\phi_y}{\H}{\K}{x}{\langle x, y \rangle} is in $\H'$.  Linearity is clear, and continuity is proven by Cauchy-Swartz, \[
+If $y \in \Hil$ is fixed, then the map \mapping{\phi_y}{\Hil}{\K}{x}{\langle x, y \rangle} is in $\Hil'$.  Linearity is clear, and continuity is proven by Cauchy-Swartz, \[
 	| \phi_y(x) | = | \langle x, y \rangle | \leq \| y \| \| x \|.
 \] So $\| \phi_y \| \leq \| y \|$. Since $|\phi_y(y)| = \| y \|^2$, we then have \[
 	\| \phi_y \| = \| y \|.
 \]
 
 \begin{thm}[Riesz Representation Theorem]
-	Let $\H$ be a Hilbert space. The map \mapping{\theta}{\H}{\H'}{y}{\phi_y} is a conjugate linear bijection, and $\| \phi_y \| = \| y \|$.  
+	Let $\Hil$ be a Hilbert space. The map \mapping{\theta}{\Hil}{\Hil'}{y}{\phi_y} is a conjugate linear bijection, and $\| \phi_y \| = \| y \|$.  
 \end{thm}
 \begin{proof}
 	Conjugate linearity is clear.
@@ -918,21 +920,21 @@ If $y \in \H$ is fixed, then the map \mapping{\phi_y}{\H}{\K}{x}{\langle x, y \r
 	\] and so $y = y'$.
 	
 	\textbf{Surjectivity}
-	Let $\phi \in H'$.  We now find $y \in \H$ with $\phi = \phi_y$.  If $\phi = 0$, take $y = 0$.  Suppose $\phi \neq 0$.  Then $\ker \phi \neq \H$.  But $\ker \phi$ is a closed subspace of $\H$.  So \[
+	Let $\phi \in H'$.  We now find $y \in \Hil$ with $\phi = \phi_y$.  If $\phi = 0$, take $y = 0$.  Suppose $\phi \neq 0$.  Then $\ker \phi \neq \Hil$.  But $\ker \phi$ is a closed subspace of $\Hil$.  So \[
 		H = (\ker \phi) \oplus (\ker \phi)^\perp.
-	\] Hence $(\ker \phi)^\perp \neq \{ 0 \}$. Pick $z \in (\ker \phi)^\perp, z \neq 0$.  For each $x \in \H$, the element \[
+	\] Hence $(\ker \phi)^\perp \neq \{ 0 \}$. Pick $z \in (\ker \phi)^\perp, z \neq 0$.  For each $x \in \Hil$, the element \[
 		x - \frac{\phi(x)}{\phi(z)} z \in \ker \phi
 	\] Note that $\phi(z) \neq 0$ since $z \notin \ker \phi$.  Then \begin{align*}
 		0 	&=  \langle x - \frac{\phi(x)}{\phi(z)}z, z \rangle \\
 			&= \langle x, z - \frac{\phi(x}{\phi(z)} \| z \|^2
 	\end{align*}
 	and so \[
-	\phi(x) = \langle x, \frac{\overline{\phi(z)}}{\| z \|^2} z \rangle \quad \forall x \in \H,\]
+	\phi(x) = \langle x, \frac{\overline{\phi(z)}}{\| z \|^2} z \rangle \quad \forall x \in \Hil,\]
 	and so letting $y = \frac{\overline{\phi(z)}}{\| z \|^2} z$, we have $\phi = \phi_y$.  
 \end{proof}
 
 \begin{exmp}
-	From Hahn-Banach given $y \in \H$ there exists $\phi \in \H'$ such that \[
+	From Hahn-Banach given $y \in \Hil$ there exists $\phi \in \Hil'$ such that \[
 		\| \phi \| = 1
 	\] and $\phi(y) = \| y \|$. We can be very constructive in the Hilbert case, and let \[
 		\phi(x) = \langle x, \frac{y}{\| y \|} \rangle
@@ -945,9 +947,9 @@ If $y \in \H$ is fixed, then the map \mapping{\phi_y}{\H}{\K}{x}{\langle x, y \r
 \end{exmp}
 
 \begin{exmp}[Adjoint operators]
-	Let $\H_1, \H_2$ be Hilbert spaces.  Let $ T \in \mathcal{L}(\H_1, \H_2)$.  The \textbf{adjoint} of $T$ is $T^\star \in \mathcal{L}(\H_2, \H_1)$ given by \[
+	Let $\Hil_1, \Hil_2$ be Hilbert spaces.  Let $ T \in \mathcal{L}(\Hil_1, \Hil_2)$.  The \textbf{adjoint} of $T$ is $T^\star \in \mathcal{L}(\Hil_2, \Hil_1)$ given by \[
 		\langle T x, y \rangle_2 = \langle x, T^\star y \rangle_1
-	\] for all $x \in \H_1, y \in \H_2$
+	\] for all $x \in \Hil_1, y \in \Hil_2$
 \end{exmp}
 
 \begin{exer}
@@ -964,14 +966,14 @@ If $y \in \H$ is fixed, then the map \mapping{\phi_y}{\H}{\K}{x}{\langle x, y \r
 \label{sec:lecture_10_wednesday_30_march}
 
 \begin{defn}[Orthonormal system]
-	As subset $S \subseteq \H$ is an \textbf{orthonormal system} (orthonormal) if \[
+	As subset $S \subseteq \Hil$ is an \textbf{orthonormal system} (orthonormal) if \[
 		\langle e, e' \rangle = \delta_{e, e'} \quad \forall e, e' \in S
 	\]
 \end{defn}
 
 \begin{defn}[Complete orthonormal system or Hilbert basis]
 	An orthonormal system $S$ is \textbf{complete} or a \textbf{Hilbert basis} if \[
-		\overline{\spans S} = \H
+		\overline{\spans S} = \Hil
 	\]
 \end{defn}
 
@@ -984,7 +986,7 @@ If $y \in \H$ is fixed, then the map \mapping{\phi_y}{\H}{\K}{x}{\langle x, y \r
 		\item $\ell^2$.  Then \[
 			S = \{ e_i \, | \, i \geq 1 \}
 		\] is orthonormal and is complete.  
-		\item $L^2_\C([0, 2 \pi])$.  Then \[
+		\item $L^2_\Com([0, 2 \pi])$.  Then \[
 			S = \{ \frac{1}{2\pi} e^{i n t} \, | \, n \in \Z \}
 		\] is orthonormal and is complete.  Completeness follows from Stone-Weierstrass theorem.
 		\item $L^2_\R([0, 2 \pi])$.  Then \[
@@ -998,7 +1000,7 @@ If $y \in \H$ is fixed, then the map \mapping{\phi_y}{\H}{\K}{x}{\langle x, y \r
 \begin{lem}\label{lem:tod}
 	If $\{ e_k \, | \, k \geq 0 \}$ is orthonormal, then \[
 		\sum_{k=0}^\infty a_l e_k
-	\] converges in $\H$ if and only if \[
+	\] converges in $\Hil$ if and only if \[
 		\sum_{k=0}^\infty |a_k |^2
 	\] converges in $\K$.  
 	
@@ -1024,13 +1026,13 @@ If $y \in \H$ is fixed, then the map \mapping{\phi_y}{\H}{\K}{x}{\langle x, y \r
 		\| x_m - x_n \|^2 &= \| \sum_{k=n+1}^m a_k e_k \|^2 \\
 						&= \sum_{k=n+1}^m \| a_k e_k \|^2 \, \text{by Pythagoras} \\
 						&= \sum_{k=n+1}^m |a_k |^2 \rightarrow 0
-	\end{align*} and so $(x_n)$ is Cauchy, and hence converges by completeness of $\H$.  
+	\end{align*} and so $(x_n)$ is Cauchy, and hence converges by completeness of $\Hil$.  
 \end{proof}
 
 \begin{lem}
 	Let $\{ e_1, \dots, e_n \}$ be orthonormal. Then \[
 		\sumkn | \iprod{x, e_k} |^2 \leq \|x\|^2 
-	\] for each $x \in \H$.  
+	\] for each $x \in \Hil$.  
 \end{lem}
 \begin{proof}
 	Let $y = \sumkn \iprod{x, e_k} e_k$.  Let $z = x-y$.  We claim that $z \perp y$.  We have 
@@ -1049,7 +1051,7 @@ If $y \in \H$ is fixed, then the map \mapping{\phi_y}{\H}{\K}{x}{\langle x, y \r
 
 We want to write expressions like $\sum_{e \in S} \iprod{x, e} e$.
 \begin{cor}
-	Let $x \in \H$ and $S$ orthonormal.  Then \[
+	Let $x \in \Hil$ and $S$ orthonormal.  Then \[
 		\{ e \in S \, | \, \iprod{x, e} \neq 0 \}
 	\] is countable.  
 \end{cor}
@@ -1066,7 +1068,7 @@ Therefore:
 \begin{cor}[Bessel's Inequality]
 	If $S$ is orthonormal, then \[
 		\sum_{e \in S} | \iprod{x,e}|^2 \leq \| x \|^2
-	\] for all $x \in \H$
+	\] for all $x \in \Hil$
 \end{cor}
 \begin{proof}
 	$\sum_{e \in S} | \langle x, e \rangle|^2$ is a sum of countably many positive terms, and so order is not important.
@@ -1086,7 +1088,7 @@ We want to write $\sum_{e \in S} \iprod{x,e} e$.  This sum is over a countable s
 		\sum_{k=0}^\infty | \iprod{x, e_k} |^2 \leq \| x \|^2
 	\end{align*} and so the LHS converges.  By Lemma~\ref{lem:tod}, we know \[
 		y = \sum_{ k = 0}^\infty \iprod{x,e_k} e_k \in M
-	\] converges in $\H$.  
+	\] converges in $\Hil$.  
 	
 	Write $x = y + (x-y) = M + M^\perp$.  We claim $(x-y) \in M^\perp$.  Then $P_Mx = y$ from characterisation of projection operator.  Let $e \in S$.  Then \begin{align*}
 		\iprod{x-y, e} &= \lim_{n \rightarrow \infty} \iprod{ x - \sum_{k=0}^n \iprod{x, e_k} e_k, e} \\	
@@ -1113,29 +1115,29 @@ We want to write $\sum_{e \in S} \iprod{x,e} e$.  This sum is over a countable s
 
 \section{Lecture 11 - Monday 4 April} % (fold)
 \label{sec:lecture_11_monday_4_april}
-Recall that if $\{ x_1. \dots \}$ is a countable orthonormal system in a Hilbert space $\H$.  Then \[
+Recall that if $\{ x_1. \dots \}$ is a countable orthonormal system in a Hilbert space $\Hil$.  Then \[
 	\sum_{k=1}^\infty a_k e_k < \infty \iff \sum_{k=1}^\infty |a_k|^2 < \infty 
 \] and \[
 	\| \sum_{k=1}^\infty a_k e_k \|^2 = \sum_{k=1}^\infty |a_k|^2 \tag{$\star$}
 \] We also had the following.
 
 \begin{thm}\label{thm:fourier}
-	Let $S$ be orthonormal in $\H$.  Let $M = \overline{\spans S}$.  Then \[
-		P_Mx = \sum_{e \in S} \iprod{x, e} e \quad \forall x \in \H
+	Let $S$ be orthonormal in $\Hil$.  Let $M = \overline{\spans S}$.  Then \[
+		P_Mx = \sum_{e \in S} \iprod{x, e} e \quad \forall x \in \Hil
 	\] where the sum has only countable many terms and convergence is unconditional.
 \end{thm}
 
 \begin{thm}
-	Let $S$ be orthonormal in $\H$.  Then following are equivalent.
+	Let $S$ be orthonormal in $\Hil$.  Then following are equivalent.
 	\begin{enumerate}[(a)]
-		\item $S$ is a complete orthonormal system ($\overline{\spans S} = \H$).
+		\item $S$ is a complete orthonormal system ($\overline{\spans S} = \Hil$).
 		\item $x = \sum_{e \in S} \iprod{x,e} e$ for all $x$ (Fourier series).
 		\item $\| x \|^2 = \sum_{e \in S} |\iprod{x,e}|^2$ for all $x$ (Parseval's formula).
 	\end{enumerate}
 \end{thm}
 
 \begin{proof}
-	(a) $\Rightarrow$ (b).  If $M = \overline{\spans S} = \H$, then \[
+	(a) $\Rightarrow$ (b).  If $M = \overline{\spans S} = \Hil$, then \[
 		P_M x = x = \sum_{e \in S} \iprod{x,e} e
 	\] by Theorem~\ref{thm:fourier}.
 	
@@ -1143,7 +1145,7 @@ Recall that if $\{ x_1. \dots \}$ is a countable orthonormal system in a Hilbert
 	
 	(c) $\Rightarrow$ (a).  Let $M = \overline{\spans S}$. Suppose that $z \in M^\perp$.  Then $z = 0 + z \in M + M^\perp$.  Hence \[
 		0 = \| P_M z \|^2 = \|\sum_{e \in S} \iprod{z,e} e \|^2 = \sum_{e \in S} |\iprod{z,e} |^2 = \| z \|^2 
-	\] which implies $z = 0$, so $M = \H$, and so $S$ is complete.
+	\] which implies $z = 0$, so $M = \Hil$, and so $S$ is complete.
 \end{proof}
 
 \begin{rem}
@@ -1346,7 +1348,7 @@ Now let $p_N(t) = sum_{n=0}^N {\frac{1}{2} \choose n } (t^2 - 1)^n$, and \[
 		Where did we use the Hausdorff property?
 	\end{exer}
 	
-	We now prove for $\mathcal{C}_\C(X)$.  
+	We now prove for $\mathcal{C}_\Com(X)$.  
 	
 	Let \[ 
 	\mathcal A_\R = \{ f \in \mathcal A \given \text{$f$ is real valued} \}. 
@@ -1356,11 +1358,11 @@ Now let $p_N(t) = sum_{n=0}^N {\frac{1}{2} \choose n } (t^2 - 1)^n$, and \[
 	
 	Hence $\mathcal A_\R$ is dense in $\mathcal C_\R$.  
 	
-	Now, let $f \in \mathcal C_\C(X)$.  Then write $f = u + iv$.  Then $u,v \in \mathcal C_\R(X)$.  Then given $\epsilon > 0$, there exists $u_1,v_1 \in \mathcal A_\R$ such that \[
+	Now, let $f \in \mathcal C_\Com(X)$.  Then write $f = u + iv$.  Then $u,v \in \mathcal C_\R(X)$.  Then given $\epsilon > 0$, there exists $u_1,v_1 \in \mathcal A_\R$ such that \[
 		\| u - u_1 \|_\infty \leq \frac{\epsilon}{2}, \quad \| v - v_1 \|_\infty \leq \frac{\epsilon}{2} 
 	\]  Writing $f_1 = u_1 + i v_1 \in \mathcal{A}$, we have \[
 		\| f - f_1 \|_\infty \leq \| (u - u_1) + i(v-v_1) \|_\infty \leq \| u - u_1 \|_\infty + \| v - v_1 \|_\infty < \epsilon
- 	\] and thus $\mathcal{A}$ is dense in $\mathcal C_\C(X)$.
+ 	\] and thus $\mathcal{A}$ is dense in $\mathcal C_\Com(X)$.
 \end{proof}
 
 
@@ -1385,7 +1387,7 @@ Now let $p_N(t) = sum_{n=0}^N {\frac{1}{2} \choose n } (t^2 - 1)^n$, and \[
 \end{defn}
 
 \begin{cor}
-	The space $\mathcal A$ of all trigonometric polynomials is dense in $\mathcal C(\Pi)$, where $\Pi = \{ z \in \C \, | \, |z | = 1 \}$
+	The space $\mathcal A$ of all trigonometric polynomials is dense in $\mathcal C(\Pi)$, where $\Pi = \{ z \in \Com \, | \, |z | = 1 \}$
 \end{cor}
 \begin{proof}
 	$\mathcal A$ is a sub-algebra of $\mathcal C(\Pi)$, it is unital, closed under complex conjugation, \[
@@ -1809,7 +1811,7 @@ This theorem is \emph{tailor-made} to deal with inverse operators.
 
 \subsection{Spectral Theory} % (fold)
 \label{sub:spectral_theory}
-The eigenvalues of an $n \times n$ matrix $T$ over $\C$ are the $\lambda \in \C$ with \[
+The eigenvalues of an $n \times n$ matrix $T$ over $\Com$ are the $\lambda \in \Com$ with \[
 	\det(\lambda I - T) = 0
 \] that is, $\lambda I - T$ is not invertible.
 
@@ -1817,7 +1819,7 @@ The eigenvalues of an $n \times n$ matrix $T$ over $\C$ are the $\lambda \in \C$
 	Showing existence of eigenvalues is equivalent to the fundamental theorem of algebra.  
 \end{rem}
 \begin{rem}
-	We need our base field to be $\C$ to get reasonable spectral theory.
+	We need our base field to be $\Com$ to get reasonable spectral theory.
 \end{rem}
 
 \begin{defn}
@@ -1841,8 +1843,8 @@ $\lambda \in \K$ is an eigenvalue of $T \in \mathcal L(X)$ if there is $ x \neq 
 \end{defn}
 
 \begin{thm}
-	Let $X \neq \{ 0 \}$ be a Banach space over $\C$, and let $T \in \mathcal L(X)$.  Then $\sigma(T)$ is a non-empty, compact (closed and bounded) subset of \[
-		\{ \lambda \in \C \given | \lambda | \leq \| T \| \}
+	Let $X \neq \{ 0 \}$ be a Banach space over $\Com$, and let $T \in \mathcal L(X)$.  Then $\sigma(T)$ is a non-empty, compact (closed and bounded) subset of \[
+		\{ \lambda \in \Com \given | \lambda | \leq \| T \| \}
 	\]
 \end{thm}
 
@@ -1879,13 +1881,13 @@ $\lambda \in \K$ is an eigenvalue of $T \in \mathcal L(X)$ if there is $ x \neq 
 \section{Lecture 18 - Wednesday 4 May} % (fold)
 \label{sec:lecture_18_wednesday_4_may}
 \begin{thm}
-	Let $X \neq \{ 0 \}$ be a Banach space over $\C$.  Let $T \in \mathcal L(X)$.  Then $\sigma(T)$ is a nonempty, compact subset of \[
-		\{ \lambda \in \C \given | \lambda | \leq \| T \| \}.
+	Let $X \neq \{ 0 \}$ be a Banach space over $\Com$.  Let $T \in \mathcal L(X)$.  Then $\sigma(T)$ is a nonempty, compact subset of \[
+		\{ \lambda \in \Com \given | \lambda | \leq \| T \| \}.
 	\]
 \end{thm}
 
 \begin{lem}
-	With above assumptions $\sigma(T) \subseteq \{ \lambda \in \C \given | \lambda | \leq \| T \| \}$.  
+	With above assumptions $\sigma(T) \subseteq \{ \lambda \in \Com \given | \lambda | \leq \| T \| \}$.  
 \end{lem}
 
 \begin{proof}
@@ -1955,7 +1957,7 @@ The following is used to show $\sigma(T)$ is closed and nonempty, it is also int
 \end{cor}
 
 \begin{proof}
-	Let \mapping{f}{\C}{\mathcal L(X)}{\lambda}{\lambda I - T}  This is continuous, as \begin{align*}
+	Let \mapping{f}{\Com}{\mathcal L(X)}{\lambda}{\lambda I - T}  This is continuous, as \begin{align*}
 		\| f(\lambda) - f(\lambda_0) \| &= \| (\lambda - \lambda_0) I \| \\
 										&= | \lambda - \lambda_0 |
 	\end{align*} and \begin{align*}
@@ -1963,16 +1965,16 @@ The following is used to show $\sigma(T)$ is closed and nonempty, it is also int
 	\end{align*} which is the inverse image of a closed set, and hence is closed.
 \end{proof}
 
-So $\sigma(T)$ is a compact subset of $\{ \lambda \in \C \given | \lambda | \leq \| T \| \}$.  Write $\rho(T) = \C \backslash \sigma(T)$ (the \textbf{resolvent set}), and let $R_T = R : \rho(T) \rightarrow \mathcal L (X)$ with $R_T(\lambda) = (\lambda I - T)^{-1}$.
+So $\sigma(T)$ is a compact subset of $\{ \lambda \in \Com \given | \lambda | \leq \| T \| \}$.  Write $\rho(T) = \Com \backslash \sigma(T)$ (the \textbf{resolvent set}), and let $R_T = R : \rho(T) \rightarrow \mathcal L (X)$ with $R_T(\lambda) = (\lambda I - T)^{-1}$.
 
 \begin{thm}
-	Let $\K = \C$ and $X \neq \{ 0 \}$ and $T \in \mathcal L(X)$.  Then $\sigma(T) \neq \emptyset$.
+	Let $\K = \Com$ and $X \neq \{ 0 \}$ and $T \in \mathcal L(X)$.  Then $\sigma(T) \neq \emptyset$.
 \end{thm}
 
 \begin{proof}
 	We use Lioville's theorem - a bounded entire function must be constant.  
 	
-	Let $\phi = \mathcal L(X)'$ (hence $\phi : \mathcal L(X) \rightarrow C$.)  Let \mapping{f_\phi}{\rho(T)}{\C}{\lambda}{\phi(R(\lambda))} 
+	Let $\phi = \mathcal L(X)'$ (hence $\phi : \mathcal L(X) \rightarrow C$.)  Let \mapping{f_\phi}{\rho(T)}{\Com}{\lambda}{\phi(R(\lambda))} 
 	\begin{lem}
 	 $f_\phi$ is analytic on $\rho(T)$.  		
 	\end{lem}
@@ -1987,7 +1989,7 @@ So $\sigma(T)$ is a compact subset of $\{ \lambda \in \C \given | \lambda | \leq
 		as $\lambda \rightarrow \lambda_0$, where we use the fact that $\phi$ is continuous and $T \rightarrow T^{-1}$ is continuous.    So $f_\phi$ is analytic on $\rho(T)$ for all $\phi \in \mathcal L(X)'$.  
 	\end{proof}
 	
-	Now suppose that $\sigma(T) = \emptyset$.  Then $f_\phi : \C \rightarrow \C$ is analytic.
+	Now suppose that $\sigma(T) = \emptyset$.  Then $f_\phi : \Com \rightarrow \Com$ is analytic.
 	
 	\begin{lem}
 		$f_\phi$ is bounded.  
@@ -2009,31 +2011,31 @@ So $\sigma(T)$ is a compact subset of $\{ \lambda \in \C \given | \lambda | \leq
 \section{Lecture 19 - Monday 9 May} % (fold)
 \label{sec:lecture_19_monday_9_may}
 \begin{thm}[Spectral mapping theorem (polynomials)]
-	Let $T$ be an $n \times n$ matrix over $\C$.  IF we know all the eigenvalues of $T$, then we know the eigenvalues of every polynomial $p(T) = a_0 + a_1 T + \dots + a_n T^n$.  Specifically, \[
+	Let $T$ be an $n \times n$ matrix over $\Com$.  IF we know all the eigenvalues of $T$, then we know the eigenvalues of every polynomial $p(T) = a_0 + a_1 T + \dots + a_n T^n$.  Specifically, \[
 		\{ \text{eigenvalues of $p(T)$} \} = \{ p(\lambda) \given \text{$\lambda$ is an eigenvalue of $T$} \}
 	\] Therefore \[
 		\sigma(p(T)) = p(\sigma(T)).
 	\]  This is called the \textbf{spectral mapping theorem} (for matrices/polynomials). 
 	
-	This also holds for $X$ Banach over $\C$, and $T \in \mathcal L(X)$.
+	This also holds for $X$ Banach over $\Com$, and $T \in \mathcal L(X)$.
 \end{thm}
 
 \begin{lem}
-	Let $\C[t]$ be the algebra of polynomials in $t$ with complex coefficients.  Multiplication is defined as usual.
+	Let $\Com[t]$ be the algebra of polynomials in $t$ with complex coefficients.  Multiplication is defined as usual.
 \end{lem}
 
 \begin{lem}
-	Let $X$ be Banach over $\C$.  Let $T \in \mathcal L(X)$.  Then \mapping{\phi}{\C[t]}{\mathcal L(X)}{p}{p(T)} is an algebra homomorphism (multiplication corresponds to composition in $\mathcal L(X)$.)
+	Let $X$ be Banach over $\Com$.  Let $T \in \mathcal L(X)$.  Then \mapping{\phi}{\Com[t]}{\mathcal L(X)}{p}{p(T)} is an algebra homomorphism (multiplication corresponds to composition in $\mathcal L(X)$.)
 \end{lem} 
 \begin{proof}
 	Simply check \begin{align*}
 		\phi(p_1 + p_2) = \phi(p_1) + \phi(p_2) \\
 		\phi(p_1 p_2) = \phi(p_1)\phi(p_2) \\
 		\phi(\alpha p) = \alpha \phi(p)
-	\end{align*} for all $p_1, p_2, p \in \C[t], \alpha \in \C$.  
+	\end{align*} for all $p_1, p_2, p \in \Com[t], \alpha \in \Com$.  
 \end{proof}
 \begin{thm}
-	Let $X$ be Banach over $\C$, and let $T \in \mathcal L(X)$.  Then \[
+	Let $X$ be Banach over $\Com$, and let $T \in \mathcal L(X)$.  Then \[
 		\sigma(p(T)) = p(\sigma(T)).
 	\]
 \end{thm}
@@ -2043,9 +2045,9 @@ So $\sigma(T)$ is a compact subset of $\{ \lambda \in \C \given | \lambda | \leq
 	\]  On the other hand, \[
 		p(\sigma(T)) = \{ c \}
 	\]  
-	Now, suppose that $p$ is non constant.  Let $\mu \in \C$ fixed.  By the fundamental theorem of algebra, we can factorise $\mu - p(t)$ as \[
+	Now, suppose that $p$ is non constant.  Let $\mu \in \Com$ fixed.  By the fundamental theorem of algebra, we can factorise $\mu - p(t)$ as \[
 		\alpha( t - \lambda_1)^{m_1} \dots (t - \lambda_n)^{m_n}
-	\] where $\lambda_1, \dots, \lambda_n$ are the distinct roots of $\mu - p(t)$.  Note that $\mu = p(\lambda_i)$ for each $i$.  Applying $\psi: \C[t] \rightarrow \mathcal L(X)$ from above, we have \begin{align*}
+	\] where $\lambda_1, \dots, \lambda_n$ are the distinct roots of $\mu - p(t)$.  Note that $\mu = p(\lambda_i)$ for each $i$.  Applying $\psi: \Com[t] \rightarrow \mathcal L(X)$ from above, we have \begin{align*}
 		\mu I - p(T) = \alpha(T- \lambda_1 I)^{m_1} \dots (T - \lambda_n I)^{m_n}
 	\end{align*}
 	\begin{exer}
@@ -2063,7 +2065,7 @@ So $\sigma(T)$ is a compact subset of $\{ \lambda \in \C \given | \lambda | \leq
 \end{proof}
 
 \begin{defn}[Spectral radius]
-Let $X \neq \{ 0 \}$ be a Banach space over $\C$.  The \textbf{spectral radius} of $T \in \mathcal L(X)$ is
+Let $X \neq \{ 0 \}$ be a Banach space over $\Com$.  The \textbf{spectral radius} of $T \in \mathcal L(X)$ is
 \begin{align*}
 	r(T) &= \sup \{ | \lambda | \given \lambda \in \sigma(T) \} \\
 	&= \max \{ |\lambda | : \lambda \in \sigma(T)\}
@@ -2072,7 +2074,7 @@ Let $X \neq \{ 0 \}$ be a Banach space over $\C$.  The \textbf{spectral radius} 
 \begin{note}
 	\[
 		r(T) \leq \| T \|
-	\] since $\sigma(T) \subseteq \{ \lambda \in \C \given | \lambda | \leq \| T \| \}$.  Strict inequality can (and often does) occur.
+	\] since $\sigma(T) \subseteq \{ \lambda \in \Com \given | \lambda | \leq \| T \| \}$.  Strict inequality can (and often does) occur.
 \end{note}
 
 \begin{exmp}
@@ -2081,8 +2083,8 @@ Let $X \neq \{ 0 \}$ be a Banach space over $\C$.  The \textbf{spectral radius} 
 			0 & 1 \\
 			0 & 0 
 		\end{pmatrix}.
-	\]  Then consider $T : \C^2 \rightarrow \C^2$ where $\| (x, y) \|_2 = \sqrt{|x|^2 + |y|^2}$.  Then \begin{align*}
-		\| T \| &= \sup \{ \| Tx \|_2 \given x \in \C^2 \} \\
+	\]  Then consider $T : \Com^2 \rightarrow \Com^2$ where $\| (x, y) \|_2 = \sqrt{|x|^2 + |y|^2}$.  Then \begin{align*}
+		\| T \| &= \sup \{ \| Tx \|_2 \given x \in \Com^2 \} \\
 				&= \sqrt{\lambda_{max} (T^* T)} 
 	\end{align*} where \[
 		T^* = \begin{pmatrix}
@@ -2093,7 +2095,7 @@ Let $X \neq \{ 0 \}$ be a Banach space over $\C$.  The \textbf{spectral radius} 
 \end{exmp}
 
 \begin{thm}[Gelfand, 1941]
-	Let $X \neq \{ 0 \}$ be Banach over $\C$, and let $T \in \mathcal L(X)$.  Then \begin{align*}
+	Let $X \neq \{ 0 \}$ be Banach over $\Com$, and let $T \in \mathcal L(X)$.  Then \begin{align*}
 		r(T) = \lim_{n \rightarrow \infty} \| T^n \|^{1/n}.
 	\end{align*} In particular, the limit exists.  
 \end{thm}
@@ -2110,7 +2112,7 @@ Let $X \neq \{ 0 \}$ be a Banach space over $\C$.  The \textbf{spectral radius} 
 	Now, we must show that \[
 		\limsup_{n \rightarrow \infty} \| T^n \|^{1/n} \leq r(T).
 	\]
-	Let $\phi \in \mathcal L(X)$ and let \mapping{f_\phi}{\rho(T)}{\C}{\lambda}{\phi((\lambda I - T)^{-1})}
+	Let $\phi \in \mathcal L(X)$ and let \mapping{f_\phi}{\rho(T)}{\Com}{\lambda}{\phi((\lambda I - T)^{-1})}
 	
 	We saw that $f_\phi$ is analytic on $\rho(T)$.  We also have \[
 		f_\phi(\lambda) = \sum_{n = 0}^\infty \frac{1}{\lambda^{n+1}} \phi(T^n) \tag{$\star$}
@@ -2553,15 +2555,15 @@ We are now ready to prove the following theorem.
 
 \section{Lecture 24 - Wednesday 25 May} % (fold)
 \label{sec:lecture_24_wednesday_25_may}
-Let $T: \C^n \rightarrow \C^n$ be a linear operator.  Then in the simplest case, $T$ has $n$ distinct eigenvalues, and the corresponding eigenvectors are linearly independent, forming a basis for $\C^n$.  
+Let $T: \Com^n \rightarrow \Com^n$ be a linear operator.  Then in the simplest case, $T$ has $n$ distinct eigenvalues, and the corresponding eigenvectors are linearly independent, forming a basis for $\Com^n$.  
 
-Hence, $\C^n = \C x_1 \oplus \dots \oplus \C x_n$ and the matrix of $T$ relative to this basis is simply diagonal with $\lambda_1, \dots, \lambda_n$.  
+Hence, $\Com^n = \Com x_1 \oplus \dots \oplus \Com x_n$ and the matrix of $T$ relative to this basis is simply diagonal with $\lambda_1, \dots, \lambda_n$.  
 
 This is not always possible, because there is not always a basis of eigenvectors.  Instead look at the generalised eigenspace, \[
-	\{ x \in \C^n \given \text{$(\lambda I - T)^k x = 0$ for some $k \geq 1$}.  
+	\{ x \in \Com^n \given \text{$(\lambda I - T)^k x = 0$ for some $k \geq 1$}.  
 \] 
 But $\{ 0 \} \subseteq \ker(\lambda I - T)^1 \subseteq \ker(\lambda I - T)^2 \subseteq \dots$
- and since $\dim(\C^n) < \infty$ this must stabilise.  Let $r \geq 1$ be the fist time that $\ker (\lambda I - T)^r = \ker( \lambda I - T)^{r+1}$.  Then the generalised $\lambda$-eigenspace is just $\ker(\lambda I - T)^r$.  There \textbf{is} a basis of $\C^n$ consisting of generalised eigenvectors, and the matrix of $T$ relative to this basis is in block form.  
+ and since $\dim(\Com^n) < \infty$ this must stabilise.  Let $r \geq 1$ be the fist time that $\ker (\lambda I - T)^r = \ker( \lambda I - T)^{r+1}$.  Then the generalised $\lambda$-eigenspace is just $\ker(\lambda I - T)^r$.  There \textbf{is} a basis of $\Com^n$ consisting of generalised eigenvectors, and the matrix of $T$ relative to this basis is in block form.  
 
 \begin{defn}[Complete reduction]
 	Let $T: X \rightarrow X$ be linear.  If $X = X_1 \oplus X_2$ be can write \[
@@ -2714,7 +2716,7 @@ $T \in \mathcal L(\mathcal H)$ is \begin{enumerate}[(a)]
 \end{rem}
 
 \begin{prop}
-	Let $\mathcal H$ be Hilbert over $\C$.  IF $T \in \mathcal L(\mathcal H)$ is normal, then $r(T) = \| T \|$.  
+	Let $\mathcal H$ be Hilbert over $\Com$.  IF $T \in \mathcal L(\mathcal H)$ is normal, then $r(T) = \| T \|$.  
 \end{prop}
 
 \begin{proof}
@@ -2737,9 +2739,9 @@ $T \in \mathcal L(\mathcal H)$ is \begin{enumerate}[(a)]
 \end{proof}
 
 \begin{cor}
-	Let $\mathcal H$ be a Hilbert space over $\C$.  \begin{enumerate}[(a)]
+	Let $\mathcal H$ be a Hilbert space over $\Com$.  \begin{enumerate}[(a)]
 		\item If $T \in \mathcal L(\mathcal H)$ is unitary, then \[
-			\sigma(T) \subseteq \mathbb{T} = \{ \lambda \in \C \given | \lambda | = 1 \}\]
+			\sigma(T) \subseteq \mathbb{T} = \{ \lambda \in \Com \given | \lambda | = 1 \}\]
 		\item If $T \in \mathcal L(\mathcal H)$ is Hermitian, then \[
 			\sigma(T) \subseteq \R.
 		\]
@@ -2764,7 +2766,7 @@ $T \in \mathcal L(\mathcal H)$ is \begin{enumerate}[(a)]
 \end{proof}
 
 \begin{lem}
-	Let $\mathcal H$ be Hilbert over $\C$.  Let $T \in \mathcal L(\mathcal H)$, and let \[
+	Let $\mathcal H$ be Hilbert over $\Com$.  Let $T \in \mathcal L(\mathcal H)$, and let \[
 		M_\lambda = \{ x \in \mathcal H \given Tx = \lambda x \} = \ker \lambda I - T
 	\]  be the $\lambda$-eigenspace of $T$.  Then \begin{enumerate}[(a)]
 		\item $M_\lambda \perp M_\mu$ if $\lambda \neq \mu$.  
@@ -2827,9 +2829,9 @@ The spectral theory for compact normal operators in a Hilbert space is particula
 Recall that for matrices, we have the following result, known as the Fredholm alternative.    
 
 \begin{thm}[Fredhold alternative (Finite dimensional spaces)]
-	Let $A: \C^n \rightarrow \C^n$ be linear.  Then exactly one of the following two things occur:
+	Let $A: \Com^n \rightarrow \Com^n$ be linear.  Then exactly one of the following two things occur:
 	\begin{enumerate}[(1)]
-		\item $Ax = 0$ has only the trivial solution $x = 0$, in which case $Ax = b$ has a unique solution for each $b \in \C^n$.  
+		\item $Ax = 0$ has only the trivial solution $x = 0$, in which case $Ax = b$ has a unique solution for each $b \in \Com^n$.  
 		\item $Ax = 0$ has a non-trivial solution, in which case $Ax = b$ has either no solutions, or infinitely many solutions.
 	\end{enumerate}
 \end{thm}
@@ -2845,7 +2847,7 @@ Consider equations of the following form\[
 \]  Then we have the following theorem, due to Fredholm. 
 
 \begin{thm}[Fredholm alternative (Hilbert spaces)]
-	Let $\mathcal H$ be Hilbert over $\C$, and let $T \in \mathcal K(\mathcal H)$.  Then exactly one of the following occurs.
+	Let $\mathcal H$ be Hilbert over $\Com$, and let $T \in \mathcal K(\mathcal H)$.  Then exactly one of the following occurs.
 	\begin{enumerate}[(a)]
 		\item $(\lambda I - T) = 0$ has only the trivial solution, in which case $(\lambda I - T)x = b$ has a unique solution for each $b \in \mathcal H$.  
 		\item $(\lambda I - T) x = 0$ has a non trivial solution, in which case $(\lambda I - T) x = b$ has a solution if and only if $b \perp y$ for every solution $y$ of the equation \[

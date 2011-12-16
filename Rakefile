@@ -1,37 +1,36 @@
 task :build do
   require 'fileutils'
-  FileUtils.rmdir "PDFScratch"
-  FileUtils.rmdir "PDFs"
-  FileUtils.mkdir_p "PDFScratch"
-  FileUtils.mkdir_p "PDFs"
+  output = "PDFs"
+  scratch = "PDFScratch"
+  FileUtils.rm_r output
+  FileUtils.rm_r scratch
+  FileUtils.mkdir_p scratch
+  FileUtils.mkdir_p output
   
   begin
     # Create scratch dir
-    tex_files = Dir["**/*.tex"]
-    tex_files.each do |file|
-      FileUtils.cp file, "PDFScratch"      
+    Dir["**/*.tex"].each do |file|
+      FileUtils.cp file, scratch
     end
     
     # Generate PDFs
-    Dir.chdir("PDFScratch") do
-      tex_files = FileList["*.tex"]
-      tex_files.each do |file|
+    Dir.chdir(scratch) do
+      FileList["*.tex"].each do |file|
+        # We run twice to ensure hyperlinks work correctly
+        # FIXME: Is there a better way to do this?
         sh "xelatex '#{file}'"
+        sh "xelatex '#{file}'"
+        
       end
     end
     
-    
-    pdf_files = Dir["PDFScratch/*.pdf"]
-    pdf_files.each do |pdf_file|
+    # Move to clean PDFs directory
+    Dir[scratch + "/*.pdf"].each do |pdf_file|
       FileUtils.cp pdf_file, "PDFs"
     end
-    
+
+    # Remove scratch directory
     FileUtils.rm_r "PDFScratch"
-    # Remove waste created by LaTeX 
-    # pdf_files = Dir["PDFScratch/*.tex"]
-    # pdf_files.each do |file|
-    #   FileUtils.mv file, "PDFScratch"      
-    #   
   end
 end
 

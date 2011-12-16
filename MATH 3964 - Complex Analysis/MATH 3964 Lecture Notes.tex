@@ -46,7 +46,7 @@
 
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
+\newcommand{\Com}{\mathbb{C}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\Ga}{\mathbb{G}}
@@ -54,6 +54,7 @@
 
 \newcommand{\nth}{n\textsuperscript{th}}
 		
+\usepackage{hyperref}
 		
 \title{MATH 3964 - Exam Notes}								% Document Title
 \author{Andrew Tulloch and Giles Gardam}
@@ -79,7 +80,7 @@
 \end{defn}
 
 \begin{defn}
-	A function $f(z)$ is \textbf{analytic} on a region $D$ if it is differentiable everywhere on $D$.  Thus the derivative $f'(z)$ is a function defined on $D$.  a function is analytic at a particular point $z_0 \in \C$ if it is differentiable on some open neighbourhood of $z_0$.
+	A function $f(z)$ is \textbf{analytic} on a region $D$ if it is differentiable everywhere on $D$.  Thus the derivative $f'(z)$ is a function defined on $D$.  a function is analytic at a particular point $z_0 \in \Com$ if it is differentiable on some open neighbourhood of $z_0$.
 \end{defn}
 
 \begin{thm}
@@ -210,7 +211,7 @@ Then a value of $f(z_1)$ can be assigned so that f(z) becomes analytic at $z_1$.
 
 
 \begin{defn}[Analyticitiy at infinity]
-	Suppose that $f(z)$ is analytic on an unbounded set and let $g(z) = f(1/z)$.  Then the point $\infty \in \C^{\star}$ is  point of analyticity of $f(z)$ if $z=0$ is a point of analyticity of $g(z)$.  Similarly, $z = \infty$ is a singularity of a particular type of $f(z)$ if $g(z)$ has a singularity of that same type at $z=0$. 
+	Suppose that $f(z)$ is analytic on an unbounded set and let $g(z) = f(1/z)$.  Then the point $\infty \in \Com^{\star}$ is  point of analyticity of $f(z)$ if $z=0$ is a point of analyticity of $g(z)$.  Similarly, $z = \infty$ is a singularity of a particular type of $f(z)$ if $g(z)$ has a singularity of that same type at $z=0$. 
 \end{defn}
 
 
@@ -219,7 +220,7 @@ Then a value of $f(z_1)$ can be assigned so that f(z) becomes analytic at $z_1$.
 \end{defn}
 
 \begin{defn}
-	A function is \textbf{meromorphic} if it is analytic in the whole complex plane $\C$ except for poles.  
+	A function is \textbf{meromorphic} if it is analytic in the whole complex plane $\Com$ except for poles.  
 \end{defn}
 
 % section cauchy_s_integral_formula (end)
@@ -460,7 +461,7 @@ We have the following relation
 	Consider the $\nth$-order differential equation,\[
 		w^{(n)} = f(z, w, w', w'', \dots, w^{(n-1)})
 	\] where $f$ is a locally analytic function of its $n$ complex arguments.  A singular point of the differential equation is a point \[
-		(z_0, w_0, w'_0, \dots, w_0^{(n-1)}) \in \C^n
+		(z_0, w_0, w'_0, \dots, w_0^{(n-1)}) \in \Com^n
 	\]
 	at which $f$ is \textbf{not analytic} or a point where one or more of the arguments is \textbf{infinite}.
 	
@@ -615,7 +616,7 @@ The general solution of the hypergeometric equation is \[
 
 We have an integral formula \[
 	F(\alpha, \beta; \gamma; z) = \frac{\Gamma(\gamma)}{\Gamma(\gamma - \beta)\Gamma(\beta)} \int_0^1 t^{\beta - 1} (1-t)^{\gamma - \beta - 1} (1- zt)^{- \alpha} \,dt
-\] valid for $\Re \gamma > \Re \beta > 0$, $|z| < 1$. but can be extended to $z \in \C = [1,\infty)$.
+\] valid for $\Re \gamma > \Re \beta > 0$, $|z| < 1$. but can be extended to $z \in \Com = [1,\infty)$.
 
 \subsection{Gauss' formula at $z = 1$} % (fold)
 \label{sub:gauss_formula_at_z_1_}
@@ -798,7 +799,7 @@ Let an elliptic function be defined as any \textbf{doubly periodic meromorphic f
 \end{thm}
 
 \begin{thm}
-	The transcendental equation $f(z) = a$ where $f(z)$ is an elliptic function of order $m$ has exactly $m$ roots in every period parallelogram, counting multiplicities, for every $a \in \C$.  
+	The transcendental equation $f(z) = a$ where $f(z)$ is an elliptic function of order $m$ has exactly $m$ roots in every period parallelogram, counting multiplicities, for every $a \in \Com$.  
 \end{thm}
 
 \begin{thm}

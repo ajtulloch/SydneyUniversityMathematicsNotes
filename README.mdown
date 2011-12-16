@@ -26,7 +26,7 @@ The courses are (in alphabetical order):
 
 * AMH3 - Interest Rate Models
 * AMH4 - Advanced Option Pricing
-* COMP 2907 - Algorithms and Complexity with [Giles Gardam](https://github.com/gilesgardam))
+* COMP 2907 - Algorithms and Complexity (with [Giles Gardam](https://github.com/gilesgardam))
 * MATH 3961 - Metric Spaces
 * MATH 3962 - Rings, Fields, and Galois Theory 
 * MATH 3964 - Complex Analysis (with [Giles Gardam](https://github.com/gilesgardam))
