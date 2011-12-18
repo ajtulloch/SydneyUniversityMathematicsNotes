@@ -6,7 +6,7 @@ This repository contains lecture notes in LaTeX for almost all of the courses I 
 PDF Files
 ---------
 
-For easy access, PDF of these notes are available on my [GitHub blog](http://ajtulloch.github.com/2011/mathematics-lecture-notes/)
+For easy access, PDF of these notes are available on my [GitHub blog](http://ajtulloch.github.com/2011/mathematics-lecture-notes/).
 
 Usage
 -----
