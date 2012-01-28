@@ -2,10 +2,15 @@ task :build do
   require 'fileutils'
   output = "PDFs"
   scratch = "PDFScratch"
-  FileUtils.rm_r output
-  FileUtils.rm_r scratch
-  FileUtils.mkdir_p scratch
-  FileUtils.mkdir_p output
+  
+  begin
+      # FileUtils.rm_r scratch   
+      # FileUtils.rm_r output
+      FileUtils.mkdir_p scratch
+      FileUtils.mkdir_p output
+      print "Created dirs"    
+    end
+    
   
   begin
     # Create scratch dir

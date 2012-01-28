@@ -3,42 +3,28 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
 
-\documentclass[10pt, oneside, reqno]{amsart}
-\usepackage{amsthm, amsmath, amssymb}
-\usepackage{setspace, graphicx, enumerate}
-% \usepackage{fullpage}
-% \usepackage[landscape, scale=0.85]{geometry}
-\onehalfspacing     
 
-% \usepackage{mathspec}
-% \setallmainfonts{Minion Pro}
-            
+\documentclass[10pt, oneside, reqno]{amsart}
+\usepackage{geometry, setspace, graphicx, enumerate}
+\onehalfspacing                 
 \usepackage{fontspec,xltxtra,xunicode}
 \defaultfontfeatures{Mapping=tex-text}
 
-
-% \setlength{\columnsep}{50pt}
-% \setlength{\columnseprule}{2pt}
-
-%\setromanfont[Mapping=tex-text,Contextuals= 
-%{NoWordInitial,NoWordFinal,NoLineInitial,NoLineFinal}]{Hoefler Text}
-%\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Hoefler Text}
-%\setmonofont[Scale=MatchLowercase]{Andale Mono}
-
-
 	% AMS Theorems
 	\theoremstyle{plain}% default 
-	\newtheorem{thm}{Theorem}[section] 
+	\newtheorem{thm}{Theorem}[section]
 	\newtheorem{lem}[thm]{Lemma} 
 	\newtheorem{prop}[thm]{Proposition} 
 	\newtheorem*{cor}{Corollary} 
 
+	\numberwithin{equation}{section}
 
 \newcommand{\res}[2]{\text{Res}(#1,#2)}
 	\theoremstyle{definition} 
 		\newtheorem{defn}[thm]{Definition}
 		\newtheorem{conj}[thm]{Conjecture}
 		\newtheorem{exmp}[thm]{Example}
+		\newtheorem{exer}[thm]{Exercise}
 	
 	\theoremstyle{remark} 
 		\newtheorem*{rem}{Remark} 
@@ -53,7 +39,7 @@
 		\newcommand{\us}{0 \leq u \leq s}
 		\newcommand{\ts}[1]{\{ #1 \}}
 
-\renewcommand{\phi}{\varphi}
+% \renewcommand{\phi}{\varphi}
 \newcommand{\sigf}{\mathcal{F}}
 
 \newcommand{\dzz}{\, dz}
@@ -62,11 +48,14 @@
 \newcommand{\al}{\alpha}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
+\newcommand{\Com}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\N}{\mathbb{N}}
 
+\newcommand{\El}{\mathcal{L}}
 \newcommand{\I}{\mathbb{I}}
 
 \renewcommand{\P}{\mathbb{P}}
@@ -92,6 +81,8 @@
 			#4  &\mapsto #5
 \end{align*}	
 }
+\newcommand{\im}{\textsc{Im\ }}
+\renewcommand{\ker}{\textsc{Ker\ }}
 
 
 \def\cip{\,{\buildrel p \over \rightarrow}\,} 
@@ -104,8 +95,12 @@
 \def\eqas{\,{\buildrel a.s. \over =}\,}
 \newcommand{\sigg}{\mathcal{G}}		
 \newcommand{\indic}[1]{\mathbf{1}_{\{ #1 \}} }
-		
-\usepackage{hyperref}
+\newcommand{\iprod}[1]{\left\langle #1 \right\rangle}
+\renewcommand{\Re}{\text{Re}}
+
+
+\usepackage{hyperref}		
+
 
 		
 \title{AMH4 - Advanced Option Pricing}								% Document Title
@@ -115,6 +110,8 @@
 
 \begin{document}
 \maketitle
+
+
 \section{Theory of Option Pricing} % (fold)
 \label{sec:theory_of_option_pricing}
 \begin{defn}[Brownian motion]
@@ -274,7 +271,7 @@ Consider a market with risky security $X_t$ and riskless security $B_t$.
 Instead of simulating $X$, also simulate a random variable $Z$ with the same variance and expectation as $X$, but is negatively correlated with $X$.  Then take as $Y$ the random variable \[
 	Y = \frac{X + Z}{2}
 \] Obviously $\E(Y) = \E(X)$.  On the other side, we have \begin{align*}
-\var(Y) &= \cov\left( \frac{X+Z}{2}, \frac{X + Z}{2} \right) \\
+\var(Y) &= \cov\left(\frac{X+Z}{2}, \frac{X + Z}{2} \right) \\
 		&= \frac{1}{4} \var(X) + 2 \cov(X, Z) + \var(Z) \leq \frac{1}{2} \var(X)	
 \end{align*}
   So we can reduce variance by a factor of two.  
@@ -421,34 +418,6 @@ Instead of simulating $X$, also simulate a random variable $Z$ with the same var
 	\] 
 \end{thm}
 % section stochastic_optimal_control (end)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
