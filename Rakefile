@@ -6,14 +6,12 @@ task :build do
   begin
       # FileUtils.rm_r scratch   
       # FileUtils.rm_r output
-      FileUtils.mkdir_p scratch
-      FileUtils.mkdir_p output
-      print "Created dirs"    
     end
     
   
   begin
     # Create scratch dir
+    FileUtils.mkdir_p scratch
     Dir["**/*.tex"].each do |file|
       FileUtils.cp file, scratch
     end
@@ -30,12 +28,13 @@ task :build do
     end
     
     # Move to clean PDFs directory
+    FileUtils.mkdir_p output
     Dir[scratch + "/*.pdf"].each do |pdf_file|
-      FileUtils.cp pdf_file, "PDFs"
+      FileUtils.cp pdf_file, output
     end
 
     # Remove scratch directory
-    FileUtils.rm_r "PDFScratch"
+    FileUtils.rm_r scratch
   end
 end
 
