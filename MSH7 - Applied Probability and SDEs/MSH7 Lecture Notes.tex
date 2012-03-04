@@ -65,9 +65,9 @@
 \newcommand{\minpoly}[2]{m_{#1, #2}(x)}
 
 \newcommand{\mapping}[5]{\begin{align*}
-	#1 : \quad     #2 &\rightarrow #3 \\
-			#4  &\mapsto #5
-\end{align*}	
+    #1 : \quad     #2 &\rightarrow #3 \\
+            #4  &\mapsto #5
+\end{align*}    
 }
 
 \def\cip{\,{\buildrel p \over \rightarrow}\,} 
@@ -78,10 +78,10 @@
 \def\eqas{\,{\buildrel a.s. \over =}\,} 
 
 \newcommand{\sigf}{\mathcal{F}}
-		
+        
 \usepackage{hyperref}
 
-\title{MSH7 - Applied Probability and Stochastic Calculus}								% Document Title
+\title{MSH7 - Applied Probability and Stochastic Calculus}                              % Document Title
 \author{Andrew Tulloch}
 %\date{}                                           % Activate to display a given date or no date
 
@@ -94,38 +94,38 @@
 \label{sec:lecture_1_1_march}
 
 \begin{defn}[Finite dimensional distribution]
-	The \textbf{finite dimensional distribution} of a stochastic process $X$ is the joint distribution of $(X_{t_1}, X_{t_2}, \dots, X_{t_n})$
+    The \textbf{finite dimensional distribution} of a stochastic process $X$ is the joint distribution of $(X_{t_1}, X_{t_2}, \dots, X_{t_n})$
 \end{defn}
 
 \begin{defn}[Equality in distribution]
-	Two random variables $X$ and $Y$ are \textbf{equal in distribution} if $\prob{X \leq \alpha} = \prob{Y \leq \alpha}$ for all $\alpha \in \R$.  We write $X \eqd Y$.
+    Two random variables $X$ and $Y$ are \textbf{equal in distribution} if $\prob{X \leq \alpha} = \prob{Y \leq \alpha}$ for all $\alpha \in \R$.  We write $X \eqd Y$.
 \end{defn}
 
 \begin{defn}[Strictly stationary]
-	A stochastic process $X$ is \textbf{strictly stationary} if \[
-		(X_{t_1}, X_{t_2}, \dots, X_{t_n}) = (X_{t_1+h}, X_{t_2+h}, \dots, X_{t_n+h})
-	\] for all $t_i, h$.
+    A stochastic process $X$ is \textbf{strictly stationary} if \[
+        (X_{t_1}, X_{t_2}, \dots, X_{t_n}) = (X_{t_1+h}, X_{t_2+h}, \dots, X_{t_n+h})
+    \] for all $t_i, h$.
 \end{defn}
 
 \begin{defn}[Weakly stationary]
-	A stochastic process $X$ is \textbf{weakly stationary} if $\expc{X_t} = \expc{X_{t+h}}$ and $\cov{X_t, X_s} = \cov{X_{t+h}, X_{s+h}}$ for all $t, s, h$.
+    A stochastic process $X$ is \textbf{weakly stationary} if $\expc{X_t} = \expc{X_{t+h}}$ and $\cov{X_t, X_s} = \cov{X_{t+h}, X_{s+h}}$ for all $t, s, h$.
 \end{defn}
 
 \begin{lem}
-	If $\expc{X_t^2} < \infty$, then strictly stationary implies weakly stationary.
+    If $\expc{X_t^2} < \infty$, then strictly stationary implies weakly stationary.
 \end{lem}
 
 \begin{exmp}{\ }
-	\begin{itemize}
-		\item The stochastic process $\{ X_t \}$ with $X_t$ all IID is strictly stationary.
-		\item The stochastic process $W_t$ with $W_t ~ N(0,t)$ and $X_t - X_s$ independent of $X_s$ (for $s < t$) is not strictly or weakly stationary.
-	\end{itemize}
+    \begin{itemize}
+        \item The stochastic process $\{ X_t \}$ with $X_t$ all IID is strictly stationary.
+        \item The stochastic process $W_t$ with $W_t ~ N(0,t)$ and $X_t - X_s$ independent of $X_s$ (for $s < t$) is not strictly or weakly stationary.
+    \end{itemize}
 \end{exmp}
 \begin{defn}[Stationary increments]
-	A stochastic process has \textbf{stationary increments} if 
-	\[
-		X_t - X_s \eqd X_{t-h} - X_{s-h}
-	\] for all $s, t, h$.
+    A stochastic process has \textbf{stationary increments} if 
+    \[
+        X_t - X_s \eqd X_{t-h} - X_{s-h}
+    \] for all $s, t, h$.
 \end{defn}
 % section lecture_1_1_march (end)
 
@@ -133,69 +133,69 @@
 \label{sec:lecture_2_thursday_3_march}
 
 \begin{exmp}
-	Let $X_n, n \geq 1$ be IID random variables.  Consider the stochastic process $\{ S_n \}$ where $S_n = \sum^n_{j=1} X_j$.  Then $\{ S_n \}$ has stationary increments.
+    Let $X_n, n \geq 1$ be IID random variables.  Consider the stochastic process $\{ S_n \}$ where $S_n = \sum^n_{j=1} X_j$.  Then $\{ S_n \}$ has stationary increments.
 \end{exmp}
 
 \subsection{Concepts of convergence} % (fold)
 \label{sub:convergence_in_distirbution}
 There are three major concepts of convergence of random variables.
 \begin{itemize}
-	\item Convergence in distribution
-	\item Convergence in probability
-	\item Almost surely convergence
+    \item Convergence in distribution
+    \item Convergence in probability
+    \item Almost surely convergence
 \end{itemize}
 
 \begin{defn}[Convergence in distribution]
-	$X_n \cid X$ if $\prob{X_n \leq x} \rightarrow \prob{ X \leq x}$ for all $x$.
+    $X_n \cid X$ if $\prob{X_n \leq x} \rightarrow \prob{ X \leq x}$ for all $x$.
 \end{defn}
 
 \begin{defn}[Convergence in probability]
-	$X_n \cip X$ if $\prob{ (|X_n - X | \geq \epsilon)} \rightarrow 0$ for all $\epsilon > 0$.
+    $X_n \cip X$ if $\prob{ (|X_n - X | \geq \epsilon)} \rightarrow 0$ for all $\epsilon > 0$.
 \end{defn}
 
 \begin{defn}[Almost surely convergence]
-	$X_n \cas X$ if except on a null set $A$, $X_n \rightarrow X$, that is, $\lim_{n \rightarrow \infty} X_n = X$.  And hence $\prob{ \lim_{n \rightarrow \infty} X_n = X} = 1$
+    $X_n \cas X$ if except on a null set $A$, $X_n \rightarrow X$, that is, $\lim_{n \rightarrow \infty} X_n = X$.  And hence $\prob{ \lim_{n \rightarrow \infty} X_n = X} = 1$
 \end{defn}
 
 
 \begin{defn}[$\sigma$-field generated by $X$]
-	Let $X$ be a random variable defined on a probability space $(\Omega, \mathcal{F}, \P)$.  We call $\sigma(X)$ the $\sigma$-field generated by $X$, and we have \[
-		\sigma(X) = \left\{ X^{-1}(B): B \in \mathcal{B} \right\}
-	\] where $X^{-1}(B) = \{ \omega, X(\omega) \in \mathcal{B} \}$ and $\mathcal{B}$ is the Borel set on $\R$.
+    Let $X$ be a random variable defined on a probability space $(\Omega, \mathcal{F}, \P)$.  We call $\sigma(X)$ the $\sigma$-field generated by $X$, and we have \[
+        \sigma(X) = \left\{ X^{-1}(B): B \in \mathcal{B} \right\}
+    \] where $X^{-1}(B) = \{ \omega, X(\omega) \in \mathcal{B} \}$ and $\mathcal{B}$ is the Borel set on $\R$.
 \end{defn}
 
 \begin{defn}[Conditional probability]
-	We have $\P( A | B) = \frac{\P(A, B)}{\P(B)}$ if $\P(B) \neq 0$.
+    We have $\P( A | B) = \frac{\P(A, B)}{\P(B)}$ if $\P(B) \neq 0$.
 \end{defn}
 
 \begin{defn}[Naive conditional expectation]
-	We have $\expc{X | B} = \frac{ \expc{ X \mathbb{I}_B}}{\P(B)}$.
+    We have $\expc{X | B} = \frac{ \expc{ X \mathbb{I}_B}}{\P(B)}$.
 \end{defn}
 
 \begin{defn}[Conditional density]
-	Let $g(x,y)$ be the joint density function for $X$ and $Y$.  Then we have $Y ~ \int_\R g(x,y)\, dx \equiv g_Y(y)$.  We also have \[
-		g_{X|Y = y} = \frac{g(x,y)}{g_Y(y)}
-	\] which defines the conditional density given $Y = y$.
-	
-	Finally, we define $\expc{ X |Y = y} = \int_\R x g_{X|Y = y}(x) \,dx$.
+    Let $g(x,y)$ be the joint density function for $X$ and $Y$.  Then we have $Y ~ \int_\R g(x,y)\, dx \equiv g_Y(y)$.  We also have \[
+        g_{X|Y = y} = \frac{g(x,y)}{g_Y(y)}
+    \] which defines the conditional density given $Y = y$.
+    
+    Finally, we define $\expc{ X |Y = y} = \int_\R x g_{X|Y = y}(x) \,dx$.
 \end{defn}
 
 \begin{defn}[Conditional expectation]
-	Let $(\Omega, \mathcal{F}, \P)$ be a probability space.  Let $\mathcal{A}$ be a sub $\sigma$-field of $\mathcal{F}$.  Let $X$ be a random variable such that $\E(|X|) < \infty$.  We define $\expc{X | \mathcal{A}}$ to be a random variable $Z$ such that 
-	\begin{enumerate}[(i)]
-		\item $Z$ is $\mathcal{A}$-measurable,
-		\item $\E(X\mathbb{I}_A) = \E(Z\mathbb{I}_A)$ for all $A \in \mathcal{A}$.
-	\end{enumerate}
+    Let $(\Omega, \mathcal{F}, \P)$ be a probability space.  Let $\mathcal{A}$ be a sub $\sigma$-field of $\mathcal{F}$.  Let $X$ be a random variable such that $\E(|X|) < \infty$.  We define $\expc{X | \mathcal{A}}$ to be a random variable $Z$ such that 
+    \begin{enumerate}[(i)]
+        \item $Z$ is $\mathcal{A}$-measurable,
+        \item $\E(X\mathbb{I}_A) = \E(Z\mathbb{I}_A)$ for all $A \in \mathcal{A}$.
+    \end{enumerate}
 \end{defn}
 
 
 \begin{prop}[Properties of the conditional expectation]
-	Consider $Z = \E(X|Y) = \E(X|\sigma(Y))$
-	\begin{itemize}
-		\item If $T$ is $\sigma(Y)$-measurable, then $\E(XT|Y) = T\E(X|Y)$ a.s.
-		\item If $T$ is independent of $Y$, then $\E(T|Y) = \E(T)$.
-		\item $\E(X) = \E(\E(X|T))$
-	\end{itemize}
+    Consider $Z = \E(X|Y) = \E(X|\sigma(Y))$
+    \begin{itemize}
+        \item If $T$ is $\sigma(Y)$-measurable, then $\E(XT|Y) = T\E(X|Y)$ a.s.
+        \item If $T$ is independent of $Y$, then $\E(T|Y) = \E(T)$.
+        \item $\E(X) = \E(\E(X|T))$
+    \end{itemize}
 \end{prop}
 
 % subsection convergence_in_distirbution (end)
@@ -205,91 +205,91 @@ There are three major concepts of convergence of random variables.
 \label{sec:lecture_3_tuesday_8_march}
 
 \begin{defn}[Martingale]
-	Let $\{ X_t, t \geq 0 \}$ be a \textbf{right-continuous} with \textbf{left-hand limits}.  \[
-		\lim_{t \uparrow t_0} X_t \quad \text{exists}
-	\]
-	Let $\{\sigf_t, t \geq 0 \} $ be a filtration.  
-	
-	Then $X$ is called a martingale with respect to $\sigf_t$ if 
-	\begin{enumerate}[(i)]
-		\item $X$ is \textbf{adapted to $\sigf_t$}, i.e. $X_t$ is $\sigf_t$-measurable
-		\item $\E(|X|) < \infty, t \geq 0$
-		\item $\E(X_t | \sigf_s) = X_s$ a.s.
-	\end{enumerate}
+    Let $\{ X_t, t \geq 0 \}$ be a \textbf{right-continuous} with \textbf{left-hand limits}.  \[
+        \lim_{t \uparrow t_0} X_t \quad \text{exists}
+    \]
+    Let $\{\sigf_t, t \geq 0 \} $ be a filtration.  
+    
+    Then $X$ is called a martingale with respect to $\sigf_t$ if 
+    \begin{enumerate}[(i)]
+        \item $X$ is \textbf{adapted to $\sigf_t$}, i.e. $X_t$ is $\sigf_t$-measurable
+        \item $\E(|X|) < \infty, t \geq 0$
+        \item $\E(X_t | \sigf_s) = X_s$ a.s.
+    \end{enumerate}
 \end{defn}
 
 \begin{exmp}
-	Let $X_n$ be IID with $\E(X_n) = 0$.  Then $\{ S_k, k \geq 0 \}$, where $S_k = \sum_{i = 0}^k X_i$, is a martingale.
+    Let $X_n$ be IID with $\E(X_n) = 0$.  Then $\{ S_k, k \geq 0 \}$, where $S_k = \sum_{i = 0}^k X_i$, is a martingale.
 \end{exmp}
 
 \begin{exmp}
-	An independent increment process $\{ X_t, t \geq 0 \}$ with $\E(X_t) = 0$ and $\E(|X_t|) \leq \infty$ is a martingale with respect to $\sigf_t = \sigma\{ X_s, 0 \leq s \leq t \}$
+    An independent increment process $\{ X_t, t \geq 0 \}$ with $\E(X_t) = 0$ and $\E(|X_t|) \leq \infty$ is a martingale with respect to $\sigf_t = \sigma\{ X_s, 0 \leq s \leq t \}$
 \end{exmp}
 
 \begin{defn}[Gaussian process]
-	Let $\{ X_t, t \geq 0 \}$ be a stochastic process.  If the finite dimensional distributions are multivariate normal, that is,\[
-		(X_{t_1}, \dots, X_{t_m}) \equiv N(\mu, \Sigma)
-	\]
-	for all $t_1, \dots, t_m$, then we call $X_t$ a \textbf{Gaussian process}
+    Let $\{ X_t, t \geq 0 \}$ be a stochastic process.  If the finite dimensional distributions are multivariate normal, that is,\[
+        (X_{t_1}, \dots, X_{t_m}) \equiv N(\mu, \Sigma)
+    \]
+    for all $t_1, \dots, t_m$, then we call $X_t$ a \textbf{Gaussian process}
 \end{defn}
 
 \begin{defn}[Markov process]
-	A continuous time process $X$ is a \textbf{Markov process} if for all $t$, each $A \in \sigma( X_s, s > t)$ and $B \in \sigma( X_s, s < t)$, we have \[
-		\P(A|X_t, B) = \P(A | X_t)
-	\]
+    A continuous time process $X$ is a \textbf{Markov process} if for all $t$, each $A \in \sigma( X_s, s > t)$ and $B \in \sigma( X_s, s < t)$, we have \[
+        \P(A|X_t, B) = \P(A | X_t)
+    \]
 \end{defn}
 
 \begin{defn}[Diffusion process]
-	Consider the stochastic differential equation \[
-	dX_t = \mu(t, x) dt + \sigma(t,x) dB_t
-	\]
-	A diffusion process is \textbf{path-continuous}, \textbf{strong Markov} process such that
-	\begin{align*}
-		\lim_{h \rightarrow 0} h^{-1} \E( X_{t+h} - X_t | X_t = x) &= \mu(t, x)	\\
-		\lim_{h \rightarrow 0} h^{-1} \E([X_{t+h} - X_t - h\mu(t, X)]^2 | X_t = x) &= \sigma^2(t, x)
-	\end{align*}
+    Consider the stochastic differential equation \[
+    dX_t = \mu(t, x) dt + \sigma(t,x) dB_t
+    \]
+    A diffusion process is \textbf{path-continuous}, \textbf{strong Markov} process such that
+    \begin{align*}
+        \lim_{h \rightarrow 0} h^{-1} \E( X_{t+h} - X_t | X_t = x) &= \mu(t, x) \\
+        \lim_{h \rightarrow 0} h^{-1} \E([X_{t+h} - X_t - h\mu(t, X)]^2 | X_t = x) &= \sigma^2(t, x)
+    \end{align*}
 
 \end{defn}
 
 \begin{defn}[Path-continuous]
-	A process is \textbf{path-continuous} if $\lim_{t \rightarrow t_0} X_t = X_{t_0}$.
+    A process is \textbf{path-continuous} if $\lim_{t \rightarrow t_0} X_t = X_{t_0}$.
 \end{defn}
 
 \begin{defn}[L\'evy process]
-	Let $\{X_t, t \geq 0$ be a stochastic process.  We call $X$ a \textbf{L\'evy process}
-	\begin{enumerate}[(i)]
-		\item $X_0 = 0$ a.s.
-		\item It has stationary and independent increments
-		\item $X$ is stochastically continuous, that is, for all $s, t, \epsilon > 0$, we have \[
-			\lim_{s \rightarrow t} \P(|X_s - X_t| \geq \epsilon) = 0.
-		\]  Equivalently, $X_s \cip X_t$ if $s \rightarrow t$.
-	\end{enumerate}
+    Let $\{X_t, t \geq 0$ be a stochastic process.  We call $X$ a \textbf{L\'evy process}
+    \begin{enumerate}[(i)]
+        \item $X_0 = 0$ a.s.
+        \item It has stationary and independent increments
+        \item $X$ is stochastically continuous, that is, for all $s, t, \epsilon > 0$, we have \[
+            \lim_{s \rightarrow t} \P(|X_s - X_t| \geq \epsilon) = 0.
+        \]  Equivalently, $X_s \cip X_t$ if $s \rightarrow t$.
+    \end{enumerate}
 \end{defn}
 % section lecture_3_tuesday_8_march (end)
 
 \begin{exmp}[Poisson process]
-	Let $(N(t), t \geq 0 )$ be a stochastic process.  We call $N(t)$ a \textbf{Poisson process} if the following all hold: 
-	\begin{enumerate}[(i)]
-		\item $N(0) = 0$
-		\item $N$ has independent increments
-		\item For all $s, t \geq 0$, \[
-			\P(N(t+s)-N(s) = n) = \frac{e^{-\lambda t}(\lambda t)^n}{n!} \quad n = 0, 1, 2, \dots
-		\]
-	\end{enumerate}
+    Let $(N(t), t \geq 0 )$ be a stochastic process.  We call $N(t)$ a \textbf{Poisson process} if the following all hold: 
+    \begin{enumerate}[(i)]
+        \item $N(0) = 0$
+        \item $N$ has independent increments
+        \item For all $s, t \geq 0$, \[
+            \P(N(t+s)-N(s) = n) = \frac{e^{-\lambda t}(\lambda t)^n}{n!} \quad n = 0, 1, 2, \dots
+        \]
+    \end{enumerate}
 
-	The Poisson process is stochastically continuous - that is,
-	\begin{align*}
-		\P( | N(t) - N(s) | \geq \epsilon) 	&= \P(|N(t - s) - N(0) | \geq \epsilon) \\
-		 									&= 1- \P(|N(t-s) | < \alpha ) \\
-											&= 1 - \P(|N(t - s) | = 0 ) \\
-											&= 1 - e^{-\lambda(t-s)} \rightarrow 0 \quad \text{as $t \rightarrow s$}
-	\end{align*}
-	
-	The Poisson process is \textbf{not} path-continuous, that is \[
-		\P( \lim_{t \rightarrow s} |N(t) - N(s)| = 0) \neq 1
-	\] because \[
-		\P( \displaystyle\cup_{|t-s| \geq \epsilon} |N(t) - N(s)| > \delta ) \geq \P(|N(s+1) - N(s) | \geq \delta ) > 0
-	\]
+    The Poisson process is stochastically continuous - that is,
+    \begin{align*}
+        \P( | N(t) - N(s) | \geq \epsilon)  &= \P(|N(t - s) - N(0) | \geq \epsilon) \\
+                                            &= 1- \P(|N(t-s) | < \alpha ) \\
+                                            &= 1 - \P(|N(t - s) | = 0 ) \\
+                                            &= 1 - e^{-\lambda(t-s)} \rightarrow 0 \quad \text{as $t \rightarrow s$}
+    \end{align*}
+    
+    The Poisson process is \textbf{not} path-continuous, that is \[
+        \P( \lim_{t \rightarrow s} |N(t) - N(s)| = 0) \neq 1
+    \] because \[
+        \P( \displaystyle\cup_{|t-s| \geq \epsilon} |N(t) - N(s)| > \delta ) \geq \P(|N(s+1) - N(s) | \geq \delta ) > 0
+    \]
 \end{exmp}
 
 
@@ -297,68 +297,68 @@ There are three major concepts of convergence of random variables.
 \label{sec:lecture_4_thursday_10_march}
 
 \begin{defn}[Self-similar process]
-	For any $t_1, t_2, \dots, t_n \geq 0$, for any $c > 0$, there exists an $H$ such that \[
-		(X_{ct1}, X_{ct_2}, \dots, X_{ct_n}) \eqd 	(c^H X_{t1}, c^H X_{t_2}, \dots, c^H X_{t_n}).
-	\]
-	We call $H$ the \textbf{Hurst index}.
+    For any $t_1, t_2, \dots, t_n \geq 0$, for any $c > 0$, there exists an $H$ such that \[
+        (X_{ct1}, X_{ct_2}, \dots, X_{ct_n}) \eqd   (c^H X_{t1}, c^H X_{t_2}, \dots, c^H X_{t_n}).
+    \]
+    We call $H$ the \textbf{Hurst index}.
 \end{defn}
 
 \begin{exmp}[Fractional process]
-	\[
-		(1-B)^d X_t = \epsilon_t, \quad \epsilon_t \text{ martingale difference}
-	\]
-	\[
-		B X_t = X_{t-1}, \quad 0 < d < 1
-	\]
+    \[
+        (1-B)^d X_t = \epsilon_t, \quad \epsilon_t \text{ martingale difference}
+    \]
+    \[
+        B X_t = X_{t-1}, \quad 0 < d < 1
+    \]
 \end{exmp}
 
 \begin{defn}[Brownian motion]
-	Let $\{ B_t, t \geq 0 \}$ be a stochastic process.  We call $B_t$ a \textbf{Brownian motion} if the following hold:
-	\begin{enumerate}[(i)]
-		\item $B_0 = 0$ a.s.
-		\item $\{B_t \}$ has stationary, independent increments.
-		\item For any $t > 0$, $B_t \equiv N(0,t)$
-		\item The path $t \mapsto B_t$ is continuous almost surely, i.e.\[
-			\P(\lim_{t \rightarrow t_0} B_t = B_{t_0}) = 1
-		\]
-	\end{enumerate}
+    Let $\{ B_t, t \geq 0 \}$ be a stochastic process.  We call $B_t$ a \textbf{Brownian motion} if the following hold:
+    \begin{enumerate}[(i)]
+        \item $B_0 = 0$ a.s.
+        \item $\{B_t \}$ has stationary, independent increments.
+        \item For any $t > 0$, $B_t \equiv N(0,t)$
+        \item The path $t \mapsto B_t$ is continuous almost surely, i.e.\[
+            \P(\lim_{t \rightarrow t_0} B_t = B_{t_0}) = 1
+        \]
+    \end{enumerate}
 \end{defn}
 
 \begin{defn}[Alternative formulations of Brownian motion]
-	A process $\{ B_t, t \geq 0 \}$ is a Brownian motion if and only if 
-	\begin{itemize}
-		\item $\{ B_t, t \geq 0 \}$ is a Gaussian process
-		\item $\E(B_t) = 0, \E(B_s B_t) = \min(s,t)$
-		\item The process $\{ B_t \}$ is path-continuous
-	\end{itemize}
+    A process $\{ B_t, t \geq 0 \}$ is a Brownian motion if and only if 
+    \begin{itemize}
+        \item $\{ B_t, t \geq 0 \}$ is a Gaussian process
+        \item $\E(B_t) = 0, \E(B_s B_t) = \min(s,t)$
+        \item The process $\{ B_t \}$ is path-continuous
+    \end{itemize}
 \end{defn}
 
 \begin{proof}
-	$(\Rightarrow)$  For all $t_1, \dots, t_m$, we have \[
-		(B_{t_m} - B_{t_{m-1}}, \dots, B_{t_2} - B_{t_1}) \equiv N(0, \Sigma)
-	\]
-	as $B_t$ has stationary, independent increments.  Hence, $(B_{t_1}, B_{t_2,}, \dots, B_{t_n})$ is normally distributed.  Thus $B_t$ is a Gaussian process.  We can also show that $\E(B_t) = 0$ and $\E(B_s B_t) = \min(t,s)$.  
-	
-	$(\Leftarrow)$ TO PROVE
+    $(\Rightarrow)$  For all $t_1, \dots, t_m$, we have \[
+        (B_{t_m} - B_{t_{m-1}}, \dots, B_{t_2} - B_{t_1}) \equiv N(0, \Sigma)
+    \]
+    as $B_t$ has stationary, independent increments.  Hence, $(B_{t_1}, B_{t_2,}, \dots, B_{t_n})$ is normally distributed.  Thus $B_t$ is a Gaussian process.  We can also show that $\E(B_t) = 0$ and $\E(B_s B_t) = \min(t,s)$.  
+    
+    $(\Leftarrow)$ TO PROVE
 \end{proof}
 
 \begin{cor}
-	Let $B_t$ be a Brownian motion.  The so are the following:
-	\begin{itemize}
-		\item $\{ B_{t + t_0} - B_{t_0}, t \geq 0 \}$
-		\item $\{ -B_t, t \geq 0 \}$
-		\item $\{ c B_{t/c^2}, t \geq 0, c \neq 0 \}$
-		\item $\{ t B_{1/t} , t \geq 0 \}$
-	\end{itemize}
+    Let $B_t$ be a Brownian motion.  The so are the following:
+    \begin{itemize}
+        \item $\{ B_{t + t_0} - B_{t_0}, t \geq 0 \}$
+        \item $\{ -B_t, t \geq 0 \}$
+        \item $\{ c B_{t/c^2}, t \geq 0, c \neq 0 \}$
+        \item $\{ t B_{1/t} , t \geq 0 \}$
+    \end{itemize}
 \end{cor}
 
 \begin{proof} Here, we prove that $\{ X_t \} = \{ t B_{1/t} \}$ is a Brownian motion.  Consider $\sum^n \alpha_i X_{t_i}$.  Then by a telescoping argument, we know that the process is Gaussian (can be written as a sum of $X_{t_1}, X_{t_2} - X_{t_1}$, etc).  We can also easily show that $\E(X_t) = 0$ and $\E(X_t X_s) = \min(s,t)$ as required.   
-	
+    
 We now show that $\lim_{t \rightarrow 0} X_t = 0$ a.s. Fix $\epsilon \geq 0$.  We must show \[
-	\P \left( \bigcap_{n=1}^\infty \bigcup_{m = 1}^\infty \bigcap_{0 < t < \frac{1}{m}} \{ |X_t | \leq \frac{1}{n} \} \right) = 1
+    \P \left( \bigcap_{n=1}^\infty \bigcup_{m = 1}^\infty \bigcap_{0 < t < \frac{1}{m}} \{ |X_t | \leq \frac{1}{n} \} \right) = 1
 \]
 However, as $|X_t|$ has the same distribution as $|B_t|$ (as they are both Gaussian with same mean and covariance), we have that this is equivalent to \[
-		\P \left( \bigcap_{n=1}^\infty \bigcup_{m = 1}^\infty \bigcap_{0 < t < \frac{1}{m}} \{ |B_t | \leq \frac{1}{n} \} \right)
+        \P \left( \bigcap_{n=1}^\infty \bigcup_{m = 1}^\infty \bigcap_{0 < t < \frac{1}{m}} \{ |B_t | \leq \frac{1}{n} \} \right)
 \] which is clearly one.
 
 \end{proof}
@@ -368,116 +368,116 @@ However, as $|X_t|$ has the same distribution as $|B_t|$ (as they are both Gauss
 \label{sec:lecture_5_tuesday_15_march}
 
 \begin{thm}[Properties of the Brownian motion]
-	We have \[
-		\P( B_t \leq x \, | \, B_{t_0} = x_0, \dots, B_{t_n} = x_n ) = \P(B_t \leq x | B_s = x_s) = \Phi( \frac{x - x_s}{\sqrt{t-s}})
-	\] 
+    We have \[
+        \P( B_t \leq x \, | \, B_{t_0} = x_0, \dots, B_{t_n} = x_n ) = \P(B_t \leq x | B_s = x_s) = \Phi( \frac{x - x_s}{\sqrt{t-s}})
+    \] 
 \end{thm}
 
 \begin{thm}
-	The joint density of $(B_{t_1}, \dots, B_{t_n}$ is given by \[
-		g(x_1, \dots, x_n) = \prod_{j=1}^n f(x_{t_j} - x_{t_{j-1}}, t_j - t_1)
-	\] where $f(x,t) = \frac{1}{\sqrt{2 \pi t}} e^{-\frac{x^2}{2t}}$
+    The joint density of $(B_{t_1}, \dots, B_{t_n}$ is given by \[
+        g(x_1, \dots, x_n) = \prod_{j=1}^n f(x_{t_j} - x_{t_{j-1}}, t_j - t_1)
+    \] where $f(x,t) = \frac{1}{\sqrt{2 \pi t}} e^{-\frac{x^2}{2t}}$
 \end{thm}
 
 \begin{thm}[Density and distribution of Brownian bridge]
-	Let $t_1  < t < t_2$.  Then \[
-		g( B_t | B_{t_1} = a, B_{t_2} = b ) \equiv N\left(a + \frac{(b-a)(t-t_1)}{t_2 - t_1}, \frac{(t_2-t)(t-t_1)}{t_2 - t_1} \right).
-	\]
-	
-	The density of $B_t | B_{t_1} =a , B_{t_2} = b$ is given as \[
-		\frac{g_{t_1, t, t_2}(a,b,t)}{g_{t_1, t_2}(a,b)}
-	\]
+    Let $t_1  < t < t_2$.  Then \[
+        g( B_t | B_{t_1} = a, B_{t_2} = b ) \equiv N\left(a + \frac{(b-a)(t-t_1)}{t_2 - t_1}, \frac{(t_2-t)(t-t_1)}{t_2 - t_1} \right).
+    \]
+    
+    The density of $B_t | B_{t_1} =a , B_{t_2} = b$ is given as \[
+        \frac{g_{t_1, t, t_2}(a,b,t)}{g_{t_1, t_2}(a,b)}
+    \]
 \end{thm}
 
 \begin{thm}[ Joint distribution of $B_t$ and $B_s$]
-	We have 
-	\begin{align*}
-		\P(B_s \leq x, B_t \leq y) &= \\ \P(B_s \leq x, B_{t} - B_s \leq y - B_s ) \\
-		&= \int_{-\infty}^x \int_{-\infty}^{y-z} \frac{1}{\sqrt{2\pi s}} e^{-\frac{x_1^2}{2s}} \frac{1}{\sqrt{2 \pi (t-s)}} e^{-\frac{-z_2^2}{2(t-s)}} \, dz_1 \, dz_2 \\
-		&= \int_{-\infty}^x \int_{-\infty}^y \frac{1}{\sqrt{2\pi s}} e^{-\frac{x_1^2}{2s}} 
-	\end{align*}
+    We have 
+    \begin{align*}
+        \P(B_s \leq x, B_t \leq y) &= \\ \P(B_s \leq x, B_{t} - B_s \leq y - B_s ) \\
+        &= \int_{-\infty}^x \int_{-\infty}^{y-z} \frac{1}{\sqrt{2\pi s}} e^{-\frac{x_1^2}{2s}} \frac{1}{\sqrt{2 \pi (t-s)}} e^{-\frac{-z_2^2}{2(t-s)}} \, dz_1 \, dz_2 \\
+        &= \int_{-\infty}^x \int_{-\infty}^y \frac{1}{\sqrt{2\pi s}} e^{-\frac{x_1^2}{2s}} 
+    \end{align*}
 \end{thm}
 
 \subsection{Properties of paths of Brownian motion} % (fold)
 \label{sub:properties_of_paths_of_brownian_motion}
 
 \begin{defn}[Variation]
-	Let $g$ be a real function.  Then the variation of $g$ over an interval $[a,b]$ is defined as \[
-		V([a.b]) = \lim_{\Delta \rightarrow 0} \sum_{j = 1}^n | g(t_j) - g(t_{j-1}) |
-	\] where $\Delta$ is the size of the partition $a = t_0, \dots, t_n = b$ of $[a,b]$.
+    Let $g$ be a real function.  Then the variation of $g$ over an interval $[a,b]$ is defined as \[
+        V([a.b]) = \lim_{\Delta \rightarrow 0} \sum_{j = 1}^n | g(t_j) - g(t_{j-1}) |
+    \] where $\Delta$ is the size of the partition $a = t_0, \dots, t_n = b$ of $[a,b]$.
 \end{defn}
 
 \begin{defn}[Quadratic variation]
-	The quadratic variation of a function $g$ over an interval $[a,b]$ is defined by \[
-		[g,g] = \lim_{\Delta \rightarrow 0} \sum_{j = 1}^n | g(t_j) - g(t_{j-1})|^2	\]
+    The quadratic variation of a function $g$ over an interval $[a,b]$ is defined by \[
+        [g,g] = \lim_{\Delta \rightarrow 0} \sum_{j = 1}^n | g(t_j) - g(t_{j-1})|^2 \]
 \end{defn}
 
 
 \begin{thm}[Non-differentiability of Brownian motion]
-	Paths of Brownian motion are continuous almost everywhere, by definition.  Consider now, the differentiability of $B_t$.  We claim that a Brownian motion is non-differentiable almost surely, that is, \[
-		\lim_{t \rightarrow s} \frac{|B_t - B_s|}{|t - s|} = \infty \quad a.s.
-	\]
-	
-	We claim that
-	\begin{enumerate}[(i)]
-		\item Brownian motion is not differentiable almost surely for any $t \geq 0$.
-		\item Brownian motion has infinite variation on any interval $[a,b]$, that is,\[
-			V_B([a,b]) = \lim_{\Delta \rightarrow 0} \sum_{j=1}^n |B(t_j) - B(t_{j-1})| = \infty \quad a.s.
-		\]
-		\item Brownian motion has quadratic variation $t$ on $[0,t]$, that is \[
-			[B,B]([0,t]) = \lim_{\Delta \rightarrow 0} \sum_{j=1}^n |B(t_j) - B(t_{j-1})|^2 = t \quad a.s.
-		\] 
-	\end{enumerate}
+    Paths of Brownian motion are continuous almost everywhere, by definition.  Consider now, the differentiability of $B_t$.  We claim that a Brownian motion is non-differentiable almost surely, that is, \[
+        \lim_{t \rightarrow s} \frac{|B_t - B_s|}{|t - s|} = \infty \quad a.s.
+    \]
+    
+    We claim that
+    \begin{enumerate}[(i)]
+        \item Brownian motion is not differentiable almost surely for any $t \geq 0$.
+        \item Brownian motion has infinite variation on any interval $[a,b]$, that is,\[
+            V_B([a,b]) = \lim_{\Delta \rightarrow 0} \sum_{j=1}^n |B(t_j) - B(t_{j-1})| = \infty \quad a.s.
+        \]
+        \item Brownian motion has quadratic variation $t$ on $[0,t]$, that is \[
+            [B,B]([0,t]) = \lim_{\Delta \rightarrow 0} \sum_{j=1}^n |B(t_j) - B(t_{j-1})|^2 = t \quad a.s.
+        \] 
+    \end{enumerate}
 \end{thm} 
 
 \begin{proof}
-	We know that $(B_{ct_1},\dots, B_{ct_n} ) \eqd (c^H B_{t_1}, \dots, c^H B_{t_n})$.  This is true as $B_{ct} \equiv N(0, ct) = c^{1/2} N(0,t)$ as required.  
-	
-	Now suppose $X_t$ is $H$-self-similar with stationary increments for some $0 < H < 1$ with $X_0 = 0$.  Then, for any fixed $t_0$, we have \[
-		\lim_{t \rightarrow t_0} \frac{|X_t - X_{t_0}|}{t - t_0} = \infty \quad a.s.
-	\]
-	
-	Consider
-	\[
-		\P( \limsup_{t \rightarrow t_0} \frac{ |X_t - X_{t_0} |}{t - t_0} \geq M) 
-	\] which by stationary increments, is equal to 
-	\begin{align*}
-		\P( \limsup_{t \rightarrow t_0} \frac{ |X_t |}{t} \geq M) &= \lim_{n \rightarrow \infty}\P( \bigcup_{k \geq n} \frac{|B_{t_n} - B_{t_0}}{|t_n - t_0|} \geq M) \\
-		&> \lim_{n\rightarrow \infty} \P( \frac{|B_{t_n} - B_{t_0}}{|t_n - t_0|} \geq M ) \\
-		&= \lim_{n \rightarrow \infty} \P( |N(0,1) | \geq M \cdot (t_n - t_0)^{1/2})
-	\end{align*}
-	and as the RHS goes to zero, we have \[
-	\P( |N(0,1) | \geq M \cdot (t_n - t_0)^{1/2}) \rightarrow 1
-	\]
-	as required.
+    We know that $(B_{ct_1},\dots, B_{ct_n} ) \eqd (c^H B_{t_1}, \dots, c^H B_{t_n})$.  This is true as $B_{ct} \equiv N(0, ct) = c^{1/2} N(0,t)$ as required.  
+    
+    Now suppose $X_t$ is $H$-self-similar with stationary increments for some $0 < H < 1$ with $X_0 = 0$.  Then, for any fixed $t_0$, we have \[
+        \lim_{t \rightarrow t_0} \frac{|X_t - X_{t_0}|}{t - t_0} = \infty \quad a.s.
+    \]
+    
+    Consider
+    \[
+        \P( \limsup_{t \rightarrow t_0} \frac{ |X_t - X_{t_0} |}{t - t_0} \geq M) 
+    \] which by stationary increments, is equal to 
+    \begin{align*}
+        \P( \limsup_{t \rightarrow t_0} \frac{ |X_t |}{t} \geq M) &= \lim_{n \rightarrow \infty}\P( \bigcup_{k \geq n} \frac{|B_{t_n} - B_{t_0}}{|t_n - t_0|} \geq M) \\
+        &> \lim_{n\rightarrow \infty} \P( \frac{|B_{t_n} - B_{t_0}}{|t_n - t_0|} \geq M ) \\
+        &= \lim_{n \rightarrow \infty} \P( |N(0,1) | \geq M \cdot (t_n - t_0)^{1/2})
+    \end{align*}
+    and as the RHS goes to zero, we have \[
+    \P( |N(0,1) | \geq M \cdot (t_n - t_0)^{1/2}) \rightarrow 1
+    \]
+    as required.
 \end{proof}
 
 Now, Assume $V_B([0,t]) < \infty$ almost surely.  Consider $Q_n = \sum_{j=1}^n | B_{t_j} - B_{t_{j-1}}  |^2$.  Then we have \[
-	Q_n \leq \max_{ 0 \leq j \leq n} | B_{t_j} - B_{t_{j-1}} | \cdot \sum_{j=1}^n |B_{t_j} - B_{t_{j-1}} |
+    Q_n \leq \max_{ 0 \leq j \leq n} | B_{t_j} - B_{t_{j-1}} | \cdot \sum_{j=1}^n |B_{t_j} - B_{t_{j-1}} |
 \]   
 
 Let $\Delta \rightarrow 0$.  Then \begin{align*}
-	\lim_{\Delta \rightarrow 0} Q_n &\leq  \lim_{ \Delta \rightarrow 0}\max_{ 0 \leq j \leq n} | B_{t_j} - B_{t_{j-1}} | \cdot \sum_{j=1}^n |B_{t_j} - B_{t_{j-1}} | \\
-									&\leq \lim_{ \Delta \rightarrow 0}\max_{ 0 \leq j \leq n} | B_{t_j} - B_{t_{j-1}} | \cdot V_B([0,t]) \\
-									&\leq 0 \cdot V_B([0,t])
-									&= 0
+    \lim_{\Delta \rightarrow 0} Q_n &\leq  \lim_{ \Delta \rightarrow 0}\max_{ 0 \leq j \leq n} | B_{t_j} - B_{t_{j-1}} | \cdot \sum_{j=1}^n |B_{t_j} - B_{t_{j-1}} | \\
+                                    &\leq \lim_{ \Delta \rightarrow 0}\max_{ 0 \leq j \leq n} | B_{t_j} - B_{t_{j-1}} | \cdot V_B([0,t]) \\
+                                    &\leq 0 \cdot V_B([0,t])
+                                    &= 0
 \end{align*} because $B_s$ is uniformly continuous on $[0,t]$.  This is a contradiction to $V_B([0,t]) < \infty$.
 
 
 \begin{proof}
-	We now show that $\E((Q_n - t)^2) \rightarrow 0$ as $n \rightarrow \infty$.  In fact, we have
-	\begin{align*}
-		\E(Q_n) &= \sum_{i=1}^n \E(B_{t_j} - B_{t_{j-1}})^2 \\
-				&= \sum_{j=1}^n (t_j - t_{j-1}) = t
-	\end{align*}
-	
-	We now show $L^2$ convergence. We have \begin{align*}
-		\E(Q_n - t)^2 = \E((Q_n - \E(Q_n))^2) \\
-					&= \E(\sum_{j=1}^n Y_j \quad \text{where $Y_j = |B_{t_j} - B_{t_{j-1}}|^2 - \E(|B_{t_j} - B_{t_{j-1}}|^2)$} \\
-					&= \sum_{j=1}^n \E(Y_j^2) ) \\
-					&\leq \sum_{j=1}^n | t_{j} - t_{j-1} |^2 \cdot \E | N(0,1) |^4 \\
-					&\leq C \cdot \Delta \cdot t \rightarrow 0
-	\end{align*} as $\Delta \rightarrow 0$.  Thus we have convergence in $L^2$.  
+    We now show that $\E((Q_n - t)^2) \rightarrow 0$ as $n \rightarrow \infty$.  In fact, we have
+    \begin{align*}
+        \E(Q_n) &= \sum_{i=1}^n \E(B_{t_j} - B_{t_{j-1}})^2 \\
+                &= \sum_{j=1}^n (t_j - t_{j-1}) = t
+    \end{align*}
+    
+    We now show $L^2$ convergence. We have \begin{align*}
+        \E(Q_n - t)^2 = \E((Q_n - \E(Q_n))^2) \\
+                    &= \E(\sum_{j=1}^n Y_j \quad \text{where $Y_j = |B_{t_j} - B_{t_{j-1}}|^2 - \E(|B_{t_j} - B_{t_{j-1}}|^2)$} \\
+                    &= \sum_{j=1}^n \E(Y_j^2) ) \\
+                    &\leq \sum_{j=1}^n | t_{j} - t_{j-1} |^2 \cdot \E | N(0,1) |^4 \\
+                    &\leq C \cdot \Delta \cdot t \rightarrow 0
+    \end{align*} as $\Delta \rightarrow 0$.  Thus we have convergence in $L^2$.  
 \end{proof}
 
 % subsection properties_of_paths_of_brownian_motion (end)
@@ -487,35 +487,35 @@ Let $\Delta \rightarrow 0$.  Then \begin{align*}
 \section{Lecture 6 - Thursday 17 March} % (fold)
 \label{sec:lecture_6_thursday_17_march}
 \begin{thm}[Martingales related to Brownian motion]
-	Let $B_t, t \geq 0$ be a Brownian motion.  Then the following are martingales with respect to $\sigf_t = \sigma( B_s, 0 \leq s \leq t)$.  
-	\begin{enumerate}[(1)]
-		\item $B_t, t \geq 0$.
-		\item $B_t^2 - t, t \geq 0$.
-		\item For any $u$, $e^{u B_t - \frac{u^2 t}{2}}$
-	\end{enumerate}
+    Let $B_t, t \geq 0$ be a Brownian motion.  Then the following are martingales with respect to $\sigf_t = \sigma( B_s, 0 \leq s \leq t)$.  
+    \begin{enumerate}[(1)]
+        \item $B_t, t \geq 0$.
+        \item $B_t^2 - t, t \geq 0$.
+        \item For any $u$, $e^{u B_t - \frac{u^2 t}{2}}$
+    \end{enumerate}
 \end{thm}
 \begin{proof}
-	(1) is simple.  
-	
-	(2).  We know that $\E( |B_t^2|)$ is finite for any $t$.  We can also easily show $\E(B_t^2 - t \, | \, \sigf_s ) = B_s^2 - s$ a.s.
+    (1) is simple.  
+    
+    (2).  We know that $\E( |B_t^2|)$ is finite for any $t$.  We can also easily show $\E(B_t^2 - t \, | \, \sigf_s ) = B_s^2 - s$ a.s.
 \end{proof}
 
 \begin{thm}
-	Let $X_t$ be a martingale satisfying $X_t^2 - t$ is also a martingale.  Then $X_t$ is a Brownian motion.
+    Let $X_t$ be a martingale satisfying $X_t^2 - t$ is also a martingale.  Then $X_t$ is a Brownian motion.
 \end{thm}
 
 \begin{defn}[Hitting time]
-	Let $T_\alpha = \inf_{\{ t \geq 0, B_t = \alpha \}}$ 
-	
-	\begin{enumerate}[(1)]
-		\item If $\alpha = 0$, $T_0 = 0$.
-		\item If $\alpha > 0$, then \[
-			\P(T_\alpha \leq t) = 2 \P(B_t \geq \alpha) = \frac{2}{\sqrt{2 \pi t}} \int_a^\infty e^{-\frac{x^2}{2t}}\, dx 
-		\] 	
-	\end{enumerate}
-	
-	We clearly have $T_\alpha > t \iff \sup_{ 0 \leq s \leq t} < \alpha$ 
-	
+    Let $T_\alpha = \inf_{\{ t \geq 0, B_t = \alpha \}}$ 
+    
+    \begin{enumerate}[(1)]
+        \item If $\alpha = 0$, $T_0 = 0$.
+        \item If $\alpha > 0$, then \[
+            \P(T_\alpha \leq t) = 2 \P(B_t \geq \alpha) = \frac{2}{\sqrt{2 \pi t}} \int_a^\infty e^{-\frac{x^2}{2t}}\, dx 
+        \]  
+    \end{enumerate}
+    
+    We clearly have $T_\alpha > t \iff \sup_{ 0 \leq s \leq t} < \alpha$ 
+    
 \end{defn}
 
 % section lecture_6_thursday_17_march (end)
@@ -524,78 +524,78 @@ Let $\Delta \rightarrow 0$.  Then \begin{align*}
 \label{sec:lecture_7_tuesday_22_march}
 
 \begin{thm}[Arcsine law]
-	Let $B_t$ be a Brownian motion.  Then \[
-		\P(\text{$B_t = 0$, for at least once, $t \in [a,b]$}) = \frac{2}{\pi} \text{arcos} \sqrt{\frac{a}{b}}
-	\]
+    Let $B_t$ be a Brownian motion.  Then \[
+        \P(\text{$B_t = 0$, for at least once, $t \in [a,b]$}) = \frac{2}{\pi} \text{arcos} \sqrt{\frac{a}{b}}
+    \]
 \end{thm}
 
 \begin{exmp}
-	Processes derived from Brownian motion
-	\begin{enumerate}[(1)]
-		\item Brownian bridge
-		\[
-			X_t = B_t - t B_1 \quad t \in [0,1]
-		\]
-		Consider $X \equiv F(x)$, with $X_1, \dots X_n$ data.  Our empirical distribution \[
-			F_n(x) = \frac{1}{n} \sum_{i=1}^n \mathbf{1}_{\{ X_j \leq X}
-		\]
-		We can then prove that \[
-		{}^n\sqrt{F_n(x) - F(x)} \rightarrow X_t \quad t \in (0,1)
-		\] 
-		\item Diffusion process\[
-			X_t = \mu t + \sigma B_t
-		\] This is a Gaussian process with $\E(X_t) = \mu t$, $\text{Cov}(X_t, X_s) = \sigma^2 \min(s,t)$.
-		\item Geometric Brownian motion\[
-			X_t = X_0 e^{\mu t + \sigma B_t}
-		\] This is not a Gaussian process.
-		\item Higher dimensional Brownian motion\[
-			B_t = ( B^1_t, \dots, B^n_t)
-		\] where the $B^{i}$ are independent Brownian motions, then 
+    Processes derived from Brownian motion
+    \begin{enumerate}[(1)]
+        \item Brownian bridge
+        \[
+            X_t = B_t - t B_1 \quad t \in [0,1]
+        \]
+        Consider $X \equiv F(x)$, with $X_1, \dots X_n$ data.  Our empirical distribution \[
+            F_n(x) = \frac{1}{n} \sum_{i=1}^n \mathbf{1}_{\{ X_j \leq X}
+        \]
+        We can then prove that \[
+        {}^n\sqrt{F_n(x) - F(x)} \rightarrow X_t \quad t \in (0,1)
+        \] 
+        \item Diffusion process\[
+            X_t = \mu t + \sigma B_t
+        \] This is a Gaussian process with $\E(X_t) = \mu t$, $\text{Cov}(X_t, X_s) = \sigma^2 \min(s,t)$.
+        \item Geometric Brownian motion\[
+            X_t = X_0 e^{\mu t + \sigma B_t}
+        \] This is not a Gaussian process.
+        \item Higher dimensional Brownian motion\[
+            B_t = ( B^1_t, \dots, B^n_t)
+        \] where the $B^{i}$ are independent Brownian motions, then 
 
-	\end{enumerate}
+    \end{enumerate}
 \end{exmp}
-	
+    
 \subsection{Construction of Brownian motion} % (fold)
 \label{sub:construction_of_brownian_motion}
 Define a stochastic process \[
-	\hat B_t^n = \frac{ S_{[nt]} - \E(S_{[nt]})}{\sqrt{n}}
+    \hat B_t^n = \frac{ S_{[nt]} - \E(S_{[nt]})}{\sqrt{n}}
 \]
 
 With \[
-	\tilde B_t^n = \begin{cases}
-		\hat B_t^n &\text{if $t = \frac{i}{n}$} \\
-		0			&\text{otherwise}
-	\end{cases}
+    \tilde B_t^n = \begin{cases}
+        \hat B_t^n &\text{if $t = \frac{i}{n}$} \\
+        0           &\text{otherwise}
+    \end{cases}
 \]
 Then we can prove that \[
-	\tilde B_t^n \Rightarrow B_t \quad \text{on [0,1]}
+    \tilde B_t^n \Rightarrow B_t \quad \text{on [0,1]}
 \]
-% subsection construction_of_brownian_motion (end)	
+% subsection construction_of_brownian_motion (end)  
 
 \begin{defn}[Stochastic integral]
-	We now turn to defining expressions of the form\[
-		\int_0^A X_t \, dY_t
-	\] with $X_t, Y_t$ stochastic processes.
+    We now turn to defining expressions of the form\[
+        \int_0^A X_t \, dY_t
+    \] with $X_t, Y_t$ stochastic processes.
 \end{defn}
 
 \begin{defn}[$\int_0^t f(B_s) \, ds$]
-	
-	We have \begin{align*}
-	\int_0^t f(t) \, dt
-	\end{align*} exists if $f$ is bonded and continuous, except on a set of Lebesgue measure zero.
-	Thus, we can set \[
-		\int_0^t f(t) \, dt = \lim_{ \Delta \rightarrow 0} \sum_{j=1}^n f(B_{y_j}) (t_j - t_{j-1})
-	\] if $f(x)$ is bounded.  
-	
-	We now seek to find $\int_0^1 B_s \, ds$.  Consider $Q_n = \sum_{j=1}^n B_{y_j} (t_j - t_{j-1})$.  As the sum of normal variables, we know that $Q_n \equiv N(\mu_n, \sigma^2_n)$.      
-	
-	Since $\int_0^1 B_s \, ds$ is normally distributed with mean 0, we have 
-	\begin{align*}
-		\E(X^2) &= \E \int_0^1 B_s \, dx \int_0^1 B_t \, dt  \\
-				&= \int_0^1 \E(B_s B_t) \, ds \, dt \\
-				&= \int_0^1 \min(s,t) \, ds \, dt \\
-				&= 1/3
-	\end{align*}
+    
+    We have \begin{align*}
+    \int_0^t f(t) \, dt
+    \end{align*} exists if $f$ is bonded and continuous, except on a set of Lebesgue measure zero.
+    Thus, we can set \[
+        \int_0^t f(t) \, dt = \lim_{ \Delta \rightarrow 0} \sum_{j=1}^n f(B_{y_j}) (t_j - t_{j-1})
+    \] if $f(x)$ is bounded.  
+    
+    We now seek to find $\int_0^1 B_s \, ds$.  Consider $Q_n = \sum_{j=1}^n B_{y_j} (t_j - t_{j-1})$.  As the sum of normal variables, we know that $Q_n \equiv N(\mu_n, \sigma^2_n)$.      
+    
+    Since $\int_0^1 B_s \, ds$ is normally distributed with mean 0, we have 
+    \begin{align*}
+        \E(X^2) &= \E \int_0^1 B_s \, dx \int_0^1 B_t \, dt  \\
+                &= \int_0^1 \E(B_s B_t) \, ds \, dt \\
+                &= \int_0^1 \min(s,t) \, ds \, dt \\
+                &= 1/3
+    \end{align*}
 \end{defn}
 
 % section lecture_7_tuesday_22_march (end)
@@ -604,214 +604,214 @@ Then we can prove that \[
 \label{sec:lecture_8_thursday_24_march}
 
 \[
-	\int_0^1 f(B_s) \, ds = \lim_{\Delta \rightarrow 0} \sum_{j=1}^n f(B_{y_j}) (t_{j+1} - t_{j})
+    \int_0^1 f(B_s) \, ds = \lim_{\Delta \rightarrow 0} \sum_{j=1}^n f(B_{y_j}) (t_{j+1} - t_{j})
 \]
 Recall \[
-	\int_0^1 B_s \, ds \sim N(0, \frac{1}{3}) = \lim_{\Delta \rightarrow 0} \sum_{i=1}^n {B_{y_j}} (t_{j+1} - t_{j})
+    \int_0^1 B_s \, ds \sim N(0, \frac{1}{3}) = \lim_{\Delta \rightarrow 0} \sum_{i=1}^n {B_{y_j}} (t_{j+1} - t_{j})
 \]
 
 Consider $I = \int X_s \, dY_s$.  We have the following:
 \begin{thm}
-	I exists if 
-	\begin{enumerate}[(1)]
-		\item The functions $f,g$ are not discontinuous at the same point $x$.  
-		\item $f$ is continuous and $g$ has bounded variation or,
-		\item[(2)'] $f$ has finite $p$-variation and $g$ has finite $q$-variation, where \[
-			1/p + 1/q = 1
-		\]  For any $p$, we define $p$-variation by \[
-			\lim_{\Delta \rightarrow 0} \sum_{j=1}^n |f(t_j) - f(t_{j-1}) |^p
-		\]
-	\end{enumerate}
+    I exists if 
+    \begin{enumerate}[(1)]
+        \item The functions $f,g$ are not discontinuous at the same point $x$.  
+        \item $f$ is continuous and $g$ has bounded variation or,
+        \item[(2)'] $f$ has finite $p$-variation and $g$ has finite $q$-variation, where \[
+            1/p + 1/q = 1
+        \]  For any $p$, we define $p$-variation by \[
+            \lim_{\Delta \rightarrow 0} \sum_{j=1}^n |f(t_j) - f(t_{j-1}) |^p
+        \]
+    \end{enumerate}
 \end{thm}
 
 \begin{thm}
-	If $J = \int_0^1 f(t) \, dg(t)$ exists for any continuous $f$, then $g$ must have finite variation.  
+    If $J = \int_0^1 f(t) \, dg(t)$ exists for any continuous $f$, then $g$ must have finite variation.  
 \end{thm}
 
 \begin{thm}
-	$B_s$ has bounded $p$ variation for any $p \geq 2$ and unbounded $q$-variation for any $q < 2$.
+    $B_s$ has bounded $p$ variation for any $p \geq 2$ and unbounded $q$-variation for any $q < 2$.
 \end{thm}
 
 \begin{proof}
-	We can write (for $p \geq 2$), $p = 2 + (p-2)$.  Then we have \[
-		\Delta_t = \lim_{\Delta \rightarrow 0} \max |{B_{t_j}} - B_{t_{j-1}} |^{p-2} \sum_{j=1}^n |B_{t_j} - B_{t_{j-1}} |^{2}
-	\] and hence $\Delta_t$ exists.
+    We can write (for $p \geq 2$), $p = 2 + (p-2)$.  Then we have \[
+        \Delta_t = \lim_{\Delta \rightarrow 0} \max |{B_{t_j}} - B_{t_{j-1}} |^{p-2} \sum_{j=1}^n |B_{t_j} - B_{t_{j-1}} |^{2}
+    \] and hence $\Delta_t$ exists.
 \end{proof}
 
 \begin{cor}
-	Thus $\int_0^1 \, dB_t$ is well defined if $f$ has finite variation (as setting $q = 1$, $ p \geq 2$ gives $1/p + 1/q > 1$).
+    Thus $\int_0^1 \, dB_t$ is well defined if $f$ has finite variation (as setting $q = 1$, $ p \geq 2$ gives $1/p + 1/q > 1$).
 \end{cor}
 
 Consider $\int_0^1 B_s \, dB_s$ - is this an R-S integral?  Consider \[
-	\Delta_{1n} = \sum_{j=1}^\infty B_{t_j} ( B_{t_{j+1}} - B_{t_j}), \Delta_{2n} = \sum_{j=1}^\infty B_{t_{j+1}} ( B_{t_{j+1}} - B_{t_j})
+    \Delta_{1n} = \sum_{j=1}^\infty B_{t_j} ( B_{t_{j+1}} - B_{t_j}), \Delta_{2n} = \sum_{j=1}^\infty B_{t_{j+1}} ( B_{t_{j+1}} - B_{t_j})
 \]  We have that \[
-	\Delta_{2n} - \Delta_{1n} = \sum_{j=1}^n ( B_{t_{j+1}} - B_{t_j})^2 \rightarrow 1
+    \Delta_{2n} - \Delta_{1n} = \sum_{j=1}^n ( B_{t_{j+1}} - B_{t_j})^2 \rightarrow 1
 \] and \[
-	\Delta_{1n} + \Delta_{2n} = \sum_{j=1}^n {B_{t_{j+1}}^2} - B_{t_j}^2 ) = B_1^2. 
+    \Delta_{1n} + \Delta_{2n} = \sum_{j=1}^n {B_{t_{j+1}}^2} - B_{t_j}^2 ) = B_1^2. 
 \]  Thus we know \begin{align*}
-	\Delta_{2n} &\rightarrow \frac{1}{2}(B_1^2 + 1) \\
-	\Delta_{1n} &\rightarrow \frac{1}{2}(B_1^2 - 1) 
+    \Delta_{2n} &\rightarrow \frac{1}{2}(B_1^2 + 1) \\
+    \Delta_{1n} &\rightarrow \frac{1}{2}(B_1^2 - 1) 
 \end{align*}
 
 \begin{defn}[It\^o integral]
-	The It\^o integral is defined by evaluating $f(B_{t_j})$, the left-hand endpoint at each partition interval $[t_{j}, t_{j+1})$
+    The It\^o integral is defined by evaluating $f(B_{t_j})$, the left-hand endpoint at each partition interval $[t_{j}, t_{j+1})$
 \end{defn}
 % section lecture_8_thursday_24_march (end)
 \section{Lecture 9 - Tuesday 29 March} % (fold)
 \newcommand{\ito}{\text{It\^o\ }}
 \label{sec:lecture_9_tuesday_29_march}
 \begin{defn}[\ito integral]
-	Consider $\int_0^1 f(s) \, dB_s$.  Where $f(s)$ is a real function, $B_s$ a Brownian motion.  We define the integral in two steps.  
-	\begin{enumerate}[(1)]
-		\item If $f(s)$ is a step function, define 
-		\begin{align*}
-			I(f) = \int_0^1 f(s) \, dB_s 	&= \sum_{j=1}^m \int_{t_j}^{t_{j+1}} f(s) \, dB_s \\
-									&= \sum_{j=1}^m c_j (B_{t_{j+1}} - B_{t_j})
-		\end{align*}
-		
-		\item If $f(s) \in L^2([0,1])$, then let $f_n$ be a sequence in $L^2([0,1])$ such that $f_n \rightarrow f$ in $L^2([0,1])$.  
-		
-		Then define $I(f)$ to be the limitation in such situations such that \[
-			\E(I(f_n) - I(f))^2 \rightarrow 0 
-		\] in $L^2([0,1])$ or 
-		Let $I(f) = \lim_{n \rightarrow 0} I(f_n)$ in probability.
-	\end{enumerate}
-	
-	\begin{rem}
-		If $f(x), g(x)$ are given step functions then $\alpha I(f) + \beta I(g) = I ( \alpha f + \beta g)$.
-	\end{rem}
-	\begin{rem}
-		If $f(x)$ is a step function, then $I(f) \sim N(0, \int_0^1 f^2(s) \, ds)$
-	\end{rem}
-	\begin{proof}
-		\begin{align*}
-			I(f) = \sum_{j=1}^m c_j (B_{t_{j+1}} - B_{t_j}) \sim N(0, \sigma^2) 
-		\end{align*} where $\sigma^2 = \sum_{j=1}^m c_j^2 (t_{j+1} - t_j)$.
-	\end{proof}
-	
-	\begin{thm}
-		$I(f)$ is well defined (independent of the choice of $f_n$.)
-	\end{thm}
-	
-	\begin{proof}
-		Let $f_n, g_n \rightarrow f$ in $L^2([0,1])$.  We then need to only compute \[
-			\Delta_{n,m} = \E(I(f_n) - I(g_m) )^2 \rightarrow 0
-		\] as $m,n \rightarrow \infty$. 
-		
-		In fact, \begin{align*} 
-			\Delta_{n,m} = \E(I(f_n - g_m))^2 = \int_0^1 (f_n - g_m)^2 \, dx \\
-						&\leq 2 \int_0^1 ( f_n - f)^2 \, dx + 2 \int_0^1 (g_m - f)^2 \, dx \\
-						&\rightarrow 0
-		\end{align*} as $n,m \rightarrow \infty$.  
-	\end{proof}
-	
-	\begin{rem}
-		If $f$ is continuous bounded variation, then 
-		\begin{align*}
-			\int_0^1 f(s) \, dB_s = (R.S.) \int)0^1 f(s) \, dB_s \\
-				&= \lim_{\delta \rightarrow 0} \sum_{j=1}^n f(t_j) B(t_{j+1} - B_{t_j})
- 		\end{align*}
-	\end{rem}
-	\begin{proof}
-	Case 1).
-		\[
-			\alpha I(f) + \beta I(g) = \lim_{n \rightarrow \infty} [ \alpha I(f_n) + \beta I(g_n) = \lim_{n \rightarrow \infty} [ I(\alpha f_n + \beta g_n)] = I(\alpha f + \beta g)
-		\]
-		and thus $\alpha f_n + \beta g_n \rightarrow \alpha f + \beta g \in L^2([0,1])$.   
-	\end{proof}
-	
-	Case 2).  If $I(f) = \lim_{ \delta \rightarrow 0} I(f_n)$ in probability.  Then 
-	\begin{align*}
-		I(f_n) &\sim N(0, \sigma_n^2) \\
-				&\sim N(0, \int_0^1 f_n^2(s) \,ds) \\
-				&\rightarrow N(0, \int_0^1 f^2(s) \, ds)	
-	\end{align*} if $\sigma^2_n \rightarrow \int_0^1 f^2(x) \, dx$.  In fact, as 
-	\begin{align*}
-		\int_0^1 f_n^2 \, dx &= \int_0^1 (f_n - f + f)^2 \, dx \\
-								&= \int_0^1 f^2 \, dx + \int_0^1 (f_n - f)^2 \, dx + \int_0^1 (f_n - f) f \, dx\\
-								&\rightarrow \int_0^1 f^2 \, dx
-	\end{align*} as other terms tend to zero by $L^2$ convergence and H\"older's inequality.
-	
-	\begin{rem}
-		$(R.S.) \int_0^1 f(s) \, dB_s$ exists if $f$ is of bounded variation.
-	\end{rem}
-	
-	\begin{rem}
-		If $f$ is continuous then $\int_0^1 f^2 \, dx < \infty$ and \[
-			f_n(t) = \sum_{j=1}^n f(t_j) I_{[t_j, t_{j+1})} \rightarrow f(t) \, \text{in $L^2([0,1])$}
-			\]
-			
-		Thus, \begin{align*}
-			I(f) 	&= \lim_{\delta \rightarrow 0} I(f_n) \\
-					&= \lim_{\delta \rightarrow 0} \sum_{j=1}^m f(t_j) (B_{t_{j+1}} - B_{t_j})
-		\end{align*}
-		We have to prove \[
-			\int_0^1 (f_n - f)^2 \, dx \rightarrow 0
-		\] if $f$ is continuous.
-	\end{rem}
-	
+    Consider $\int_0^1 f(s) \, dB_s$.  Where $f(s)$ is a real function, $B_s$ a Brownian motion.  We define the integral in two steps.  
+    \begin{enumerate}[(1)]
+        \item If $f(s)$ is a step function, define 
+        \begin{align*}
+            I(f) = \int_0^1 f(s) \, dB_s    &= \sum_{j=1}^m \int_{t_j}^{t_{j+1}} f(s) \, dB_s \\
+                                    &= \sum_{j=1}^m c_j (B_{t_{j+1}} - B_{t_j})
+        \end{align*}
+        
+        \item If $f(s) \in L^2([0,1])$, then let $f_n$ be a sequence in $L^2([0,1])$ such that $f_n \rightarrow f$ in $L^2([0,1])$.  
+        
+        Then define $I(f)$ to be the limitation in such situations such that \[
+            \E(I(f_n) - I(f))^2 \rightarrow 0 
+        \] in $L^2([0,1])$ or 
+        Let $I(f) = \lim_{n \rightarrow 0} I(f_n)$ in probability.
+    \end{enumerate}
+    
+    \begin{rem}
+        If $f(x), g(x)$ are given step functions then $\alpha I(f) + \beta I(g) = I ( \alpha f + \beta g)$.
+    \end{rem}
+    \begin{rem}
+        If $f(x)$ is a step function, then $I(f) \sim N(0, \int_0^1 f^2(s) \, ds)$
+    \end{rem}
+    \begin{proof}
+        \begin{align*}
+            I(f) = \sum_{j=1}^m c_j (B_{t_{j+1}} - B_{t_j}) \sim N(0, \sigma^2) 
+        \end{align*} where $\sigma^2 = \sum_{j=1}^m c_j^2 (t_{j+1} - t_j)$.
+    \end{proof}
+    
+    \begin{thm}
+        $I(f)$ is well defined (independent of the choice of $f_n$.)
+    \end{thm}
+    
+    \begin{proof}
+        Let $f_n, g_n \rightarrow f$ in $L^2([0,1])$.  We then need to only compute \[
+            \Delta_{n,m} = \E(I(f_n) - I(g_m) )^2 \rightarrow 0
+        \] as $m,n \rightarrow \infty$. 
+        
+        In fact, \begin{align*} 
+            \Delta_{n,m} = \E(I(f_n - g_m))^2 = \int_0^1 (f_n - g_m)^2 \, dx \\
+                        &\leq 2 \int_0^1 ( f_n - f)^2 \, dx + 2 \int_0^1 (g_m - f)^2 \, dx \\
+                        &\rightarrow 0
+        \end{align*} as $n,m \rightarrow \infty$.  
+    \end{proof}
+    
+    \begin{rem}
+        If $f$ is continuous bounded variation, then 
+        \begin{align*}
+            \int_0^1 f(s) \, dB_s = (R.S.) \int)0^1 f(s) \, dB_s \\
+                &= \lim_{\delta \rightarrow 0} \sum_{j=1}^n f(t_j) B(t_{j+1} - B_{t_j})
+        \end{align*}
+    \end{rem}
+    \begin{proof}
+    Case 1).
+        \[
+            \alpha I(f) + \beta I(g) = \lim_{n \rightarrow \infty} [ \alpha I(f_n) + \beta I(g_n) = \lim_{n \rightarrow \infty} [ I(\alpha f_n + \beta g_n)] = I(\alpha f + \beta g)
+        \]
+        and thus $\alpha f_n + \beta g_n \rightarrow \alpha f + \beta g \in L^2([0,1])$.   
+    \end{proof}
+    
+    Case 2).  If $I(f) = \lim_{ \delta \rightarrow 0} I(f_n)$ in probability.  Then 
+    \begin{align*}
+        I(f_n) &\sim N(0, \sigma_n^2) \\
+                &\sim N(0, \int_0^1 f_n^2(s) \,ds) \\
+                &\rightarrow N(0, \int_0^1 f^2(s) \, ds)    
+    \end{align*} if $\sigma^2_n \rightarrow \int_0^1 f^2(x) \, dx$.  In fact, as 
+    \begin{align*}
+        \int_0^1 f_n^2 \, dx &= \int_0^1 (f_n - f + f)^2 \, dx \\
+                                &= \int_0^1 f^2 \, dx + \int_0^1 (f_n - f)^2 \, dx + \int_0^1 (f_n - f) f \, dx\\
+                                &\rightarrow \int_0^1 f^2 \, dx
+    \end{align*} as other terms tend to zero by $L^2$ convergence and H\"older's inequality.
+    
+    \begin{rem}
+        $(R.S.) \int_0^1 f(s) \, dB_s$ exists if $f$ is of bounded variation.
+    \end{rem}
+    
+    \begin{rem}
+        If $f$ is continuous then $\int_0^1 f^2 \, dx < \infty$ and \[
+            f_n(t) = \sum_{j=1}^n f(t_j) I_{[t_j, t_{j+1})} \rightarrow f(t) \, \text{in $L^2([0,1])$}
+            \]
+            
+        Thus, \begin{align*}
+            I(f)    &= \lim_{\delta \rightarrow 0} I(f_n) \\
+                    &= \lim_{\delta \rightarrow 0} \sum_{j=1}^m f(t_j) (B_{t_{j+1}} - B_{t_j})
+        \end{align*}
+        We have to prove \[
+            \int_0^1 (f_n - f)^2 \, dx \rightarrow 0
+        \] if $f$ is continuous.
+    \end{rem}
+    
 \end{defn}
 % section lecture_9_tuesday_29_march (end)
 
 \section{Lecture 10 - Thursday 31 March} % (fold)
 \label{sec:lecture_10_thursday_31_march}
 We have \[
-	(\text{\ito})\, \int_0^1 f(s) \, dB_s \sim N(0, \int_0^1 f(t)^2 \, dt
+    (\text{\ito})\, \int_0^1 f(s) \, dB_s \sim N(0, \int_0^1 f(t)^2 \, dt
 \] if $f$ is continuous, and of finite variation.  In this case, we can write \[
-	(\text{R.S.}) \, \int_0^1 f(s) \, dB_s = (\text{\ito}) \int_0^1 f(s) \, dB_s = \lim_{\Delta \rightarrow 0} \sum_{j=1}^n f(t_j) (B_{t_{j+1}} - B_{t_j})
+    (\text{R.S.}) \, \int_0^1 f(s) \, dB_s = (\text{\ito}) \int_0^1 f(s) \, dB_s = \lim_{\Delta \rightarrow 0} \sum_{j=1}^n f(t_j) (B_{t_{j+1}} - B_{t_j})
 \]
 
 \begin{exmp}
-	We have \[
-		\int_0^1 (1-t) \, dB_t =  (\ito) \int_0^1 (1-t) \, dB_t \sim N(0, \int_0^1 (1-t)^2 \, dt) = N(0, \frac{1}{3})
- 	\] and by integrating by parts, we have \[
- 		\int_0^1 (1-t) \, dB_t = (1-t) B_t |_0^1 - \int_0^1 B_t \, d(1-t) = 0 + \int_0^1 B_t \, dt \sim N(0, \frac{1}{3})
- 	\]
+    We have \[
+        \int_0^1 (1-t) \, dB_t =  (\ito) \int_0^1 (1-t) \, dB_t \sim N(0, \int_0^1 (1-t)^2 \, dt) = N(0, \frac{1}{3})
+    \] and by integrating by parts, we have \[
+        \int_0^1 (1-t) \, dB_t = (1-t) B_t |_0^1 - \int_0^1 B_t \, d(1-t) = 0 + \int_0^1 B_t \, dt \sim N(0, \frac{1}{3})
+    \]
 \end{exmp}
 
 Now consider \[
-	(\ito) \int_0^1 X_s \, dB_s
+    (\ito) \int_0^1 X_s \, dB_s
 \] where we now allow $X_s$ to be a stochastic process.
 
 Write $\sigf_t = \sigma(B_s, 0 \leq s \leq t).$  Let $\pi$ be the collection of $X_s$ such that 
 \begin{enumerate}[(1)]
-	\item $X_s$ is adapted to $\sigf_s$, that is, for any $s$, $X_s$ is $\sigf_s$ measurable.  
-	\item $\int_0^1 X_s^2 \, ds < \infty$ almost surely (R.S)
+    \item $X_s$ is adapted to $\sigf_s$, that is, for any $s$, $X_s$ is $\sigf_s$ measurable.  
+    \item $\int_0^1 X_s^2 \, ds < \infty$ almost surely (R.S)
 \end{enumerate} 
 
 Let $\pi' = \{ X_s \, | \, X_s \in \pi, \int_0^1 \E(X_s^2) < \infty \}$.  Then $\pi' \subset \pi$.  Let $X_s = e^{B_s^2}$.  Then \[
-	\E(X_s^2) = \E(e^{B_s^2}) = \begin{cases}
-		\frac{1}{\sqrt{1-4s}} & 0 \leq s < \frac{1}{4} \\
-		\infty & s \geq \frac{1}{4}
-	\end{cases}
+    \E(X_s^2) = \E(e^{B_s^2}) = \begin{cases}
+        \frac{1}{\sqrt{1-4s}} & 0 \leq s < \frac{1}{4} \\
+        \infty & s \geq \frac{1}{4}
+    \end{cases}
 \]  
 
 \begin{defn}[\ito integral for stochastic integrands]
-	We proceed in two steps.  
-	\begin{enumerate}
-		\item Let $X_s = \sum_{j=1}^n \zeta_i \mathbf{1}_{[t_j, t_{j+1})}$ where $\zeta_j$ is $\sigf_{t_j}$ measurable.  Then \[
-			I(X) = \sum_{j=1}^n \zeta_j (B_{t_{j+1}} - B_{t_j}).
-		\]
-		\item If $X \in \pi$, there exists a sequence $X^n \in \pi'$ such that $X^n$ are step process with \[
-			\int_{0^1} | X^n_s - X_s |^2 \, ds \rightarrow 0
-		\] as $n \rightarrow \infty$ in probability or in $L^2([0,1])$ if $X_s \in \pi'$.  
-	\end{enumerate}
-	\begin{proof}
-		We show only for $X_s$ continuous, the general case can be found in Hu-Hsing Kuo (p.65).  As $X_s$ is continuous, then it is in $\pi$.  Then choose \[
-			X^n_s = X_0 + \sum{j=1}^n X_{t_j} \mathbf{1}_{[t_j, t_{j+1})}
-		\]  Then $X_s \in pi'$ and \[
-			\E(|X^n_s - X_s|^2) \rightarrow 0
-		\] for any $s \in (0,1)$.
-		
-		We can also show that \[
-			\E(|X^n_s - X_s|^2) < \infty
-		\] and so by the dominated convergence theorem, we have \[
-			\lim_{n \rightarrow \infty} \int_0^1 \E(|X^n_s - X_s|^2) \, ds = 0.
-		\]
-	\end{proof}
-	\item Finally if $X_s \in \pi$, the \ito integral $\int_0^1 X_s \, dB_s$ is defined as \[
-		I(X) = \lim_{\delta \rightarrow 0} I(X^n)
-	\] in probability or in $L^2$ if $X \in \pi'$.  
+    We proceed in two steps.  
+    \begin{enumerate}
+        \item Let $X_s = \sum_{j=1}^n \zeta_i \mathbf{1}_{[t_j, t_{j+1})}$ where $\zeta_j$ is $\sigf_{t_j}$ measurable.  Then \[
+            I(X) = \sum_{j=1}^n \zeta_j (B_{t_{j+1}} - B_{t_j}).
+        \]
+        \item If $X \in \pi$, there exists a sequence $X^n \in \pi'$ such that $X^n$ are step process with \[
+            \int_{0^1} | X^n_s - X_s |^2 \, ds \rightarrow 0
+        \] as $n \rightarrow \infty$ in probability or in $L^2([0,1])$ if $X_s \in \pi'$.  
+    \end{enumerate}
+    \begin{proof}
+        We show only for $X_s$ continuous, the general case can be found in Hu-Hsing Kuo (p.65).  As $X_s$ is continuous, then it is in $\pi$.  Then choose \[
+            X^n_s = X_0 + \sum{j=1}^n X_{t_j} \mathbf{1}_{[t_j, t_{j+1})}
+        \]  Then $X_s \in pi'$ and \[
+            \E(|X^n_s - X_s|^2) \rightarrow 0
+        \] for any $s \in (0,1)$.
+        
+        We can also show that \[
+            \E(|X^n_s - X_s|^2) < \infty
+        \] and so by the dominated convergence theorem, we have \[
+            \lim_{n \rightarrow \infty} \int_0^1 \E(|X^n_s - X_s|^2) \, ds = 0.
+        \]
+    \end{proof}
+    \item Finally if $X_s \in \pi$, the \ito integral $\int_0^1 X_s \, dB_s$ is defined as \[
+        I(X) = \lim_{\delta \rightarrow 0} I(X^n)
+    \] in probability or in $L^2$ if $X \in \pi'$.  
 \end{defn}
 % section lecture_10_thursday_31_march (end)
 
@@ -819,99 +819,99 @@ Let $\pi' = \{ X_s \, | \, X_s \in \pi, \int_0^1 \E(X_s^2) < \infty \}$.  Then $
 \label{sec:lecture_11_tuesday_5_march}
 Let $I(X) = \int_0^1 X_s \, dB_s$ in the \ito sense.  We then require
 \begin{enumerate}
-	\item $X_s$ is $\sigf_s = \sigma \{ B_t, 0 \leq t \leq s \}$-measurable
-	\item $\int_0^1 X_s^2 \, ds < \infty$ almost surely.  
+    \item $X_s$ is $\sigf_s = \sigma \{ B_t, 0 \leq t \leq s \}$-measurable
+    \item $\int_0^1 X_s^2 \, ds < \infty$ almost surely.  
 \end{enumerate}
 
 Then $I(X) = \lim_{n \rightarrow \infty} I(X_n)$ where $X_n$ is a sequence of step functions converging to $X$ in $L^2$, that is, \[
-	\int_0^1 (X_s^n - X_s)^n \, ds \rightarrow 0
+    \int_0^1 (X_s^n - X_s)^n \, ds \rightarrow 0
 \]
 
 We then show that this definition is independent of the sequence of step functions.  For any $Y_s$ step process, we have \[
-	\int_0^1 (Y_s^n - Y_s^m)^2 \, dx \leq 2\int_0^1 (Y_s^m - X_s)^2 \, ds + 2 \int_0^1 (X_s^n - X_s)^2 \, dx \rightarrow 0
+    \int_0^1 (Y_s^n - Y_s^m)^2 \, dx \leq 2\int_0^1 (Y_s^m - X_s)^2 \, ds + 2 \int_0^1 (X_s^n - X_s)^2 \, dx \rightarrow 0
 \] 
 
 \begin{thm}[Properties of the \ito integral]{\ }
-	\begin{enumerate}
-		\item For any $\alpha, \beta \in \R$, $X, Y \in \pi$, \[
-			I(\alpha X + \beta Y) = \alpha I(X) + \beta I(Y)
-		\]
-		\item For any $X_s \in \pi'$, we have \[
-			\E(I(X)) = 0, \quad \E(I^2(X)) = \int_0^1 E(X_s^2) \, ds
-		\]  If $X' \in \pi'$, $Y_s \in \pi'$, then \[
-			\E(I(X) I(Y) ) = \int_0^1 \E(X_s Y_s) \, ds
-		\]
-		\item If $X_s$ continuous then \[
-			I(X) = \lim_{\delta \rightarrow 0} \sum_{j=1}^n X_{t_j} (B_{t_{j+1}} - B_{t_j})
-		\] in probability.
-		\item If $X$ is continuous and of finite variation and $\int_0^1 B_s \, dX_s < \infty$ then \[
-			(R.S.) \int_0^1 = (\ito) \int_0^1 X_s \, dB_s = X_1 B_1 - X_0 B_0 - \int_0^1 B_s \, dX_s
-		\]
-	\end{enumerate}
+    \begin{enumerate}
+        \item For any $\alpha, \beta \in \R$, $X, Y \in \pi$, \[
+            I(\alpha X + \beta Y) = \alpha I(X) + \beta I(Y)
+        \]
+        \item For any $X_s \in \pi'$, we have \[
+            \E(I(X)) = 0, \quad \E(I^2(X)) = \int_0^1 E(X_s^2) \, ds
+        \]  If $X' \in \pi'$, $Y_s \in \pi'$, then \[
+            \E(I(X) I(Y) ) = \int_0^1 \E(X_s Y_s) \, ds
+        \]
+        \item If $X_s$ continuous then \[
+            I(X) = \lim_{\delta \rightarrow 0} \sum_{j=1}^n X_{t_j} (B_{t_{j+1}} - B_{t_j})
+        \] in probability.
+        \item If $X$ is continuous and of finite variation and $\int_0^1 B_s \, dX_s < \infty$ then \[
+            (R.S.) \int_0^1 = (\ito) \int_0^1 X_s \, dB_s = X_1 B_1 - X_0 B_0 - \int_0^1 B_s \, dX_s
+        \]
+    \end{enumerate}
 \end{thm}
 \begin{prop}
-	We now show why we require
-	\begin{enumerate}
-		\item $X_s$ is $\sigf_s = \sigma \{ B_t, 0 \leq t \leq s \}$-measurable
-		\item $\int_0^1 X_s^2 \, ds < \infty$ almost surely.  
-	\end{enumerate}
+    We now show why we require
+    \begin{enumerate}
+        \item $X_s$ is $\sigf_s = \sigma \{ B_t, 0 \leq t \leq s \}$-measurable
+        \item $\int_0^1 X_s^2 \, ds < \infty$ almost surely.  
+    \end{enumerate}
 \end{prop}
 \begin{proof}
-	Motivation for (1)
-	\begin{align*}
-		X_s &= \sum_{j=1}^n \zeta_j \mathbf{1}_{(t_j, t_{j+1})} \\
-		I(X) &= \sum_{j=1} \zeta_j (B_{t_{j+1}} - B_{t_j}) \\
-		\E(I(X)) &= \sum_{j=1}^n \E(\zeta_j (B_{t_{j+1}} - B_{t_j})) \\
-					&= \sum_{j=1}^n \E(\E(\zeta_j (B_{t_{j+1}} - B_{t_j})\, | \, \sigf_{t_j})) \\
-					&= \sum_{j=1}^n \E(\zeta_j  \E(B_{t_{j+1} - B_{t_j}} \, | \, \sigf_{t_j}))  
-	\end{align*}
-	
-	Motivation for (2)
-	\begin{align*}
-		\E( I^2(X)) &= \E(\sum_{j=1}^n \zeta_j (B_{t_{j+1}} - B_{t_j}))^2 \\
-					&= 2 \sum_{i < j} \E(\E( \zeta_i \zeta_j (B_{t_{j+1}} - B_{t_j})(B_{t_{i+1}} - B_{t_i})) \, | \, \sigf_{t_i} ) + \sum_{j=1}^n \E(\zeta_j^2 (B_{t_{j+1}} - B_{t_{j}})^2 )  \\
-					&= \sum_{j=1}^n \E(\zeta_j^2) (t_{j+1} - t_{j}) \\
-					&= \int_0^1 \E(X_t^2) \, dt				
-	\end{align*}
-	
-	We now show that there $X_s^n \in \pi'$.  such that $\int_0^1 \E(X_s^n - X_s)^2 \, ds \rightarrow 0$.  We have \begin{align*}
-		\E(I^2(X)) &= \E(I(X)) - I(X^n) + \E(I(X^n_s))^2 \\
-				&= \E(I^2(X^n)) + 2 \E(I(X^n)(I(X) - I(X^n)) ) + \E(I(X) - I(X^n))^2 \\ 
-	\end{align*}
-	
-	By Cauchy-Swartz, the middle term tens do zero, and by definition, the third term tends to zero.  Thus we have 
-	\[
-		\lim_{n \rightarrow \infty} \E(I^2(X_n)) = \E(I^2(X))
-	\]
-	
-	Let $X_s^n$ be step processes.  We now show \[
-		\E(X_s^n - X_s)^2 \rightarrow 0 \Rightarrow \int_0^1 \E(X_s^n - X_s)^2 \, ds \rightarrow 0
-	\] 
-	By definition, we have \[
-		I(X) = \lim_{n \rightarrow \infty} I(X^n) = \lim_{\delta \rightarrow 0} \sum_{j=1}^n X_{t_j} (B_{t_{j+1}} - B_{t_j}).  
-	\] and we proved the required result in lectures.
-	
-	We now show that the $(R.S.)$ integral exists if $X$ is continuous and of finite variation, and $\int_0^1 B_s \, dX_s < \infty$, the our integration by parts formula holds.
-	
-	  We have 
-	\begin{align*}
-		(R.S.) \int_0^1 X_s \, dB_s &= \lim_{\delta \rightarrow 0} \sum_{j=1}^n X_{y_j} (B_{t_{j+1}} - B_{t_j}) \\
-		&= \lim_{\delta \rightarrow 0} \sum_{j=1}^n X_{t_j}  (B_{t_{j+1}} - B_{t_j})
-	\end{align*} 
-	which is our \ito integral by definition.
-	
+    Motivation for (1)
+    \begin{align*}
+        X_s &= \sum_{j=1}^n \zeta_j \mathbf{1}_{(t_j, t_{j+1})} \\
+        I(X) &= \sum_{j=1} \zeta_j (B_{t_{j+1}} - B_{t_j}) \\
+        \E(I(X)) &= \sum_{j=1}^n \E(\zeta_j (B_{t_{j+1}} - B_{t_j})) \\
+                    &= \sum_{j=1}^n \E(\E(\zeta_j (B_{t_{j+1}} - B_{t_j})\, | \, \sigf_{t_j})) \\
+                    &= \sum_{j=1}^n \E(\zeta_j  \E(B_{t_{j+1} - B_{t_j}} \, | \, \sigf_{t_j}))  
+    \end{align*}
+    
+    Motivation for (2)
+    \begin{align*}
+        \E( I^2(X)) &= \E(\sum_{j=1}^n \zeta_j (B_{t_{j+1}} - B_{t_j}))^2 \\
+                    &= 2 \sum_{i < j} \E(\E( \zeta_i \zeta_j (B_{t_{j+1}} - B_{t_j})(B_{t_{i+1}} - B_{t_i})) \, | \, \sigf_{t_i} ) + \sum_{j=1}^n \E(\zeta_j^2 (B_{t_{j+1}} - B_{t_{j}})^2 )  \\
+                    &= \sum_{j=1}^n \E(\zeta_j^2) (t_{j+1} - t_{j}) \\
+                    &= \int_0^1 \E(X_t^2) \, dt             
+    \end{align*}
+    
+    We now show that there $X_s^n \in \pi'$.  such that $\int_0^1 \E(X_s^n - X_s)^2 \, ds \rightarrow 0$.  We have \begin{align*}
+        \E(I^2(X)) &= \E(I(X)) - I(X^n) + \E(I(X^n_s))^2 \\
+                &= \E(I^2(X^n)) + 2 \E(I(X^n)(I(X) - I(X^n)) ) + \E(I(X) - I(X^n))^2 \\ 
+    \end{align*}
+    
+    By Cauchy-Swartz, the middle term tens do zero, and by definition, the third term tends to zero.  Thus we have 
+    \[
+        \lim_{n \rightarrow \infty} \E(I^2(X_n)) = \E(I^2(X))
+    \]
+    
+    Let $X_s^n$ be step processes.  We now show \[
+        \E(X_s^n - X_s)^2 \rightarrow 0 \Rightarrow \int_0^1 \E(X_s^n - X_s)^2 \, ds \rightarrow 0
+    \] 
+    By definition, we have \[
+        I(X) = \lim_{n \rightarrow \infty} I(X^n) = \lim_{\delta \rightarrow 0} \sum_{j=1}^n X_{t_j} (B_{t_{j+1}} - B_{t_j}).  
+    \] and we proved the required result in lectures.
+    
+    We now show that the $(R.S.)$ integral exists if $X$ is continuous and of finite variation, and $\int_0^1 B_s \, dX_s < \infty$, the our integration by parts formula holds.
+    
+      We have 
+    \begin{align*}
+        (R.S.) \int_0^1 X_s \, dB_s &= \lim_{\delta \rightarrow 0} \sum_{j=1}^n X_{y_j} (B_{t_{j+1}} - B_{t_j}) \\
+        &= \lim_{\delta \rightarrow 0} \sum_{j=1}^n X_{t_j}  (B_{t_{j+1}} - B_{t_j})
+    \end{align*} 
+    which is our \ito integral by definition.
+    
  \end{proof}
 
 \begin{defn}[\ito process]
-	Suppose $Y_t = \int_0^t X_s \, dB_s$, $t \geq 0$ is well defined, for $X_s \in \pi$. Then $Y_t$ is an \emph{\ito processes}.  To show a process $Y_t$ is an \ito process, we need to show that $\int_0^t |X_s| \, ds) M \infty$ a.s. and $\int_0^t |X_s|^2 \, ds < \infty$ a.s.
+    Suppose $Y_t = \int_0^t X_s \, dB_s$, $t \geq 0$ is well defined, for $X_s \in \pi$. Then $Y_t$ is an \emph{\ito processes}.  To show a process $Y_t$ is an \ito process, we need to show that $\int_0^t |X_s| \, ds) M \infty$ a.s. and $\int_0^t |X_s|^2 \, ds < \infty$ a.s.
 \end{defn}
 
 \begin{thm}
-	We have that $Y_t$ is continuous (except on a null set), is of infinite variation, as \begin{align*}
-		\sum_{j=1}^n |Y_{t_{j+1}} - Y_{t_j} | &= \sum_{j=1}^n | \int_{t_j}^{t_{j+1}} X_s \, dB_s | \\
-		 &\geq	\sum_{j=1}^n \min_{s} |X_s| |B_{t_{j+1} - B_{t_j}} \\
-		&\geq C \sum_{j=1^n} |B_{t_{j+1}} - B_{t_j} |
-	\end{align*}
+    We have that $Y_t$ is continuous (except on a null set), is of infinite variation, as \begin{align*}
+        \sum_{j=1}^n |Y_{t_{j+1}} - Y_{t_j} | &= \sum_{j=1}^n | \int_{t_j}^{t_{j+1}} X_s \, dB_s | \\
+         &\geq  \sum_{j=1}^n \min_{s} |X_s| |B_{t_{j+1} - B_{t_j}} \\
+        &\geq C \sum_{j=1^n} |B_{t_{j+1}} - B_{t_j} |
+    \end{align*}
 \end{thm}
 % section lecture_11_tuesday_5_march (end)
 
@@ -920,60 +920,60 @@ We then show that this definition is independent of the sequence of step functio
 From before, consider the \ito process $Y_t = \int_0^t X_s \, dB_s$.  
 
 \begin{lem}
-	$\E(\int_s^t X_u dB_u \given \sigf_s) = 0$. 
+    $\E(\int_s^t X_u dB_u \given \sigf_s) = 0$. 
 \end{lem}
 \begin{proof}
-	Let $X_u = \sum_{j=1}^n \zeta_j \mathbf{1}_{[t_j, t_{j+1})}$.  Then 
-	\begin{align*}
-		\E(\int_s^t X_u \, dB_u \given \sigf_s) = \sum_{j=1}^n \E(\zeta_j (B_{t_{j+1}} - B_{t_j}) \given \sigf_s ) \\
-					&= \sum_{j=1}^n \E(\E(\zeta_j (B_{t_{j+1}} - B_{t_j}) \given \sigf_{s}) \given \sigf_{t_j}) \\
-		 			&= \sum_{j=1}^n \E(\E(\zeta_j (B_{t_{j+1}} - B_{t_j}) \given \sigf_{t_j}) \given \sigf_s) \\
-					&= 0
-	\end{align*} where the third equality follows from the fact that $(\sigf_t)$ is an increasing sequence of $\sigma$-fields and the final follows from the fact that $B_{t_{j+1}} - B_{t_{j}}$ is independent of $\sigf_{t_j}$.  
+    Let $X_u = \sum_{j=1}^n \zeta_j \mathbf{1}_{[t_j, t_{j+1})}$.  Then 
+    \begin{align*}
+        \E(\int_s^t X_u \, dB_u \given \sigf_s) = \sum_{j=1}^n \E(\zeta_j (B_{t_{j+1}} - B_{t_j}) \given \sigf_s ) \\
+                    &= \sum_{j=1}^n \E(\E(\zeta_j (B_{t_{j+1}} - B_{t_j}) \given \sigf_{s}) \given \sigf_{t_j}) \\
+                    &= \sum_{j=1}^n \E(\E(\zeta_j (B_{t_{j+1}} - B_{t_j}) \given \sigf_{t_j}) \given \sigf_s) \\
+                    &= 0
+    \end{align*} where the third equality follows from the fact that $(\sigf_t)$ is an increasing sequence of $\sigma$-fields and the final follows from the fact that $B_{t_{j+1}} - B_{t_{j}}$ is independent of $\sigf_{t_j}$.  
 \end{proof}
 
 \begin{defn}[Local martingale]
-	A process $Y_t$ is a local martingale if there exists a sequence of stopping times $\tau_n, n \geq 1$ such that $Y_{\min(t, \tau), \sigf_t}$ is a martingale.  
+    A process $Y_t$ is a local martingale if there exists a sequence of stopping times $\tau_n, n \geq 1$ such that $Y_{\min(t, \tau), \sigf_t}$ is a martingale.  
 \end{defn}
 
 \begin{prop}We have the following.  
-	\begin{enumerate}
-		\item If $X_s \in \pi'$, that is, $\int_0^t \E(X_s^2) \, ds < \infty$, then $(Y_t, \sigf_t)$ is a martingale.
-		\item If $X_s \in \pi$, that is $\int_0^t X_s^2 \, ds < \infty $ a.s., then $(Y_t, \sigf_t)$ is a local martingale.  
-		\item For $f(x)$ satisfying $\int_0^t f^2(z) \, dz < \infty$., we have \[
-			Y_t = \int_0^t f(s) \, dB_s
-		\] is a Gaussian process.  
-	\end{enumerate}
+    \begin{enumerate}
+        \item If $X_s \in \pi'$, that is, $\int_0^t \E(X_s^2) \, ds < \infty$, then $(Y_t, \sigf_t)$ is a martingale.
+        \item If $X_s \in \pi$, that is $\int_0^t X_s^2 \, ds < \infty $ a.s., then $(Y_t, \sigf_t)$ is a local martingale.  
+        \item For $f(x)$ satisfying $\int_0^t f^2(z) \, dz < \infty$., we have \[
+            Y_t = \int_0^t f(s) \, dB_s
+        \] is a Gaussian process.  
+    \end{enumerate}
 \end{prop}
 
 \begin{proof}
-	We have $Y_t$ is trivially $\sigf_t$-measurable.  
-	
-	We have $\E(|Y_t|) < \infty $ a.s. as $\E(Y_t^2) = \int_0^t \E(X_s^2) \, ds < \infty$ by assumption.  
-	
-	We have \begin{align*}
-		\E(Y_t \given \sigf_s) &= \E(\int_0^s X_u \, dB_u + \int_s^t X_u \, dB_u \given \sigf_s ) \\
-		&= \E(Y_s \given \sigf_s) + \E( \int_s^t X_u \, dB_u \given \sigf_s) \\
-		&= Y_s			
-	\end{align*}  from the previous lemma.
-	
-	Now assuming $X_s \in \pi'$, the exists an $X^n_s$ a step process such that \[
-		\int_0^t \E(X^n_u - X_u)^2 \, du \rightarrow 0
-	\] as $n \rightarrow \infty$.  
-	
-	Set $Y^n_t = \int_0^t X_u^n \, dB_u$.  Then \begin{align*}
-		\int_s^t X_u \, dB_u = Y_t - Y_s \\
-							&= Y_t - Y_t^n + Y_t^n - Y_s^n + Y_s^N - Y_s \\			
-	\end{align*}
-	Then for each $n$, we have \begin{align*}
-		Z = \E(\int_s^t X_u \, dB_u ) &= \E(Y_t - Y_t^n \given \sigf_s) + \E(Y_s^n - Y_s \given \sigf_s) 
-	\end{align*}  
-	
-	We only need to prove $\E(|Z|^2) \rightarrow 0$ which implies $\E(Z^2) = 0$ and thus $Z = 0$ almost surely.  We have \[
-		\E(Z^2) \leq 2\E(Y_t - Y_t^n)^2 + 2\E(Y_s - Y_s^n)^2 \rightarrow 0
-	\] by definition of $Y_t^n$.
-	
-	
+    We have $Y_t$ is trivially $\sigf_t$-measurable.  
+    
+    We have $\E(|Y_t|) < \infty $ a.s. as $\E(Y_t^2) = \int_0^t \E(X_s^2) \, ds < \infty$ by assumption.  
+    
+    We have \begin{align*}
+        \E(Y_t \given \sigf_s) &= \E(\int_0^s X_u \, dB_u + \int_s^t X_u \, dB_u \given \sigf_s ) \\
+        &= \E(Y_s \given \sigf_s) + \E( \int_s^t X_u \, dB_u \given \sigf_s) \\
+        &= Y_s          
+    \end{align*}  from the previous lemma.
+    
+    Now assuming $X_s \in \pi'$, the exists an $X^n_s$ a step process such that \[
+        \int_0^t \E(X^n_u - X_u)^2 \, du \rightarrow 0
+    \] as $n \rightarrow \infty$.  
+    
+    Set $Y^n_t = \int_0^t X_u^n \, dB_u$.  Then \begin{align*}
+        \int_s^t X_u \, dB_u = Y_t - Y_s \\
+                            &= Y_t - Y_t^n + Y_t^n - Y_s^n + Y_s^N - Y_s \\         
+    \end{align*}
+    Then for each $n$, we have \begin{align*}
+        Z = \E(\int_s^t X_u \, dB_u ) &= \E(Y_t - Y_t^n \given \sigf_s) + \E(Y_s^n - Y_s \given \sigf_s) 
+    \end{align*}  
+    
+    We only need to prove $\E(|Z|^2) \rightarrow 0$ which implies $\E(Z^2) = 0$ and thus $Z = 0$ almost surely.  We have \[
+        \E(Z^2) \leq 2\E(Y_t - Y_t^n)^2 + 2\E(Y_s - Y_s^n)^2 \rightarrow 0
+    \] by definition of $Y_t^n$.
+    
+    
 \end{proof}
 
 % section lecture_12_thursday_7_march (end)
@@ -984,153 +984,153 @@ From before, consider the \ito process $Y_t = \int_0^t X_s \, dB_s$.
 
 
 \begin{thm}
-	Let $f$ be continuous.  Then \[
-		\lim_{\delta \rightarrow 0 } \sum_{j=1}^n f(\theta_j) (B_{t_{j+1}} - B_{t_j})^2 = \int_0^t f(B_s) \, ds
-	\]
+    Let $f$ be continuous.  Then \[
+        \lim_{\delta \rightarrow 0 } \sum_{j=1}^n f(\theta_j) (B_{t_{j+1}} - B_{t_j})^2 = \int_0^t f(B_s) \, ds
+    \]
 \end{thm}
 \begin{proof}
-	Let \[
-		Q_n = \sum_{j=1}^n |f(\theta_j)  - f(B_{t_j}) |B_{t_{j+1}} - B_{t_j}|^2  
-	\]
-	Note that $\sum_{j=1}^n f(B_{t_j}) (B_{t_{j+1}} - B_{t_j})^2 \rightarrow \int_0^t f(B_s) \, ds$ in probability.  
-	
-	It only needs to show that $Q_n \rightarrow 0$ in probability.   We have \[
-		Q_n \leq \max_{1 \leq j \leq n} | f(\theta_j) - f(B_{t_j})\sum_{j=1}^n |B_{t_{j+1}} - B_{t_j}|^2 \rightarrow 0 \cdot t = 0
-	\] in probability from the quadratic variance of the brownian motion 
+    Let \[
+        Q_n = \sum_{j=1}^n |f(\theta_j)  - f(B_{t_j}) |B_{t_{j+1}} - B_{t_j}|^2  
+    \]
+    Note that $\sum_{j=1}^n f(B_{t_j}) (B_{t_{j+1}} - B_{t_j})^2 \rightarrow \int_0^t f(B_s) \, ds$ in probability.  
+    
+    It only needs to show that $Q_n \rightarrow 0$ in probability.   We have \[
+        Q_n \leq \max_{1 \leq j \leq n} | f(\theta_j) - f(B_{t_j})\sum_{j=1}^n |B_{t_{j+1}} - B_{t_j}|^2 \rightarrow 0 \cdot t = 0
+    \] in probability from the quadratic variance of the brownian motion 
 \end{proof}
 
 
 \begin{thm}
-	Let $f$ be bounded on $[0,1]$.  Then \[
-		\lim_{\delta \rightarrow 0} \sum_{j=1}^n f(X_{t_j})(B_{t_{j+1}} - B_{t_j})^2 = \int_0^t f(X_s \, ds)
-	\]
+    Let $f$ be bounded on $[0,1]$.  Then \[
+        \lim_{\delta \rightarrow 0} \sum_{j=1}^n f(X_{t_j})(B_{t_{j+1}} - B_{t_j})^2 = \int_0^t f(X_s \, ds)
+    \]
 \end{thm}
 \begin{proof}
-	We only prove for cases where $\int_0^t \E(X_s^2) \, ds$ is finite.  In this case, there exists $X_s^n$ step process such that \[
-		\int_0^t \E(X_s^n - X_s)^2 \, ds \rightarrow 0
-	\] as $n \rightarrow \infty$.  
-	
-	In fact, we can let $X_s^n = \sum_{j=1}^n X_{t_j}  \mathbf{1}_{[t_j, t_{j+1}]}$.  Let \[
-		Y_t^n = \int_0^t X_s^n \, dB_s
-	\]  Then $Y_{t_{j+1}}^n - Y_{t_j}^n = \int_{t_j}^{t_{j+1}} X_s^n \, dB_s$.  
+    We only prove for cases where $\int_0^t \E(X_s^2) \, ds$ is finite.  In this case, there exists $X_s^n$ step process such that \[
+        \int_0^t \E(X_s^n - X_s)^2 \, ds \rightarrow 0
+    \] as $n \rightarrow \infty$.  
+    
+    In fact, we can let $X_s^n = \sum_{j=1}^n X_{t_j}  \mathbf{1}_{[t_j, t_{j+1}]}$.  Let \[
+        Y_t^n = \int_0^t X_s^n \, dB_s
+    \]  Then $Y_{t_{j+1}}^n - Y_{t_j}^n = \int_{t_j}^{t_{j+1}} X_s^n \, dB_s$.  
 
-	Therefore, \[
-		\sum_{j=1}^n (Y_{t_{j+1}} - Y_{t_j})^2 = \sum_{j=1}^n (Y_{t_{j+1}} - Y^n_{t_{j}} + Z_{1j} + Z_{2j} )
-	\] where $Z_{1j} = Y_{t_{j+1}} - Y_{t_{j+1}}^n$ and $Z_{2j} = Y_{t_j} = Y_{t_{j}}^n$.  Continuing, we have \begin{align*}
-		&= \sum_{j=1}^n (Y_{t_{j+1}} - Y_{t_{j}}^n)^2 + \text{error} \\
-		&= \sum_{j=1}^n X_{t_j}^2 (B_{t_{j+1}} - B_{t_j})^2 + \text{error} \\
-		&\rightarrow \int_0^t X_s^2 \, ds
-	\end{align*} if the error term goes to zero.  We have \begin{align*}
-		R_n &\leq 2 \sum Z_{1j}^2 + 2 \sum Z_{2j}^2 + 2 \sum |Z_{1j} | \cdot | Y_{t_{j+1}}^n - Y_{t_j}^n | + 2 \sum |Z_{2j} | \cdot | Y_{t_{j+1}}^n - Y_{t_j}^n | + 2 \sum |Z_{1j} | \cdot |Z_{2j} | \\
-		&\leq \dots + 2 (\sum Z_{1j}^2 )^{1/2} A_n^{1/2} + 2 (\sum Z_{2j}^2 )^{1/2} A_n^{1/2} + 2  (\sum Z_{1j}^2 )^{1/2} \cdot  (\sum Z_{2j}^2 )^{1/2} 
-	\end{align*}
-	and as $\sum {Z_{ij}}^2 \rightarrow 0$ in probability, we have our result.
+    Therefore, \[
+        \sum_{j=1}^n (Y_{t_{j+1}} - Y_{t_j})^2 = \sum_{j=1}^n (Y_{t_{j+1}} - Y^n_{t_{j}} + Z_{1j} + Z_{2j} )
+    \] where $Z_{1j} = Y_{t_{j+1}} - Y_{t_{j+1}}^n$ and $Z_{2j} = Y_{t_j} = Y_{t_{j}}^n$.  Continuing, we have \begin{align*}
+        &= \sum_{j=1}^n (Y_{t_{j+1}} - Y_{t_{j}}^n)^2 + \text{error} \\
+        &= \sum_{j=1}^n X_{t_j}^2 (B_{t_{j+1}} - B_{t_j})^2 + \text{error} \\
+        &\rightarrow \int_0^t X_s^2 \, ds
+    \end{align*} if the error term goes to zero.  We have \begin{align*}
+        R_n &\leq 2 \sum Z_{1j}^2 + 2 \sum Z_{2j}^2 + 2 \sum |Z_{1j} | \cdot | Y_{t_{j+1}}^n - Y_{t_j}^n | + 2 \sum |Z_{2j} | \cdot | Y_{t_{j+1}}^n - Y_{t_j}^n | + 2 \sum |Z_{1j} | \cdot |Z_{2j} | \\
+        &\leq \dots + 2 (\sum Z_{1j}^2 )^{1/2} A_n^{1/2} + 2 (\sum Z_{2j}^2 )^{1/2} A_n^{1/2} + 2  (\sum Z_{1j}^2 )^{1/2} \cdot  (\sum Z_{2j}^2 )^{1/2} 
+    \end{align*}
+    and as $\sum {Z_{ij}}^2 \rightarrow 0$ in probability, we have our result.
 \end{proof}
 
 \newcommand{\itos}{\text{It\^o's\ }}
 \begin{thm}[\itos first formula]
-	If $f(x)$ is a twice-differentiable function then for any $t$, \[
-		f(B_t) - f(B_s) = \int_s^t f'(B_u) \, dB_u + \frac{1}{2 } \int_s^t f''(B_u) \, du
-	\]
+    If $f(x)$ is a twice-differentiable function then for any $t$, \[
+        f(B_t) - f(B_s) = \int_s^t f'(B_u) \, dB_u + \frac{1}{2 } \int_s^t f''(B_u) \, du
+    \]
 \end{thm}
 \begin{proof}
-	Let $s = t_1, \dots, t_{n} = t$.  We have \[
-		f(B_t) - f(B_s) = \sum_{j=1}^n \left[ f(B_{t_{j+1}}) - f(B_{t_j}) \right]
-	\]
-	
-	Applying Taylor's expansion to $f(B_{t_{j+1}}) - f(B_{t_{j}})$ we get \[
-		f(B_{t_{j+1}}) - f(B_{t_j} = f'(B_{t_j}) (B_{t_{j+1}} - B_{t_j}) + \frac{1}{2} f''(\theta_j) (B_{t_{j+1}} - B_{t_j})^2 
-	\] and so \begin{align*}
-		f(B_t) - f(B_s) &= \lim_{\delta \rightarrow 0} \sum_{j=1}^n 	f'(B_{t_j}) (B_{t_{j+1}} - B_{t_j}) + \lim_{\delta \rightarrow 0} \sum_{j=1} \frac{1}{2} f''(\theta_j) (B_{t_{j+1}} - B_{t_j})^2  \\
-		&= \int_s^t f'(B_u) \, dB_u + \frac{1}{2} \int_s^t f''(B_u) \, du
-	\end{align*}
+    Let $s = t_1, \dots, t_{n} = t$.  We have \[
+        f(B_t) - f(B_s) = \sum_{j=1}^n \left[ f(B_{t_{j+1}}) - f(B_{t_j}) \right]
+    \]
+    
+    Applying Taylor's expansion to $f(B_{t_{j+1}}) - f(B_{t_{j}})$ we get \[
+        f(B_{t_{j+1}}) - f(B_{t_j} = f'(B_{t_j}) (B_{t_{j+1}} - B_{t_j}) + \frac{1}{2} f''(\theta_j) (B_{t_{j+1}} - B_{t_j})^2 
+    \] and so \begin{align*}
+        f(B_t) - f(B_s) &= \lim_{\delta \rightarrow 0} \sum_{j=1}^n     f'(B_{t_j}) (B_{t_{j+1}} - B_{t_j}) + \lim_{\delta \rightarrow 0} \sum_{j=1} \frac{1}{2} f''(\theta_j) (B_{t_{j+1}} - B_{t_j})^2  \\
+        &= \int_s^t f'(B_u) \, dB_u + \frac{1}{2} \int_s^t f''(B_u) \, du
+    \end{align*}
 \end{proof}
 
 \begin{exmp}
-	
+    
 \end{exmp}
 
 % section lecture_13_tuesday_12_march (end)
 \section{Lecture 14 - Thursday 14 March} % (fold)
 \label{sec:lecture_14_thursday_14_march}
 \begin{defn}[Covariation]  The covariation of two stochastic processes $X_t, Y_t$ is defined as \[
-	[X,Y](t) = \frac{1}{4}( [X+Y, X+Y](t) - [X-Y, X-Y](t))
+    [X,Y](t) = \frac{1}{4}( [X+Y, X+Y](t) - [X-Y, X-Y](t))
 \] where $[\cdot, \cdot]$ is the quadratic variation previously defined.
 \end{defn}
 
 \begin{defn}[Stochastic differential equation]
-	Let $X_t$ be an \ito process.  Then \[
-		X_t = X_a + \int_a^t \mu(s) \, ds + \int_a^b \sigma(s) \, dB_s
-	\]  We write \[
-		dX_t = \mu(t) \, dt + \sigma(t) \, dB_s
-	\] 
-	
-	By convention, we write $dX_t \cdot dY_t = d[X,Y](t)$.  In particular, $(dY_t)^2 = d[Y,Y](t)$.  
+    Let $X_t$ be an \ito process.  Then \[
+        X_t = X_a + \int_a^t \mu(s) \, ds + \int_a^b \sigma(s) \, dB_s
+    \]  We write \[
+        dX_t = \mu(t) \, dt + \sigma(t) \, dB_s
+    \] 
+    
+    By convention, we write $dX_t \cdot dY_t = d[X,Y](t)$.  In particular, $(dY_t)^2 = d[Y,Y](t)$.  
 \end{defn}
 
 \begin{thm}
-	Let $Y_t$ be path continuous, and let $X_t$ have finite variation.  Then \[
-		[X,Y](t) = 0.
-	\]
+    Let $Y_t$ be path continuous, and let $X_t$ have finite variation.  Then \[
+        [X,Y](t) = 0.
+    \]
 \end{thm}
 \begin{proof}
-	We have \begin{align*}
-		[X,Y](t)	&= \frac{1}{4}( [X+Y, X+Y] - [X-Y, X-Y]) \\
-					&= \lim_{\delta \rightarrow 0} \sum_{j=1}^n (X_{t_{j+1}} - X_{t_j})(Y_{t_{j+1}} - Y_{t_j}) \\
-					&\leq \lim_{\delta \rightarrow 0} \max | Y_{t_{j+1}} - Y_{t_j} | \sum_{j=1}^n | X_{t_{j+1}} - X_{t_j} | \\
-					&\rightarrow 0 		
-	\end{align*} as $Y_t$ is path continuous and $X_t$ has finite variation.
+    We have \begin{align*}
+        [X,Y](t)    &= \frac{1}{4}( [X+Y, X+Y] - [X-Y, X-Y]) \\
+                    &= \lim_{\delta \rightarrow 0} \sum_{j=1}^n (X_{t_{j+1}} - X_{t_j})(Y_{t_{j+1}} - Y_{t_j}) \\
+                    &\leq \lim_{\delta \rightarrow 0} \max | Y_{t_{j+1}} - Y_{t_j} | \sum_{j=1}^n | X_{t_{j+1}} - X_{t_j} | \\
+                    &\rightarrow 0      
+    \end{align*} as $Y_t$ is path continuous and $X_t$ has finite variation.
 \end{proof}
 
 \begin{cor}
-	From this theorem, we then have \[
-		dB_t \cdot dt = 0, \quad (dt)^2 = 0, \quad (dB_t)^2 = dt 
-	\]
+    From this theorem, we then have \[
+        dB_t \cdot dt = 0, \quad (dt)^2 = 0, \quad (dB_t)^2 = dt 
+    \]
 \end{cor}
 
 \begin{cor}
-	For an \ito process $X_t$ given above, we then have \[
-		d[X,X](t) = dX_t \cdot dX_t = \left(\mu(t) dt + \sigma(t) \, dB_t \right)^2 = \sigma^2(t) \, dt
-	\]
+    For an \ito process $X_t$ given above, we then have \[
+        d[X,X](t) = dX_t \cdot dX_t = \left(\mu(t) dt + \sigma(t) \, dB_t \right)^2 = \sigma^2(t) \, dt
+    \]
 \end{cor}
 \begin{cor}
-	If $f(x)$ has a twice continuous derivative, then \[
-	[f(B_t), B_t](t) = \int_0^t f'(B_s) \, ds
-	\]
+    If $f(x)$ has a twice continuous derivative, then \[
+    [f(B_t), B_t](t) = \int_0^t f'(B_s) \, ds
+    \]
 \end{cor}
 \begin{proof}
-	From \itos formula, we have \[
-		df(B_t) = f'(B_t) \, dB_t + \frac{1}{2} f''(B_t) \, dt
-	\]  Then from above, we have \[
-		d[f(B_t), B_t] (t) = df(B_t) \cdot dB_t	= f'(B_t) dt
-	\]
+    From \itos formula, we have \[
+        df(B_t) = f'(B_t) \, dB_t + \frac{1}{2} f''(B_t) \, dt
+    \]  Then from above, we have \[
+        d[f(B_t), B_t] (t) = df(B_t) \cdot dB_t = f'(B_t) dt
+    \]
 \end{proof}
 \begin{thm}[\itos lemma]
-	By Taylor's theorem, we have \begin{align*}
-		df(t, X_t) &= \frac{\partial f(t, X_t)}{\partial t} dt + \left.\frac{\partial f(t, x)}{\partial x}  \right|_{x = X_t} \cdot dX_t + \left.\frac{1}{2} \frac{\partial^2 f(t, x)}{\partial x^2} \right|_{x = X_t} \cdot (dX_t)^2 \\
-		&\qquad + \left.\frac{1}{2} \frac{\partial^2 f(t, x)}{\partial x \partial t} \right|_{x = X_t} \cdot dX_t \cdot dt \\
-		&= \frac{\partial f(t, X_t)}{\partial t} dt + \left.\frac{\partial f(t, x)}{\partial x}  \right|_{x = X_t} \cdot (\mu(t) \, dt + \sigma(t) \, dB_t) + \left.\frac{1}{2} \frac{\partial^2 f(t, x)}{\partial x^2} \right|_{x = X_t} \cdot \sigma^2 \, dt \\
-		&= \left( \frac{\partial f}{\partial t} + \frac{\partial f}{\partial x} \mu(t) + \frac{1}{2} \frac{\partial^2 f}{\partial x^2} \sigma^2(t) \right) \, dt + \frac{\partial f}{\partial x} \sigma(t) \, dB_t
-	\end{align*}
+    By Taylor's theorem, we have \begin{align*}
+        df(t, X_t) &= \frac{\partial f(t, X_t)}{\partial t} dt + \left.\frac{\partial f(t, x)}{\partial x}  \right|_{x = X_t} \cdot dX_t + \left.\frac{1}{2} \frac{\partial^2 f(t, x)}{\partial x^2} \right|_{x = X_t} \cdot (dX_t)^2 \\
+        &\qquad + \left.\frac{1}{2} \frac{\partial^2 f(t, x)}{\partial x \partial t} \right|_{x = X_t} \cdot dX_t \cdot dt \\
+        &= \frac{\partial f(t, X_t)}{\partial t} dt + \left.\frac{\partial f(t, x)}{\partial x}  \right|_{x = X_t} \cdot (\mu(t) \, dt + \sigma(t) \, dB_t) + \left.\frac{1}{2} \frac{\partial^2 f(t, x)}{\partial x^2} \right|_{x = X_t} \cdot \sigma^2 \, dt \\
+        &= \left( \frac{\partial f}{\partial t} + \frac{\partial f}{\partial x} \mu(t) + \frac{1}{2} \frac{\partial^2 f}{\partial x^2} \sigma^2(t) \right) \, dt + \frac{\partial f}{\partial x} \sigma(t) \, dB_t
+    \end{align*}
 \end{thm}
 
 \begin{exmp}
-	Let $f(B_t) = e^{B_t}$. Then \[
-		df(B_t) = e^{B_t} \, dB_t + \frac{1}{2} e^{B_t} \, dt
-	\]
+    Let $f(B_t) = e^{B_t}$. Then \[
+        df(B_t) = e^{B_t} \, dB_t + \frac{1}{2} e^{B_t} \, dt
+    \]
 \end{exmp}
 
 \begin{thm}
-	Assume $\int_0^T f^2(t)\, dt < \infty$.  Let $X_t = \int_0^t f(s) \, dB_s - \frac{1}{2}\int_0^t f^2(s) \, ds$.  Then \[
-		Y_t = e^{X_t}
-	\]  is a martingale with respect to $\sigf_t = \sigma(B_s, 0 \leq s \leq t)$. 
+    Assume $\int_0^T f^2(t)\, dt < \infty$.  Let $X_t = \int_0^t f(s) \, dB_s - \frac{1}{2}\int_0^t f^2(s) \, ds$.  Then \[
+        Y_t = e^{X_t}
+    \]  is a martingale with respect to $\sigf_t = \sigma(B_s, 0 \leq s \leq t)$. 
 \end{thm}
 \begin{proof}
-	We have \begin{align*}
-		dY_t 	&= e^{X_t} \, dX_t + \frac{1}{2} e^{X_t} (dX_t)^2 \\
-				&= e^{X_t}[f(t) \, dB_t - \frac{1}{2} f^2(s) \, dt] + \frac{1}{2} e^{X_t} f^2 \, dt \\
-				&= e^{X_t} f(t) \, dB_t
- 	\end{align*} and thus $Y_t = \int_0^t e^{X_s} f(s) \, dB_s$ which is a martingale from previous work.
+    We have \begin{align*}
+        dY_t    &= e^{X_t} \, dX_t + \frac{1}{2} e^{X_t} (dX_t)^2 \\
+                &= e^{X_t}[f(t) \, dB_t - \frac{1}{2} f^2(s) \, dt] + \frac{1}{2} e^{X_t} f^2 \, dt \\
+                &= e^{X_t} f(t) \, dB_t
+    \end{align*} and thus $Y_t = \int_0^t e^{X_s} f(s) \, dB_s$ which is a martingale from previous work.
 \end{proof}
 
 % section lecture_14_thursday_14_march (end)
@@ -1138,103 +1138,103 @@ From before, consider the \ito process $Y_t = \int_0^t X_s \, dB_s$.
 \label{sec:lecture_15_tuesday_19_march}
 
 \begin{thm}[Multivariate \itos formula]
-	Let $B_j(t)$ be a sequence of independent Brownian motions.  Consider the \ito processes $X_t^i$, with \[
-		dX_t^i = b_i(t) \, dt + \sum_{k=1}^m \sigma_{ki}(t) \, dB_k(t)
-	\]  Suppose $f(t, x_1, \dots, x_n)$ is a continuous function of its components and has continuous partial derivatives $\frac{\partial f}{\partial t}, \frac{\partial f}{\partial x_i}, \frac{\partial f}{\partial^2 x_i \partial x_j}$.  Then \[
-		df(t, X_t^1, \dots, X_t^m) = \frac{\partial f}{\partial t} \, dt + \sum_{i=1}^m \frac{\partial f}{\partial x_i} \, dX_t^i + \frac{1}{2} \sum_{i, j = 1} \frac{\partial^2 f}{\partial x_i \partial x_j} \, dX_t^i \, dX_t^j
-	\]
-	
-	We have \begin{align*}
-		dX_t^i \, dX_t^j 	&= \sum_{k, s = 1}^m \sigma_{ki} \sigma_{sj} \, dB_k(t) \, dB_{s}(t) \\
-							&= \sum_{k=1}^n \sigma_{ki}\sigma_{kj} \, dt + 
-	\end{align*} as $d[B_i, B_j](t) = 0$ when $B_i, B_j$ are independent 
+    Let $B_j(t)$ be a sequence of independent Brownian motions.  Consider the \ito processes $X_t^i$, with \[
+        dX_t^i = b_i(t) \, dt + \sum_{k=1}^m \sigma_{ki}(t) \, dB_k(t)
+    \]  Suppose $f(t, x_1, \dots, x_n)$ is a continuous function of its components and has continuous partial derivatives $\frac{\partial f}{\partial t}, \frac{\partial f}{\partial x_i}, \frac{\partial f}{\partial^2 x_i \partial x_j}$.  Then \[
+        df(t, X_t^1, \dots, X_t^m) = \frac{\partial f}{\partial t} \, dt + \sum_{i=1}^m \frac{\partial f}{\partial x_i} \, dX_t^i + \frac{1}{2} \sum_{i, j = 1} \frac{\partial^2 f}{\partial x_i \partial x_j} \, dX_t^i \, dX_t^j
+    \]
+    
+    We have \begin{align*}
+        dX_t^i \, dX_t^j    &= \sum_{k, s = 1}^m \sigma_{ki} \sigma_{sj} \, dB_k(t) \, dB_{s}(t) \\
+                            &= \sum_{k=1}^n \sigma_{ki}\sigma_{kj} \, dt + 
+    \end{align*} as $d[B_i, B_j](t) = 0$ when $B_i, B_j$ are independent 
 \end{thm}
 
 \begin{exmp}
-	Let \begin{align*}
-		dX_t &= \mu_1(t) dt + \sigma_1(t) \, dB_1(t) \\
-		dY_t &= \mu_2(t) dt + \sigma_2(t) \, dB_2(t)
-	\end{align*} with $B_1, B_2$ independent. Then \begin{align*}
-		d(X_t \cdot Y_t) = Y_t \, dX_t + X_t \, dY_t + d[X,Y](t)
-	\end{align*} and by independence, $d[X,Y](t) = dX_t \cdot dY_t = 0$.
+    Let \begin{align*}
+        dX_t &= \mu_1(t) dt + \sigma_1(t) \, dB_1(t) \\
+        dY_t &= \mu_2(t) dt + \sigma_2(t) \, dB_2(t)
+    \end{align*} with $B_1, B_2$ independent. Then \begin{align*}
+        d(X_t \cdot Y_t) = Y_t \, dX_t + X_t \, dY_t + d[X,Y](t)
+    \end{align*} and by independence, $d[X,Y](t) = dX_t \cdot dY_t = 0$.
 \end{exmp}
 
 \begin{exmp}
-	Let \begin{align*}
-		dX_t &= \mu_1(t) dt + \sigma_1(t) \, dB_1(t) \\
-		dY_t &= \mu_2(t) dt + \sigma_2(t) \, dB_1(t).
-	\end{align*} Then \begin{align*}
-		d(X_t \cdot Y_t) = Y_t \, dX_t + X_t \, dY_t + \sigma_1(t) \sigma_2(t) \, dt.
-	\end{align*}
-	
-	In particular, if $\mu_1 = \mu_2 = 0$, then \[
-		X_t \, Y_t = \int_0^t [ \sigma_1(s) Y_s + \sigma_2(s) X_s] \, dB_s + \int_0^t \sigma_1(s) \sigma_2(s) \, dt
-	\]  
-	
-	Thus, $Z_t = X_t Y_t - \int_0^t \sigma_1(s) \sigma_2(s) \, dt$ is a martingale.
+    Let \begin{align*}
+        dX_t &= \mu_1(t) dt + \sigma_1(t) \, dB_1(t) \\
+        dY_t &= \mu_2(t) dt + \sigma_2(t) \, dB_1(t).
+    \end{align*} Then \begin{align*}
+        d(X_t \cdot Y_t) = Y_t \, dX_t + X_t \, dY_t + \sigma_1(t) \sigma_2(t) \, dt.
+    \end{align*}
+    
+    In particular, if $\mu_1 = \mu_2 = 0$, then \[
+        X_t \, Y_t = \int_0^t [ \sigma_1(s) Y_s + \sigma_2(s) X_s] \, dB_s + \int_0^t \sigma_1(s) \sigma_2(s) \, dt
+    \]  
+    
+    Thus, $Z_t = X_t Y_t - \int_0^t \sigma_1(s) \sigma_2(s) \, dt$ is a martingale.
 \end{exmp}
 
 \begin{thm}[Tanaka's formula]
-	We have \[
-		|B_t - a | = |a| + \int_0^t \text{sgn}(B_s - a) \, dB_s + \mathcal L(t, a)
-	\] where \[\mathcal L(t,a) = \lim_{\epsilon > 0} \frac{1}{2 \epsilon} \int_0^t \mathbf{1}_{|B_s - a| \leq \epsilon} \, ds
- 	\]
+    We have \[
+        |B_t - a | = |a| + \int_0^t \text{sgn}(B_s - a) \, dB_s + \mathcal L(t, a)
+    \] where \[\mathcal L(t,a) = \lim_{\epsilon > 0} \frac{1}{2 \epsilon} \int_0^t \mathbf{1}_{|B_s - a| \leq \epsilon} \, ds
+    \]
 \end{thm}
 \begin{proof}
-	Let \[
-		f_\epsilon(x) = \begin{cases}
-			|x-a| - \frac{\epsilon}{2} &|x-a| > \epsilon \\
-			\frac{1}{2 \epsilon}(x-a)^2 &|x-a| \leq \epsilon
-		\end{cases}
-	\]  Then we have \[
-		f'_\epsilon(x) = \begin{cases}
-			1 &x > a + \epsilon \\
-			\frac{1}{\epsilon}(x-a) &|x-a| \leq \epsilon \\
-			-1 &x < a - \epsilon
-		\end{cases}
-	\] and \[
-	f''_\epsilon(x) = \begin{cases}
-		0 &|x-a| > \epsilon \\
-		\frac{1}{\epsilon} &|x-a| \leq \epsilon
-	\end{cases}	
-	\]
-	
-	Then by \itos formula, we have \[
-		f_\epsilon(B_t) = f_\epsilon(0) + \int_0^t f'_\epsilon(B-s) \, dB_s + \frac{1}{2} \int_0^t f''_\epsilon(B_s) \, ds	\]
-		
-	Obviously \[
-		\lim_{\epsilon \rightarrow 0} f_\epsilon(0) = |a|
-	\] and \[
-		\lim_{\epsilon \rightarrow 0} \frac{1}{2} \int_0^t f''_\epsilon(B_s) \, ds = \frac{1}{\epsilon} \int_0^t \mathbf{1}_{|B_s - a| \leq \epsilon} \, ds = \mathcal L(t, a)
-	\]
-	
-	Note that \[
-		\int_0^t \left| f'_\epsilon(B_s) - \text{sgn}(B_s  - a) \right|^2 \, ds =  \int_{|B_s - a \leq \epsilon} \left| \frac{1}{\epsilon}(B_s - a) - \text{sgn}(B_s - a) \right|^2 \, ds \rightarrow 0 a.s.
-	\]
+    Let \[
+        f_\epsilon(x) = \begin{cases}
+            |x-a| - \frac{\epsilon}{2} &|x-a| > \epsilon \\
+            \frac{1}{2 \epsilon}(x-a)^2 &|x-a| \leq \epsilon
+        \end{cases}
+    \]  Then we have \[
+        f'_\epsilon(x) = \begin{cases}
+            1 &x > a + \epsilon \\
+            \frac{1}{\epsilon}(x-a) &|x-a| \leq \epsilon \\
+            -1 &x < a - \epsilon
+        \end{cases}
+    \] and \[
+    f''_\epsilon(x) = \begin{cases}
+        0 &|x-a| > \epsilon \\
+        \frac{1}{\epsilon} &|x-a| \leq \epsilon
+    \end{cases} 
+    \]
+    
+    Then by \itos formula, we have \[
+        f_\epsilon(B_t) = f_\epsilon(0) + \int_0^t f'_\epsilon(B-s) \, dB_s + \frac{1}{2} \int_0^t f''_\epsilon(B_s) \, ds  \]
+        
+    Obviously \[
+        \lim_{\epsilon \rightarrow 0} f_\epsilon(0) = |a|
+    \] and \[
+        \lim_{\epsilon \rightarrow 0} \frac{1}{2} \int_0^t f''_\epsilon(B_s) \, ds = \frac{1}{\epsilon} \int_0^t \mathbf{1}_{|B_s - a| \leq \epsilon} \, ds = \mathcal L(t, a)
+    \]
+    
+    Note that \[
+        \int_0^t \left| f'_\epsilon(B_s) - \text{sgn}(B_s  - a) \right|^2 \, ds =  \int_{|B_s - a \leq \epsilon} \left| \frac{1}{\epsilon}(B_s - a) - \text{sgn}(B_s - a) \right|^2 \, ds \rightarrow 0 a.s.
+    \]
 \end{proof}
 
 \begin{thm}
-	\[
-		\mathcal L(t,a) = \int_0^t \delta_a(B_s) \,ds
-	\]
+    \[
+        \mathcal L(t,a) = \int_0^t \delta_a(B_s) \,ds
+    \]
 \end{thm}
 \begin{thm}
-	If $f$ is integrable on $\R$, then \[
-		\int_{-\infty}^\infty \mathcal L(t,s) f(s) \, ds = \int_0^t f(B_s) \ ds
-	\]
+    If $f$ is integrable on $\R$, then \[
+        \int_{-\infty}^\infty \mathcal L(t,s) f(s) \, ds = \int_0^t f(B_s) \ ds
+    \]
 \end{thm}
 % section lecture_15_tuesday_19_march (end)
 
 \section{Lecture 16 - Thursday 21 March} % (fold)
 \label{sec:lecture_16_thursday_21_march}
 \begin{defn}[Linear cointegration]
-	Consider two non stationary time series $X_t$ and $Y_t$.  If there exist coefficients $\alpha$ and $\beta$ such that \[
-		\alpha X_t + \beta Y_t = u_t
-	\] with $u_t$ stationary, then we say that $X_t$ and $Y_t$ are \textbf{cointegrated}.  
+    Consider two non stationary time series $X_t$ and $Y_t$.  If there exist coefficients $\alpha$ and $\beta$ such that \[
+        \alpha X_t + \beta Y_t = u_t
+    \] with $u_t$ stationary, then we say that $X_t$ and $Y_t$ are \textbf{cointegrated}.  
 \end{defn}
 
 \begin{defn}[Nonlinear cointegration]
-	If $Y_t - f(X_t) = u_t$ is stationary, with $f(\cdot)$ a nonlinear function.   
+    If $Y_t - f(X_t) = u_t$ is stationary, with $f(\cdot)$ a nonlinear function.   
 \end{defn}
 
 % If $\hat f_n(x) = \frac{\sum Y_t K\left( \frac{x_t - x}{h} \right)}{\sum K\left( \frac{x_t - x}{h} \right)}$
@@ -1249,9 +1249,9 @@ From before, consider the \ito process $Y_t = \int_0^t X_s \, dB_s$.
 We now seek to define stochastic integrals with respect to processes other than Brownian motion.  
 
 \begin{exmp}
-	Let $X_t = \int_0^t Y_s \, dB_s$, and thus $dX_s = Y_s \, dB_s$.  Then \[
-		Z_t = \int_0^t Y'_s \, dX_s = \int_0^t Y'_s \cdot Y_s \, dB_s
-	\]
+    Let $X_t = \int_0^t Y_s \, dB_s$, and thus $dX_s = Y_s \, dB_s$.  Then \[
+        Z_t = \int_0^t Y'_s \, dX_s = \int_0^t Y'_s \cdot Y_s \, dB_s
+    \]
 \end{exmp}
 
 Revus and Yov - Continuous Martingale and Brownian Motion
@@ -1259,9 +1259,9 @@ Revus and Yov - Continuous Martingale and Brownian Motion
 \begin{defn}[Martingale]
 A martingale with respect
 \begin{enumerate}[(1)]
-	\item $M_t$ adapted to $\sigf_t$.
-	\item $\E(|M_t|) < \infty$.
-	\item $\E(M_t \given \sigf_s) = M_s$ a.s.
+    \item $M_t$ adapted to $\sigf_t$.
+    \item $\E(|M_t|) < \infty$.
+    \item $\E(M_t \given \sigf_s) = M_s$ a.s.
 \end{enumerate}
 
 A process is a submartingale if (3) is replace with $\E(M_t \given \sigf_s) \geq M_s$.  A process is a supermartingale if (3) is replaced with $\E(M_t \given \sigf_s) \leq M_s$.  
@@ -1269,167 +1269,167 @@ A process is a submartingale if (3) is replace with $\E(M_t \given \sigf_s) \geq
 \end{defn}
 
 \begin{exmp}
-	Let $N_t$ be a poisson process with intensity $\lambda$.  Then 
-	\begin{enumerate}
-		\item $N_t$ is a submartingale with respect to the natural filtration.
-		\item $N_t - \lambda t$ is a martingale with respect to the natural filtration.  
-	\end{enumerate}
+    Let $N_t$ be a poisson process with intensity $\lambda$.  Then 
+    \begin{enumerate}
+        \item $N_t$ is a submartingale with respect to the natural filtration.
+        \item $N_t - \lambda t$ is a martingale with respect to the natural filtration.  
+    \end{enumerate}
 \end{exmp}
 
 \begin{thm}
-	If $\int_0^t \E(H^2(s)) \, ds < \infty$ and $H(s)$ is adapted to $\sigf_s = \sigma( B_t, t \leq s)$, then \[ Y_t = \int_0^t H(s) \, dB_s, t \geq 0
-	\]  is a continuous, square integrable martingale - that is, $\E(Y_t^2 < \infty)$.
+    If $\int_0^t \E(H^2(s)) \, ds < \infty$ and $H(s)$ is adapted to $\sigf_s = \sigma( B_t, t \leq s)$, then \[ Y_t = \int_0^t H(s) \, dB_s, t \geq 0
+    \]  is a continuous, square integrable martingale - that is, $\E(Y_t^2 < \infty)$.
 \end{thm}
 
 \begin{thm}
-	Let $M_t$ be a continuous, square integrable martingale with respect to $\sigf_t$.  Then there exists an adapted process $H(s)$ such that $\int_0^t \E(H^2(s)) \, ds < \infty$ and \[
-		M_t = M_0 + \int_0^t H(s) \, dB_s
-	\] where $B_t$ is a Brownian motion with respect to $\sigf_t$.
+    Let $M_t$ be a continuous, square integrable martingale with respect to $\sigf_t$.  Then there exists an adapted process $H(s)$ such that $\int_0^t \E(H^2(s)) \, ds < \infty$ and \[
+        M_t = M_0 + \int_0^t H(s) \, dB_s
+    \] where $B_t$ is a Brownian motion with respect to $\sigf_t$.
 \end{thm}
 
 \begin{thm}
-	$M_t, t \geq 0$ is a Brownian motion if and only if it is a local continuous martingale with $[M, M](t) = t, t \geq 0$ under some probability measure $Q$.
+    $M_t, t \geq 0$ is a Brownian motion if and only if it is a local continuous martingale with $[M, M](t) = t, t \geq 0$ under some probability measure $Q$.
 \end{thm}
 \begin{proof}
-	A local continuous martingale is of the form $M_t = M_0 + \int_0^t H(s) \, dB_s$.  Then we have \[
-		[M, M](t) = \int_0^t H^2(s) \, ds = t \Rightarrow H(s) = 1 a.s. \Rightarrow M_t = B_t.
-	\]
+    A local continuous martingale is of the form $M_t = M_0 + \int_0^t H(s) \, dB_s$.  Then we have \[
+        [M, M](t) = \int_0^t H^2(s) \, ds = t \Rightarrow H(s) = 1 a.s. \Rightarrow M_t = B_t.
+    \]
 \end{proof}
 
 \begin{thm}
-	Let $M_t, t \geq 0$ e a continuous local martingale such that $[M, M](t) \uparrow \infty$.  Let \[
-		\tau_t = \inf \{ s : [M, M](s) \geq t \}.
-	\] Then $M(\tau_t)$ is a Brownian motion.  Moreover, $M(t) = B([M, M](t)), t \geq 0$. 
-	
-	This is an application of the \textbf{change of time} method.
+    Let $M_t, t \geq 0$ e a continuous local martingale such that $[M, M](t) \uparrow \infty$.  Let \[
+        \tau_t = \inf \{ s : [M, M](s) \geq t \}.
+    \] Then $M(\tau_t)$ is a Brownian motion.  Moreover, $M(t) = B([M, M](t)), t \geq 0$. 
+    
+    This is an application of the \textbf{change of time} method.
 \end{thm}
 
 \begin{exmp}
-	$B_t$ is a Brownian motion - and then $Y_t = B_t^2 - t$ is a martingale.  We have \[
-		dY_t = H(s) \, dB_s = 2 B_s \, dB_s.  
-	\]  Thus, \[
-		B_t^2 - t = 2 \int_0^t B_s \, dB_s.
-	\]
+    $B_t$ is a Brownian motion - and then $Y_t = B_t^2 - t$ is a martingale.  We have \[
+        dY_t = H(s) \, dB_s = 2 B_s \, dB_s.  
+    \]  Thus, \[
+        B_t^2 - t = 2 \int_0^t B_s \, dB_s.
+    \]
 \end{exmp}
 
 \begin{defn}[Predictability of a stochastic process]
-	A stochastic process $X_t, t \geq 0$ is said to be predictable with respect to $\sigf_t$ if $X_t \in \sigf_{t-}$ for all $t \geq 0$, where \[
-		\sigf_{t-} = \bigcap_{h \geq 0}^\infty \sigf_{t + h}, \qquad \sigf_{t-} = \sigma \left( \bigcap_{h > 0}^\infty \sigf_{t - h} \right).
-	\] 
+    A stochastic process $X_t, t \geq 0$ is said to be predictable with respect to $\sigf_t$ if $X_t \in \sigf_{t-}$ for all $t \geq 0$, where \[
+        \sigf_{t-} = \bigcap_{h \geq 0}^\infty \sigf_{t + h}, \qquad \sigf_{t-} = \sigma \left( \bigcap_{h > 0}^\infty \sigf_{t - h} \right).
+    \] 
 \end{defn}
 
 \begin{exmp}
-	Let $g_t$ be a step process, with \[
-		g_t = \sum_{i=1}^n \zeta_j \mathbf{1}_{[t_j, t_{j+1})}(t)
-	\] Then $g_t$ is not predictable.  
-	
-	Let $g_t$ be a step process, with \[
-		g_t = \sum_{i=1}^n \zeta_j \mathbf{1}_{(t_j, t_{j+1}]}(t)
-	\] Then $g_t$ is predictable.  
+    Let $g_t$ be a step process, with \[
+        g_t = \sum_{i=1}^n \zeta_j \mathbf{1}_{[t_j, t_{j+1})}(t)
+    \] Then $g_t$ is not predictable.  
+    
+    Let $g_t$ be a step process, with \[
+        g_t = \sum_{i=1}^n \zeta_j \mathbf{1}_{(t_j, t_{j+1}]}(t)
+    \] Then $g_t$ is predictable.  
 \end{exmp}
 
 \begin{exmp}
-	Let $N_t$ be a Poisson process.  Then $N_{t-}$ is predictable, but $N_t$ is not predictable.
+    Let $N_t$ be a Poisson process.  Then $N_{t-}$ is predictable, but $N_t$ is not predictable.
 \end{exmp}
 
 From now on, assume $M_t, t \geq 0$ is right continuous, square integrable martingale with left hand limits.  
 
 \begin{lem}
-	$M_t^2$ is a submartingale.
+    $M_t^2$ is a submartingale.
 \end{lem}
 \begin{proof}
-	\begin{align*}
-		\E(M_t^2 \given \sigf_s) = \E(M_s^2 + 2(M_t - M_s) + (M_t - M_s)^2 \given \sigf_s) \\
-		&= M_s^2 + \E((M_t - M_s)^2 \given \sigf_s) \\
-		&\geq M_s^2
-	\end{align*}
+    \begin{align*}
+        \E(M_t^2 \given \sigf_s) = \E(M_s^2 + 2(M_t - M_s) + (M_t - M_s)^2 \given \sigf_s) \\
+        &= M_s^2 + \E((M_t - M_s)^2 \given \sigf_s) \\
+        &\geq M_s^2
+    \end{align*}
 \end{proof}
 
 \begin{thm}[Doob-Myer decomposition]
-	By Doob-Myer we can write \[
-		M_t^2 = L_t + A_t
-	\] where $L_t$ is a martingale, and $A_t$ is a predictable process, right continuous, and increasing, such that $A_0 = 0, \E(A_t) < \infty, t \geq 0$.  
-	
-	$A_t$ is called the \textbf{compensator} of $M_t^2$, and is denoted by $\langle M, M \rangle(t)$.
+    By Doob-Myer we can write \[
+        M_t^2 = L_t + A_t
+    \] where $L_t$ is a martingale, and $A_t$ is a predictable process, right continuous, and increasing, such that $A_0 = 0, \E(A_t) < \infty, t \geq 0$.  
+    
+    $A_t$ is called the \textbf{compensator} of $M_t^2$, and is denoted by $\langle M, M \rangle(t)$.
 \end{thm}
 \begin{exmp}
-	Consider $B_t^2 = B_t^2 - t + t$.  Then \[
-		\langle B, B \rangle(t) = t = [B, B](t)
-	\]
+    Consider $B_t^2 = B_t^2 - t + t$.  Then \[
+        \langle B, B \rangle(t) = t = [B, B](t)
+    \]
 \end{exmp}
 
 \begin{thm}
-	If $M_t$ is continuous then \[
-		[M, M](t) = \langle M , M \rangle (t).
-	\]
+    If $M_t$ is continuous then \[
+        [M, M](t) = \langle M , M \rangle (t).
+    \]
 \end{thm}
 
 \begin{exmp}
-	Let $N_t$ be a Poisson process.  Then we know $\tilde N_t = N_t - \lambda t$ is a martingale.  We may prove \[
-		\tilde N_t^2 - \lambda t
-	\] is a martingale, that is, $\langle \tilde N, \tilde N \rangle(t)=\lambda t$.  However, \[
-		[\tilde N, \tilde N](t) = \lambda t + \tilde N_t \neq \langle \tilde N, \tilde N \rangle (t)
-	\]
+    Let $N_t$ be a Poisson process.  Then we know $\tilde N_t = N_t - \lambda t$ is a martingale.  We may prove \[
+        \tilde N_t^2 - \lambda t
+    \] is a martingale, that is, $\langle \tilde N, \tilde N \rangle(t)=\lambda t$.  However, \[
+        [\tilde N, \tilde N](t) = \lambda t + \tilde N_t \neq \langle \tilde N, \tilde N \rangle (t)
+    \]
 \end{exmp}
 \begin{exmp}
-	$X_t = \int_0^t f(s) \, dB_s$ is a continuous martingale.  Thus, \[
-		[X, X](t) = \int_0^t f^2(s) \, ds = \langle X, X \rangle(t)
-	\]	
+    $X_t = \int_0^t f(s) \, dB_s$ is a continuous martingale.  Thus, \[
+        [X, X](t) = \int_0^t f^2(s) \, ds = \langle X, X \rangle(t)
+    \]  
 \end{exmp}
 
 \begin{thm}
-	If $M_t$ is a continuous, square integrable martingale, then \[
-		M_t^2 - [M, M](t)
-	\] is a martingale, and so \[
-		[M, M](t) = \langle M, M \rangle(t) + \text{martingale}
-	\] which implies \[
-		\E[M, M](t) = \E\langle M , M \rangle(t) = \E M_t^2
-	\]
+    If $M_t$ is a continuous, square integrable martingale, then \[
+        M_t^2 - [M, M](t)
+    \] is a martingale, and so \[
+        [M, M](t) = \langle M, M \rangle(t) + \text{martingale}
+    \] which implies \[
+        \E[M, M](t) = \E\langle M , M \rangle(t) = \E M_t^2
+    \]
 \end{thm}
 
 
 We now turn to defining integrals such as \[
-	\int_0^t X_s \, dM_s
+    \int_0^t X_s \, dM_s
 \] where $M_s$ is a martingale.
 
 \begin{defn}[]
-	Let $L^2_{pred}$ be the space of all predictable stochastic process $X_s$ satisfying the condition \[
-		\int_0^t X_s^2 \, d \langle M, M \rangle (s) < \infty.
-	\] Then the integral $\int_0^t X_s \, dMs$ is defined as before in two steps.
-	\begin{enumerate}[(1)]
-		\item If $X_s \in L^2_{pred}$ and $X_s = \sum_{j=1}^n \zeta_j \mathbf{1}_{[t_j, t_{j+1})}$.  Define \[
-			I(X) = \sum_{j=1}^n \zeta_j (M_{t_{j+1}} - M_{t_j}).
-		\] 
-		\item For all $X_s \in L^2_{pred}$, there exists a sequence of step process $X_s^n$ such that $X_s^n \rightarrow X_s$ in $L^2$.  Define $I(x)$ to be the limit in such situations such that \[
-			\E(I(X) - I(X^n))^2 \rightarrow 0.
-		\]
-	\end{enumerate}
+    Let $L^2_{pred}$ be the space of all predictable stochastic process $X_s$ satisfying the condition \[
+        \int_0^t X_s^2 \, d \langle M, M \rangle (s) < \infty.
+    \] Then the integral $\int_0^t X_s \, dMs$ is defined as before in two steps.
+    \begin{enumerate}[(1)]
+        \item If $X_s \in L^2_{pred}$ and $X_s = \sum_{j=1}^n \zeta_j \mathbf{1}_{[t_j, t_{j+1})}$.  Define \[
+            I(X) = \sum_{j=1}^n \zeta_j (M_{t_{j+1}} - M_{t_j}).
+        \] 
+        \item For all $X_s \in L^2_{pred}$, there exists a sequence of step process $X_s^n$ such that $X_s^n \rightarrow X_s$ in $L^2$.  Define $I(x)$ to be the limit in such situations such that \[
+            \E(I(X) - I(X^n))^2 \rightarrow 0.
+        \]
+    \end{enumerate}
 \end{defn}
 \begin{prop}
-	Properties of the integral.  
-	\begin{enumerate}
-		\item If $M_s$ is a (local) martingale, then \[
-			\int_0^t f(s) \, dM_s
-		\] is a (local) martingale.  
-		
-		\begin{proof}
-			\[
-				\E(\int_s^t f(u) \, dM_u \given \sigf_s) = 0
-			\]
-		\end{proof}
-		\item If $M_t$ is a square integrable martingale and satisfies \[
-			\E( \int_0^t f^2(s)\,  d\langle M, M\rangle (t) ) < \infty
-		\] then \[
-			I(f) = \int_0^t f(s) \, dM_s 
-		\] is square integrable with $E(I(f)) = 0$, and $E(I^2(f)) = \int_0^t f^2(s) \, d\langle M, M \rangle(s)$. 
-		
-		In particular, if $M(s) = \int_0^s \sigma(u) \, dB_u$, then \[
-			\int_0^t X_s \, dM_s = \int_0^t X_s \sigma(s) \, dB_s
-		\] provided $\int_0^t X_s^2 \sigma^2(s) \, ds < \infty$ and $\int_0^t \sigma^2(s) \, ds$
-		\item If $X_t = \int_0^t f(x) \, dM_s$ and $M_s$ is a continuous, square integrable martingale, then \[
-			[X, X](t) = \int_0^t f^2(s) \, d[M, M](s) = \langle X, X \rangle(t)
-		\]
-	\end{enumerate}
+    Properties of the integral.  
+    \begin{enumerate}
+        \item If $M_s$ is a (local) martingale, then \[
+            \int_0^t f(s) \, dM_s
+        \] is a (local) martingale.  
+        
+        \begin{proof}
+            \[
+                \E(\int_s^t f(u) \, dM_u \given \sigf_s) = 0
+            \]
+        \end{proof}
+        \item If $M_t$ is a square integrable martingale and satisfies \[
+            \E( \int_0^t f^2(s)\,  d\langle M, M\rangle (t) ) < \infty
+        \] then \[
+            I(f) = \int_0^t f(s) \, dM_s 
+        \] is square integrable with $E(I(f)) = 0$, and $E(I^2(f)) = \int_0^t f^2(s) \, d\langle M, M \rangle(s)$. 
+        
+        In particular, if $M(s) = \int_0^s \sigma(u) \, dB_u$, then \[
+            \int_0^t X_s \, dM_s = \int_0^t X_s \sigma(s) \, dB_s
+        \] provided $\int_0^t X_s^2 \sigma^2(s) \, ds < \infty$ and $\int_0^t \sigma^2(s) \, ds$
+        \item If $X_t = \int_0^t f(x) \, dM_s$ and $M_s$ is a continuous, square integrable martingale, then \[
+            [X, X](t) = \int_0^t f^2(s) \, d[M, M](s) = \langle X, X \rangle(t)
+        \]
+    \end{enumerate}
 \end{prop}
 
 % subsection stochastic_integrals_for_martingales (end)
@@ -1441,78 +1441,78 @@ We now turn to defining integrals such as \[
 \label{sec:lecture_18_wednesday_10_may}
 
 Let $M_t$ be a martingale.  Then $M_t^2 - [M, M](t)$ is a martingale, and \[
-	M_t^2 = \text{martingale} + \langle M, M \rangle(t)
+    M_t^2 = \text{martingale} + \langle M, M \rangle(t)
 \]
 
 Recall that if $M_t$ is a continuous square integrable martingale, then \[
-	\langle M, M \rangle(t) = [M, M](t)
+    \langle M, M \rangle(t) = [M, M](t)
 \]  Generally speaking, \[
-	[M, M](t) = \langle M, M \rangle (t) + \text{martingale}
+    [M, M](t) = \langle M, M \rangle (t) + \text{martingale}
 \]
 
 \begin{thm}
-	 If \[
-		\in_0^t f^2(s) \, d\langle M , M \rangle(s) < \infty
-	\] a.s. then \[
-		Y_t = \int_0^t f(s) \, dM_s
-	\] is well defined, and \begin{align*}
-		\E Y_t^2 &= \int_0^t f^2(s) \, d\langle M, M \rangle
-	(t) \\
-	&= \int_0^t f^2(s) \, d[M,M](t) \quad \text{if $M_t$-continuous}
-	\end{align*} and \[
-		\langle Y, Y \rangle(t) = [Y, Y](t) = \int_0^t f^2(s) \, d[M, M](s).  
-	\]
+     If \[
+        \in_0^t f^2(s) \, d\langle M , M \rangle(s) < \infty
+    \] a.s. then \[
+        Y_t = \int_0^t f(s) \, dM_s
+    \] is well defined, and \begin{align*}
+        \E Y_t^2 &= \int_0^t f^2(s) \, d\langle M, M \rangle
+    (t) \\
+    &= \int_0^t f^2(s) \, d[M,M](t) \quad \text{if $M_t$-continuous}
+    \end{align*} and \[
+        \langle Y, Y \rangle(t) = [Y, Y](t) = \int_0^t f^2(s) \, d[M, M](s).  
+    \]
 \end{thm} 
 \begin{proof}
-	\begin{align*}
-		dY_t &= f(t) \, dM_t \\
-		d[Y, Y](t) &= dY_t dY_t \\
-					&= f^2(t) \, dM_t dM_t \\
-					 &= f^2(t) \, d[M, M](t) \\
-		[Y, Y](t) &= \int_0^t f^2(s) \, d[M, M](s) = \langle Y, Y \rangle(t)  
-	\end{align*}
-	
-	By \itos formula, we also have \begin{align*}
-		Y_t^2 &= Y_0^2 + 2 \int_0^t Y_s \, dY_s + \int_0^t 1 \cdot [ Y, Y ](t)  \\
-				&= 2 \int_0^t Y_s \cdot f(s) \, dM_s + \langle Y, Y \rangle(t) \\
-		dY_t^2		&= 2 Y_t f(t) \, dM_t + d \langle Y, Y \rangle(t)
-	\end{align*}  Hence \[
-		\langle Y, Y \rangle(t) = Y_t^2 - 2 \int_0^t Y_s f(s) \, dM_s = [Y, Y](t) 
-	\] since $\int_0^t Y_s f(s) \, dM_s$ is a martingale.
+    \begin{align*}
+        dY_t &= f(t) \, dM_t \\
+        d[Y, Y](t) &= dY_t dY_t \\
+                    &= f^2(t) \, dM_t dM_t \\
+                     &= f^2(t) \, d[M, M](t) \\
+        [Y, Y](t) &= \int_0^t f^2(s) \, d[M, M](s) = \langle Y, Y \rangle(t)  
+    \end{align*}
+    
+    By \itos formula, we also have \begin{align*}
+        Y_t^2 &= Y_0^2 + 2 \int_0^t Y_s \, dY_s + \int_0^t 1 \cdot [ Y, Y ](t)  \\
+                &= 2 \int_0^t Y_s \cdot f(s) \, dM_s + \langle Y, Y \rangle(t) \\
+        dY_t^2      &= 2 Y_t f(t) \, dM_t + d \langle Y, Y \rangle(t)
+    \end{align*}  Hence \[
+        \langle Y, Y \rangle(t) = Y_t^2 - 2 \int_0^t Y_s f(s) \, dM_s = [Y, Y](t) 
+    \] since $\int_0^t Y_s f(s) \, dM_s$ is a martingale.
 \end{proof}
 \subsection{\itos integration for continuous semimartingales} % (fold)
 \label{sub:itos_integration_for_continuous_semimartingales}
 \begin{defn}
-	Let $(X_t, \sigf_t)$ be a continuous semimartingale.  Then \[
-		X_t = M_t + A_t 
-	\] where $M_t$ is a martingale and $A_t$ is a continuous adapted process of bounded variation ($\lim_{\delta \rightarrow 0} \sum_{j=1}^n |A_{t_{j+1}} - A_{t_j} |< \infty$). 
+    Let $(X_t, \sigf_t)$ be a continuous semimartingale.  Then \[
+        X_t = M_t + A_t 
+    \] where $M_t$ is a martingale and $A_t$ is a continuous adapted process of bounded variation ($\lim_{\delta \rightarrow 0} \sum_{j=1}^n |A_{t_{j+1}} - A_{t_j} |< \infty$). 
 \end{defn}
 
 \begin{defn}[Integrals for semimartingales]
-	\[
-		\int_0^t c_s \, dX_s = \int_0^t c_s \, dM_s + \int_0^t c_s \, dA_s	
+    \[
+        \int_0^t c_s \, dX_s = \int_0^t c_s \, dM_s + \int_0^t c_s \, dA_s  
 \] and since $A_t$ has bounded variation, the second integral is defined in the Riemann-Stiljes (R.S.) sense.
 \end{defn}  
 
 \begin{thm}[\itos formula]
-	Let $X_t$ be a continuous semimartingale.  Let $f(x)$ have twice continuous derivatives.  Then \begin{align*}
-		f(X_t) &= f(X_0) + \int_0^t f'(X_s) \, dX_s + \frac{1}{2} \int_0^t f''(X_s) \, d[X, X](s)
-	\end{align*}
+    Let $X_t$ be a continuous semimartingale.  Let $f(x)$ have twice continuous derivatives.  Then \begin{align*}
+        f(X_t) &= f(X_0) + \int_0^t f'(X_s) \, dX_s + \frac{1}{2} \int_0^t f''(X_s) \, d[X, X](s)
+    \end{align*}
 \end{thm}
 \begin{proof}
-	Partition the interval $[0,t]$, and use a Taylor expansion to express $f(x) = f(x_0) + f'(x_0)(x- x_0) + \frac{1}{2}f''(x_0)(x-x_0)^2$.
+    Partition the interval $[0,t]$, and use a Taylor expansion to express $f(x) = f(x_0) + f'(x_0)(x- x_0) + \frac{1}{2}f''(x_0)(x-x_0)^2$.
 \end{proof}  
 
 \subsection{Stochastic differential equations} % (fold)
 \label{sub:stochastic_differential_equations}
 Consider the equation \[
-	dX_t = \sigma(t, X_t) \, dB_t = \mu(t, X_t) \, dt
+    dX_t = \sigma(t, X_t) \, dB_t = \mu(t, X_t) \, dt
 \]  We seek to solve for a function $f(t, x)$ such that \[
-	X_t = f(t, B_t).
+    X_t = f(t, B_t).
 \]  Such an $f(t, B_t)$ is a \textbf{solution} to the stochastic differential equation.
  
 \begin{defn}[Strong solution]
-	$X_t = X_0 + \int_0^t \sigma(s, X_s) \, dB_s + \int_0^t \mu(s, B_s) \, ds$
+    $X_t = X_0 + \int_0^t \sigma(s, X_s) \, dB_s + \int_0^t \mu(s, B_s) \, ds$
 \end{defn}
 % subsection stochastic_differential_equations (end)
 
@@ -1524,52 +1524,52 @@ Consider the equation \[
 \label{sec:lecture_19_thursday_12_may}
 
 \begin{thm}
-	Let \[
-		dX_t = a(t, X_t) \, dt + b(t, X_t) \, dB_t
-	\]
-	Assume $\E X_0 < \infty$.  $X_0$ is independent of $B_s$ and there exists a constant $c > 0$ such that \begin{enumerate}
-		\item $|a(t, x)| + |b(t, x)| \leq C(1 + |x|)$.  
-		\item $a(t, x), b(t, x)$ satisfy the Lipschitz condition in $x$, i.e.\[
-			|a(t,x)- a(t, y)| + |b(t, x) - b(t, y)| \leq C|x - y|
-		\] for all $t \in (0, T).  $
-	\end{enumerate}  Then there exists a \textbf{unique (strong) solution}. 
+    Let \[
+        dX_t = a(t, X_t) \, dt + b(t, X_t) \, dB_t
+    \]
+    Assume $\E X_0 < \infty$.  $X_0$ is independent of $B_s$ and there exists a constant $c > 0$ such that \begin{enumerate}
+        \item $|a(t, x)| + |b(t, x)| \leq C(1 + |x|)$.  
+        \item $a(t, x), b(t, x)$ satisfy the Lipschitz condition in $x$, i.e.\[
+            |a(t,x)- a(t, y)| + |b(t, x) - b(t, y)| \leq C|x - y|
+        \] for all $t \in (0, T).  $
+    \end{enumerate}  Then there exists a \textbf{unique (strong) solution}. 
 \end{thm}
 
 \begin{exmp}
-	Let \[
-		dX_t = c_1 X_t \, dt + c_2 X_t \, dB_t,
-	\] with $c_1, c_2$ constants.  
+    Let \[
+        dX_t = c_1 X_t \, dt + c_2 X_t \, dB_t,
+    \] with $c_1, c_2$ constants.  
 \end{exmp}
 
 \begin{exmp}
-	Let \[
-		dX_t = [ c_1(t) X_t + c_2(t)] \, dt + [ \sigma_1(t) X_t + \sigma_2(t)] \, dB_t
-	\]  Let $a(t,x) = c_1(t)x  + c_2(t)x, b(t,x) = \sigma_1(t) x + \sigma_2(t)$.  
-	% \begin{cases}[$\sigma_1(t) = 0$.]  We then have \begin{align*}
-	% 	dX_t = [ c_1(t) X_t + c_2(t)] \, dt + \sigma_2(t) \, dB_t
-	% 	\iff dX_t - c_1(t) X_t \, dt = c_2(t) \, dt + \sigma_2(t) \, dB_t \\
-	% 	\iff e^{-\int_0^t c_1(s) \, ds} \left[ \dots \right] - e^{-\int_}
-	% \end{align*}
-	% 
-		Just follow Kuo p. 233.
-		
-		Let \[
-			H_t = e^{-Y_t}, \quad Y_t = \int_0^t \sigma_1(s) \, ds + \int_0^t c_1(s) \, dB_s - \frac{1}{2} \int_0^t c^2_1(s) \, ds
-		\]   Then by the \ito product formula, we have \[
-			d(H_t X_t) = H_t \left( dX_t - \sigma_1(t) X_t \, dt - c_1(t) X_t \, dB_t - c_2(t) c_1(t) \, dt \right)
-		\] Then by definition of the $X_t$, we obtain \[
-			d(H_t X_t) = H_t \left( c_2(t) \, dB_t + \sigma_2(t) \, dt - c_1(t) c_2(t) \, dt \right)
-		\] which can be integrated to yield \[
-			H_t X_t = C + \int_0^t H_s c_2(s) \, dB_s + \int_0^t H_s(\sigma_2(s) - c_1(t) c_2(t)) \, ds
-		\] Dividing both sides by $H_t$ we obtain our solution $X_t$.  
+    Let \[
+        dX_t = [ c_1(t) X_t + c_2(t)] \, dt + [ \sigma_1(t) X_t + \sigma_2(t)] \, dB_t
+    \]  Let $a(t,x) = c_1(t)x  + c_2(t)x, b(t,x) = \sigma_1(t) x + \sigma_2(t)$.  
+    % \begin{cases}[$\sigma_1(t) = 0$.]  We then have \begin{align*}
+    %   dX_t = [ c_1(t) X_t + c_2(t)] \, dt + \sigma_2(t) \, dB_t
+    %   \iff dX_t - c_1(t) X_t \, dt = c_2(t) \, dt + \sigma_2(t) \, dB_t \\
+    %   \iff e^{-\int_0^t c_1(s) \, ds} \left[ \dots \right] - e^{-\int_}
+    % \end{align*}
+    % 
+        Just follow Kuo p. 233.
+        
+        Let \[
+            H_t = e^{-Y_t}, \quad Y_t = \int_0^t \sigma_1(s) \, ds + \int_0^t c_1(s) \, dB_s - \frac{1}{2} \int_0^t c^2_1(s) \, ds
+        \]   Then by the \ito product formula, we have \[
+            d(H_t X_t) = H_t \left( dX_t - \sigma_1(t) X_t \, dt - c_1(t) X_t \, dB_t - c_2(t) c_1(t) \, dt \right)
+        \] Then by definition of the $X_t$, we obtain \[
+            d(H_t X_t) = H_t \left( c_2(t) \, dB_t + \sigma_2(t) \, dt - c_1(t) c_2(t) \, dt \right)
+        \] which can be integrated to yield \[
+            H_t X_t = C + \int_0^t H_s c_2(s) \, dB_s + \int_0^t H_s(\sigma_2(s) - c_1(t) c_2(t)) \, ds
+        \] Dividing both sides by $H_t$ we obtain our solution $X_t$.  
 \end{exmp}
 
 \begin{thm}
-	The solution to the linear stochastic differential equation \[
-		dX_t = [ c_1(t) X_t + c_2(t)] \, dt + [ \sigma_1(t) X_t + \sigma_2(t)] \, dB_t
-	\] is given by \[
-		X_t = Ce^{-Y_t} + \int_0^t e^{Y_t - Y_s} c_2(t) \, dB_s + \int_0^t e^{Y_t - Y_s}(\sigma_2(s) - c_1(t) c_2(t)) \, dt
-	\] where $Y_t = \int_0^t c_1(s) \, dB_s + \int_0^t \left(\sigma_1(s) - \frac{1}{2} c_1^2(s) \right) \, ds$
+    The solution to the linear stochastic differential equation \[
+        dX_t = [ c_1(t) X_t + c_2(t)] \, dt + [ \sigma_1(t) X_t + \sigma_2(t)] \, dB_t
+    \] is given by \[
+        X_t = Ce^{-Y_t} + \int_0^t e^{Y_t - Y_s} c_2(t) \, dB_s + \int_0^t e^{Y_t - Y_s}(\sigma_2(s) - c_1(t) c_2(t)) \, dt
+    \] where $Y_t = \int_0^t c_1(s) \, dB_s + \int_0^t \left(\sigma_1(s) - \frac{1}{2} c_1^2(s) \right) \, ds$
 \end{thm}
 % section lecture_19_thursday_12_may (end)
 
@@ -1579,19 +1579,19 @@ Consider the equation \[
 \label{sub:numerical_methods_for_stochastic_differential_equations}
 
 \begin{thm}[Euler's method]
-	For the stochastic differential equation \[
-		dX_t = a(X_t) \, dt + b(X_t) \, dB_t,
-	\] we simulate $X_t$ according to \[
-		X_{t_j} = X_{t_{j-1}} + a(X_{t_{j-1}}) \Delta t_j + b(X_{t_{j-1}}) \, \Delta B_{t_j}
-	\]
+    For the stochastic differential equation \[
+        dX_t = a(X_t) \, dt + b(X_t) \, dB_t,
+    \] we simulate $X_t$ according to \[
+        X_{t_j} = X_{t_{j-1}} + a(X_{t_{j-1}}) \Delta t_j + b(X_{t_{j-1}}) \, \Delta B_{t_j}
+    \]
 \end{thm}
-	
+    
 \begin{thm}[Milstein scheme]
-	For the stochastic differential equation \[
-		dX_t = a(X_t) \, dt + b(X_t) \, dB_t,
-	\] we simulate $X_t$ according to \[
-		X_{t_j} = X_{t_{j-1}} + a(X_{t_{j-1}}) \Delta t_j + b(X_{t_{j-1}}) \, \Delta B_{t_j} + \frac{1}{2}b'(X_{t_{j-1}})(\Delta B^2_{t_j} - \Delta t_j)
-	\]
+    For the stochastic differential equation \[
+        dX_t = a(X_t) \, dt + b(X_t) \, dB_t,
+    \] we simulate $X_t$ according to \[
+        X_{t_j} = X_{t_{j-1}} + a(X_{t_{j-1}}) \Delta t_j + b(X_{t_{j-1}}) \, \Delta B_{t_j} + \frac{1}{2}b'(X_{t_{j-1}})(\Delta B^2_{t_j} - \Delta t_j)
+    \]
 \end{thm}
 \subsection{Applications to mathematical finance} % (fold)
 \label{sub:applications_to_mathematical_finance}
@@ -1600,42 +1600,42 @@ Consider the equation \[
 \label{sec:martinag}
 Consider a market with risky security $S_t$ and riskless security $\beta_t$.  
 \begin{defn}[Contingent claim]
-	A random variable $C_T : \Omega \rightarrow \R$, $\sigf_T$-measurable is called a contingent claim.  If $C_T$ is $\sigma(S_T)$-measurable it is \textbf{path-independent.}
+    A random variable $C_T : \Omega \rightarrow \R$, $\sigf_T$-measurable is called a contingent claim.  If $C_T$ is $\sigma(S_T)$-measurable it is \textbf{path-independent.}
 \end{defn}
 \begin{defn}[Strategy]
-	Let $a_t$ represent number of units of $S_t$, and $b_t$ represent number of units of $\beta_t$.  If $a_t, b_t$ are $\sigf_t$-adapted, then they are strategies in our market model.  Our strategy value $V_t$ at time $t$ is \[
-		V_t = a_t X_t + b_t \beta_t
-	\]
+    Let $a_t$ represent number of units of $S_t$, and $b_t$ represent number of units of $\beta_t$.  If $a_t, b_t$ are $\sigf_t$-adapted, then they are strategies in our market model.  Our strategy value $V_t$ at time $t$ is \[
+        V_t = a_t X_t + b_t \beta_t
+    \]
 \end{defn}
 
 \begin{defn}[Self-financing strategy]
-	A strategy $(a_t, b_t)$ is self financing if \[
-		dV_t = a_t \, dS_t + b_t \, d\beta_t
-	\]  The intuition is that we make one investment at $t = 0$, and after that only rebalance between $S_t$ and $\beta_t$.  
+    A strategy $(a_t, b_t)$ is self financing if \[
+        dV_t = a_t \, dS_t + b_t \, d\beta_t
+    \]  The intuition is that we make one investment at $t = 0$, and after that only rebalance between $S_t$ and $\beta_t$.  
 \end{defn}
 
 \begin{defn}[Admissible strategy]
-	$(a_t, b_t)$ is an \textbf{admissible strategy} if it is self financing and $V_t \geq 0$ for all $0 \leq t \leq T$.  
+    $(a_t, b_t)$ is an \textbf{admissible strategy} if it is self financing and $V_t \geq 0$ for all $0 \leq t \leq T$.  
 \end{defn}
 
 \begin{defn}[Arbitrage]
-	An arbitrage is an admissible strategy such that $V_0 = 0, V_T \geq 0$ and $\P(V_T > 0) > 0$.  Alternatively, an arbitrage is a trading strategy with $V_0 = 0$, and $\E(V_T) > 0$.
+    An arbitrage is an admissible strategy such that $V_0 = 0, V_T \geq 0$ and $\P(V_T > 0) > 0$.  Alternatively, an arbitrage is a trading strategy with $V_0 = 0$, and $\E(V_T) > 0$.
 \end{defn}
 
 \begin{defn}[Attainable claim]
-	A contingent claim $C_T$ is said to be attainable if there exists an admissible strategy $(a_t, b_t)$ such that $V_T = C_T$.  In this case, the portfolio is said to replicate the claim.  By the law of one price, $C_t = V_t$ at all $t$.
+    A contingent claim $C_T$ is said to be attainable if there exists an admissible strategy $(a_t, b_t)$ such that $V_T = C_T$.  In this case, the portfolio is said to replicate the claim.  By the law of one price, $C_t = V_t$ at all $t$.
 \end{defn}
 
 \begin{defn}[Complete]
-	The market is said to be \textbf{complete} if every contingent claim is attainable
+    The market is said to be \textbf{complete} if every contingent claim is attainable
 \end{defn}
 
 \begin{thm}[Harrison and Pliska]
-	Let $\P$ denote the real world measure of the underlying asset price $X_t$. If the market is arbitrage free, there exists an equivalent measure $\P^\star$, such that the discounted asset price $\hat X_t$ and every discounted attainable claim $\hat C_t$ are $\P^\star$-martingales.  Further, if the market is complete, then $\P^\star$ is unique.  In mathematical terms,\[
-		C_t = \beta_t \E^\star(\beta_T^{-1} C_T \given \sigf_t).
-	\] 
-	
-	$\P^\star$ is called the equivalent martingale measure (EMM) or the risk-neutral measure.  
+    Let $\P$ denote the real world measure of the underlying asset price $X_t$. If the market is arbitrage free, there exists an equivalent measure $\P^\star$, such that the discounted asset price $\hat X_t$ and every discounted attainable claim $\hat C_t$ are $\P^\star$-martingales.  Further, if the market is complete, then $\P^\star$ is unique.  In mathematical terms,\[
+        C_t = \beta_t \E^\star(\beta_T^{-1} C_T \given \sigf_t).
+    \] 
+    
+    $\P^\star$ is called the equivalent martingale measure (EMM) or the risk-neutral measure.  
 \end{thm}
 % subsection applications_to_mathematical_finance (end)
 % subsection numerical_methods_for_stochastic_differential_equations (end)
@@ -1647,7 +1647,7 @@ Consider a market with risky security $S_t$ and riskless security $\beta_t$.
 
 
 For a trading strategy $(a_t, b_t)$, then the value $V_t$ satisfies \[
-	V_t = V_0 + \int_0^t \alpha_s \, dS_s + \int_0^t b_s \, d\beta_s
+    V_t = V_0 + \int_0^t \alpha_s \, dS_s + \int_0^t b_s \, d\beta_s
 \] where $B_s$ is the riskless asset.
 
 To price an attainable option $X$, let $(a_t, b_t)$ be a trading strategy with value $V_t$ that replicates $X$. Then to avoid arbitrage, the value of $X$ at time $t = 0$ is given by $V_0$.
@@ -1657,47 +1657,47 @@ To price an attainable option $X$, let $(a_t, b_t)$ be a trading strategy with v
 Let $(\Omega, \sigf, \P)$ be a probability space.
 
 \begin{defn}[Equivalent measure]
-	
-	
+    
+    
 Let $\P$ and $\Q$ be measures on $(\Omega, \sigf)$.  Then for any $A \in \sigf$, if \[
 \P(A) = 0 \iff \Q(A) = 0
 \] then we say the measures $\P$ and $\Q$ are equivalent.  If $\P(A) = 0 \Rightarrow \Q(A) = 0$, we write $Q << P$. 
 \end{defn}  
 
 \begin{thm}[Radon-Nikodyn]
-	Let $Q << P$.  Then there exists a random variable $\lambda$ such that $\lambda \geq 0$, $\E_\P(\lambda) = 1$ and \[
-		Q(A) = \int_A d\P = \E_p (\lambda \mathbf{1}_A) 
-	\] for any $A \in \sigf$.  $\lambda$ is $\P$=almost surely unique. 
-	
-	Conversely, if there exists $\lambda$ such that $\lambda \geq 1$, $\E_\P (\lambda) = 1$, then defining \[
-		\Q(A) = \int_A \lambda \, d\P
-	\] and then $\Q$ is a probability measure and $\Q << \P$.  Consequently, if $Q << P$, then \[
-		\E_\Q(Z) = \E_\P(\lambda Z)
-	\] whenever $\E_\Q(|Z|) < \infty$.  
-	
-	The random variable $\lambda$ is called the density of $\Q$ with respect to $\P$, and denoted by \[
-		\lambda = \frac{d\Q}{d\P}
-	\]
+    Let $Q << P$.  Then there exists a random variable $\lambda$ such that $\lambda \geq 0$, $\E_\P(\lambda) = 1$ and \[
+        Q(A) = \int_A d\P = \E_p (\lambda \mathbf{1}_A) 
+    \] for any $A \in \sigf$.  $\lambda$ is $\P$=almost surely unique. 
+    
+    Conversely, if there exists $\lambda$ such that $\lambda \geq 1$, $\E_\P (\lambda) = 1$, then defining \[
+        \Q(A) = \int_A \lambda \, d\P
+    \] and then $\Q$ is a probability measure and $\Q << \P$.  Consequently, if $Q << P$, then \[
+        \E_\Q(Z) = \E_\P(\lambda Z)
+    \] whenever $\E_\Q(|Z|) < \infty$.  
+    
+    The random variable $\lambda$ is called the density of $\Q$ with respect to $\P$, and denoted by \[
+        \lambda = \frac{d\Q}{d\P}
+    \]
 \end{thm}
 
 \begin{exmp}
-	Let $X \sim N(0, 1)$ and $Y \sim N(\mu, 1)$ under probability $\P$.  Then there exists a $\Q$ such that $\Q$ is equivalent to $\P$ and $Y \sim N(0, 1)$ under $\Q$.  
+    Let $X \sim N(0, 1)$ and $Y \sim N(\mu, 1)$ under probability $\P$.  Then there exists a $\Q$ such that $\Q$ is equivalent to $\P$ and $Y \sim N(0, 1)$ under $\Q$.  
 \end{exmp}
 \begin{proof}
-	\begin{align*}
-		\P(X \in A) &= \frac{1}{\sqrt{2 \pi}} \int_A e^{-\frac{t^2}{2}} \, dt \\
-		\text{Define } \Q(A) 	&= \int_A e^{- \mu X - \frac{\mu^2}{2}} \, d\P  \\
-							&= \frac{1}{\sqrt{2 \pi}} \int_A e^{- \mu x - \frac{\mu^2}{2}} e^{-\frac{x^2}{2}} \, dx \\
-							&= \frac{1}{\sqrt{2 \pi}} \int_A e^{-\frac{(\mu + x)^2}{2}} \, dx
-	\end{align*}  
+    \begin{align*}
+        \P(X \in A) &= \frac{1}{\sqrt{2 \pi}} \int_A e^{-\frac{t^2}{2}} \, dt \\
+        \text{Define } \Q(A)    &= \int_A e^{- \mu X - \frac{\mu^2}{2}} \, d\P  \\
+                            &= \frac{1}{\sqrt{2 \pi}} \int_A e^{- \mu x - \frac{\mu^2}{2}} e^{-\frac{x^2}{2}} \, dx \\
+                            &= \frac{1}{\sqrt{2 \pi}} \int_A e^{-\frac{(\mu + x)^2}{2}} \, dx
+    \end{align*}  
 \end{proof}  Then $\Q << \P, \P << \Q$ and let \[
-	\lambda = \frac{d\Q}{d\P} = e^{-\mu X - \frac{\mu^2}{2}}
+    \lambda = \frac{d\Q}{d\P} = e^{-\mu X - \frac{\mu^2}{2}}
 \]  Then $\lambda$ satisfies the conditions of Radon-Nikodyn theorem.  
 
 Then we have \begin{align*}
-	\E_\Q(Y) &= \E_\P((X + \mu) \lambda) \\
-			&= \int (X + \mu) e^{-\mu X - \frac{\mu^2}{2}} \, d\P \\
-			&= \frac{1}{\sqrt{2 \pi}} (x + \mu) e^{- \frac{(\mu + x)^2}{2}} \, dx = 0
+    \E_\Q(Y) &= \E_\P((X + \mu) \lambda) \\
+            &= \int (X + \mu) e^{-\mu X - \frac{\mu^2}{2}} \, d\P \\
+            &= \frac{1}{\sqrt{2 \pi}} (x + \mu) e^{- \frac{(\mu + x)^2}{2}} \, dx = 0
 \end{align*}
 % section change_of_measure (end)
 % section lecture_21_thursday_19_may (end)
@@ -1705,85 +1705,85 @@ Then we have \begin{align*}
 \label{sec:lecture_22_tuesday_24_may}
 
 \begin{thm}
-	Let $\lambda(t), 0 \leq t \leq T$ be a positive martingale with respect to $\sigf_t$ such that \[
-		\E_\P(\lambda(T)) = 1.  
-	\]  Define a new probability measure $\Q$ by \[
-		\Q(A) = \int_A \lambda(T) \, d\P
-	\]  Then $\Q << \P$ and for any random variable $X$, we have \begin{align*}
-		\E_\Q(X) &= \E_\P(\lambda(T) X)\\
-		 \quad \E_\Q(X \given \sigf_t) &= \E_\P \left( \frac{\lambda(T) X}{\lambda(t)} \given \sigf_t \right) \tag{$\star$} \\
-		&= \frac{\E_\P(\lambda(T) X \given \sigf_t )}{\E_\P(\lambda(T) \given \sigf_t)}  a.s.	
-	\end{align*}
-	 and if $X \in \sigf_t$, then for any $s \leq t$, we have \[
-		\E_\Q(X \given \sigf_s) = \E_\P \left( \frac{\lambda(t) X}{\lambda(s)} \given \sigf_s \right) \tag{$\star \star$}
-	\]
-	
-	Consequently a process $S(t)$ is a $\Q$-martingale if and only if \[
-		S(t) \lambda(t) \tag{$\dagger$}
-	\] is a $\P$-martingale
+    Let $\lambda(t), 0 \leq t \leq T$ be a positive martingale with respect to $\sigf_t$ such that \[
+        \E_\P(\lambda(T)) = 1.  
+    \]  Define a new probability measure $\Q$ by \[
+        \Q(A) = \int_A \lambda(T) \, d\P
+    \]  Then $\Q << \P$ and for any random variable $X$, we have \begin{align*}
+        \E_\Q(X) &= \E_\P(\lambda(T) X)\\
+         \quad \E_\Q(X \given \sigf_t) &= \E_\P \left( \frac{\lambda(T) X}{\lambda(t)} \given \sigf_t \right) \tag{$\star$} \\
+        &= \frac{\E_\P(\lambda(T) X \given \sigf_t )}{\E_\P(\lambda(T) \given \sigf_t)}  a.s.   
+    \end{align*}
+     and if $X \in \sigf_t$, then for any $s \leq t$, we have \[
+        \E_\Q(X \given \sigf_s) = \E_\P \left( \frac{\lambda(t) X}{\lambda(s)} \given \sigf_s \right) \tag{$\star \star$}
+    \]
+    
+    Consequently a process $S(t)$ is a $\Q$-martingale if and only if \[
+        S(t) \lambda(t) \tag{$\dagger$}
+    \] is a $\P$-martingale
 \end{thm}
 \newcommand{\indic}[1]{\mathbf{1}_{#1}}
 
 \begin{proof}
-	$(\star)$.  We have
-	\begin{align*}
-		\Q(\E_\P(\lambda(T)) \given \sigf_t = 0) &= \E_p(\lambda(T) \indic{\E_\P(\lambda(T) \given \sigf_t = 0)}) \\
-		% &= \E( \indic{\E_\P(\lambda(T) \given \sigf_t) = 0} \E_\P(\lambda(T) \given \sigf_t)) \\
-		&= 0
-	\end{align*} 
-	
-	
-	We have \begin{align*}
-		\E_\Q \left( \frac{\E_\P(\lambda(T) X \given \sigf_t )}{\E_\P(\lambda(T) \given \sigf_t)} \mathbf{1}_A \right)  &= \E_\Q \left( \lambda(t) \frac{\E_\P(\lambda(T) X \given \sigf_t )}{\E_\P(\lambda(T) \given \sigf_t)} \mathbf{1}_A \right) \\
-		&= \E_\P \left( \E_\P( \lambda(T) X \given \sigf_t) \mathbf{1}_A \right) \\
-		&= \E_\P (\lambda(T) X \mathbf{1}_A) \\
-		&= \E_\Q( X \mathbf{1}_A)
- 	\end{align*}
+    $(\star)$.  We have
+    \begin{align*}
+        \Q(\E_\P(\lambda(T)) \given \sigf_t = 0) &= \E_p(\lambda(T) \indic{\E_\P(\lambda(T) \given \sigf_t = 0)}) \\
+        % &= \E( \indic{\E_\P(\lambda(T) \given \sigf_t) = 0} \E_\P(\lambda(T) \given \sigf_t)) \\
+        &= 0
+    \end{align*} 
+    
+    
+    We have \begin{align*}
+        \E_\Q \left( \frac{\E_\P(\lambda(T) X \given \sigf_t )}{\E_\P(\lambda(T) \given \sigf_t)} \mathbf{1}_A \right)  &= \E_\Q \left( \lambda(t) \frac{\E_\P(\lambda(T) X \given \sigf_t )}{\E_\P(\lambda(T) \given \sigf_t)} \mathbf{1}_A \right) \\
+        &= \E_\P \left( \E_\P( \lambda(T) X \given \sigf_t) \mathbf{1}_A \right) \\
+        &= \E_\P (\lambda(T) X \mathbf{1}_A) \\
+        &= \E_\Q( X \mathbf{1}_A)
+    \end{align*}
 
-	$(\star \star)$.  We have \begin{align*}
-		\E_\P \left( \frac{\lambda(t) X}{\lambda(s)} \given \sigf_s \right) & \frac{1}{\lambda(s)} \E_\P(\lambda(t) X \given \sigf_s) \\
-		&= \frac{1}{\lambda(s)} \E_\P\left( \E_\P(\lambda(T) X \given \sigf_t) \given \sigf_s \right) \\
-		&= \frac{1}{\lambda(s)} \E_\P(\lambda(T) X \given \sigf_s) \\
-		&= \E_\Q(X \given \sigf_s)
-	\end{align*} because of $(\star)$.
-	
-	$(\dagger)$. 	 We have \begin{align*}
-			&\E_\Q(S(t) \given \sigf_u) = S(u)	\\
-		\iff &\E_\P \left( \frac{\lambda(t) S(t)}{\lambda(u)} \given \sigf_u \right) = S(u) \\
-		\iff &\E_\P(\lambda(t) S(t) \given \sigf_u) = \lambda(u) S(u) 
-	\end{align*} as required.
+    $(\star \star)$.  We have \begin{align*}
+        \E_\P \left( \frac{\lambda(t) X}{\lambda(s)} \given \sigf_s \right) & \frac{1}{\lambda(s)} \E_\P(\lambda(t) X \given \sigf_s) \\
+        &= \frac{1}{\lambda(s)} \E_\P\left( \E_\P(\lambda(T) X \given \sigf_t) \given \sigf_s \right) \\
+        &= \frac{1}{\lambda(s)} \E_\P(\lambda(T) X \given \sigf_s) \\
+        &= \E_\Q(X \given \sigf_s)
+    \end{align*} because of $(\star)$.
+    
+    $(\dagger)$.     We have \begin{align*}
+            &\E_\Q(S(t) \given \sigf_u) = S(u)  \\
+        \iff &\E_\P \left( \frac{\lambda(t) S(t)}{\lambda(u)} \given \sigf_u \right) = S(u) \\
+        \iff &\E_\P(\lambda(t) S(t) \given \sigf_u) = \lambda(u) S(u) 
+    \end{align*} as required.
 \end{proof}
 
 
 \begin{thm}
-	Let $B_s, 0 \leq s \leq T$ be a Brownian motion under $\P$.  Let $S(t) = B_t + \mu_t, u \neq 0$.  Then there exists a $\Q$ equivalent to $\P$ such that$S(t)$ is a $\Q$-Brownian motion and \[
-		\lambda(T) = \frac{d\Q}{d\P} = e^{- \mu B_T - \frac{1}{2} \mu^2 T}.
-	\]   Note that $S(t)$ is not a martingale under $\P$, but it is a martingale under $\Q$.
-\end{thm}	
+    Let $B_s, 0 \leq s \leq T$ be a Brownian motion under $\P$.  Let $S(t) = B_t + \mu_t, u \neq 0$.  Then there exists a $\Q$ equivalent to $\P$ such that$S(t)$ is a $\Q$-Brownian motion and \[
+        \lambda(T) = \frac{d\Q}{d\P} = e^{- \mu B_T - \frac{1}{2} \mu^2 T}.
+    \]   Note that $S(t)$ is not a martingale under $\P$, but it is a martingale under $\Q$.
+\end{thm}   
 
 \begin{proof}
-	Under $\Q$, \[
-		\Q(B_0 = 0) = \int_{B_0 = 0} \lambda(T) \, d\P = 1
-	\]  $S(t)$ is a $\Q$-martingale if and only if $S(t) \lambda(t)$ is a $\P$-martingale.  But we have \[
-		X_t = S(t) \lambda(t) = \left( B_t + \mu t \right) e^{- \mu B_t - \frac{1}{2} \mu^2 t}
-	\] is a martingale.  
-	
-	Finally, note that \begin{align*}
-		[S, S](t) = [ B, B](t) = t
-	\end{align*}
+    Under $\Q$, \[
+        \Q(B_0 = 0) = \int_{B_0 = 0} \lambda(T) \, d\P = 1
+    \]  $S(t)$ is a $\Q$-martingale if and only if $S(t) \lambda(t)$ is a $\P$-martingale.  But we have \[
+        X_t = S(t) \lambda(t) = \left( B_t + \mu t \right) e^{- \mu B_t - \frac{1}{2} \mu^2 t}
+    \] is a martingale.  
+    
+    Finally, note that \begin{align*}
+        [S, S](t) = [ B, B](t) = t
+    \end{align*}
 \end{proof}
 
 \subsection{Black-Scholes model} % (fold)
 \label{sub:black_scholes_model}
 \begin{defn}[Black-Scholes model]
-	The Black-Scholes model assumes the risky asset $S_t$ follows the diffusion process given by \[
-		\frac{dS_t}{S_t} = \mu \, dt + \sigma \, dB_t
-	\] and the riskless asset follows the diffusion \[
-		\frac{d\beta_t}{\beta_t} = r \, dt
-	\]
-	
+    The Black-Scholes model assumes the risky asset $S_t$ follows the diffusion process given by \[
+        \frac{dS_t}{S_t} = \mu \, dt + \sigma \, dB_t
+    \] and the riskless asset follows the diffusion \[
+        \frac{d\beta_t}{\beta_t} = r \, dt
+    \]
+    
 Define the discounted process as follows:\[
-	\hat S_t = \frac{S_t}{\beta_t}, \quad \hat V_t = \frac{V_t}{\beta_t}, \quad \hat C_t = \frac{C_t}{\beta_t}.
+    \hat S_t = \frac{S_t}{\beta_t}, \quad \hat V_t = \frac{V_t}{\beta_t}, \quad \hat C_t = \frac{C_t}{\beta_t}.
 \]  
 \end{defn}
 
@@ -1795,213 +1795,213 @@ Define the discounted process as follows:\[
 \label{sec:lecture_23_thursday_26_may}
 
 \begin{lem}{\ }
-	\begin{enumerate}[(a)]
-	\item By a simple application of \itos lemma, \[
-		\frac{d\hat S_t}{\hat S_t} = (\mu - r) \, dt + \sigma \, dB_t.
-	\]
-	\item $\hat S_t$ is a $\Q$-martingale with \[
-		\lambda = \frac{d \Q}{d \P} = e^{- q B_T - \frac{1}{2} q^2 T}
-	\] with $ q = \frac{\mu - r}{\sigma}$.  
-	
-	\item Note that \[
-		\frac{d \hat S_t}{\hat S_t} = \sigma d(B_t + \frac{\mu - r}{\sigma} t) = \sigma d \hat B_t
-	\] where $\hat B_t = B_t + qt$ is a Brownian motion under $\Q$.  
-	
-	\item $d\hat S_t = \sigma \hat S_t \, d \hat B_t$.  
-	\item In a finite market, where $S_t$ takes only finitely many values, $\hat S_t$ is a $\Q$-martingale is a necessary condition for no-arbitrage.
-	\item Note that \[
-		\frac{dS_t}{S_t} = \mu \, dt + \sigma \, dB_t = r \, dt + \sigma \, d \hat B_t
-	\] 
-	\end{enumerate}  
+    \begin{enumerate}[(a)]
+    \item By a simple application of \itos lemma, \[
+        \frac{d\hat S_t}{\hat S_t} = (\mu - r) \, dt + \sigma \, dB_t.
+    \]
+    \item $\hat S_t$ is a $\Q$-martingale with \[
+        \lambda = \frac{d \Q}{d \P} = e^{- q B_T - \frac{1}{2} q^2 T}
+    \] with $ q = \frac{\mu - r}{\sigma}$.  
+    
+    \item Note that \[
+        \frac{d \hat S_t}{\hat S_t} = \sigma d(B_t + \frac{\mu - r}{\sigma} t) = \sigma d \hat B_t
+    \] where $\hat B_t = B_t + qt$ is a Brownian motion under $\Q$.  
+    
+    \item $d\hat S_t = \sigma \hat S_t \, d \hat B_t$.  
+    \item In a finite market, where $S_t$ takes only finitely many values, $\hat S_t$ is a $\Q$-martingale is a necessary condition for no-arbitrage.
+    \item Note that \[
+        \frac{dS_t}{S_t} = \mu \, dt + \sigma \, dB_t = r \, dt + \sigma \, d \hat B_t
+    \] 
+    \end{enumerate}  
 \end{lem}
 
 \begin{thm}
-	A value process $V_t$ is self financing if and only if the discounted value process $\hat V_t$ is a $\Q$-martingale.
+    A value process $V_t$ is self financing if and only if the discounted value process $\hat V_t$ is a $\Q$-martingale.
 \begin{align*}
-		d \hat V_t &= a_t \, d\hat S_t &\iff dV_t = \alpha dS_t + b_t \, d\beta_t \\
-						&\iff V_t = V_0 + \int_0^t a_s \, dS_s + \int_0^t b_s \, d\beta_s \\
-						&\iff \text{$V_t$ is self financing.  }
+        d \hat V_t &= a_t \, d\hat S_t &\iff dV_t = \alpha dS_t + b_t \, d\beta_t \\
+                        &\iff V_t = V_0 + \int_0^t a_s \, dS_s + \int_0^t b_s \, d\beta_s \\
+                        &\iff \text{$V_t$ is self financing.  }
 \end{align*}
 \end{thm}
 
 \begin{proof}
-	By \itos formula, we have \begin{align*}
-		d \hat V_t 	&= e^{-rt} \, d V_t - re^{-rt} V_t \, dt \\
-					&= e^{-rt} \left( a_t \, dS_t + b_t \, d\beta_t \right) - re^{-rt} \left( a_t S_t + b_t \beta_t \right) \, dt \\
-					& a_t (e^{-rt} \, dS_t - re^{-rt} \, dt) \\
-					&= a_t \, d \hat S_t
-	\end{align*} 
+    By \itos formula, we have \begin{align*}
+        d \hat V_t  &= e^{-rt} \, d V_t - re^{-rt} V_t \, dt \\
+                    &= e^{-rt} \left( a_t \, dS_t + b_t \, d\beta_t \right) - re^{-rt} \left( a_t S_t + b_t \beta_t \right) \, dt \\
+                    & a_t (e^{-rt} \, dS_t - re^{-rt} \, dt) \\
+                    &= a_t \, d \hat S_t
+    \end{align*} 
 \end{proof}
 
 \begin{thm}
-	In the Black-Scholes model, there are no arbitrage opportunities.
+    In the Black-Scholes model, there are no arbitrage opportunities.
 \end{thm}
 
 \begin{proof}
-	For any admissible trading strategy $(a_t, b_t)$, we have that the discounted value process $\hat V_t$ is a $Q$-martingale.  So if $V_0 = 0$, then $\E(\hat V_0) = 0$, and we have \[
-		\E_\Q(\hat V_T) = \E_\Q(\hat V_T \given \sigf_0) = \hat V_0 = 0
-	\] which implies $\Q(\hat V_T > 0) = 0$, which implies $\P(V_T > 0) = 0$, which implies that $\E_\P(V_T) = 0$, which then implies no arbitrage.     
+    For any admissible trading strategy $(a_t, b_t)$, we have that the discounted value process $\hat V_t$ is a $Q$-martingale.  So if $V_0 = 0$, then $\E(\hat V_0) = 0$, and we have \[
+        \E_\Q(\hat V_T) = \E_\Q(\hat V_T \given \sigf_0) = \hat V_0 = 0
+    \] which implies $\Q(\hat V_T > 0) = 0$, which implies $\P(V_T > 0) = 0$, which implies that $\E_\P(V_T) = 0$, which then implies no arbitrage.     
 \end{proof}
 
 \begin{thm}
-	For any self financing strategy, \[
-		V_t = a_t S_t + b_t \beta_t = V_0 + \int_0^t a_u \, dS_u + \int_0^t b_u \, d\beta_u
-	\]  And so a strategy is self financing if \[
-		S_t \, da_t + \beta_t \, db_t + d[a, S](t) = 0
-	\]  We now consider several cases.
-	\begin{enumerate}
-		\item   If $a_t$ is of bounded variation, then $[a, S](t) = 0$.  Hence \[
-			S_t \, da_t + \beta_t \, db_t = 0,
-		\] which implies \[
-			db_t = -\frac{S_t}{\beta_t} \, da_t
-		\]  Hence $da_t \cdot db_t < 0$.  
-		\item If $a_t$ is a semi-martingale $a_t = a_t^2 + A_t$, then $b_t$ must be a semi-martingale, where $b_t = b_t^2 + B_t$ where $a_t^2, b_t^2$ are the martingale parts and $A_t, B_t$ are of bounded variation.
-		% \item
-	\end{enumerate}
+    For any self financing strategy, \[
+        V_t = a_t S_t + b_t \beta_t = V_0 + \int_0^t a_u \, dS_u + \int_0^t b_u \, d\beta_u
+    \]  And so a strategy is self financing if \[
+        S_t \, da_t + \beta_t \, db_t + d[a, S](t) = 0
+    \]  We now consider several cases.
+    \begin{enumerate}
+        \item   If $a_t$ is of bounded variation, then $[a, S](t) = 0$.  Hence \[
+            S_t \, da_t + \beta_t \, db_t = 0,
+        \] which implies \[
+            db_t = -\frac{S_t}{\beta_t} \, da_t
+        \]  Hence $da_t \cdot db_t < 0$.  
+        \item If $a_t$ is a semi-martingale $a_t = a_t^2 + A_t$, then $b_t$ must be a semi-martingale, where $b_t = b_t^2 + B_t$ where $a_t^2, b_t^2$ are the martingale parts and $A_t, B_t$ are of bounded variation.
+        % \item
+    \end{enumerate}
 \end{thm}
 % section lecture_23_thursday_26_may (end)
 
 \section{Lecture 24 - Tuesday 31 May} % (fold)
 \label{sec:lecture_24_tuesday_31_may}
 \begin{thm}
-	Given a claim $C_T$ under the self-financing assumption, there exists a $\Q$-martingale such that \[
-		V_t = \E_\Q\left( e^{-r(T-t) C_T \given \sigf_t} \right), \sigf_t = \sigma(B_s, 0 \leq s \leq t).
-	\] In particular, we have \[
-		V_0 = \E_\Q(e^{-rT}C_T)
-	\]
+    Given a claim $C_T$ under the self-financing assumption, there exists a $\Q$-martingale such that \[
+        V_t = \E_\Q\left( e^{-r(T-t) C_T \given \sigf_t} \right), \sigf_t = \sigma(B_s, 0 \leq s \leq t).
+    \] In particular, we have \[
+        V_0 = \E_\Q(e^{-rT}C_T)
+    \]
 \end{thm}
 
 \begin{proof}
-	For any $\Q$-martingale $\hat V_t$, we have $\hat V_t = \E_\Q(\hat V_T \given \sigf_t)$.  Then \[
-		V_t = \E_\Q(e^{-r(T-t)}C_T \given \sigf_t),
-	\] as $V_T = C_T$.  
+    For any $\Q$-martingale $\hat V_t$, we have $\hat V_t = \E_\Q(\hat V_T \given \sigf_t)$.  Then \[
+        V_t = \E_\Q(e^{-r(T-t)}C_T \given \sigf_t),
+    \] as $V_T = C_T$.  
 \end{proof}
 
 \begin{thm}
-	A claim is attainable (there exists a trading strategy replicating the claim), that is, \begin{align*}
-		V_t = V_0 + G(t) \\
-		G(t) = \int_0^t a_u \, dS_u + \int_0^t b_u \, d\beta_u \\
-		V_T \geq 0, V_T = C_T 
-	\end{align*}
+    A claim is attainable (there exists a trading strategy replicating the claim), that is, \begin{align*}
+        V_t = V_0 + G(t) \\
+        G(t) = \int_0^t a_u \, dS_u + \int_0^t b_u \, d\beta_u \\
+        V_T \geq 0, V_T = C_T 
+    \end{align*}
 \end{thm}
 
 \begin{thm}
-	Suppose that $C_T$ is a non-negative random variable, $C_t \in \sigf_T$ and $\E_\Q(C_T^2f < \infty)$, where $\Q$ is defined as before.  Then \begin{enumerate}[(a)]
-		\item The claim is replicable.
-		\item \[
-			V_t = \E_\Q\left( e^{-r(T-t)} C_T \given \sigf_t \right) \iff \hat V_t = \E_\Q(\hat C_T \given \sigf_t)
-		\] where $\hat C_T = e{-rT} C_T$.
-		
-		In particular, $V_0 = \E_\Q(e^{-rT} C_T) = \E_\Q(\hat C_T)$.
-	\end{enumerate}
+    Suppose that $C_T$ is a non-negative random variable, $C_t \in \sigf_T$ and $\E_\Q(C_T^2f < \infty)$, where $\Q$ is defined as before.  Then \begin{enumerate}[(a)]
+        \item The claim is replicable.
+        \item \[
+            V_t = \E_\Q\left( e^{-r(T-t)} C_T \given \sigf_t \right) \iff \hat V_t = \E_\Q(\hat C_T \given \sigf_t)
+        \] where $\hat C_T = e{-rT} C_T$.
+        
+        In particular, $V_0 = \E_\Q(e^{-rT} C_T) = \E_\Q(\hat C_T)$.
+    \end{enumerate}
 \end{thm}
 
 \begin{thm}
-	Assume $\hat V_t = \E_\Q(\hat C_T \given \sigf_t)$.  Using the martingale representation theorem, there exists an adapted process $H(s)$ such that \begin{align*}
-		\hat V_t = \hat V_0 \int_0^t H(s) \, d \hat B_s \iff d \hat V_t = H(t) \, d\hat B_t.
-	\end{align*}  On the other hand, $d \hat V_t = a_t \, d\hat S_t = a_t \cdot \sigma \hat S_t \, d \hat B_t$.  Hence we obtain our required result, \begin{align*}
-		a_t = \frac{H(t)}{\sigma \hat S_t},
-	\end{align*} and then solve for $b_t$.
+    Assume $\hat V_t = \E_\Q(\hat C_T \given \sigf_t)$.  Using the martingale representation theorem, there exists an adapted process $H(s)$ such that \begin{align*}
+        \hat V_t = \hat V_0 \int_0^t H(s) \, d \hat B_s \iff d \hat V_t = H(t) \, d\hat B_t.
+    \end{align*}  On the other hand, $d \hat V_t = a_t \, d\hat S_t = a_t \cdot \sigma \hat S_t \, d \hat B_t$.  Hence we obtain our required result, \begin{align*}
+        a_t = \frac{H(t)}{\sigma \hat S_t},
+    \end{align*} and then solve for $b_t$.
 \end{thm}
 
 \begin{exmp}
-	Let $C_T = f(S_T)$.  Then $V_t = \E_\Q \left( e^{-r(T- t) f(S_T) \given \sigf_t} \right)$.    Since $\sigf_t = \sigma(B_s, 0 \leq s \leq t) = \sigma(\hat B_s, 0 \leq s \leq t)$, and $\hat S_t$ is a $\Q$-martingale, we have \[
-		\hat S_t = \hat S_0 e^{- \frac{\sigma^2}{2}t + \sigma \hat B_t}
-	\] and so \[
-		S_T =  e^{rT} \hat S_T = \hat S_t e^{rT} e^{- \frac{\sigma^2}{2}(T- t) + \sigma(\hat B_T - \hat B_t)}. 
-	\]  Then \begin{align*}
-		V_t = \E_\Q \left[ e^{-r(T-t)} f\left( e^{rT}\hat S_t e^{-\frac{\sigma^2}{2}(T-t) + \sigma( \hat B_T - \hat B_t)} \right) \right]
-	\end{align*} and so \[
-		V_t = F(t, S_t)
-	\] where \begin{align*}
-		F(t, x) &= \E_\Q\left[ e^{-r(T-t)} f\left(e^{(-\frac{\sigma^2}{2})(T-t) + \sigma \sqrt{T-t} Z} \right) \right]\\
-				&= e^{-r(T-t)} \int_\R f\left(xe^{-\frac{\sigma^2}{2}(T-t) + \sigma z \sqrt{T-t}} \right) \phi(z) \, dz
-	\end{align*}  where $\phi(z) = \frac{1}{\sqrt{2 \pi}} e^{- \frac{z^2}{2}}$.
+    Let $C_T = f(S_T)$.  Then $V_t = \E_\Q \left( e^{-r(T- t) f(S_T) \given \sigf_t} \right)$.    Since $\sigf_t = \sigma(B_s, 0 \leq s \leq t) = \sigma(\hat B_s, 0 \leq s \leq t)$, and $\hat S_t$ is a $\Q$-martingale, we have \[
+        \hat S_t = \hat S_0 e^{- \frac{\sigma^2}{2}t + \sigma \hat B_t}
+    \] and so \[
+        S_T =  e^{rT} \hat S_T = \hat S_t e^{rT} e^{- \frac{\sigma^2}{2}(T- t) + \sigma(\hat B_T - \hat B_t)}. 
+    \]  Then \begin{align*}
+        V_t = \E_\Q \left[ e^{-r(T-t)} f\left( e^{rT}\hat S_t e^{-\frac{\sigma^2}{2}(T-t) + \sigma( \hat B_T - \hat B_t)} \right) \right]
+    \end{align*} and so \[
+        V_t = F(t, S_t)
+    \] where \begin{align*}
+        F(t, x) &= \E_\Q\left[ e^{-r(T-t)} f\left(e^{(-\frac{\sigma^2}{2})(T-t) + \sigma \sqrt{T-t} Z} \right) \right]\\
+                &= e^{-r(T-t)} \int_\R f\left(xe^{-\frac{\sigma^2}{2}(T-t) + \sigma z \sqrt{T-t}} \right) \phi(z) \, dz
+    \end{align*}  where $\phi(z) = \frac{1}{\sqrt{2 \pi}} e^{- \frac{z^2}{2}}$.
 \end{exmp}
 
 \begin{exmp}
-	In particular, if $f(y) = (y - K)^+$, then we obtain \begin{align*}
-		F(t, x) &= e^{-r\theta} \int_{-d_1'}^\infty xe^{-\frac{\sigma^2}{2} \theta + xz \sqrt{\theta} - \frac{z^2}{2}} \, dz - K \int_{-d_1'}^\infty e^{-r\theta - \frac{z^2}{2}} \, dz \\
-		&= x \Phi(d_1' + \sigma \sqrt{\theta}) - K e^{-r \theta} \Phi(d_1') \\
-		&= x \Phi(d_1) - K e^{-r \theta} \Phi(d_2), 
-	\end{align*} where \[
-		d_1 = \frac{ \log \left( \frac{x}{K} \right) + (r + \frac{\sigma^2}{2}) \theta}{\sigma \sqrt{\theta}}, \quad d_2 = d_1 - \sigma \sqrt{\theta} 
-	\]
+    In particular, if $f(y) = (y - K)^+$, then we obtain \begin{align*}
+        F(t, x) &= e^{-r\theta} \int_{-d_1'}^\infty xe^{-\frac{\sigma^2}{2} \theta + xz \sqrt{\theta} - \frac{z^2}{2}} \, dz - K \int_{-d_1'}^\infty e^{-r\theta - \frac{z^2}{2}} \, dz \\
+        &= x \Phi(d_1' + \sigma \sqrt{\theta}) - K e^{-r \theta} \Phi(d_1') \\
+        &= x \Phi(d_1) - K e^{-r \theta} \Phi(d_2), 
+    \end{align*} where \[
+        d_1 = \frac{ \log \left( \frac{x}{K} \right) + (r + \frac{\sigma^2}{2}) \theta}{\sigma \sqrt{\theta}}, \quad d_2 = d_1 - \sigma \sqrt{\theta} 
+    \]
 \end{exmp} 
 
 \begin{thm}[Black-Scholes model summary]
-	$V_t = a_t S_t + b_t \beta_t$, where \begin{align*}
-		\frac{dS_t}{S_t} = \mu \, dt + \sigma \, dB_t \\
-		\frac{d\beta_t}{\beta_t} = r \, dt 
-	\end{align*} 
-	
-	\begin{enumerate}[(a)]
-		\item $\hat S_t = e^{-rt} S_t$ is a $\Q$-martingale, where \[
-			\frac{d\Q}{d\P} = e^{-qB_T - \frac{1}{2} q^2 T}
-		\] and $q = \frac{\mu - r}{\sigma}$.  
-		
-		Then $\hat B_t = B_t + \frac{\mu - r}{\sigma} t$ is a $\Q$-Brownian motion, and $d \hat S_t = \sigma \hat S_t \, d\hat B_t$.
-		\item $V_t$ is self-financing if $(a_t, b_t)$ satisfies \[
-			S_t \, da_t + \beta_t \, db_t + d[a, S](t) = 0
-		\] which then implies $\hat V_t$ is a $\Q$-martingale, $\hat V_t = e^{-rt}V_t$.  		
-		\item
-		There are no arbitrage opportunities in the Black-Scholes model.
-		% \item Under t
-		% \item
-	\end{enumerate}
+    $V_t = a_t S_t + b_t \beta_t$, where \begin{align*}
+        \frac{dS_t}{S_t} = \mu \, dt + \sigma \, dB_t \\
+        \frac{d\beta_t}{\beta_t} = r \, dt 
+    \end{align*} 
+    
+    \begin{enumerate}[(a)]
+        \item $\hat S_t = e^{-rt} S_t$ is a $\Q$-martingale, where \[
+            \frac{d\Q}{d\P} = e^{-qB_T - \frac{1}{2} q^2 T}
+        \] and $q = \frac{\mu - r}{\sigma}$.  
+        
+        Then $\hat B_t = B_t + \frac{\mu - r}{\sigma} t$ is a $\Q$-Brownian motion, and $d \hat S_t = \sigma \hat S_t \, d\hat B_t$.
+        \item $V_t$ is self-financing if $(a_t, b_t)$ satisfies \[
+            S_t \, da_t + \beta_t \, db_t + d[a, S](t) = 0
+        \] which then implies $\hat V_t$ is a $\Q$-martingale, $\hat V_t = e^{-rt}V_t$.         
+        \item
+        There are no arbitrage opportunities in the Black-Scholes model.
+        % \item Under t
+        % \item
+    \end{enumerate}
 \end{thm}
 % section lecture_24_tuesday_31_may (end)
 
 \section{Lecture 25 - Thursday 2 June} % (fold)
 \label{sec:lecture_25_thursday_2_june}
 \begin{thm}[Feyman-Kac formula]{\ }
-	\begin{enumerate}[(1)]
-		\item Suppose the function $F(x, t)$ solves the boundary value problem \[
-			\frac{\partial F(t, x)}{\partial t} + \mu(t, x) \frac{\partial F(t, x)}{\partial x} + \frac{1}{2} \sigma^2(t, x) \frac{\partial^2 F(t, x)}{\partial x^2} = 0
-	\] such that $F(T, x) = \Psi(x)$.  
-		\item Let $S_t$ be a solution of the SDE \[
-			dS_t = \mu(t, S_t) \, dt + \sigma(t, S_t) \, dB_t \tag{$\star$}
-		\] where $B_t$ is a $\Q$-Brownian motion
-		\item Assume \[
-			\int_0^T \E(\sigma(t, S_t) \frac{\partial^2 F(t, S_t)}{\partial x^2}) \, dt < \infty
-		\]
-	\end{enumerate} 
-	
-	Then \[
-		F(t, S_t) = \E_\Q\left( \Psi(S_T) \given \sigf_t \right) = \E_\Q\left(F(T, S_T) \given \sigf_t \right).
-	\] where $\sigf_t = \sigma(B_s, 0 \leq s \leq t)$. 
+    \begin{enumerate}[(1)]
+        \item Suppose the function $F(x, t)$ solves the boundary value problem \[
+            \frac{\partial F(t, x)}{\partial t} + \mu(t, x) \frac{\partial F(t, x)}{\partial x} + \frac{1}{2} \sigma^2(t, x) \frac{\partial^2 F(t, x)}{\partial x^2} = 0
+    \] such that $F(T, x) = \Psi(x)$.  
+        \item Let $S_t$ be a solution of the SDE \[
+            dS_t = \mu(t, S_t) \, dt + \sigma(t, S_t) \, dB_t \tag{$\star$}
+        \] where $B_t$ is a $\Q$-Brownian motion
+        \item Assume \[
+            \int_0^T \E(\sigma(t, S_t) \frac{\partial^2 F(t, S_t)}{\partial x^2}) \, dt < \infty
+        \]
+    \end{enumerate} 
+    
+    Then \[
+        F(t, S_t) = \E_\Q\left( \Psi(S_T) \given \sigf_t \right) = \E_\Q\left(F(T, S_T) \given \sigf_t \right).
+    \] where $\sigf_t = \sigma(B_s, 0 \leq s \leq t)$. 
 \end{thm}
 
 \begin{proof}
-	It is enough to show that $F(t, S_t)$ is a martingale with respect to $\sigf_t$ under $\Q$.  By \itos lemma, we have \begin{align*}
-		dF(t, S_t) &= \frac{\partial f(t, S_t)}{\partial t} \, dt + \frac{\partial F(t, S_t)}{\partial x} \, dS_t + \frac{1}{2} \frac{\partial^2 F(t, S_t)}{\partial x^2} \cdot (dS_t)^2 \\
-		&= \left[ \frac{\partial F}{\partial t} + \mu(t, S_t) \frac{\partial F}{\partial x} + \frac{\sigma^2(t, S_t)}{2} \frac{\partial^2 F(t, S_t)}{\partial x^2} \right] \, dt + \frac{\partial F(t, S_t)}{\partial x} \sigma(t, S_t) \, dB_t \\
-		&= \frac{\partial F(t, S_t)}{\partial x} \sigma(t, S_t) \, dB_t
-	\end{align*} which is a $\Q$-martingale.
+    It is enough to show that $F(t, S_t)$ is a martingale with respect to $\sigf_t$ under $\Q$.  By \itos lemma, we have \begin{align*}
+        dF(t, S_t) &= \frac{\partial f(t, S_t)}{\partial t} \, dt + \frac{\partial F(t, S_t)}{\partial x} \, dS_t + \frac{1}{2} \frac{\partial^2 F(t, S_t)}{\partial x^2} \cdot (dS_t)^2 \\
+        &= \left[ \frac{\partial F}{\partial t} + \mu(t, S_t) \frac{\partial F}{\partial x} + \frac{\sigma^2(t, S_t)}{2} \frac{\partial^2 F(t, S_t)}{\partial x^2} \right] \, dt + \frac{\partial F(t, S_t)}{\partial x} \sigma(t, S_t) \, dB_t \\
+        &= \frac{\partial F(t, S_t)}{\partial x} \sigma(t, S_t) \, dB_t
+    \end{align*} which is a $\Q$-martingale.
 \end{proof}
 
 \begin{thm}[General Feyman-Kac formula]
-	Let $S_t$ be a solution of the SDE $(\star)$.  Assume that there is a solution to the PDE \[
-		\frac{\partial F(t, x)}{\partial t} + \mu(t, x) \frac{\partial F(t, x)}{\partial x} + \frac{1}{2} \sigma^2(t, x) \frac{\partial^2 F(t, x)}{\partial x^2} = r(t, x) F(t, x).
-	\]  Then \[
-		F(t, S_t) = \E_\Q\left( e^{-\int_t^T r(u, S_u) \, du} F(T, S_T) \given \sigf_t \right)
-	\]
+    Let $S_t$ be a solution of the SDE $(\star)$.  Assume that there is a solution to the PDE \[
+        \frac{\partial F(t, x)}{\partial t} + \mu(t, x) \frac{\partial F(t, x)}{\partial x} + \frac{1}{2} \sigma^2(t, x) \frac{\partial^2 F(t, x)}{\partial x^2} = r(t, x) F(t, x).
+    \]  Then \[
+        F(t, S_t) = \E_\Q\left( e^{-\int_t^T r(u, S_u) \, du} F(T, S_T) \given \sigf_t \right)
+    \]
 \end{thm}
 
 \begin{proof}
-	Again by \itos lemma, \begin{align*}
-		dF(t, S_t) &= \left( \frac{\partial F}{\partial t} + \mu \frac{\partial F}{\partial x} + \frac{\sigma^2}{2} \frac{\partial^2 F}{\partial x^2} \right) \, dt + \frac{\partial F}{\partial x} \cdot \sigma(t, S_t) \, dB_t \\
-		&= r(t, x) F(t, S_t)\, dt + dM_t
-	\end{align*}  
-	where $M_t = \int_0^t \frac{\partial F}{\partial x} \sigma(u, S_u) \, dB_u$.  Hence we have \begin{align*}
-		dF(t, S_t) 	&= r(t, S_t) X_t \, dt + dM_t \\
-\tag{$\Rightarrow$}		d\left[ e^{-\int_t^\nu r(u, s_u)\, du} X_\nu \right] &= e^{-\int_t^\nu r(u, S_u) \, du} dM_\nu \\
-\tag{$\Rightarrow$}		e^{-\int_t^T r(u, S_u) \, du} F(T, S_T) &= F(t, S_t) + \int_t^T e^{-\int_t^\nu r(u, S_u)\, du} \, dM_\nu  \\
-\tag{$\Rightarrow$}	 	\E_\Q \left(	e^{-\int_t^T r(u, S_u) \, du} F(T, S_T) \given \sigf_t \right) &= F(t, S_t) \\
-			&\qquad +  \underbrace{\E_\Q \left( \int_t^T e^{-\int_t^\nu r(u, S_u)\, du} \, \frac{\partial F}{\partial x} \sigma(\nu, S_\nu) \, dB_\nu \given \sigf_t \right)}_{= 0} 
-	\end{align*} and so we obtain our result, \[
-		F(t, S_t) = \E_\Q\left( e^{-\int_t^T r(u, S_u) \, du} F(T, S_T) \given \sigf_t \right)
-	\]
+    Again by \itos lemma, \begin{align*}
+        dF(t, S_t) &= \left( \frac{\partial F}{\partial t} + \mu \frac{\partial F}{\partial x} + \frac{\sigma^2}{2} \frac{\partial^2 F}{\partial x^2} \right) \, dt + \frac{\partial F}{\partial x} \cdot \sigma(t, S_t) \, dB_t \\
+        &= r(t, x) F(t, S_t)\, dt + dM_t
+    \end{align*}  
+    where $M_t = \int_0^t \frac{\partial F}{\partial x} \sigma(u, S_u) \, dB_u$.  Hence we have \begin{align*}
+        dF(t, S_t)  &= r(t, S_t) X_t \, dt + dM_t \\
+\tag{$\Rightarrow$}     d\left[ e^{-\int_t^\nu r(u, s_u)\, du} X_\nu \right] &= e^{-\int_t^\nu r(u, S_u) \, du} dM_\nu \\
+\tag{$\Rightarrow$}     e^{-\int_t^T r(u, S_u) \, du} F(T, S_T) &= F(t, S_t) + \int_t^T e^{-\int_t^\nu r(u, S_u)\, du} \, dM_\nu  \\
+\tag{$\Rightarrow$}     \E_\Q \left(    e^{-\int_t^T r(u, S_u) \, du} F(T, S_T) \given \sigf_t \right) &= F(t, S_t) \\
+            &\qquad +  \underbrace{\E_\Q \left( \int_t^T e^{-\int_t^\nu r(u, S_u)\, du} \, \frac{\partial F}{\partial x} \sigma(\nu, S_\nu) \, dB_\nu \given \sigf_t \right)}_{= 0} 
+    \end{align*} and so we obtain our result, \[
+        F(t, S_t) = \E_\Q\left( e^{-\int_t^T r(u, S_u) \, du} F(T, S_T) \given \sigf_t \right)
+    \]
 \end{proof}
 % section lecture_25_thursday_2_june (end)
 
