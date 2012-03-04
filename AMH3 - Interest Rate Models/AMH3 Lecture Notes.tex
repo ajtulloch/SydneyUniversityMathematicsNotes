@@ -76,9 +76,9 @@
 \newcommand{\minpoly}[2]{m_{#1, #2}(x)}
 
 \newcommand{\mapping}[5]{\begin{align*}
-	#1 : \quad     #2 &\rightarrow #3 \\
-			#4  &\mapsto #5
-\end{align*}	
+    #1 : \quad     #2 &\rightarrow #3 \\
+            #4  &\mapsto #5
+\end{align*}    
 }
 
 
@@ -90,18 +90,18 @@
 
 \def\eqd{\,{\buildrel d \over =}\,} 
 \def\eqas{\,{\buildrel a.s. \over =}\,}
-\newcommand{\sigg}{\mathcal{G}}		
+\newcommand{\sigg}{\mathcal{G}}     
 \newcommand{\indic}[1]{\mathbf{1}_{\{ #1 \}} }
-\newcommand{\ito}{It\^o\ }		
-\newcommand{\itos}{It\^o's\ }		
+\newcommand{\ito}{It\^o\ }      
+\newcommand{\itos}{It\^o's\ }       
 
 \newcommand{\doleans}[1]{\mathcal E_t \left(\int_0^\cdot #1 \right)}
 
 \numberwithin{equation}{chapter}
 
 \usepackage{hyperref}
-		
-\title{AMH3 - Interest Rate Modelling}								% Document Title
+        
+\title{AMH3 - Interest Rate Modelling}                              % Document Title
 \author{Andrew Tulloch}
 %\date{}                                           % Activate to display a given date or no date
 
@@ -122,279 +122,279 @@
 
 % section introduction_to_interest_rate_modelling (end)
 There is a one-to-one correspondence between the class $Q$ of all probability measures equivalent to $\P$ and the class $\Lambda$ of all $\F$-adapted (or $\F$-predictable) process $\lambda_t$ satisfying \[
-	\P\left(\int_0^{T^\star} |\lambda_u|^2 \, du < \infty \right) = 1
+    \P\left(\int_0^{T^\star} |\lambda_u|^2 \, du < \infty \right) = 1
 \]
 and \[
-	\E_\P\left( \mathcal{E}_{T^\star} \left(\int_0^\cdot \lambda_u \, dW_u\right) \right) = 1
+    \E_\P\left( \mathcal{E}_{T^\star} \left(\int_0^\cdot \lambda_u \, dW_u\right) \right) = 1
 \] 
 Thus our correspondence is \[Q \ni \P^\lambda \iff \lambda \in \Lambda.\]
 Consequently, \begin{enumerate}[(i)]
-	\item $\frac{d\Q}{d\P} = \eta_{T^\star}$
-	\item \begin{align*}
-		\frac{d\Q}{d\P} \given \sigf_t 	&= \eta^\Q_t \\
-										&= \E_\P\left(\eta_{T^\star} \given \sigf_t \right) \\
-										&= \doleans{\lambda_u \, dW_u}
-	\end{align*}
+    \item $\frac{d\Q}{d\P} = \eta_{T^\star}$
+    \item \begin{align*}
+        \frac{d\Q}{d\P} \given \sigf_t  &= \eta^\Q_t \\
+                                        &= \E_\P\left(\eta_{T^\star} \given \sigf_t \right) \\
+                                        &= \doleans{\lambda_u \, dW_u}
+    \end{align*}
 \end{enumerate}
 
 \begin{thm}[Abstract Bayes formula]
-	Let $\Q \sim \P$ with $\frac{d \Q}{d \P} = \eta$.  Suppose that $\sigg \subset \sigf$.  We then have \[
-		\E_\Q(X \given \sigg) = \frac{\E_\P(\eta X \given \sigg)}{\E_\P(\eta \given \sigg)}.
-	\]  Note that is $\sigg = \{ \emptyset, \Omega \}$ then the formula reduces to \[
-		\E_\Q(X) = \E_\P(\eta X).
-	\]
+    Let $\Q \sim \P$ with $\frac{d \Q}{d \P} = \eta$.  Suppose that $\sigg \subset \sigf$.  We then have \[
+        \E_\Q(X \given \sigg) = \frac{\E_\P(\eta X \given \sigg)}{\E_\P(\eta \given \sigg)}.
+    \]  Note that is $\sigg = \{ \emptyset, \Omega \}$ then the formula reduces to \[
+        \E_\Q(X) = \E_\P(\eta X).
+    \]
 
-	If $Q \sim \P$ with $\frac{d\Q}{d\P} |_{\sigf_t} = \eta_t$, for all $t \in [0, T^\star]$, then \[
-		\E_\Q(X \given \sigf_t) = \frac{\E_\P(\eta_{T^\star} X \given \sigf_t)}{\E_\P(\eta_{T^\star} \given \sigf_t)}.
-	\]
-	
-	Hence if $X$ is $\sigf_t$ measurable for some $T \in [0, T^\star]$ then \[
-		\E_\Q(X \given \sigf_t) = \frac{\E_\P(\eta_T X \given \sigf_t)}{\eta_t} = \E_\P(\eta_t^{-1} \eta_T X \given \sigf_t)
-	\]
+    If $Q \sim \P$ with $\frac{d\Q}{d\P} |_{\sigf_t} = \eta_t$, for all $t \in [0, T^\star]$, then \[
+        \E_\Q(X \given \sigf_t) = \frac{\E_\P(\eta_{T^\star} X \given \sigf_t)}{\E_\P(\eta_{T^\star} \given \sigf_t)}.
+    \]
+    
+    Hence if $X$ is $\sigf_t$ measurable for some $T \in [0, T^\star]$ then \[
+        \E_\Q(X \given \sigf_t) = \frac{\E_\P(\eta_T X \given \sigf_t)}{\eta_t} = \E_\P(\eta_t^{-1} \eta_T X \given \sigf_t)
+    \]
 \end{thm}
 
 \begin{exmp}
-	If $\eta_t = \doleans{\lambda_u \, dW_u}$, then \[
-		\E_\Q(X \given \sigf_t) = \E_\P(e^{\int_t^T \lambda_u \, dW_u - \frac{1}{2} \int_0^t |\lambda_u|^2 \, du} X \given \sigf_t)
-	\] 
+    If $\eta_t = \doleans{\lambda_u \, dW_u}$, then \[
+        \E_\Q(X \given \sigf_t) = \E_\P(e^{\int_t^T \lambda_u \, dW_u - \frac{1}{2} \int_0^t |\lambda_u|^2 \, du} X \given \sigf_t)
+    \] 
 \end{exmp}
 
 
 \begin{lem}
-	\label{lem:martingale_equivalence_measures}
-	A $\F$-adapted and $\Q$-integrable process $M$ is a $(\Q, \F)$-martingale if and only if the product $M \eta$ is a $(\P, \F)$-martingale.
+    \label{lem:martingale_equivalence_measures}
+    A $\F$-adapted and $\Q$-integrable process $M$ is a $(\Q, \F)$-martingale if and only if the product $M \eta$ is a $(\P, \F)$-martingale.
 \end{lem}
 
 \begin{proof}
-	$\E_\Q(M_t \given \sigf_s) = M_s$, $s \leq t$, so \[
-		M_s = \E_\Q(M_t \given \sigf_s) = \frac{\E_\P(\eta_t M_t \given \sigf_s)}{\eta_s}
-	\]
+    $\E_\Q(M_t \given \sigf_s) = M_s$, $s \leq t$, so \[
+        M_s = \E_\Q(M_t \given \sigf_s) = \frac{\E_\P(\eta_t M_t \given \sigf_s)}{\eta_s}
+    \]
 \end{proof}
 
 \begin{lem}
-	If $X$ and $Y$ are two processes of the form \begin{align*}
-		dX_t &= \alpha_t \, dt + \beta_t \, dW_t \\
-		dY_t &= \tilde \alpha_t \, dt + \tilde \beta_t \, dW_t
-	\end{align*} then the product satisfies the \ito product formula \begin{align*}
-		d(X_t Y_t) = X_t \, dY_t + Y_t \, dX_t + d \langle X, Y \rangle_t
-	\end{align*}	
+    If $X$ and $Y$ are two processes of the form \begin{align*}
+        dX_t &= \alpha_t \, dt + \beta_t \, dW_t \\
+        dY_t &= \tilde \alpha_t \, dt + \tilde \beta_t \, dW_t
+    \end{align*} then the product satisfies the \ito product formula \begin{align*}
+        d(X_t Y_t) = X_t \, dY_t + Y_t \, dX_t + d \langle X, Y \rangle_t
+    \end{align*}    
 \end{lem}
 
 If $X$ is of the form $dX_t = \alpha_t \, dt + \beta_t \, dW_t$ and $f$ is of class $C^2(\R)$, then the continuos martingale part of $Y_t = f(X_t)$ is given as \[
-	\int_0^t f'(X_u) \beta_u \, dW_u
+    \int_0^t f'(X_u) \beta_u \, dW_u
 \]
 
 \begin{prop}
-	\label{prop:proposition_1.1}
-	% TODO MUST COMPLETE - PROPOSITION 1.1 in course notes.
+    \label{prop:proposition_1.1}
+    % TODO MUST COMPLETE - PROPOSITION 1.1 in course notes.
 \end{prop}
 
 \begin{proof}[Proof of Proposition 1.1]
-	Let $\P^\lambda$ be equivalent to $\P$, so that \[
-		d\eta_t = \eta_t \lambda_t \, dW_t
-	\]  and \[
-		\frac{d\P^\lambda}{d \P} = \eta_t
-	\] on $(\Omega, \sigf_t)$, $t \in [0, T^\star]$.
+    Let $\P^\lambda$ be equivalent to $\P$, so that \[
+        d\eta_t = \eta_t \lambda_t \, dW_t
+    \]  and \[
+        \frac{d\P^\lambda}{d \P} = \eta_t
+    \] on $(\Omega, \sigf_t)$, $t \in [0, T^\star]$.
 
-	Define $B(t, T)$ as follows, for all $t \in [0, T]$, \begin{align*}
-		B(t, T) &= B_t \E_{\P^\lambda} \left( \frac{1}{B_T} \given \sigf_t \right) \\
-		&= \E_{\P^\lambda} \left(e^{-\int_t^T r_u \, du} \given \sigf_t \right)
-	\end{align*}
-	
-	For i), we simply apply Girsanov's theorem, replacing $dW_t$ by $dW_t = dW^\lambda_t - \lambda_t \, dt$ in the dynamics of $r$ under $\P$.  
-	
-	For ii), we first recall that $Z(t, T) = \frac{B(t, T)}{B_t}$ is given by \[
-		Z(t, T) = \E_{\P^\lambda} \left( \frac{1}{B_T} \given \sigf_t \right)
-	\] is a $(\P^\lambda, \F)$-martingale.
-	
-	Note that $\F^{\lambda} \neq \F$ in general.  From Lemma \ref{lem:martingale_equivalence_measures}, we know that $\eta_t Z(t, T)$ is a $(\P, \F)$-martingale.  Thus applying the predictable representation property, there exists an $\F$-adapted process $\gamma_t$ such that \[
-		M_t \equiv \eta_t Z(t, T) = Z(0, T) + \int_0^t \gamma_u \, dW_u
-	\] for all $t \in [0, T]$.  Consequently, $dM_t = \gamma_t \, dW_t$ and hence \[
-		dZ(t, T) = d(\eta^{-1}_t M_t) = M_t \, d\eta_t^{-1} + \eta_t^{-1}\, dM_t + d \langle \eta^{-1}, M \rangle_t
-	\]  where \begin{align*}
-		d \eta_t^{-1} = - \eta_t^{-1} \lambda_t \, dW_t^\lambda.
-	\end{align*}  We obtain \begin{align*}
-		dZ(t, T) &= \eta_t Z(t, T) \left( - \eta_t^{-1} \lambda_t \, dW_t^\lambda \right) + \eta_t^{-1} \gamma_t \left(dW_t^\lambda + \lambda_t \, dt \right) + \left(- \eta_t^{-1} \lambda_t \gamma_t \right) \, dt \\
-		&= \eta_t^{-1} \left(\gamma_t - M_t \lambda_t \right) \, dW_t^\lambda
-	\end{align*} so that \[
-		dZ(t, T) = \tilde b^\lambda(t, T) \, dW_t^\lambda
-	\]  Since $B(t, T) = B_t Z(t, T)$, using again the \ito formula we have \begin{align*}
-		dB(t, T) 	&= B_t \, dZ(t, T) + Z(t, T) \, dB_t  \\
-					&= \frac{B(t, T)}{B_t} r_t B_t \, dt + B_t \tilde b^\lambda(t, T) \, dW_t^\lambda \\
-					&= r_t B(t, T) \, dt + B(t, T) \underbrace{\frac{B_t \tilde b^\lambda(t, T)}{B(t, T)}}_{b^\lambda(t, T)} \, dW^\lambda_t.
-	\end{align*}   We conclude that for all $T \in [0, T^\star]$, there exists an $\F$-adapted process $b^\lambda(t, T)$, $t \in [0, T]$ called the volatility of the bond
+    Define $B(t, T)$ as follows, for all $t \in [0, T]$, \begin{align*}
+        B(t, T) &= B_t \E_{\P^\lambda} \left( \frac{1}{B_T} \given \sigf_t \right) \\
+        &= \E_{\P^\lambda} \left(e^{-\int_t^T r_u \, du} \given \sigf_t \right)
+    \end{align*}
+    
+    For i), we simply apply Girsanov's theorem, replacing $dW_t$ by $dW_t = dW^\lambda_t - \lambda_t \, dt$ in the dynamics of $r$ under $\P$.  
+    
+    For ii), we first recall that $Z(t, T) = \frac{B(t, T)}{B_t}$ is given by \[
+        Z(t, T) = \E_{\P^\lambda} \left( \frac{1}{B_T} \given \sigf_t \right)
+    \] is a $(\P^\lambda, \F)$-martingale.
+    
+    Note that $\F^{\lambda} \neq \F$ in general.  From Lemma \ref{lem:martingale_equivalence_measures}, we know that $\eta_t Z(t, T)$ is a $(\P, \F)$-martingale.  Thus applying the predictable representation property, there exists an $\F$-adapted process $\gamma_t$ such that \[
+        M_t \equiv \eta_t Z(t, T) = Z(0, T) + \int_0^t \gamma_u \, dW_u
+    \] for all $t \in [0, T]$.  Consequently, $dM_t = \gamma_t \, dW_t$ and hence \[
+        dZ(t, T) = d(\eta^{-1}_t M_t) = M_t \, d\eta_t^{-1} + \eta_t^{-1}\, dM_t + d \langle \eta^{-1}, M \rangle_t
+    \]  where \begin{align*}
+        d \eta_t^{-1} = - \eta_t^{-1} \lambda_t \, dW_t^\lambda.
+    \end{align*}  We obtain \begin{align*}
+        dZ(t, T) &= \eta_t Z(t, T) \left( - \eta_t^{-1} \lambda_t \, dW_t^\lambda \right) + \eta_t^{-1} \gamma_t \left(dW_t^\lambda + \lambda_t \, dt \right) + \left(- \eta_t^{-1} \lambda_t \gamma_t \right) \, dt \\
+        &= \eta_t^{-1} \left(\gamma_t - M_t \lambda_t \right) \, dW_t^\lambda
+    \end{align*} so that \[
+        dZ(t, T) = \tilde b^\lambda(t, T) \, dW_t^\lambda
+    \]  Since $B(t, T) = B_t Z(t, T)$, using again the \ito formula we have \begin{align*}
+        dB(t, T)    &= B_t \, dZ(t, T) + Z(t, T) \, dB_t  \\
+                    &= \frac{B(t, T)}{B_t} r_t B_t \, dt + B_t \tilde b^\lambda(t, T) \, dW_t^\lambda \\
+                    &= r_t B(t, T) \, dt + B(t, T) \underbrace{\frac{B_t \tilde b^\lambda(t, T)}{B(t, T)}}_{b^\lambda(t, T)} \, dW^\lambda_t.
+    \end{align*}   We conclude that for all $T \in [0, T^\star]$, there exists an $\F$-adapted process $b^\lambda(t, T)$, $t \in [0, T]$ called the volatility of the bond
 , such that \[
-	dB(t, T) = B(t, T)(r_t \, dt + b^\lambda(t, T) \, dW^\lambda_t).  
-\]	  In fact, it does not depend on the choice of $\lambda$.  For simplicity, we can write $b(t, T) \equiv b^\lambda(t, T)$.  
+    dB(t, T) = B(t, T)(r_t \, dt + b^\lambda(t, T) \, dW^\lambda_t).  
+\]    In fact, it does not depend on the choice of $\lambda$.  For simplicity, we can write $b(t, T) \equiv b^\lambda(t, T)$.  
 
 The final formula is a special case of the well known result:
 \begin{align*}
-	dX_t 	&= X_t (\alpha_t \, dt + \beta_t \, dW_t) \\
-				\Updownarrow  \\
-		X_t	&= X_0 e^{\int_0^t \alpha_u \, du} \doleans {\beta_u \, dW_u }  \\
-			&= X_0 e^{\int_0^t \alpha_u \, du} e^{\int_0^t \beta_u \, dW_u - \frac{1}{2} \int_0^t |\beta_u|^2 \, du}
-		\end{align*}
-		
-	This completes our proof of Proposition 1.1, under the assumption that $\frac{1}{B_T}$ is $\P^\lambda$-integrable.
-	% We have \[
-	% 	dM_t = \eta_t \lambda_t dW_t
-	% \] and \[
-	% 	dM_t^{-1} = - \eta_t^{-1} \lambda_t dW^\lambda_t.
-	% \]  This is true as \[
-	% 	\frac{d\P}{d\Q}
-	% \]
+    dX_t    &= X_t (\alpha_t \, dt + \beta_t \, dW_t) \\
+                \Updownarrow  \\
+        X_t &= X_0 e^{\int_0^t \alpha_u \, du} \doleans {\beta_u \, dW_u }  \\
+            &= X_0 e^{\int_0^t \alpha_u \, du} e^{\int_0^t \beta_u \, dW_u - \frac{1}{2} \int_0^t |\beta_u|^2 \, du}
+        \end{align*}
+        
+    This completes our proof of Proposition 1.1, under the assumption that $\frac{1}{B_T}$ is $\P^\lambda$-integrable.
+    % We have \[
+    %   dM_t = \eta_t \lambda_t dW_t
+    % \] and \[
+    %   dM_t^{-1} = - \eta_t^{-1} \lambda_t dW^\lambda_t.
+    % \]  This is true as \[
+    %   \frac{d\P}{d\Q}
+    % \]
 \end{proof}
 
 There are still several issues given this pricing formula. 
 \begin{enumerate}[(i)]
-	\item How to compute $b(t, T)$ explicitly in terms of $\mu$ and $\sigma$ under the assumptions that \[
-		dr_t = \mu(r_t, t) \, dt + \sigma(r_t, t) \, dW_t
-	\] and $\lambda_t = \lambda(r_t, t)$ is the risk premium.  
-	\item How can we calibrate our short-term rate model, meaning that \[
-		\E_{\P^\lambda}\left( \frac{1}{B_T} \right) = B(0, T) = P(0, T).
-	\]
+    \item How to compute $b(t, T)$ explicitly in terms of $\mu$ and $\sigma$ under the assumptions that \[
+        dr_t = \mu(r_t, t) \, dt + \sigma(r_t, t) \, dW_t
+    \] and $\lambda_t = \lambda(r_t, t)$ is the risk premium.  
+    \item How can we calibrate our short-term rate model, meaning that \[
+        \E_{\P^\lambda}\left( \frac{1}{B_T} \right) = B(0, T) = P(0, T).
+    \]
 \end{enumerate}  
 
 The issue of pricing bonds is related to solving a backward stochastic differential equation (BSDE).  The general form is \[
-	X_t = X_0 + \int_0^t \mu (X_u, u) \, du + \int_0^t \xi_u \, dW_u \tag{$\star$}
+    X_t = X_0 + \int_0^t \mu (X_u, u) \, du + \int_0^t \xi_u \, dW_u \tag{$\star$}
 \]   where $\mu : \R \times \R^+ \rightarrow \R$ is some function and $\xi$ is some $\F$-adapted process.  We also fix $T > 0$ and postulate that $X_T$ is a \textbf{known } $\sigf_T$-measurable random variable. 
 
 \begin{defn}
-	We say that $(X, \xi)$ solves the BSDE with terminal condition with terminal condition $Y$ ($\sigf_T$-measurable) if: 
-	\begin{enumerate}[(i)]
-		\item $(X, \xi)$ satisfies ($\star$), 
-		\item $X_T = Y$.  
-	\end{enumerate}
-	
-	This can be extended to cases where $\mu : \R \times \R^+ \times \Omega \rightarrow \R$ is $\F$-adapted.
+    We say that $(X, \xi)$ solves the BSDE with terminal condition with terminal condition $Y$ ($\sigf_T$-measurable) if: 
+    \begin{enumerate}[(i)]
+        \item $(X, \xi)$ satisfies ($\star$), 
+        \item $X_T = Y$.  
+    \end{enumerate}
+    
+    This can be extended to cases where $\mu : \R \times \R^+ \times \Omega \rightarrow \R$ is $\F$-adapted.
 \end{defn}
 
 
 \chapter{Markovian Models of the Short Rate} % (fold)
 \label{cha:markovian_models_of_the_short_rate}
 
-	Let $\P^\star$ be a martingale measure in the sense that \[
-		B(t, T) = \E_{\P^\star} \left( e^{-\int_t^T r_u \, du} \given \sigf_t \right).
-	\]  In particular, \[
-		B(0, T) = \E_{\P^\star} \left( e^{-\int_0^T r_u \, du}  \right).  
-	\]  We postulate that \begin{equation}
-		dr_t = \mu(r_t, t) \, dt + \sigma(r_t, t) \, dW^\star_t,
-		\label{eq:generic_short_rate}
-	\end{equation} where $W^\star$ is a Brownian motion under $\P^\star$. The filtration $\F$ is any filtration such that $W^\star$ is a BM with respect to $\F$ .  We assume that \eqref{eq:generic_short_rate} has a unique (strong) solution. 
-	
-	Then it known that $r_t$ has the Markov property with respect to $\F$, meaning that for any bounded continuous function $h : \R \rightarrow \R$, \[
- 	\E_{\P^\star} \left(h(r_t) \given \sigf_s \right) = \E_{\P^\star}\left(h(r_t) \given r_s \right)
+    Let $\P^\star$ be a martingale measure in the sense that \[
+        B(t, T) = \E_{\P^\star} \left( e^{-\int_t^T r_u \, du} \given \sigf_t \right).
+    \]  In particular, \[
+        B(0, T) = \E_{\P^\star} \left( e^{-\int_0^T r_u \, du}  \right).  
+    \]  We postulate that \begin{equation}
+        dr_t = \mu(r_t, t) \, dt + \sigma(r_t, t) \, dW^\star_t,
+        \label{eq:generic_short_rate}
+    \end{equation} where $W^\star$ is a Brownian motion under $\P^\star$. The filtration $\F$ is any filtration such that $W^\star$ is a BM with respect to $\F$ .  We assume that \eqref{eq:generic_short_rate} has a unique (strong) solution. 
+    
+    Then it known that $r_t$ has the Markov property with respect to $\F$, meaning that for any bounded continuous function $h : \R \rightarrow \R$, \[
+    \E_{\P^\star} \left(h(r_t) \given \sigf_s \right) = \E_{\P^\star}\left(h(r_t) \given r_s \right)
  \] for all $s \leq t$.   
 
 Hence \[
-	\E_{\P^\star} \left(e^{-\int_t^T r_u \, du} \given \sigf_t \right) = v(r_t, t, T) = \tilde v(r_t, t) 
+    \E_{\P^\star} \left(e^{-\int_t^T r_u \, du} \given \sigf_t \right) = v(r_t, t, T) = \tilde v(r_t, t) 
 \] suppressing the dependence on $T$.
 
 Goals:
 \begin{enumerate}[(i)]
-	\item Compute explicitly $v(r_t, t, T)$ for some classical models \begin{enumerate}[(a)]
-		\item Merton's model 
-		\item Vasicek's model
-		\item CIR model (Bessel process)
-	\end{enumerate}
-	using either the probabilistic approach (martingale measure) or the  analytic approach (PDEs).
-	\item Represent the price of the bond as follows \[
-		B(t, T) = \exp \left( m(t, T) - n(t, T) r_t \right)
-	\]
-	
-	For a fixed maturity $T$, \[
-		m(\cdot, T), n(\cdot, T) : [0, T] \rightarrow \R
-	\] can also be computed using the second method by separating variables in the PDE.  Note that $m(T, T), n(T, T) = 0$.
-	\item Compute explicitly the volatility $b(t, T)$ of the bond by applying the \ito formula to the function $v(r_t, t, T)$.
-	\item Extend the model to the time-inhomogenous case in order to ensure that $B(0, T) = P(0, T)$ for all $T \in [0, T^\star]$.
+    \item Compute explicitly $v(r_t, t, T)$ for some classical models \begin{enumerate}[(a)]
+        \item Merton's model 
+        \item Vasicek's model
+        \item CIR model (Bessel process)
+    \end{enumerate}
+    using either the probabilistic approach (martingale measure) or the  analytic approach (PDEs).
+    \item Represent the price of the bond as follows \[
+        B(t, T) = \exp \left( m(t, T) - n(t, T) r_t \right)
+    \]
+    
+    For a fixed maturity $T$, \[
+        m(\cdot, T), n(\cdot, T) : [0, T] \rightarrow \R
+    \] can also be computed using the second method by separating variables in the PDE.  Note that $m(T, T), n(T, T) = 0$.
+    \item Compute explicitly the volatility $b(t, T)$ of the bond by applying the \ito formula to the function $v(r_t, t, T)$.
+    \item Extend the model to the time-inhomogenous case in order to ensure that $B(0, T) = P(0, T)$ for all $T \in [0, T^\star]$.
 \end{enumerate}
 
 \section{Merton's model} % (fold)
 \label{sub:merton_s_model}
-	Assure \[
-		r_t = r_0 + at + \sigma W_t^\star 
-	\] where $W^\star = W^\lambda$ for some $\lambda$.  Hence
-	\begin{equation}
-		dr_t = a \, dt + \sigma \, dW^\star_t, \quad r_0 > 0.
-	\end{equation} 
-	\begin{note}
-		The generator of the time homogenous Markov diffusion can be represented as \[
-			A_r = a \frac{\partial }{\partial r} + \frac{1}{2} r^2 \frac{\partial^2}{\partial r^2}.  
-		\]
-	\end{note}
+    Assure \[
+        r_t = r_0 + at + \sigma W_t^\star 
+    \] where $W^\star = W^\lambda$ for some $\lambda$.  Hence
+    \begin{equation}
+        dr_t = a \, dt + \sigma \, dW^\star_t, \quad r_0 > 0.
+    \end{equation} 
+    \begin{note}
+        The generator of the time homogenous Markov diffusion can be represented as \[
+            A_r = a \frac{\partial }{\partial r} + \frac{1}{2} r^2 \frac{\partial^2}{\partial r^2}.  
+        \]
+    \end{note}
 
-	\begin{prop}
-		The price $B(t, T)$ is given by \begin{equation}
-			\label{eq:merton_short_rate_price}
-			B(t, T) = e^{-r_t(T-t) - \frac{1}{2}a(T-t)^2 + \frac{1}{6} \sigma^2(T-t)^3}.  
-		\end{equation}  Hence \[
-			dB(t, T) = B(t, T)\left(r_t \, dt - \sigma(T-t) dW^\star_t \right).
-		\]  Thus we have the volatility of the bond $b(t, T) = -\sigma(T-t)$.
-	\end{prop}
-	
-	\begin{proof}
-		It is enough to calculate $B(0, T)$ and then establish the general formula for $B(t, T)$ using the property that $r_t$ is a time-homogenous Markov process, thus \[
-			B(0, T) = v(r_0, T) \Rightarrow B(t, T) =v(r_t, T-t)
-		\]
-		Computation of $B(0, T)$ is done as follows:\[
-			B(0, T) = \E_{\P^\star} \left(e^{-\int_0^T r_u \, du} \right) = \E_{\P^\star} \left( e^{-\xi_T} \right)
-		\] where the distribution of $\xi_T$ can be found explicitly.  We argue that \[
-			\xi_T \sim N\left(r_0 T + \frac{1}{2} a T^2, \frac{1}{3} \sigma^2 T^3 \right)
-		\]  We have \begin{align*}
-			\xi_T 	&= \int_0^T r_u \, du \\
-					&= \int_0^T \left( r_0 + au + \sigma W^\star_u \right) \, du \\
-					&= \int_0^T (r_u + au)  \, du + \sigma \int_0^T W^\star_u \, du
-		\end{align*}
-		Th rest proceeds quite simply.
-		
-		We then derive the dynamics of $B(t, T)$.  By the \ito formula, we have that since $B(t, T) = v(r_t, t, T)$, we must have \[
-			dB(t, T) = r_t B(t, T) \, dt + b(t, T) B(t, T) \, dW^\star_t.  
-		\] Note that the martingale component comes from \[
-			\frac{\partial v}{\partial r} dr_t 
-		\] and \[
-			\frac{\partial}{\partial r}v(r_t, t, T) = -(T- t) v(r_t, t, T)
-		\] so that \begin{align*}
-			\frac{\partial}{\partial r}v(r_t, t, T) \, dr_t &= -(T-t) v(r_t t, T) (a \, dt + \sigma \, dW^\star_t) \\
-			&\sim - \sigma(T- t)B(t, T) \, dW^\star_t
-		\end{align*}  We then obtain the equality $B(t, T) = -\sigma(T-t)$.  In particular, $B(t, T) = 0$.  
-	\end{proof}
-	
-	\begin{exer}
-		Apply the PDE approach to obtain \eqref{eq:merton_short_rate_price}.
-	\end{exer}
-	
+    \begin{prop}
+        The price $B(t, T)$ is given by \begin{equation}
+            \label{eq:merton_short_rate_price}
+            B(t, T) = e^{-r_t(T-t) - \frac{1}{2}a(T-t)^2 + \frac{1}{6} \sigma^2(T-t)^3}.  
+        \end{equation}  Hence \[
+            dB(t, T) = B(t, T)\left(r_t \, dt - \sigma(T-t) dW^\star_t \right).
+        \]  Thus we have the volatility of the bond $b(t, T) = -\sigma(T-t)$.
+    \end{prop}
+    
+    \begin{proof}
+        It is enough to calculate $B(0, T)$ and then establish the general formula for $B(t, T)$ using the property that $r_t$ is a time-homogenous Markov process, thus \[
+            B(0, T) = v(r_0, T) \Rightarrow B(t, T) =v(r_t, T-t)
+        \]
+        Computation of $B(0, T)$ is done as follows:\[
+            B(0, T) = \E_{\P^\star} \left(e^{-\int_0^T r_u \, du} \right) = \E_{\P^\star} \left( e^{-\xi_T} \right)
+        \] where the distribution of $\xi_T$ can be found explicitly.  We argue that \[
+            \xi_T \sim N\left(r_0 T + \frac{1}{2} a T^2, \frac{1}{3} \sigma^2 T^3 \right)
+        \]  We have \begin{align*}
+            \xi_T   &= \int_0^T r_u \, du \\
+                    &= \int_0^T \left( r_0 + au + \sigma W^\star_u \right) \, du \\
+                    &= \int_0^T (r_u + au)  \, du + \sigma \int_0^T W^\star_u \, du
+        \end{align*}
+        Th rest proceeds quite simply.
+        
+        We then derive the dynamics of $B(t, T)$.  By the \ito formula, we have that since $B(t, T) = v(r_t, t, T)$, we must have \[
+            dB(t, T) = r_t B(t, T) \, dt + b(t, T) B(t, T) \, dW^\star_t.  
+        \] Note that the martingale component comes from \[
+            \frac{\partial v}{\partial r} dr_t 
+        \] and \[
+            \frac{\partial}{\partial r}v(r_t, t, T) = -(T- t) v(r_t, t, T)
+        \] so that \begin{align*}
+            \frac{\partial}{\partial r}v(r_t, t, T) \, dr_t &= -(T-t) v(r_t t, T) (a \, dt + \sigma \, dW^\star_t) \\
+            &\sim - \sigma(T- t)B(t, T) \, dW^\star_t
+        \end{align*}  We then obtain the equality $B(t, T) = -\sigma(T-t)$.  In particular, $B(t, T) = 0$.  
+    \end{proof}
+    
+    \begin{exer}
+        Apply the PDE approach to obtain \eqref{eq:merton_short_rate_price}.
+    \end{exer}
+    
 \section{Vasicek's Model} % (fold)
 \label{sub:vasicek_s_model}
 Consider the dynamics \begin{equation}
-	dr_t = (a - br_t) \, dt + \sigma \, dW^\star_t.
-	\label{eq:vasicek_short_rate_dynamics}
+    dr_t = (a - br_t) \, dt + \sigma \, dW^\star_t.
+    \label{eq:vasicek_short_rate_dynamics}
 \end{equation}
 
 \begin{lem}
-	The unique solution to Vasicek's equation is \begin{equation}
-		r_t = r_0 e^{-bt} + \frac{a}{b}\left(1-e^{-bt} \right) + \sigma \int_0^t e^{-b(t-u)} \, dW^\star_u.
-	\end{equation}
+    The unique solution to Vasicek's equation is \begin{equation}
+        r_t = r_0 e^{-bt} + \frac{a}{b}\left(1-e^{-bt} \right) + \sigma \int_0^t e^{-b(t-u)} \, dW^\star_u.
+    \end{equation}
 \end{lem}
 
 \begin{prop}
-	The bond price in the Vasicek model is given by \begin{align*}
-		B(t, T) &= \exp(m(t, T) - n(t, T) r_t) \\
-		n(t, T) &= \frac{1}{b}\left(1- e^{-b(T-t)} \right) \\
-	\end{align*} and $m(t, T)$ is also known explicitly.
-	
-	The volatility of the bond satisfies \[
-		b(t, T) = -\sigma n(t, T) = -\frac{\sigma}{b}\left(1 -e^{-b(T-t)} \right)
-	\] and \[
-		dB(t, T) = B(t, T) \left(r_t \, dt - \sigma n(t, T) \, dW^\star_t \right).
-	\]
+    The bond price in the Vasicek model is given by \begin{align*}
+        B(t, T) &= \exp(m(t, T) - n(t, T) r_t) \\
+        n(t, T) &= \frac{1}{b}\left(1- e^{-b(T-t)} \right) \\
+    \end{align*} and $m(t, T)$ is also known explicitly.
+    
+    The volatility of the bond satisfies \[
+        b(t, T) = -\sigma n(t, T) = -\frac{\sigma}{b}\left(1 -e^{-b(T-t)} \right)
+    \] and \[
+        dB(t, T) = B(t, T) \left(r_t \, dt - \sigma n(t, T) \, dW^\star_t \right).
+    \]
 \end{prop}
 
 \begin{thm}[Stochastic Fubini's theorem]
-	In the computation above, we obtain the following double integral \[
-		\int_0^T \int_0^t e^{-b(t-u)} \, dW^\star_u \, dt = \frac{1}{b} \int_0^T \left(1-e^{-b(T-u)} \right) \, dW^\star_u.
-	\]   To obtain this result, we must use the stochastic Fubini theorem \[
-		\int_0^T \int_0^t f(t, u) \, dW^\star_u \, dt = \int_0^T \int_u^T f(t, u) \, dt \, dW^\star_u
-	\] where $f$ is a continuous function.
+    In the computation above, we obtain the following double integral \[
+        \int_0^T \int_0^t e^{-b(t-u)} \, dW^\star_u \, dt = \frac{1}{b} \int_0^T \left(1-e^{-b(T-u)} \right) \, dW^\star_u.
+    \]   To obtain this result, we must use the stochastic Fubini theorem \[
+        \int_0^T \int_0^t f(t, u) \, dW^\star_u \, dt = \int_0^T \int_u^T f(t, u) \, dt \, dW^\star_u
+    \] where $f$ is a continuous function.
 
 \end{thm}
 
@@ -403,50 +403,50 @@ Consider the dynamics \begin{equation}
 We can either use some known results or provide some simple arguments.  
 
 We start by postulating that $B(t, T) = v(r_t, t, T)$ where $v \in C^{2,1}(\R \times [0, T\star], \R)$.  On the other hand, we may apply the \ito formula and obtain \begin{align*}
-	dv(r_t, t, T) = \left( \frac{\partial r}{\partial t} + \mu(r_t, t) \frac{\partial v}{\partial r} + \frac{1}{2} \sigma^2(r_t, t) \frac{\partial^2 v}{\partial r^2} \right) \, dt + \sigma(r_t, t) \frac{\partial v}{\partial r} dW^\star_t.
+    dv(r_t, t, T) = \left( \frac{\partial r}{\partial t} + \mu(r_t, t) \frac{\partial v}{\partial r} + \frac{1}{2} \sigma^2(r_t, t) \frac{\partial^2 v}{\partial r^2} \right) \, dt + \sigma(r_t, t) \frac{\partial v}{\partial r} dW^\star_t.
 \end{align*} 
 
  On the other hand, from Proposition \ref{prop:proposition_1.1} we have \[
- 	dB(t, T) = dv(r_t, t, T) = r_t v(r_t, t, T) \, dt + b(t, T)v(r_t, t, T) \, dW^\star_t.
+    dB(t, T) = dv(r_t, t, T) = r_t v(r_t, t, T) \, dt + b(t, T)v(r_t, t, T) \, dW^\star_t.
  \]  This means that \begin{align*}
- 	\underbrace{\left( \frac{\partial r}{\partial t} + \mu \frac{\partial v}{\partial r} + \frac{1}{2} \sigma^2 \frac{\partial^2 v}{\partial r^2} - r_t v \right) \, dt}_{A_t} &= \underbrace{\left( b(t, T) v - \sigma \frac{\partial v}{\partial r} \right) \, dW^\star_t}_{M_t}.
+    \underbrace{\left( \frac{\partial r}{\partial t} + \mu \frac{\partial v}{\partial r} + \frac{1}{2} \sigma^2 \frac{\partial^2 v}{\partial r^2} - r_t v \right) \, dt}_{A_t} &= \underbrace{\left( b(t, T) v - \sigma \frac{\partial v}{\partial r} \right) \, dW^\star_t}_{M_t}.
  \end{align*}
 
 \begin{lem}
-	If $(M_t)_{t \in [0, T^\star]}$ is a continuous local martingale and a process of finite variation then $M_t = M_0$ for $t \in [0, T^\star]$.
+    If $(M_t)_{t \in [0, T^\star]}$ is a continuous local martingale and a process of finite variation then $M_t = M_0$ for $t \in [0, T^\star]$.
 \end{lem}
 
 Since $r_t$ is a Gaussian process, we note that the unknown function should necessarily satisfy the following pricing PDE for $v = v(r_t, t, T)$, \[
-	\begin{cases}
-		 \frac{\partial r}{\partial t} + \mu \frac{\partial v}{\partial r} + \frac{1}{2} \sigma^2 \frac{\partial^2 v}{\partial r^2} - r_t v = 0 \\
-		v(r_t, T, T) = h(r_t).
-	\end{cases}
+    \begin{cases}
+         \frac{\partial r}{\partial t} + \mu \frac{\partial v}{\partial r} + \frac{1}{2} \sigma^2 \frac{\partial^2 v}{\partial r^2} - r_t v = 0 \\
+        v(r_t, T, T) = h(r_t).
+    \end{cases}
 \] For the bond maturing at $T$, we set $h(r) = 1$.
 
 To solve this PDE in the Vasicek case, we postulate that \[
-	v(r_t, t, T) = e^{m(t, T) - n(t, T) r_t}
+    v(r_t, t, T) = e^{m(t, T) - n(t, T) r_t}
 \] and derive a system of two ODEs satisfied by the function $m$ and $n$. 
 % subsection pde_approach_to_vasicek_s_model (end)
 % subsection vasicek_s_model (end)
-	% 
-	% Recall that \begin{align*}
-	% 	B(t, T) = \E_{\P^\star} \left( \frac{B_t}{B_T} \given \sigf_t \right) = f(r_t, t, T) \\
-	% 	dB_t = r_t B_t \, dt, \quad B_0 = 1.
-	% \end{align*}  
-	% 
-	% Computations of $f$ will be mainly based on simple properties of the Gaussian distribution. 
-	% 
-	% \begin{lem}
-	% 	Assume that $\xi \sim N(\mu, \sigma^2)$.  Then $\zeta = e^{\xi}$ has the expected value \[
-	% 		\E(\zeta) = e^{\mu + \frac{1}{2}\sigma^2}, \quad \var(\zeta) = e^{2 \mu + \sigma^2}(e^{\sigma^2} - 1).
-	% 	\]
-	% \end{lem}
-	% 
-	% \begin{proof}
-	% 	We have \begin{align*}
-	% 		\E(\zeta) = \E(e^{\xi}) = \E(e^{\mu + \sigma Z}) = e^\mu \E(e^{\sigma Z}) = e^{\mu} \E(e^{\sigma Z - \frac{1}{2} \sigma^2 + \frac{1}{2} \sigma^2}) = e^{\mu} e^{\frac{1}{2} \sigma^2} \underbrace{\E(e^{\sigma Z - \frac{1}{2} \sigma^2 t})}_{=1} = e^{\mu + \frac{1}{2}\sigma^2}
-	% 	\end{align*}
-	% \end{proof}
+    % 
+    % Recall that \begin{align*}
+    %   B(t, T) = \E_{\P^\star} \left( \frac{B_t}{B_T} \given \sigf_t \right) = f(r_t, t, T) \\
+    %   dB_t = r_t B_t \, dt, \quad B_0 = 1.
+    % \end{align*}  
+    % 
+    % Computations of $f$ will be mainly based on simple properties of the Gaussian distribution. 
+    % 
+    % \begin{lem}
+    %   Assume that $\xi \sim N(\mu, \sigma^2)$.  Then $\zeta = e^{\xi}$ has the expected value \[
+    %       \E(\zeta) = e^{\mu + \frac{1}{2}\sigma^2}, \quad \var(\zeta) = e^{2 \mu + \sigma^2}(e^{\sigma^2} - 1).
+    %   \]
+    % \end{lem}
+    % 
+    % \begin{proof}
+    %   We have \begin{align*}
+    %       \E(\zeta) = \E(e^{\xi}) = \E(e^{\mu + \sigma Z}) = e^\mu \E(e^{\sigma Z}) = e^{\mu} \E(e^{\sigma Z - \frac{1}{2} \sigma^2 + \frac{1}{2} \sigma^2}) = e^{\mu} e^{\frac{1}{2} \sigma^2} \underbrace{\E(e^{\sigma Z - \frac{1}{2} \sigma^2 t})}_{=1} = e^{\mu + \frac{1}{2}\sigma^2}
+    %   \end{align*}
+    % \end{proof}
 
 % subsection merton_s_model (end)
 
@@ -456,60 +456,60 @@ To solve this PDE in the Vasicek case, we postulate that \[
 \label{sub:valuation_of_bond_optiosn}
 
 Consider a European call option on a $U$-maturity zero-coupon bond with expiry $T$ and strike $K$ where $t \leq T < U$ and $K > 0$.  The payoff at time $T$ equals \[
-	C_T = \left(B(T, U) - K \right)^+ = \left(B(T, U) - KB(T, T) \right)^+
+    C_T = \left(B(T, U) - K \right)^+ = \left(B(T, U) - KB(T, T) \right)^+
 \]  We postulate that \begin{align*}
-	C_t 	&= B_t \E_{\P^\star} \left(B_T^{-1} C_T \given \sigf_t \right) \\
-			&= \E_{\P^\star} \left( e^{-\int_t^T r_u \, du} \left(v\left(r_T, T, U \right) - K\right)^+ \right)	
+    C_t     &= B_t \E_{\P^\star} \left(B_T^{-1} C_T \given \sigf_t \right) \\
+            &= \E_{\P^\star} \left( e^{-\int_t^T r_u \, du} \left(v\left(r_T, T, U \right) - K\right)^+ \right) 
 \end{align*}
 
 The idea is to change the martingale measure $\P^\star$ to another probability measure $\Q$ such that \begin{align*}
-	C_t &= B(t, T) \E_{\Q} \left(C_T \given \sigf_t \right) \\
-	&= B(t, T) \E_{\Q} \left( \left(F_t \xi - K \right)^+ \given \sigf_t \right)
+    C_t &= B(t, T) \E_{\Q} \left(C_T \given \sigf_t \right) \\
+    &= B(t, T) \E_{\Q} \left( \left(F_t \xi - K \right)^+ \given \sigf_t \right)
 \end{align*} where $F_t = \frac{B(t, U)}{B(t, T)}$.  The measure $\Q$ is equivalent to $\P$ on $(\Omega, \sigf_T)$ and it is chosen in such a way such that $(F_t)_{t \in [0, T]}$ is a $\Q$-martingale.
 
 
 Alternatively, consider a claim $X = C_T$ maturing at time $T$.  Then \begin{align*}
-	C_t &= B_t \E_{\P^\star} \left( \frac{C_T}{B_T} \given \sigf_t \right) \\
-	\Phi_t(X) &= B_t \E_{\P^\star} \left( \frac{X}{B_T} \given \sigf_t \right)
+    C_t &= B_t \E_{\P^\star} \left( \frac{C_T}{B_T} \given \sigf_t \right) \\
+    \Phi_t(X) &= B_t \E_{\P^\star} \left( \frac{X}{B_T} \given \sigf_t \right)
 \end{align*}
 \begin{exmp}
-	In the context of equity options this approach yields the following representation of the price of a call option: \[
-		C_t = S_t \hat P \left(S_T > K \given \sigf_t \right) - K B(t, T) \P^\star \left( S_T > K \given \sigf_t \right)
-	\] 
-	where \begin{align*}
-		\frac{B_t}{S_t} &\text{ is a $\hat P$-martingale} \\
-		\frac{S_t}{B_t} &\text{ is a $P^\star$-martingale}
-	\end{align*}  If $B_t = e^{rt}$ (deterministic) then $\hat P =  P^\star$.
+    In the context of equity options this approach yields the following representation of the price of a call option: \[
+        C_t = S_t \hat P \left(S_T > K \given \sigf_t \right) - K B(t, T) \P^\star \left( S_T > K \given \sigf_t \right)
+    \] 
+    where \begin{align*}
+        \frac{B_t}{S_t} &\text{ is a $\hat P$-martingale} \\
+        \frac{S_t}{B_t} &\text{ is a $P^\star$-martingale}
+    \end{align*}  If $B_t = e^{rt}$ (deterministic) then $\hat P =  P^\star$.
 \end{exmp}
 
 \section{The CIR Model} % (fold)
 \label{sub:the_cir}
 We postulate that \[
-	dr_t = (a- b r_t) \, dt + \sigma \sqrt{r_t} \, dW^\star_t,
+    dr_t = (a- b r_t) \, dt + \sigma \sqrt{r_t} \, dW^\star_t,
 \]  where $a, b \sigma$ are positive constants.  Using Yamada-Watanabe theorem, we obtain uniqueness and existence of solutions.  A suitable comparison theorem tells us that if $r_0 > 0$ then $r_t \geq 0$ for $ t \in [ 0, T]$.  It is known that the solution $r$ to the CIR equation is related to the Bessel process.  It is known that \begin{enumerate}[(i)]
-	\item $B(t, T) = e^{m(t, T) - n(t, T) r_t}$ where $m$ and $n$ can be computed explicitly using the PDE approach.  
-	\item The price of a call option can be computed explicitly using the probabilistic approach.
+    \item $B(t, T) = e^{m(t, T) - n(t, T) r_t}$ where $m$ and $n$ can be computed explicitly using the PDE approach.  
+    \item The price of a call option can be computed explicitly using the probabilistic approach.
 \end{enumerate} 
 
 One can prove that \[
-	C_t = B(t, U) \Phi_1(B(t, U), B(t, T), t, T, U) - K B(t, T) \Phi_2(B(t, U), B(t, T), t, T, U)
+    C_t = B(t, U) \Phi_1(B(t, U), B(t, T), t, T, U) - K B(t, T) \Phi_2(B(t, U), B(t, T), t, T, U)
 \] where $\Phi_1, \Phi_2$ are given explicitly in terms of the distribution of a Bessel process.
 
 \section{Calibration} % (fold)
 \label{sub:calibration}
 
 We denote by $\hat B(0, T)$ the market price of a zero coupon bond with maturity $T$.  We assume that \[
-	\hat B(0, T) = e^{- \int_0^T \hat f(0, u) \, du}
+    \hat B(0, T) = e^{- \int_0^T \hat f(0, u) \, du}
 \] where the instantaneous forward rate  is a differentiable function such that \[
-	\hat f_T(0, t) 
+    \hat f_T(0, t) 
 \] exists for $t \in 0, T$.  In general, we can fit to market data a model of the form \[
-	dr_t = (a(t) - br_t) \, dt + \sigma r_t^\beta \, W^\star_t
+    dr_t = (a(t) - br_t) \, dt + \sigma r_t^\beta \, W^\star_t
 \] for $\beta \in [0, 1]$.  
 
 \begin{prop}
-	Let $\beta = 0$. Then the model fits the market data if and only if $a(t) = \hat f_T(0, t) + h'(t) + b(\hat f(0, t) + h(t))$ where \[
-		h(t) = \frac{\sigma^2\left(1-e^{-bt}\right)^2}{2b^2}.
-	\]
+    Let $\beta = 0$. Then the model fits the market data if and only if $a(t) = \hat f_T(0, t) + h'(t) + b(\hat f(0, t) + h(t))$ where \[
+        h(t) = \frac{\sigma^2\left(1-e^{-bt}\right)^2}{2b^2}.
+    \]
 \end{prop}
 It is essential here to assume that the function $\hat f(0, T)$ is differentiable with respect to $T$.  If we wish to produce a model such that $f(0, T) = \hat f(0, T)$.
 
@@ -525,67 +525,67 @@ It is essential here to assume that the function $\hat f(0, T)$ is differentiabl
 
 % section introduction (end)
 Take as inputs the following objects \begin{enumerate}[(i)]
-	\item $(\Omega, \F, \P)$, $W$, a $d$-dimensional Brownian motion.
-	\item The dynamics of a family of processes \[
-		\{ f(t, T), t \in [0, T] \}, T \in [0, T^\star]
-	\] where $f(\cdot, T)$ is an $\F$-adapted process such that \[
-		df(t, T) = \alpha(t, T) \, dt + \sigma(t, T) \cdot dW_t
-	\] with some initial condition $f(0, \cdot) : [0, T^\star] \rightarrow \R$.  
+    \item $(\Omega, \F, \P)$, $W$, a $d$-dimensional Brownian motion.
+    \item The dynamics of a family of processes \[
+        \{ f(t, T), t \in [0, T] \}, T \in [0, T^\star]
+    \] where $f(\cdot, T)$ is an $\F$-adapted process such that \[
+        df(t, T) = \alpha(t, T) \, dt + \sigma(t, T) \cdot dW_t
+    \] with some initial condition $f(0, \cdot) : [0, T^\star] \rightarrow \R$.  
 \end{enumerate} As an output, we obtain the family of bond prices \[
-	\{ B(t, T), t \in [0, T] \}, T \in [0, T^\star]
+    \{ B(t, T), t \in [0, T] \}, T \in [0, T^\star]
 \] given by \[
-	B(t, T) = \exp \left(-\int_t^T f(t, u) \, du \right)
+    B(t, T) = \exp \left(-\int_t^T f(t, u) \, du \right)
 \]  We must first derive the dynamics of $B(\cdot, T)$ under $\P$ for any maturity $T$ in the following form \[
-	dB(t, T) = B(t, T) \left( a(t, T) \, dt + b(t, T) dW^\star_t \right)
+    dB(t, T) = B(t, T) \left( a(t, T) \, dt + b(t, T) dW^\star_t \right)
 \] where $a$ and $b$ are given in terms of $\alpha$ and $\beta$.  
 
 Next, we will find out under which assumptions on $\alpha$ and $\beta$ the HJM model admits a spot martingale measure $\P^\star$ or equivalently, a forward martingale measure $\P_{T^\star}$.  
 
 By definition, $\P^\star$ is any probability measure on $(\Omega, \sigf_{T^\star})$ such that $\P^\star \sim \P$ and the processes \[
-	Z_t = \frac{B(t, T)}{B_t} = \frac{B(t, T)}{\exp\left(\int_0^t f(u, u) \, du \right)}
+    Z_t = \frac{B(t, T)}{B_t} = \frac{B(t, T)}{\exp\left(\int_0^t f(u, u) \, du \right)}
 \] are $\P^\star$-(local) martingales.  Similarly, $\P_{T^\star} \sim \P$ and the processes \[
-	F(t, T, T^\star) = \frac{B(t, T)}{B(t, T^\star)} 
+    F(t, T, T^\star) = \frac{B(t, T)}{B(t, T^\star)} 
 \] are $\P_{T^\star}$-(local) martingales.
 
 \begin{note}
-	Let $F(t, T, U) = \frac{B(t, T)}{B(t, U)}$.
-	
-	\begin{enumerate}[(i)]
-		\item If $U \leq T$, then $F(t, T, U)$ is the forward price of a $T$-maturity bond for the settlement date at time $U$.
-		\item If $U \geq T$ then $F(t, T, U)$ represents the forward rate in the FRA initiated at time $t$ for the future time interval $[T,U]$. 
-	\end{enumerate}  
+    Let $F(t, T, U) = \frac{B(t, T)}{B(t, U)}$.
+    
+    \begin{enumerate}[(i)]
+        \item If $U \leq T$, then $F(t, T, U)$ is the forward price of a $T$-maturity bond for the settlement date at time $U$.
+        \item If $U \geq T$ then $F(t, T, U)$ represents the forward rate in the FRA initiated at time $t$ for the future time interval $[T,U]$. 
+    \end{enumerate}  
 \end{note}
-	
+    
 \begin{defn}[HJM approach]
-	Assume that \[
-		df(t, T) = \alpha(t, T) \, dt + \sigma(t, T) \cdot dW_t
-	\] with $W$ a $d$-dimensional Brownian motion and \[
-		\sigma(t, T) \cdot dW_t = \sum_{i=1}^d \sigma^{i}(t, T) dW_t^{i}. 
-	\]  All processes are specified under $\P$.  
-	
-	We define $B(t, T) = e^{-\int_t^T f(t, u) \, du}$.  
+    Assume that \[
+        df(t, T) = \alpha(t, T) \, dt + \sigma(t, T) \cdot dW_t
+    \] with $W$ a $d$-dimensional Brownian motion and \[
+        \sigma(t, T) \cdot dW_t = \sum_{i=1}^d \sigma^{i}(t, T) dW_t^{i}. 
+    \]  All processes are specified under $\P$.  
+    
+    We define $B(t, T) = e^{-\int_t^T f(t, u) \, du}$.  
 \end{defn}
 
 
 \begin{lem}
-	Let $\alpha^\star(t, T) = \int_t^T \alpha(t, u) \, du$, and $\sigma^\star(t, T) = \int_t^T \sigma(t, u) \, du$.  These are $\F$-adapted processes.
-	
-	Then we claim that \[
-		dB(t, T) = B(t, T) \left( a(t, T) \, dt + b(t, T) \cdot dW_t \right)
-	\] where \begin{align*}
-		a(t, T) &= f(t, t) - \alpha^\star(t, T) + \frac{1}{2} \left(\sigma\star(t, T)\right)^2 \\
-		b(t, T) &= - \sigma^\star(t, T).
-	\end{align*}
+    Let $\alpha^\star(t, T) = \int_t^T \alpha(t, u) \, du$, and $\sigma^\star(t, T) = \int_t^T \sigma(t, u) \, du$.  These are $\F$-adapted processes.
+    
+    Then we claim that \[
+        dB(t, T) = B(t, T) \left( a(t, T) \, dt + b(t, T) \cdot dW_t \right)
+    \] where \begin{align*}
+        a(t, T) &= f(t, t) - \alpha^\star(t, T) + \frac{1}{2} \left(\sigma\star(t, T)\right)^2 \\
+        b(t, T) &= - \sigma^\star(t, T).
+    \end{align*}
 \end{lem}
 
 Let $Z(t, T) = \frac{B(t, T)}{B_t}$, with $B_t = e^{\int_0^t f(u, u) \, du}$, so that \[
-	dZ(t, T) = Z(t, T) \left( \left(\frac{1}{2} \left( \sigma(t, T) \right)^2 - \alpha^\star(t, T) \right) \, dt - \sigma^\star(t, T) \cdot dW_t \right) 
+    dZ(t, T) = Z(t, T) \left( \left(\frac{1}{2} \left( \sigma(t, T) \right)^2 - \alpha^\star(t, T) \right) \, dt - \sigma^\star(t, T) \cdot dW_t \right) 
 \]  
 
 Under which assumptions on $\alpha$ and $\sigma$ does there exists a probability measure $\Q \sim \P$ on $(\Omega, \sigf_{T^\star})$ such that $Z(t, T), t \in [0, T]$ is a $\Q$-martingale for every $T \in [0, T^\star]$.
 
 We can also form process \[
-	F_B(t, T, T^\star) = F(t, T, T^\star) = \frac{B(t, T)}{B(t, T^\star)}.
+    F_B(t, T, T^\star) = F(t, T, T^\star) = \frac{B(t, T)}{B(t, T^\star)}.
 \]
 
 \section{Trading Strategies} % (fold)
@@ -593,26 +593,26 @@ We can also form process \[
 We first choose $\tau = \{ T_1 < T_2 < \dots < T_k \leq T^\star \}$ and take some $\F$-adapted process $\phi = (\phi^1, \dots, \phi^k)$.  $\tau$ represents the maturities of traded bonds.  $\phi^i$ represents the number of shares of $\tau_i$-maturity bonds.  
 
 Then the wealth process of $(\phi, \tau)$ equals \[
-	V_t(\phi) = \sum_{i=1}^k \phi^i_t B(t, T_i).
+    V_t(\phi) = \sum_{i=1}^k \phi^i_t B(t, T_i).
 \] 
 
 \begin{defn}[Self-financing]
-	We say that $\phi$ is self financing if \[
-		dV_t(\phi) = \sum_{i=1}^k \phi_t^i \, dB(t, T_i).
-	\]
+    We say that $\phi$ is self financing if \[
+        dV_t(\phi) = \sum_{i=1}^k \phi_t^i \, dB(t, T_i).
+    \]
 \end{defn}
 
 \begin{lem}{\ }
-	\begin{enumerate}[(i)]
-		\item 
-	Let $V_t^\star(\phi) = \frac{V_t(\phi)}{B_t}$.  Then $\phi$ is self-financing if and only if \[
-		dV^\star_t(\phi) = \sum_{i=1}^k \phi_t^i d Z(t, T_i).
- 	\] 
-		\item 
-		Let $F_v(t, T) = \frac{V_t(\phi)}{B(t, T)}$ for some $0 < T \leq T^\star$. Then $\phi$ is self-financing if and only if \[
-			dF_v(t, T) = \sum_{i=1}^k \phi^i_t d \left( \frac{B(t, T_i)}{B(t, T)} \right) = \sum_{i=1}^k  \phi^i_t dF(t, T_i, T)
-		\] where we assume $T \geq T_k$.
-	\end{enumerate}
+    \begin{enumerate}[(i)]
+        \item 
+    Let $V_t^\star(\phi) = \frac{V_t(\phi)}{B_t}$.  Then $\phi$ is self-financing if and only if \[
+        dV^\star_t(\phi) = \sum_{i=1}^k \phi_t^i d Z(t, T_i).
+    \] 
+        \item 
+        Let $F_v(t, T) = \frac{V_t(\phi)}{B(t, T)}$ for some $0 < T \leq T^\star$. Then $\phi$ is self-financing if and only if \[
+            dF_v(t, T) = \sum_{i=1}^k \phi^i_t d \left( \frac{B(t, T_i)}{B(t, T)} \right) = \sum_{i=1}^k  \phi^i_t dF(t, T_i, T)
+        \] where we assume $T \geq T_k$.
+    \end{enumerate}
 
 \end{lem}
 % section trading_strategies (end)
@@ -620,31 +620,31 @@ Then the wealth process of $(\phi, \tau)$ equals \[
 \section{Martingale Measures} % (fold)
 \label{sec:martingale_measures}
 We will first address the issue of existence of the so-called \emph{forward martingale measure}, that is, a martingale measure for processes $\frac{V_t(\phi)}{B(t, T^\star)}$ or equivalently, a martingale measure for processes \[
-	F_B(t, T, T^\star) = \frac{B(t, T)}{B(t, T^\star)}, t \in [0,T], T \in [0, T^\star].
+    F_B(t, T, T^\star) = \frac{B(t, T)}{B(t, T^\star)}, t \in [0,T], T \in [0, T^\star].
 \]  
 
 \begin{lem}
-	For any $T \in [0, T^\star]$, \begin{align*}
-		dF_B(t, T, T^\star) = F_B(t, T, T^\star) \left( \tilde a(t, T) \, dt +  (b(t, T) - b(t, T^\star) ) \, dW_t \right) 
-	\end{align*} where \[
-		\tilde a(t, T) = a(t, T) - a(t, T^\star) - b(t, T^\star) \left( b(t, T) - b(t, T^\star) \right)
-	\]
-	
-	We denote by $\hat \P = \P^\star$ the martingale equivalent to $\P$ on $(\Omega, \sigf_{T^\star})$ by \[
-		\frac{d\hat P}{d \P} = \doleans{h_u \, dW^\star_u}
-	\]  If $h$ is such that \[
-		\E\left(\mathcal E_{T^\star} \left( \int_0^\cdot h_u \, dW_u \right) \right) = 1
-	\] the $\hat \P$ is well defined and we can compute the dynamics of $F_B(t, T, T^\star)$ under $\hat P$ with respect to $\hat W$, where \[
-		\hat W = W_t - \int_0^t h_u \, du, t \in [0, T^\star]
-	\]
-	
-	Assume that \begin{equation}
-		a(t, T) - a(t, T^\star) = (b(t, T^\star) - h_t) \cdot (b(t, T) - b(t, T^\star))
-		\label{eq:3.10_in_lecture_notes}
-	\end{equation}  Condition \eqref{eq:3.10_in_lecture_notes}  in the lecture notes ensures that there is no drift term in the dynamics of $F_B(t, T, T^\star)$ under $\hat P$ for all maturities $T$.  After some computations, \eqref{eq:3.10_in_lecture_notes} can be represented as follows
-	\[
-	\alpha(t, T) + \sigma(t, T) \left(h_t + \int_T^{T^\star} \sigma(t, u) \, du \right) = 0.
-	\]
+    For any $T \in [0, T^\star]$, \begin{align*}
+        dF_B(t, T, T^\star) = F_B(t, T, T^\star) \left( \tilde a(t, T) \, dt +  (b(t, T) - b(t, T^\star) ) \, dW_t \right) 
+    \end{align*} where \[
+        \tilde a(t, T) = a(t, T) - a(t, T^\star) - b(t, T^\star) \left( b(t, T) - b(t, T^\star) \right)
+    \]
+    
+    We denote by $\hat \P = \P^\star$ the martingale equivalent to $\P$ on $(\Omega, \sigf_{T^\star})$ by \[
+        \frac{d\hat P}{d \P} = \doleans{h_u \, dW^\star_u}
+    \]  If $h$ is such that \[
+        \E\left(\mathcal E_{T^\star} \left( \int_0^\cdot h_u \, dW_u \right) \right) = 1
+    \] the $\hat \P$ is well defined and we can compute the dynamics of $F_B(t, T, T^\star)$ under $\hat P$ with respect to $\hat W$, where \[
+        \hat W = W_t - \int_0^t h_u \, du, t \in [0, T^\star]
+    \]
+    
+    Assume that \begin{equation}
+        a(t, T) - a(t, T^\star) = (b(t, T^\star) - h_t) \cdot (b(t, T) - b(t, T^\star))
+        \label{eq:3.10_in_lecture_notes}
+    \end{equation}  Condition \eqref{eq:3.10_in_lecture_notes}  in the lecture notes ensures that there is no drift term in the dynamics of $F_B(t, T, T^\star)$ under $\hat P$ for all maturities $T$.  After some computations, \eqref{eq:3.10_in_lecture_notes} can be represented as follows
+    \[
+    \alpha(t, T) + \sigma(t, T) \left(h_t + \int_T^{T^\star} \sigma(t, u) \, du \right) = 0.
+    \]
 \end{lem}
 
 Later on we will denote by $\P_T$ the forward measure for the date $T$.  Thus $\hat P = \P_{T^\star}$.
@@ -654,17 +654,17 @@ Later on we will denote by $\P_T$ the forward measure for the date $T$.  Thus $\
 \subsection{Spot Martingale Measure} % (fold)
 \label{sec:spot_martingale_measure}
 We know that \[
-	dZ(t, T) = - Z(t, T) \left( \left(\alpha^\star(t, T) - \frac{1}{2} \left| \sigma^\star(t, T) \right|^2 \right) \, dt + \sigma^\star(t, T) \, dW_t \right)
+    dZ(t, T) = - Z(t, T) \left( \left(\alpha^\star(t, T) - \frac{1}{2} \left| \sigma^\star(t, T) \right|^2 \right) \, dt + \sigma^\star(t, T) \, dW_t \right)
 \]
 
 Now, the conditions for the drift term in $dZ(t, T)$ disappearing reads \begin{align*}
-	\alpha^\star(t, T) &= \frac{1}{2} |\sigma^\star(t, T) |^2 - \sigma^\star(t, T) \lambda_t \\
-	\Updownarrow  \\
-	\alpha(t, T) &= \sigma(t, T) \left(\sigma^\star(t, T) - \lambda_t \right)
+    \alpha^\star(t, T) &= \frac{1}{2} |\sigma^\star(t, T) |^2 - \sigma^\star(t, T) \lambda_t \\
+    \Updownarrow  \\
+    \alpha(t, T) &= \sigma(t, T) \left(\sigma^\star(t, T) - \lambda_t \right)
 \end{align*}
 
 The last formula can be seen as a tool for simple derivations of processes of interest interest under the measure $\P^\star$ (setting $\lambda = 0$).  We denote \[
-	W^\star_t - W_t - \int_0^t \lambda_u \, du
+    W^\star_t - W_t - \int_0^t \lambda_u \, du
 \] 
 % subsection spot_martingale_measure (end)
 
@@ -673,46 +673,46 @@ The last formula can be seen as a tool for simple derivations of processes of in
 We are going to examine the relationship between $\P^\star$ and $\P_T$ in a general term structure model.
 
 \begin{note}
-	Define the following.
-	\begin{align*}
-		dB(t, T) &= B(t, T) \left(r_t \, dt + b(t, T) \, dW^\star_t \right) \\
-		d \zeta^i_t &= \zeta^i_t \left(r_t \, dt + \sigma^i_t \, dW^\star_t \right)
-	\end{align*}
+    Define the following.
+    \begin{align*}
+        dB(t, T) &= B(t, T) \left(r_t \, dt + b(t, T) \, dW^\star_t \right) \\
+        d \zeta^i_t &= \zeta^i_t \left(r_t \, dt + \sigma^i_t \, dW^\star_t \right)
+    \end{align*}
 \end{note}
 
 By definition, \[
-	\pi_t(X) = B_t \E_{\P^\star} \left( \frac{X}{B_T} \given \sigf_t \right)
+    \pi_t(X) = B_t \E_{\P^\star} \left( \frac{X}{B_T} \given \sigf_t \right)
 \]  Can we fine $\Q$ such that $\Q \sim \P^\star$ and \[
-	B_t \E_{\P^\star} \left( \frac{X}{B_T} \given \sigf_t \right) = B(t, T) \E_\Q \left( X \given \sigf_t \right)
+    B_t \E_{\P^\star} \left( \frac{X}{B_T} \given \sigf_t \right) = B(t, T) \E_\Q \left( X \given \sigf_t \right)
 \] for any claim $X \in \sigf_T$ where $B(t, T) = B_t\E_{\P^\star} \left( \frac{1}{B_T} \given \sigf_t \right)$.  Formally, \[
-	\E_{\Q} \left( X \given \sigf_t \right) = \frac{\E_{\P^\star} \left( \frac{X}{B_T} \given \sigf_t \right)}{\E_{\P^\star} \left( \frac{1}{B_T} \given \sigf_t \right)}
+    \E_{\Q} \left( X \given \sigf_t \right) = \frac{\E_{\P^\star} \left( \frac{X}{B_T} \given \sigf_t \right)}{\E_{\P^\star} \left( \frac{1}{B_T} \given \sigf_t \right)}
 \]
 
 We are guessing that $\Q \sim \P^\star$ with density on $(\Omega, \sigf_t)$ \[
-	\frac{d\Q}{d \P} = \frac{1}{B(0, T) B_T}, \P^\star-a.s.
+    \frac{d\Q}{d \P} = \frac{1}{B(0, T) B_T}, \P^\star-a.s.
 \]  $\E_{\P^\star} \left(\frac{1}{B_T} \right) = B(0, T)$.
 
 \begin{defn}
-	Suppose that $\P^\star$ is a spot martingale measure for our model.  Then for any maturity $T \in [0, T^\star]$, we define the forward martingale measure for the date $T$ by setting on $(\Omega, \sigf_{T^\star})$ \[
-		\frac{d\P_T}{d\P^\star} = \frac{1}{B(0, T) B_T}, \P^\star-a.s.
-	\]
+    Suppose that $\P^\star$ is a spot martingale measure for our model.  Then for any maturity $T \in [0, T^\star]$, we define the forward martingale measure for the date $T$ by setting on $(\Omega, \sigf_{T^\star})$ \[
+        \frac{d\P_T}{d\P^\star} = \frac{1}{B(0, T) B_T}, \P^\star-a.s.
+    \]
 \end{defn}
 
 \begin{prop}{\ }
-	\begin{enumerate}[(i)]
-		\item \begin{align*}
-			\frac{d\P_T}{d\P^\star} \given \sigf_t &= \E_{\P^\star} \left( \frac{d\P_T}{d\P^\star} \given \sigf_t \right) \\
-				&= \E_{\P^\star} \left( \frac{B_0 B(T, T)}{B(0, T) B_T} \given \sigf_t \right) \\
-				&= \frac{B_0}{B(0, T)} \E_{\P^\star} \left( \frac{B(T, T)}{B_T} \given \sigf_t \right) \\
-				&= \frac{B_0}{B(0, T)} \frac{B(t, T)}{B_t}, \P^\star-a.s.
-		\end{align*}
-	\end{enumerate} 
+    \begin{enumerate}[(i)]
+        \item \begin{align*}
+            \frac{d\P_T}{d\P^\star} \given \sigf_t &= \E_{\P^\star} \left( \frac{d\P_T}{d\P^\star} \given \sigf_t \right) \\
+                &= \E_{\P^\star} \left( \frac{B_0 B(T, T)}{B(0, T) B_T} \given \sigf_t \right) \\
+                &= \frac{B_0}{B(0, T)} \E_{\P^\star} \left( \frac{B(T, T)}{B_T} \given \sigf_t \right) \\
+                &= \frac{B_0}{B(0, T)} \frac{B(t, T)}{B_t}, \P^\star-a.s.
+        \end{align*}
+    \end{enumerate} 
 \end{prop}
 
 Recall that $\frac{\pi_t(X)}{B_t}$ is a $\P^\star$-martingale. Similarly, $\frac{\pi_t(X)}{B(t, T)}$ is a $\P_T$-martingale.  If $\eta_t = \frac{d \P_T}{d\P^\star} \given \sigf_t$ then $M$ is a $\P_T$-martingale if and only if $M \eta$ is a $\P^\star$-martingale.  
 
 \begin{exer}
-	If we know that under $\P$ processes $\frac{X_t}{Z_t}$ are martingales where $Z$ is a fixed, positive process and under $\Q$ process $\frac{X_t}{Y_t}$ are martingales for a fixed positive process $Y$ then we can find a density of $\Q$ with respect to $\P$ in terms of $Z$ and $Y$. 
+    If we know that under $\P$ processes $\frac{X_t}{Z_t}$ are martingales where $Z$ is a fixed, positive process and under $\Q$ process $\frac{X_t}{Y_t}$ are martingales for a fixed positive process $Y$ then we can find a density of $\Q$ with respect to $\P$ in terms of $Z$ and $Y$. 
 \end{exer}
 
 
@@ -721,108 +721,108 @@ We consider an arbitrage free model of bond prices and stock prices in which the
 We do not postulate that our model is complete.
 
 Assume that $X$ is an attainable claim in this model.  We know that the arbitrage price $\pi_t(X)$ is unique and it can be computed using the risk-neutral valuation formula \[
-	\pi_t(X) = B_t \E_{\P^\star} \left( \frac{X}{B_T} \given \sigf_t \right).
+    \pi_t(X) = B_t \E_{\P^\star} \left( \frac{X}{B_T} \given \sigf_t \right).
 \]
 
 \begin{rem}
-	How do we find the forward price of $X$ at the time $t$ in the forward contract with settlement date $T$.
+    How do we find the forward price of $X$ at the time $t$ in the forward contract with settlement date $T$.
 \end{rem}
 
 \begin{defn}[Forward contract]
-	The forward contract written at time $t$ on a time $T$ contingent claim is represented by the time $T$ contingent claim \[
-		G_T = X - F_X(t, T)
-	\] such that \begin{enumerate}[(i)]
-		\item $F_X(t, T)$ is an $\sigf_t$-measurable random variable, 
-		\item the arbitrage price at time $t$ on a contingent clam $G_T$ equals zero, that is, $\pi_t(G_T) = 0$.
-	\end{enumerate}
+    The forward contract written at time $t$ on a time $T$ contingent claim is represented by the time $T$ contingent claim \[
+        G_T = X - F_X(t, T)
+    \] such that \begin{enumerate}[(i)]
+        \item $F_X(t, T)$ is an $\sigf_t$-measurable random variable, 
+        \item the arbitrage price at time $t$ on a contingent clam $G_T$ equals zero, that is, $\pi_t(G_T) = 0$.
+    \end{enumerate}
 \end{defn}
 
 To compute $F_X(t, T)$, we will use the risk-neutral formula
 
 \begin{align*}
-	\pi_t(G_T) &= B_t \E_{\P^\star} \left( \frac{G_T}{B_T} \given \sigf_t \right) \\
-		&= B_t \E_{\P^\star} \left( \frac{X}{B_T} \given \sigf_t \right) - F_X(t, T) B_t \E_{\P^\star} \left(\frac{1}{B_T} \given \sigf_t \right) \\
-		&= \pi_t(X) - F_X(t, T) B(t, T) \\
-		&= 0
+    \pi_t(G_T) &= B_t \E_{\P^\star} \left( \frac{G_T}{B_T} \given \sigf_t \right) \\
+        &= B_t \E_{\P^\star} \left( \frac{X}{B_T} \given \sigf_t \right) - F_X(t, T) B_t \E_{\P^\star} \left(\frac{1}{B_T} \given \sigf_t \right) \\
+        &= \pi_t(X) - F_X(t, T) B(t, T) \\
+        &= 0
 \end{align*} and so \[
-	F_X(t, T) = \frac{\pi_t(X)}{B(t, T)}.
+    F_X(t, T) = \frac{\pi_t(X)}{B(t, T)}.
 \] 
 
 Define \begin{align*}
-	F_Z(t, T) &= \frac{Z_t}{B(t, T)} \qquad \text{$Z_t = S_t$ or $B(t, T)$} \\
-	F_S(t, T) &= \frac{S_t}{B(t, T)} \qquad \text{forward price of stock $S$}\\
-	F_B(t, U, T) &= \frac{B(t, U)}{B(t, T)} \qquad \text{forward price of $U$-maturity bond}.
+    F_Z(t, T) &= \frac{Z_t}{B(t, T)} \qquad \text{$Z_t = S_t$ or $B(t, T)$} \\
+    F_S(t, T) &= \frac{S_t}{B(t, T)} \qquad \text{forward price of stock $S$}\\
+    F_B(t, U, T) &= \frac{B(t, U)}{B(t, T)} \qquad \text{forward price of $U$-maturity bond}.
 \end{align*}
 
 \begin{defn}[Forward measure]
-	
-	We assume that $\P^\star$ is given.  The corresponding forward measure for the date $T, T \in [0, T^\star]$ is defined by \[
-		\frac{d\P_T}{d\P^\star} = \frac{1}{B(0,T) B_T}, \quad \P^\star-a.s.
-	\] so that \[
-		\frac{d\P_T}{d\P^\star} \, |_{\sigf_t} = \frac{B_0}{B(0, T)} \frac{B(t, T)}{B_t}
-	\] for every $t \in [0, T]$.
+    
+    We assume that $\P^\star$ is given.  The corresponding forward measure for the date $T, T \in [0, T^\star]$ is defined by \[
+        \frac{d\P_T}{d\P^\star} = \frac{1}{B(0,T) B_T}, \quad \P^\star-a.s.
+    \] so that \[
+        \frac{d\P_T}{d\P^\star} \, |_{\sigf_t} = \frac{B_0}{B(0, T)} \frac{B(t, T)}{B_t}
+    \] for every $t \in [0, T]$.
 \end{defn}
 
 \begin{lem}
-	Assume that $W_t^\star$ is a Brownian motion under $\P^\star$ and \[
-		dB(t, T) = B(t, T) \left( r_t \, dt + b(t, T) \, dW^\star_t \right)
-	\]  Then $\eta_t \equiv \frac{d\P_T}{d\P^\star} \, |_{\sigf_t}$ equals \[
-		\eta_t = \exp \left( \int_0^t b*u, T) \, dW^\star_u - \frac{1}{2} \int_0^t \left| b(u, T) \right|^2 \, du \right).
-	\]  That is, \[
-		\eta_t = \doleans{b(u, T) \, dW^\star_u}. 
-		\tag{$\star$}
-	\]  
-	
-	It then follows that \[
-		d \eta_t = \eta_t b(t, T) \, dW^\star_t, \quad \eta_0 = 1.
-	\] and \[
-		W_t^T = W^\star_t - \int_0^t b(u, T) \, du
-	\] is a Brownian motion under $\P_T$.
+    Assume that $W_t^\star$ is a Brownian motion under $\P^\star$ and \[
+        dB(t, T) = B(t, T) \left( r_t \, dt + b(t, T) \, dW^\star_t \right)
+    \]  Then $\eta_t \equiv \frac{d\P_T}{d\P^\star} \, |_{\sigf_t}$ equals \[
+        \eta_t = \exp \left( \int_0^t b*u, T) \, dW^\star_u - \frac{1}{2} \int_0^t \left| b(u, T) \right|^2 \, du \right).
+    \]  That is, \[
+        \eta_t = \doleans{b(u, T) \, dW^\star_u}. 
+        \tag{$\star$}
+    \]  
+    
+    It then follows that \[
+        d \eta_t = \eta_t b(t, T) \, dW^\star_t, \quad \eta_0 = 1.
+    \] and \[
+        W_t^T = W^\star_t - \int_0^t b(u, T) \, du
+    \] is a Brownian motion under $\P_T$.
 \end{lem}
 
 \begin{proof}
-	Equation $(\star)$ follows from \[
-		\frac{d\P_T}{d\P^\star} \, |_{\sigf_t} = \frac{B_0}{B(0, T)} \frac{B(t, T)}{B_t}
-	\]  
-	
-	The corollaries follow from differentiation and Girsanov's theorem, respectively.
+    Equation $(\star)$ follows from \[
+        \frac{d\P_T}{d\P^\star} \, |_{\sigf_t} = \frac{B_0}{B(0, T)} \frac{B(t, T)}{B_t}
+    \]  
+    
+    The corollaries follow from differentiation and Girsanov's theorem, respectively.
 \end{proof}
 
 \begin{exer}
-	Let $T \leq U$.  Find the dynamics of the forward price $F_B(t, U , T)$ under $\P_T$.  Apply the \ito formula under $\P^\star$, use Girsanov's theorem to express the dynamics of $F_B(t, U, T)$ in terms of $b(t, T)$, $b(t, U)$ and $W^T$.  Compute the volatility $\gamma(t, U ,T)$ of $F_B(t, U, T)$.  Apply the above the the HJM model $(\alpha(t, T), \sigma(t, T), W)$.
+    Let $T \leq U$.  Find the dynamics of the forward price $F_B(t, U , T)$ under $\P_T$.  Apply the \ito formula under $\P^\star$, use Girsanov's theorem to express the dynamics of $F_B(t, U, T)$ in terms of $b(t, T)$, $b(t, U)$ and $W^T$.  Compute the volatility $\gamma(t, U ,T)$ of $F_B(t, U, T)$.  Apply the above the the HJM model $(\alpha(t, T), \sigma(t, T), W)$.
 \end{exer}
 
 \subsection{Applications of forward measures} % (fold)
 \label{sub:applications_of_forward_measures}
 \begin{enumerate}[(i)]
-	\item Valuation of contingent claims.
-	\item Construction of models for market rates.
+    \item Valuation of contingent claims.
+    \item Construction of models for market rates.
 \end{enumerate}  Application (i) is based on the following equality \[
-	B_t \E_{\P^\star} \left( \frac{X}{B_T} \given \sigf_t \right) = B(t, T) \E_{\P_T} \left( X \given \sigf_t \right).
+    B_t \E_{\P^\star} \left( \frac{X}{B_T} \given \sigf_t \right) = B(t, T) \E_{\P_T} \left( X \given \sigf_t \right).
 \]
 
 \begin{lem}
-	If $X$ is an attainable claim and settles at time $T$, then \[
-		\pi_t(X) = B(t, T) \E_{\P_T} \left( X \given \sigf_t \right)
-	\]
+    If $X$ is an attainable claim and settles at time $T$, then \[
+        \pi_t(X) = B(t, T) \E_{\P_T} \left( X \given \sigf_t \right)
+    \]
 \end{lem}
 
 \subsubsection{Valuation of claims with maturity $U \neq T$.}
 Assume that $U \leq T$. Then the payoff $X$ at $U$ is equivalent to the payoff $Y = \frac{X}{B(U, T)}$ at time $T$.  Equivalence is understood in the sense that \[
-	\text{$X$ at $U$} \sim \text{$Y$ at $T$} \iff \pi_t(X) = \pi_t(Y), t \in [0, U].
+    \text{$X$ at $U$} \sim \text{$Y$ at $T$} \iff \pi_t(X) = \pi_t(Y), t \in [0, U].
 \]  So \[
-	\pi_t(X) = B(t, U) \E_{\P_U} \left( X \given \sigf_t \right) = \pi_t(Y) = B(t, T) \E_{\P_T} \left( \frac{X}{B(U, T)} \given \sigf_t \right).
+    \pi_t(X) = B(t, U) \E_{\P_U} \left( X \given \sigf_t \right) = \pi_t(Y) = B(t, T) \E_{\P_T} \left( \frac{X}{B(U, T)} \given \sigf_t \right).
 \]
 
 To establish this equality, observe that for $t \in [0, U]$, \begin{align*}
-	\frac{d \P_U}{d \P_T} \, |_{\sigf_t} = \frac{ \frac{d\P_U}{d\P^\star} |_{\sigf_t}}{\frac{d\P_T}{d\P^\star} |_{\sigf_t}} = \frac{ \frac{B_0}{B(0, U)} \frac{B(t, U)}{B_t}}{\frac{B_0}{B(0, T)}\frac{B(t, T)}{B_t}} = \frac{B(0, T)}{B(0, U)}\frac{B(t, U)}{B(t, T)}.
+    \frac{d \P_U}{d \P_T} \, |_{\sigf_t} = \frac{ \frac{d\P_U}{d\P^\star} |_{\sigf_t}}{\frac{d\P_T}{d\P^\star} |_{\sigf_t}} = \frac{ \frac{B_0}{B(0, U)} \frac{B(t, U)}{B_t}}{\frac{B_0}{B(0, T)}\frac{B(t, T)}{B_t}} = \frac{B(0, T)}{B(0, U)}\frac{B(t, U)}{B(t, T)}.
 \end{align*}  We then need only apply the Bayes formula and apply the previous result.
 
 Assume now that $U \geq T$. We postulate that $X$ is $\sigf_T$-measurable. Then the claim $Y = B(T, U) X$ is equivalent to $X$, in the sense that $\pi_t(X) = \pi_t(Y)$.
 
 \begin{enumerate}[(i)]
-	\item $U \leq T$.  Then $\pi_t(X) = B(t, T) = \E_{\P_T} \left( \frac{X}{B(U, T)} \given \sigf_t \right)$.  
-	\item $U \geq T$ and $X \in \sigf_T$.  Then $\pi_t(X) = B(t, T) \E_{\P_T} \left( B(T, U) X \given \sigf_t \right)$.
+    \item $U \leq T$.  Then $\pi_t(X) = B(t, T) = \E_{\P_T} \left( \frac{X}{B(U, T)} \given \sigf_t \right)$.  
+    \item $U \geq T$ and $X \in \sigf_T$.  Then $\pi_t(X) = B(t, T) \E_{\P_T} \left( B(T, U) X \given \sigf_t \right)$.
 \end{enumerate}
 
 
@@ -831,40 +831,40 @@ Assume now that $U \geq T$. We postulate that $X$ is $\sigf_T$-measurable. Then 
 \section{The Gaussian HJM Model} % (fold)
 \label{sec:examples_of_hjm_models}
 Under $\P^\star$, \begin{equation}
-	\label{eq:hjm_1}
-	dB(t, T) = B(t, T) \left(r_t \, dt - \sigma^\star(t, T) \, dW^\star_t \right)
+    \label{eq:hjm_1}
+    dB(t, T) = B(t, T) \left(r_t \, dt - \sigma^\star(t, T) \, dW^\star_t \right)
 \end{equation} where \begin{equation}
-	\label{eq:hjm_2}
-	-\sigma^\star(t, T) = \int_t^T \sigma(t, u) \, du = b(t, T).
+    \label{eq:hjm_2}
+    -\sigma^\star(t, T) = \int_t^T \sigma(t, u) \, du = b(t, T).
 \end{equation}  Moreover, \begin{equation}
-	\label{eq:hjm_3}
-	df(t, T) = \sigma(t, T) \sigma^\star(t, T) \, dt  + \sigma(t, T) \, dW^\star_t
+    \label{eq:hjm_3}
+    df(t, T) = \sigma(t, T) \sigma^\star(t, T) \, dt  + \sigma(t, T) \, dW^\star_t
 \end{equation} and \begin{equation}
-	\label{eq:hjm_4}
-	r_t = f(0, t) + \int_0^t \sigma(u, t) \sigma^\star(u, t) \, du + \int_0^t \sigma(u, t) \, dW^\star_u
+    \label{eq:hjm_4}
+    r_t = f(0, t) + \int_0^t \sigma(u, t) \sigma^\star(u, t) \, du + \int_0^t \sigma(u, t) \, dW^\star_u
 \end{equation} 
 
 \begin{rem}
-	From \eqref{eq:hjm_1} and \eqref{eq:hjm_3}, we see that for any fixed $T$, processes $B(t, T)$ and $f(t, T)$ are continuous semimartingales.  In \eqref{eq:hjm_4}, we integrate a different process for each $t$.  Also, as an additional input we take some function $f(0, t)$.
-	
-	Can we then compute $dr_t$?  The answer to this question is positive in some special cases.
+    From \eqref{eq:hjm_1} and \eqref{eq:hjm_3}, we see that for any fixed $T$, processes $B(t, T)$ and $f(t, T)$ are continuous semimartingales.  In \eqref{eq:hjm_4}, we integrate a different process for each $t$.  Also, as an additional input we take some function $f(0, t)$.
+    
+    Can we then compute $dr_t$?  The answer to this question is positive in some special cases.
 \end{rem}
 
 We now always postulate that $\sigma(t, T)$ is deterministic.  Then we say that we deal with the \emph{Gaussian HJM model} since $r_t$ has a normal distribution for any $t \in [0, T^\star]$.  
 
 Several examples of the Gaussian HJM model include: 
 \begin{enumerate}[(i)]
-	\item The Ho-Lee model.  We take $d = 1$ and $\sigma(t, T) = \sigma$.  Since $b(t, T) = - \sigma(T-t)$, it can also be seen as a counterpart to Merton's model.
-	\item The bond price satisfies under $\P^\star$, \begin{align*}
-		dB(t, T) = B(t, T) \left( r_t \, dt - \sigma(T- t) \, dW^\star_t \right).
-	\end{align*}  The short term rate equals\[
-		r_t = f(0, t) + \frac{1}{2} \sigma^2 t^2 + \sigma W^\star_t,
-	\] so that \[
-		dr_t = \underbrace{\left( f_T(0, t) + \sigma^2 t \right)}_{a(t)} \, dt + \sigma dW^\star_t .
-	\] where the function $a : [0, T^\star] \rightarrow \R$ can also be derived if we start from the extended merton model $dr_t = a(t) \, dt + \sigma dW^\star_t$ and we fit this model to the yield curve $\E_{\P^\star} \left( e^{-\int_0^T r_t \, dt} \right) = e^{-\int_0^T f(0, t) \, dt}$.  We also need to show that $r_0 = f(0, 0)$.  To solve this problem, we need to assume that $f_T(0, t)$ exists.
-	\item Vasicek's model.  Take $d = 1$ and $\sigma(t, T) = \sigma e^{-b(T-t)}$ where $\sigma, b$ are positive numbers.  Then \[
-		b(t, T) = -\sigma^\star(t, T) = - \frac{\sigma}{b} \left(e^{-b(T- t)} - 1\right),
-	\]  and other computations are given in the course notes.
+    \item The Ho-Lee model.  We take $d = 1$ and $\sigma(t, T) = \sigma$.  Since $b(t, T) = - \sigma(T-t)$, it can also be seen as a counterpart to Merton's model.
+    \item The bond price satisfies under $\P^\star$, \begin{align*}
+        dB(t, T) = B(t, T) \left( r_t \, dt - \sigma(T- t) \, dW^\star_t \right).
+    \end{align*}  The short term rate equals\[
+        r_t = f(0, t) + \frac{1}{2} \sigma^2 t^2 + \sigma W^\star_t,
+    \] so that \[
+        dr_t = \underbrace{\left( f_T(0, t) + \sigma^2 t \right)}_{a(t)} \, dt + \sigma dW^\star_t .
+    \] where the function $a : [0, T^\star] \rightarrow \R$ can also be derived if we start from the extended merton model $dr_t = a(t) \, dt + \sigma dW^\star_t$ and we fit this model to the yield curve $\E_{\P^\star} \left( e^{-\int_0^T r_t \, dt} \right) = e^{-\int_0^T f(0, t) \, dt}$.  We also need to show that $r_0 = f(0, 0)$.  To solve this problem, we need to assume that $f_T(0, t)$ exists.
+    \item Vasicek's model.  Take $d = 1$ and $\sigma(t, T) = \sigma e^{-b(T-t)}$ where $\sigma, b$ are positive numbers.  Then \[
+        b(t, T) = -\sigma^\star(t, T) = - \frac{\sigma}{b} \left(e^{-b(T- t)} - 1\right),
+    \]  and other computations are given in the course notes.
 \end{enumerate}
 
 
@@ -878,174 +878,174 @@ Several examples of the Gaussian HJM model include:
 
 % section options_on_bonds (end)
 Consider any term structure in which at least some bonds are traded.  If the short term rate process is given then under $\P^\star$, \[
-	dB(t, T_i) = B(t, T_i) \left( r_t \, dt + b(t, T_i) \, dW^\star_t \right)
+    dB(t, T_i) = B(t, T_i) \left( r_t \, dt + b(t, T_i) \, dW^\star_t \right)
 \] where $b(t, T_i)$ is a deterministic function and $0 < T_1 < \dots < T_m$.  If $r$ is not explicitly specified then we should focus on the dynamics of the forward prices, for example \[
-	F_B(t, T_i, T_j) = \frac{B(t, T_i)}{B(t, T_j)}, \quad i = 1, \dots, m
+    F_B(t, T_i, T_j) = \frac{B(t, T_i)}{B(t, T_j)}, \quad i = 1, \dots, m
 \] under the forward measure $\P_{T_j}$.
 
-	How do we value and hedge European bond options with maturity $T$ and the underlying zero coupon bond maturing at $U > T$.  The payoff at $T$ equals \begin{align*}
-		C_T &= \left( B(T, U) - K \right)^+ \\
-		P_T &= \left( K - B(T, U) \right)^+ 
-	\end{align*} so that \[
-		C_T - P_T = B(T, U) - K
-	\] and thus for $t \in [0, T]$, \[
-		C_t - P_t = B(t, U) - KB(t, T). 
-	\]  Instead of computing the expectation under $\P^\star$, \[
-		C_t = B_t \E_{\P^\star} \left( \frac{C_T}{B_T} \given \sigf_t \right),
-	\] we will compute the equivalent probability measure $P_T$ \[
-		C_t = B(t, T) \E_{\P_T} \left( C_T \given \sigf_t \right).
-	\]  Let $D = \left\{ B(T, U) > K \in \sigf_T \right\}$.  Then \[
-		C_T = B(T, U) \mathbf{1}_D - K \mathbf{1}_D = X_1 - X_2
-	\] So that \[
-		C_t = \pi_t(X_1) - \pi_t(X_2) = I_1 - I_2.
-	\]  For $I_2$, we compute \begin{align*}
-		I_2 = \pi_t(K \mathbf{1}_D) = K B(t, T) \P_T\left(D \given \sigf_T \right).  
-	\end{align*} We observe that \[
-		B(T, U) = \frac{B(T, U)}{B(T, T)} = F_B(T, U , T)
-	\] where under $\P_T$ the forward price $F_B(t, U, T), [t \in [0, T]]$ satisfies \[
-		dF_B(t, U , T) = F_B(t, U, T) \left( b(t, U) - b(t, T) \right) \, dW^T_t
-	\] so that $F_t = F_B(t, U, T)$ satisfies \[
-		F_T = F_t \exp \left( \zeta(t, T) - \frac{1}{2} v^2( t, T) \right)
-	\] where \[
-		\zeta(t, T) = \int_0^T \gamma(u, U , T) \, dW^T_u, \quad v^2(t, T) = \int_t^T \left| \gamma(u, U, T) \right|^2 \, du
-	\] where $\gamma(u, U, T) = b(u, U) - b(u, T)$.    
-	
-	We need to compute \begin{align*}
-		\P_T(D \given \sigf_t) &= P_T(B(T, U) > K  \given \sigf_t) \\
-						&= \P_T ( F_B(T, U, T) > K \given \sigf_t) \\
-						&= \P_T \left(F_t e^{\zeta(t, T) - \frac{1}{2} v^2(t, T)} \given \sigf_t \right),
-	\end{align*} where $\zeta(t, T)$ is independent of $\sigf_t$ and $\zeta(t, T) \sim N(0, v^2(t, T))$.  Hence \begin{align*}
-		\P_T(D \given \sigf_t) &= \P_T \left( F e^{\zeta(t, T) - \frac{1}{2} v^2(t, T)} \given F = F_t \right)  \\
-		&= \P_T \left( \frac{\zeta(t, T)}{v(t, T)} > \ln \frac{K}{F} + \frac{1}{2} v^2(t, T) \given F = F_t \right) \\
-		&= N( \tilde d_{-}(F_t, t, T))
-	\end{align*} where $\tilde d_2(F_t, t, T) = \frac{\ln \frac{F}{K} \pm \frac{1}{2} v^2(t, T)}{v(t, T)}$.  
-	
-	For $I_1,$ we need to compute the conditional expectation \[
-		I_1 = B(t, T) \E_{\P_T} \left( B(T, U) \mathbf{1}_D \given \sigf_t \right)
-	\] where \[
-		\frac{B(T, U)}{C} = \frac{F_B(T, U, T)}{C} = \frac{d\tilde \P_T}{d\P_T}.
-	\] so that \begin{align*}
-		\frac{d \tilde \P_T}{d \P_T} \given \sigf_t &= \frac{F_B(t, U, T)}{C} \\
-			&= \exp \left( \int_0^t \gamma(u, U, T) \, dW^T_u - \frac{1}{2} \int_0^t \left| \gamma(u, U, T) \right|^2 \, du \right) \\
-			&= \tilde \eta_t
-	\end{align*} for $t \in [0, T]$.  Note also that \begin{align*}
-		\E_{\tilde \P_T} (X \given \sigf_t) = \frac{\E_{\P_T}(X \tilde \eta_t \given \sigf_t)}{\tilde \eta_t} \\
-		\frac{F_B(t, U, T)}{c} \E_{\tilde \P_T}(\mathbf{1}_D \given \sigf_t) &= \E_{\P_T} \left( \mathbf{1}_D \frac{B(T, U)}{C} \given \sigf_t \right)
-	\end{align*} and \begin{align*}
-		\E_{\P_T} \left(B(T, U) \mathbf{1}_D \given \sigf_t \right) = \frac{B(t, U)}{B(t, T)} \tilde P_T (D \given \sigf_t) 
-	\end{align*} and thus \[
-		I_1 = B(t, U) \tilde P_T(D \given \sigf_t)
-	\] 
-	and since $dF_t = F_t \gamma(t, U , T) dW^T_t$ and \[
-		\tilde W_t^T - \int_0^t \gamma(u, U, T) \, du
-	\] is a $\tilde P_T$-Brownian motion, we obtain \[
-		dF_t = F_t \left( \left|\gamma(t, U, T) \right|^2 \, dt + \gamma(t, U, T) \, d\tilde W^T_t \right)
-	\] under $\tilde P_T$.  Solving this equation, we obtain \[
-		F_T = F_t \exp \left( \int_t^T \gamma(u, U, T) \, d\tilde W^T_t + \frac{1}{2} \int_0^T \left| \gamma(t, U, T) \right|^2 \, du \right).
-	\] and so \[
-		\tilde \P_T(D \given \sigf_t) = N(\tilde d_{+}(F_t, t, T)).
-	\]
-	
-	We conclude that \begin{align*}
-		I_1 &= B(t, U) N(\tilde d_+(F_t, t, T)), \\
-		I_2 &= K B(t, T) N(d_-(F_t, t, T)).
-	\end{align*} so that the price of the call bond option is now known explicitly.  It remains to find out whether the call option can be replicated, for instance, by a trading strategy $\phi = (\phi^1, \phi^2)$ with the wealth process $V(\phi)$, \begin{align*}
-		V_t(\phi) 	&= \phi_t^1 B(t, U) + \phi_t^2 B(t, T) \\
-		dV_t(\phi) 	&= \phi_t^1 dB(t, U) + \phi^2_t dB(t, T) \\
-		V_T(\phi) 	&= C_T = (B(T, U) - K)^+.
-	\end{align*}  Equivalently,  \begin{align*}
-		\frac{V_t(\phi)}{B(t, T)} &= \phi^1_t F_B(t, U, T) + \phi_t^2 \\
-		d \left( \frac{V_t(\phi)}{B(t, T)} \right) &= \phi^1_t dF_B(t, U, T) \\
-		\frac{V_T(\phi)}{B(T, T)} &= (F_B(T, U, T) - K)^+.  
-	\end{align*}
+    How do we value and hedge European bond options with maturity $T$ and the underlying zero coupon bond maturing at $U > T$.  The payoff at $T$ equals \begin{align*}
+        C_T &= \left( B(T, U) - K \right)^+ \\
+        P_T &= \left( K - B(T, U) \right)^+ 
+    \end{align*} so that \[
+        C_T - P_T = B(T, U) - K
+    \] and thus for $t \in [0, T]$, \[
+        C_t - P_t = B(t, U) - KB(t, T). 
+    \]  Instead of computing the expectation under $\P^\star$, \[
+        C_t = B_t \E_{\P^\star} \left( \frac{C_T}{B_T} \given \sigf_t \right),
+    \] we will compute the equivalent probability measure $P_T$ \[
+        C_t = B(t, T) \E_{\P_T} \left( C_T \given \sigf_t \right).
+    \]  Let $D = \left\{ B(T, U) > K \in \sigf_T \right\}$.  Then \[
+        C_T = B(T, U) \mathbf{1}_D - K \mathbf{1}_D = X_1 - X_2
+    \] So that \[
+        C_t = \pi_t(X_1) - \pi_t(X_2) = I_1 - I_2.
+    \]  For $I_2$, we compute \begin{align*}
+        I_2 = \pi_t(K \mathbf{1}_D) = K B(t, T) \P_T\left(D \given \sigf_T \right).  
+    \end{align*} We observe that \[
+        B(T, U) = \frac{B(T, U)}{B(T, T)} = F_B(T, U , T)
+    \] where under $\P_T$ the forward price $F_B(t, U, T), [t \in [0, T]]$ satisfies \[
+        dF_B(t, U , T) = F_B(t, U, T) \left( b(t, U) - b(t, T) \right) \, dW^T_t
+    \] so that $F_t = F_B(t, U, T)$ satisfies \[
+        F_T = F_t \exp \left( \zeta(t, T) - \frac{1}{2} v^2( t, T) \right)
+    \] where \[
+        \zeta(t, T) = \int_0^T \gamma(u, U , T) \, dW^T_u, \quad v^2(t, T) = \int_t^T \left| \gamma(u, U, T) \right|^2 \, du
+    \] where $\gamma(u, U, T) = b(u, U) - b(u, T)$.    
+    
+    We need to compute \begin{align*}
+        \P_T(D \given \sigf_t) &= P_T(B(T, U) > K  \given \sigf_t) \\
+                        &= \P_T ( F_B(T, U, T) > K \given \sigf_t) \\
+                        &= \P_T \left(F_t e^{\zeta(t, T) - \frac{1}{2} v^2(t, T)} \given \sigf_t \right),
+    \end{align*} where $\zeta(t, T)$ is independent of $\sigf_t$ and $\zeta(t, T) \sim N(0, v^2(t, T))$.  Hence \begin{align*}
+        \P_T(D \given \sigf_t) &= \P_T \left( F e^{\zeta(t, T) - \frac{1}{2} v^2(t, T)} \given F = F_t \right)  \\
+        &= \P_T \left( \frac{\zeta(t, T)}{v(t, T)} > \ln \frac{K}{F} + \frac{1}{2} v^2(t, T) \given F = F_t \right) \\
+        &= N( \tilde d_{-}(F_t, t, T))
+    \end{align*} where $\tilde d_2(F_t, t, T) = \frac{\ln \frac{F}{K} \pm \frac{1}{2} v^2(t, T)}{v(t, T)}$.  
+    
+    For $I_1,$ we need to compute the conditional expectation \[
+        I_1 = B(t, T) \E_{\P_T} \left( B(T, U) \mathbf{1}_D \given \sigf_t \right)
+    \] where \[
+        \frac{B(T, U)}{C} = \frac{F_B(T, U, T)}{C} = \frac{d\tilde \P_T}{d\P_T}.
+    \] so that \begin{align*}
+        \frac{d \tilde \P_T}{d \P_T} \given \sigf_t &= \frac{F_B(t, U, T)}{C} \\
+            &= \exp \left( \int_0^t \gamma(u, U, T) \, dW^T_u - \frac{1}{2} \int_0^t \left| \gamma(u, U, T) \right|^2 \, du \right) \\
+            &= \tilde \eta_t
+    \end{align*} for $t \in [0, T]$.  Note also that \begin{align*}
+        \E_{\tilde \P_T} (X \given \sigf_t) = \frac{\E_{\P_T}(X \tilde \eta_t \given \sigf_t)}{\tilde \eta_t} \\
+        \frac{F_B(t, U, T)}{c} \E_{\tilde \P_T}(\mathbf{1}_D \given \sigf_t) &= \E_{\P_T} \left( \mathbf{1}_D \frac{B(T, U)}{C} \given \sigf_t \right)
+    \end{align*} and \begin{align*}
+        \E_{\P_T} \left(B(T, U) \mathbf{1}_D \given \sigf_t \right) = \frac{B(t, U)}{B(t, T)} \tilde P_T (D \given \sigf_t) 
+    \end{align*} and thus \[
+        I_1 = B(t, U) \tilde P_T(D \given \sigf_t)
+    \] 
+    and since $dF_t = F_t \gamma(t, U , T) dW^T_t$ and \[
+        \tilde W_t^T - \int_0^t \gamma(u, U, T) \, du
+    \] is a $\tilde P_T$-Brownian motion, we obtain \[
+        dF_t = F_t \left( \left|\gamma(t, U, T) \right|^2 \, dt + \gamma(t, U, T) \, d\tilde W^T_t \right)
+    \] under $\tilde P_T$.  Solving this equation, we obtain \[
+        F_T = F_t \exp \left( \int_t^T \gamma(u, U, T) \, d\tilde W^T_t + \frac{1}{2} \int_0^T \left| \gamma(t, U, T) \right|^2 \, du \right).
+    \] and so \[
+        \tilde \P_T(D \given \sigf_t) = N(\tilde d_{+}(F_t, t, T)).
+    \]
+    
+    We conclude that \begin{align*}
+        I_1 &= B(t, U) N(\tilde d_+(F_t, t, T)), \\
+        I_2 &= K B(t, T) N(d_-(F_t, t, T)).
+    \end{align*} so that the price of the call bond option is now known explicitly.  It remains to find out whether the call option can be replicated, for instance, by a trading strategy $\phi = (\phi^1, \phi^2)$ with the wealth process $V(\phi)$, \begin{align*}
+        V_t(\phi)   &= \phi_t^1 B(t, U) + \phi_t^2 B(t, T) \\
+        dV_t(\phi)  &= \phi_t^1 dB(t, U) + \phi^2_t dB(t, T) \\
+        V_T(\phi)   &= C_T = (B(T, U) - K)^+.
+    \end{align*}  Equivalently,  \begin{align*}
+        \frac{V_t(\phi)}{B(t, T)} &= \phi^1_t F_B(t, U, T) + \phi_t^2 \\
+        d \left( \frac{V_t(\phi)}{B(t, T)} \right) &= \phi^1_t dF_B(t, U, T) \\
+        \frac{V_T(\phi)}{B(T, T)} &= (F_B(T, U, T) - K)^+.  
+    \end{align*}
 
-	Let $F_V(t, T) = \frac{V_t(\phi)}{B(t, T)}$.  Then we need to solve the following problem \begin{align*}
-		dF_V(t, T) = \phi_t^1 d F_B(t, U, T) \\
-		F_V(T, T) = (F_B(T, U, T) - K)^+
-	\end{align*} where \[
-		dF_B(t, U, T) = F_B(t, U, T) \gamma(t, U, T) dW^T_t.
-	\]  To solve this equation, observe that \[
-		\frac{C_t}{B(t, T)} = \frac{B(t, U)}{B(t, T)}\left( N( \tilde d_+ (F_t, t, T)) - K N (\tilde d_-(F_t, t, T)) \right), 		
-	\] and \[
-		F_C(t, T) = F_t \left( N( \tilde d_+ (F_t, t, T)) - K N (\tilde d_-(F_t, t, T)) \right).
-	\]
+    Let $F_V(t, T) = \frac{V_t(\phi)}{B(t, T)}$.  Then we need to solve the following problem \begin{align*}
+        dF_V(t, T) = \phi_t^1 d F_B(t, U, T) \\
+        F_V(T, T) = (F_B(T, U, T) - K)^+
+    \end{align*} where \[
+        dF_B(t, U, T) = F_B(t, U, T) \gamma(t, U, T) dW^T_t.
+    \]  To solve this equation, observe that \[
+        \frac{C_t}{B(t, T)} = \frac{B(t, U)}{B(t, T)}\left( N( \tilde d_+ (F_t, t, T)) - K N (\tilde d_-(F_t, t, T)) \right),       
+    \] and \[
+        F_C(t, T) = F_t \left( N( \tilde d_+ (F_t, t, T)) - K N (\tilde d_-(F_t, t, T)) \right).
+    \]
 
 \begin{lem}
-	Let $(Y_t)$ be given by \begin{align*}
-		Y_t &= X_t \left( N( \tilde d_+ (X_t, t, T)) - K N (\tilde d_-(X_t, t, T)) \right) \\
-		dX_t &= X_t \sigma(t) \, dW_t \\
-		\tilde d_{\pm}(x, t, T) &= \frac{ \ln \frac{x}{K} \pm ^2(t, T)}{v(t, T)}. 
-	\end{align*}
-	
-	Then \[
-		dY_t = N(d_{-}(X_t, t, T)) \, dX_t.
-	\]
+    Let $(Y_t)$ be given by \begin{align*}
+        Y_t &= X_t \left( N( \tilde d_+ (X_t, t, T)) - K N (\tilde d_-(X_t, t, T)) \right) \\
+        dX_t &= X_t \sigma(t) \, dW_t \\
+        \tilde d_{\pm}(x, t, T) &= \frac{ \ln \frac{x}{K} \pm ^2(t, T)}{v(t, T)}. 
+    \end{align*}
+    
+    Then \[
+        dY_t = N(d_{-}(X_t, t, T)) \, dX_t.
+    \]
 \end{lem}
 
 \begin{proof}
-	Apply the \ito formula.  Assume here that $\sigma$ is deterministic. 
+    Apply the \ito formula.  Assume here that $\sigma$ is deterministic. 
 \end{proof}
 
  If we apply the lemma to $F_c(t, T)$, we obtain \begin{align*}
-	dF_c(t, T) &= N(\tilde d_+(F_t, t, T)) \, dF_t \\
-				&= \phi^1_t \, dF_t.
+    dF_c(t, T) &= N(\tilde d_+(F_t, t, T)) \, dF_t \\
+                &= \phi^1_t \, dF_t.
 \end{align*} so that \[
-	\phi^1_t = N(\tilde d_1(F_t, t, T))
+    \phi^1_t = N(\tilde d_1(F_t, t, T))
 \] and \[
-	\phi^2_t = \frac{C_t - \phi^1_t B(t, U)}{B(t, T)}
+    \phi^2_t = \frac{C_t - \phi^1_t B(t, U)}{B(t, T)}
 \] Then \begin{align*}
-	V_t(\phi) 	&= C_t = \phi^1_tB(t, U) + \phi^2_t B(t, T). \\
-	dV_t(\phi) 	&= dC_t = \phi^1_t dB(t, U) + \phi^2-t dB(t, T).
+    V_t(\phi)   &= C_t = \phi^1_tB(t, U) + \phi^2_t B(t, T). \\
+    dV_t(\phi)  &= dC_t = \phi^1_t dB(t, U) + \phi^2-t dB(t, T).
 \end{align*}
 
 In the future, we will deal with more general options of the form \[
-	C_T = (Z^1_T - K Z^2_T)^+
+    C_T = (Z^1_T - K Z^2_T)^+
 \]  where $Z^i$ is some portfolio of bonds.  Then the choice of a natural hedging strategy depends on the choice of traded assets.  
 
 \begin{lem}
-	The price $C_t$ of a call option equals \[
-		C_t = B(t, U) \P_U(D \given \sigf_t) - K B(t, T) \P_T(D \given \sigf_t)
-	\]
+    The price $C_t$ of a call option equals \[
+        C_t = B(t, U) \P_U(D \given \sigf_t) - K B(t, T) \P_T(D \given \sigf_t)
+    \]
 \end{lem}
 
 \begin{proof}
-	\begin{align*}
-		C_T = B(T, U) \mathbf{1}_D - K \mathbf{1}_D = X_1 - X_2 \\
-		\pi_t(X_2) = B(t, T) \E_{\P_T} K \mathbf{1}_D \given \sigf_t = K B(t, T) \P_T (D \given \sigf_t)
-	\end{align*} and $X_1 = B(T, U) \mathbf{1}_D$ is equivalent to $Y_1 = \mathbf{1}_D$ at time $U$, so that \begin{align*}
-		\pi_t(X_1) = \pi_t(Y_1) = B(t, U) \P_{U}(D \given \sigf_t)
-	\end{align*} for $t \in [0, T]$.
+    \begin{align*}
+        C_T = B(T, U) \mathbf{1}_D - K \mathbf{1}_D = X_1 - X_2 \\
+        \pi_t(X_2) = B(t, T) \E_{\P_T} K \mathbf{1}_D \given \sigf_t = K B(t, T) \P_T (D \given \sigf_t)
+    \end{align*} and $X_1 = B(T, U) \mathbf{1}_D$ is equivalent to $Y_1 = \mathbf{1}_D$ at time $U$, so that \begin{align*}
+        \pi_t(X_1) = \pi_t(Y_1) = B(t, U) \P_{U}(D \given \sigf_t)
+    \end{align*} for $t \in [0, T]$.
 \end{proof}
 
 \section{Options on Coupon Bonds} % (fold)
 \label{sec:options_on_coupon_bonds}
 Let $T_1 < T_2 < \dots < T_n \leq T^\star$ be coupon dates and $c_1 \dots, c_2$ he corresponding deterministic coupons.  Then the price $Z_t = B_c(t, T)$ of the coupon bond equals \[
-	Z_t = \sum_{j=1}^n c_j B(t, T_j).
+    Z_t = \sum_{j=1}^n c_j B(t, T_j).
 \]  We consider the call option with maturity $T < T_1$ and the payoff \[
-	C_T = (Z_T - K)^+ = \sum_{j=1}^m c_j B(t, T_j) \mathbf{1}_D - K \mathbf{1}_D
+    C_T = (Z_T - K)^+ = \sum_{j=1}^m c_j B(t, T_j) \mathbf{1}_D - K \mathbf{1}_D
 \]   where \[
-	D = \{ Z_T > K \}.
+    D = \{ Z_T > K \}.
 \]
 
 One possible way of pricing this is to represent $C_t$ as follows: \begin{align*}
-	C_t = \sum_{j=1}^n c_j B(t, T_j) \P_{T_j}(D \given \sigf_t) - K B(t, T)P_T(D \given \sigf_t).
+    C_t = \sum_{j=1}^n c_j B(t, T_j) \P_{T_j}(D \given \sigf_t) - K B(t, T)P_T(D \given \sigf_t).
 \end{align*}
 
 \begin{rem}[On the proof of Proposition 4.3]
-	We know that if we set $D = \{ Z_T > K \}$, then \[
-		C_t = \sum_{j=1}^m c_j B(t, T_j) \P_{T_j}(D \given \sigf_t) - K B(t, T) \P_T(D \given \sigf_t).
-	\]
-	For simplicity, we may set $t = 0$ - then we need to compute $\P_{T_j}(D)$ and $\P_T(D)$.  Recall that $T = T_0 < T_1 \dots < T_m$.  Then \[
-		D = \left\{ \sum_{j=1}^m c_j \underbrace{F_B(T, T, T_j)}_{F^j_B(T)} > K \right\}
-	\]       where $dF^j_B(t) = F^j_B(t)(b(t, T_j) - b(t, T)) dW^T_t$, and hence \[
-		\P_T(D) = \P_T \left( \sum_{j=1}^m c_j F^j_B(0) e^{\int_0^T \gamma(t, T_j, T) \, dW^T_t - \frac{1}{2} \int_0^T \left| \gamma(t, T_j, T) \right|^2 \, dt} > K \right)
- 	\]
+    We know that if we set $D = \{ Z_T > K \}$, then \[
+        C_t = \sum_{j=1}^m c_j B(t, T_j) \P_{T_j}(D \given \sigf_t) - K B(t, T) \P_T(D \given \sigf_t).
+    \]
+    For simplicity, we may set $t = 0$ - then we need to compute $\P_{T_j}(D)$ and $\P_T(D)$.  Recall that $T = T_0 < T_1 \dots < T_m$.  Then \[
+        D = \left\{ \sum_{j=1}^m c_j \underbrace{F_B(T, T, T_j)}_{F^j_B(T)} > K \right\}
+    \]       where $dF^j_B(t) = F^j_B(t)(b(t, T_j) - b(t, T)) dW^T_t$, and hence \[
+        \P_T(D) = \P_T \left( \sum_{j=1}^m c_j F^j_B(0) e^{\int_0^T \gamma(t, T_j, T) \, dW^T_t - \frac{1}{2} \int_0^T \left| \gamma(t, T_j, T) \right|^2 \, dt} > K \right)
+    \]
 If we denote $\zeta_j = \int_0^T \gamma(t, T_j, T) \, dW^T_t$, then the vector $\zeta = (\zeta_1, \dots, \zeta_m)$ has a normal distribution under $\P_T$, with mean $(0, 0, \dots, 0)$ and covariance $(\nu_{kl})$ where \[
-	\nu_{kl} = \int_0^T \gamma(t, T_k, T) \cdot \gamma(t, T_l, T) \, dt.
+    \nu_{kl} = \int_0^T \gamma(t, T_k, T) \cdot \gamma(t, T_l, T) \, dt.
 \]
 
 To compute $\P_{T_j}(D)$, we need to know the distribution of $\zeta$ under $\P_{T_j}$.  Since $W^{T_j}_t = W^T_t - \int_0^t \gamma(u, T_j, T) \, du$ it is clear that under $\P_{T_j}$, the forward price $F^l_B(t) = F_B(t, T_l, T)$ \[
-	dF^l_B(t) = F^l_B(t) \gamma(t, T_l, T) \, dW^T_t + F_B(t) \gamma(t, T_l, T) \gamma(t, T_j, T) \, dt
+    dF^l_B(t) = F^l_B(t) \gamma(t, T_l, T) \, dW^T_t + F_B(t) \gamma(t, T_l, T) \gamma(t, T_j, T) \, dt
 \] so that the joint distribution of $\zeta_1, \dots, \zeta_m$ under each forward measure $\P_{T_j}$ can also be computed.  The joint distribution is Gaussian with the same covariance matrix but with means $v_{lj}$
 
 \end{rem}
@@ -1053,24 +1053,24 @@ To compute $\P_{T_j}(D)$, we need to know the distribution of $\zeta$ under $\P_
 \section{Pricing of General Contingent Claims} % (fold)
 \label{sec:pricing_of_general_contingent_claims}
 Let $\zeta_i(t, T) = \int_t^T \gamma_i(u, T) \, dW^T_u$.  Then under $\P_T$ the random variables $\zeta_i(t, T), \dots, \zeta_n(t, T)$ are normally distributed with mean $(0, \dots, 0)$ and covariance matrix ($\gamma_{ij}$) given by \[
-	\gamma_{ij} = \int_t^T \gamma_i(u, T) \gamma_j(u, T) \, du.
+    \gamma_{ij} = \int_t^T \gamma_i(u, T) \gamma_j(u, T) \, du.
 \]
 
 \begin{prop}
-	Let $X = g(Z^1_T, \dots, Z^n_T)$ at time $T$.  Then the price of $X$ at time $t \in [0, T)$ is given by \[
-		\pi_t(X) = B(t, T) \int_{\R^k} g\left( \frac{Z^1_t}{B(t, T)} \frac{n_k(x+ \theta_1)}{n_k(x)}, \dots, \frac{Z^n_t}{B(t, T)} \frac{n_k(x+\theta_n)}{n_k(x)}\right) n_k(x) \, dx
-	\] where $n_k$ is the standard $n$-dimensional Gaussian density on $\R^k$ and $(\theta_i)$ are elements of $\R^k$ such that \[
-		\theta_i \theta_j = \gamma_{ij}
-	\] for all $i, j$.   This follows from the Cholesky decomposition of the covariance matrix $(\gamma_{ij})$
+    Let $X = g(Z^1_T, \dots, Z^n_T)$ at time $T$.  Then the price of $X$ at time $t \in [0, T)$ is given by \[
+        \pi_t(X) = B(t, T) \int_{\R^k} g\left( \frac{Z^1_t}{B(t, T)} \frac{n_k(x+ \theta_1)}{n_k(x)}, \dots, \frac{Z^n_t}{B(t, T)} \frac{n_k(x+\theta_n)}{n_k(x)}\right) n_k(x) \, dx
+    \] where $n_k$ is the standard $n$-dimensional Gaussian density on $\R^k$ and $(\theta_i)$ are elements of $\R^k$ such that \[
+        \theta_i \theta_j = \gamma_{ij}
+    \] for all $i, j$.   This follows from the Cholesky decomposition of the covariance matrix $(\gamma_{ij})$
 \end{prop}
 
 \begin{proof}
-	\begin{align*}
-		\pi_t(X) = B(t, T) \E_{\P_T} \left( g(F_{Z^1}(T, T)), \dots, F_{Z^n}(T, T) \given \sigf_t \right) \\
-		F_{Z^i}(T, T) = F_{Z^i}(t, T) e^{\zeta_i(t, T) - \frac{1}{2} \gamma_{ii}} \\
-		\pi_t(X) = B(t, T) \E_\Q \left( g\left( F_{Z_t^i} e^{\theta_i \eta - \frac{1}{2} \gamma_{ii}} \right) \given \sigf_t \right) \\
-		&= B(t, T) \int_{\R^k} g\left( \frac{Z^i_t}{B(t, T)} e^{\theta_i \cdot x - \frac{1}{2} \underbrace{\gamma_{ii}}_{|\theta_i|^2}} \right) n_k(x) \, dx.
-	\end{align*}  Since $\frac{n_k(x + \theta_i)}{n_k(x)} = e^{\theta_i \cdot x - \frac{1}{2}|\theta_i|^2}$, we obtain our result.
+    \begin{align*}
+        \pi_t(X) = B(t, T) \E_{\P_T} \left( g(F_{Z^1}(T, T)), \dots, F_{Z^n}(T, T) \given \sigf_t \right) \\
+        F_{Z^i}(T, T) = F_{Z^i}(t, T) e^{\zeta_i(t, T) - \frac{1}{2} \gamma_{ii}} \\
+        \pi_t(X) = B(t, T) \E_\Q \left( g\left( F_{Z_t^i} e^{\theta_i \eta - \frac{1}{2} \gamma_{ii}} \right) \given \sigf_t \right) \\
+        &= B(t, T) \int_{\R^k} g\left( \frac{Z^i_t}{B(t, T)} e^{\theta_i \cdot x - \frac{1}{2} \underbrace{\gamma_{ii}}_{|\theta_i|^2}} \right) n_k(x) \, dx.
+    \end{align*}  Since $\frac{n_k(x + \theta_i)}{n_k(x)} = e^{\theta_i \cdot x - \frac{1}{2}|\theta_i|^2}$, we obtain our result.
 \end{proof}
 % section pricing_of_general_contingent_claims (end)
 % section options_on_coupon_bonds (end)
@@ -1084,26 +1084,26 @@ Let $\zeta_i(t, T) = \int_t^T \gamma_i(u, T) \, dW^T_u$.  Then under $\P_T$ the 
 Let $\delta$ equal 3 months.  If $L(0) = 10\%$ then if we borrow $N$ at time $0$, we will pay back after three months the amount $N(1 + \delta L(0))$ where the unit is one year so that $\delta = \frac{1}{4}$.
 
 \begin{enumerate}[(i)]
-	\item Spot LIBOR is (or was) the most commonly used rate for interbank funding and as an underlying for interest rate derivatives such as caps and floors.  
-	\item By convention, the pricing formula for caplets and floorlets was a version of the Black formula which reads \[
-		C_T = F_t N(d_+) - K N(d_-)
-	\] where $F_t$ is the forward price of the underlying asset. 
+    \item Spot LIBOR is (or was) the most commonly used rate for interbank funding and as an underlying for interest rate derivatives such as caps and floors.  
+    \item By convention, the pricing formula for caplets and floorlets was a version of the Black formula which reads \[
+        C_T = F_t N(d_+) - K N(d_-)
+    \] where $F_t$ is the forward price of the underlying asset. 
 \end{enumerate}
 
 
 Let us consider a caplet with maturity $T$ and settlement date $T + \delta$.  Here, a caplet is a call option on LIBOR, in the sense that it pays the amount $C_P = (L(T) - K)^+ \delta N$ at time $T + \delta$ where $T$ is the maturity date, $N$ is the nominal value, and $x$ the strike level.  
 
 \begin{defn}[Cap]
-	 A cap is a portfolio of caplets over non-overlapping periods \[
-	 	0 < T_0 < T_1 < \dots < T_n 
-	 \] so we have $n$ caplets, struck at $T_{i}$ for the period $[T_i, T_{i+1}]$ and paying $(L(T_i) - K)^+ N \delta_{i+1}$ at $T_{i+1}$, where $\delta_{i+1} = T_{i+1} - T_i$.
+     A cap is a portfolio of caplets over non-overlapping periods \[
+        0 < T_0 < T_1 < \dots < T_n 
+     \] so we have $n$ caplets, struck at $T_{i}$ for the period $[T_i, T_{i+1}]$ and paying $(L(T_i) - K)^+ N \delta_{i+1}$ at $T_{i+1}$, where $\delta_{i+1} = T_{i+1} - T_i$.
 \end{defn}
 
 
 By convention, the price of a caplet over $[T, T+\delta]$ equals \[
-	\textsc{Cpl}_t = B(t, T+\delta) \left( L(t) N(d_+) - KN(d_-)\right)
+    \textsc{Cpl}_t = B(t, T+\delta) \left( L(t) N(d_+) - KN(d_-)\right)
 \] where \[
-	d_\pm = \frac{\ln \frac{L(t)}{K} \pm \frac{1}{2} \sigma^2(T-t)}{\sigma \sqrt{T-t}}.
+    d_\pm = \frac{\ln \frac{L(t)}{K} \pm \frac{1}{2} \sigma^2(T-t)}{\sigma \sqrt{T-t}}.
 \]
 
 
@@ -1114,25 +1114,25 @@ By convention, the price of a caplet over $[T, T+\delta]$ equals \[
 \label{sec:caps_and_floors_in_the_libor_market_model}
 
 A caplet (floorlet) is a protection against the rise (fall) in the LIBOR rate. The caplet (floorlet) pays off: \begin{align*}
- 	\mathbf{Cpl}^j_{T_j} 	N\left( L(T_{j-1}) - \kappa\right)^+ \delta_j \\
-	\mathbf{Frl}^j_{T_j} 	N\left(  \kappa - L(T_{j-1}) \right)^+ \delta_j \\
+    \mathbf{Cpl}^j_{T_j}    N\left( L(T_{j-1}) - \kappa\right)^+ \delta_j \\
+    \mathbf{Frl}^j_{T_j}    N\left(  \kappa - L(T_{j-1}) \right)^+ \delta_j \\
 \end{align*} paid at time $T_j$.  
 
 We clearly have the \emph{cap-floor put call parity}, \[
-	\mathbf{Cpl}^j_{T_j} - \mathbf{Frl}^j_{T_j} = N_p \left(L(T_{j-1}) - \kappa \right) \delta_j. 
+    \mathbf{Cpl}^j_{T_j} - \mathbf{Frl}^j_{T_j} = N_p \left(L(T_{j-1}) - \kappa \right) \delta_j. 
 \]  
 
 \begin{exer}
-	Using this relationship, find the difference $\mathbf{CPl}_t^j - \mathbf{Frl}^j_t$ for any $t \in [0, T_{j-1}]$.
+    Using this relationship, find the difference $\mathbf{CPl}_t^j - \mathbf{Frl}^j_t$ for any $t \in [0, T_{j-1}]$.
 \end{exer}
 
 Recall that \[
-	1 + \delta_j L(T_{j-1}) = \frac{1}{B(T_{j-1}, T_j)}
+    1 + \delta_j L(T_{j-1}) = \frac{1}{B(T_{j-1}, T_j)}
 \]  Hence \begin{align*}
-	\mathbf{Cpl}^j_{T_j} = N \left( \frac{1}{B(T_{j-1}, T_j)} - \underbrace{(1 + \delta_j \kappa)}_{\tilde \delta_j} \right)^+ \delta_j
+    \mathbf{Cpl}^j_{T_j} = N \left( \frac{1}{B(T_{j-1}, T_j)} - \underbrace{(1 + \delta_j \kappa)}_{\tilde \delta_j} \right)^+ \delta_j
 \end{align*}  An equivalent payoff at time $T_{j-1}$ equals \begin{align*}
-	\tilde{\mathbf{Cpl}}^j_{T_{j-1}} &= B(T_{j-1}, T_j) \mathbf{Cpl}_{T_j}^j \\
-				&= \tilde \delta_j N \left( \frac{1}{\tilde \delta_j} - B(T_{j-1}, T_j) \right)^+.
+    \tilde{\mathbf{Cpl}}^j_{T_{j-1}} &= B(T_{j-1}, T_j) \mathbf{Cpl}_{T_j}^j \\
+                &= \tilde \delta_j N \left( \frac{1}{\tilde \delta_j} - B(T_{j-1}, T_j) \right)^+.
 \end{align*}
 
 % section caps_and_floors_in_the_libor_market_model (end)
@@ -1140,115 +1140,115 @@ Recall that \[
 
 
 \begin{defn}
-	The forward swap rate $\kappa(t, T_0, T_1, \dots, T_n) = \kappa(t, T, n)$ where $T_0 = T$ is the $\sigf_t$-measurable random variable such that $\mathbf{FS}_t \left( \kappa(t, T, n) \right) = 0$.  
+    The forward swap rate $\kappa(t, T_0, T_1, \dots, T_n) = \kappa(t, T, n)$ where $T_0 = T$ is the $\sigf_t$-measurable random variable such that $\mathbf{FS}_t \left( \kappa(t, T, n) \right) = 0$.  
 \end{defn}
 
 \begin{lem}
-	The forward swap rate equals \begin{align*}
-		\kappa(t, T, n) = \frac{B(t, T_0) - B(t, T_n)}{\sum_{j=1}^n \delta_j B(t, T_j)}
-	\end{align*}
+    The forward swap rate equals \begin{align*}
+        \kappa(t, T, n) = \frac{B(t, T_0) - B(t, T_n)}{\sum_{j=1}^n \delta_j B(t, T_j)}
+    \end{align*}
 \end{lem}
 
 \chapter{Modelling of Forward Swap Rates} % (fold)
 \label{cha:modelling_of_forward_swap_rates}
 \begin{enumerate}[(i)]
-	\item Definition and payoffs of an $n$-period forward swap.
-	\item Valuation formula for a forward swap (6.4)
-	\item Definition and formula for forward swap rates (6.5)
-	\item Definition and equivalent representations for a swaption (Lemma 6.5)
-	\item Postulates of Jamshidian's model of co-terminal forward swap rates
-	\item Valuation of a swaption (Proposition 6.3)
-	\item Choice of a numeraire portfolio
+    \item Definition and payoffs of an $n$-period forward swap.
+    \item Valuation formula for a forward swap (6.4)
+    \item Definition and formula for forward swap rates (6.5)
+    \item Definition and equivalent representations for a swaption (Lemma 6.5)
+    \item Postulates of Jamshidian's model of co-terminal forward swap rates
+    \item Valuation of a swaption (Proposition 6.3)
+    \item Choice of a numeraire portfolio
 \end{enumerate}
 
 Consider the family of co-terminal swap rates \begin{align*}
-	\kappa(t, T_0; n) &= \frac{B(t, T_0) - B(t, T_n)}{\sum_{k=1}^n \delta_k B(t, T_k)} \\
-	\kappa(t, T_1,; n-1) &= \frac{B(t, T_1) - B(t, T_n)}{\sum_{k=2}^n \delta_k B(t, T_k)} \\
-	&\downarrow \\
-	\kappa(t, T_{n-1}; 1) &= \frac{B(t, T_{n-1}) - B(t, T_n)}{\delta_n B(t, T_n)} = L(t, T_{n-1}) 
+    \kappa(t, T_0; n) &= \frac{B(t, T_0) - B(t, T_n)}{\sum_{k=1}^n \delta_k B(t, T_k)} \\
+    \kappa(t, T_1,; n-1) &= \frac{B(t, T_1) - B(t, T_n)}{\sum_{k=2}^n \delta_k B(t, T_k)} \\
+    &\downarrow \\
+    \kappa(t, T_{n-1}; 1) &= \frac{B(t, T_{n-1}) - B(t, T_n)}{\delta_n B(t, T_n)} = L(t, T_{n-1}) 
 \end{align*}  For ease of notation, we let $\kappa(t, T_; n-j) = \tilde \kappa(t, T_j)$.
 
 \section{Payer Swaptions} % (fold)
 \label{sec:payer_swaptions}
 Let us take $j = 0$ so that the underlying forward swap has $n$ periods.  Let $\mathbf{FS}_t(\kappa)$ denote the value of the forward swap. We know that \[
-	\mathbf{FS}_t(\kappa) = B(t, T_0) - \sum_{j=1}^n c_j B(t, T_j)
+    \mathbf{FS}_t(\kappa) = B(t, T_0) - \sum_{j=1}^n c_j B(t, T_j)
 \] where $c_j = \kappa \delta_j$, $j = 1, \dots, n-1$, $c_n = (1 + \kappa \delta_n)$.  
 
 \begin{lem}
-	The price $\mathbf{FS}_t(\kappa)$ can be represented as follows: \begin{align*}
-		\mathbf{FS}_t(\kappa) &= \mathbf{FS}_t(\kappa) - \mathbf{FS}_t(\kappa(t, T_0; n)) \\
-					&= \sum_{j=1}^n \left( \kappa(t, T_0; n) - \kappa \right) \delta_j B(t, T_j) \\
-					&= G_t(n)
-	\end{align*}  where \[
-		G_t(n) = \sum_{\delta_k B(t, T_k)}, \quad G_t(n-j) = \sum_{k=j+1}^n \delta_k B(t, T_k)
-	\]  
+    The price $\mathbf{FS}_t(\kappa)$ can be represented as follows: \begin{align*}
+        \mathbf{FS}_t(\kappa) &= \mathbf{FS}_t(\kappa) - \mathbf{FS}_t(\kappa(t, T_0; n)) \\
+                    &= \sum_{j=1}^n \left( \kappa(t, T_0; n) - \kappa \right) \delta_j B(t, T_j) \\
+                    &= G_t(n)
+    \end{align*}  where \[
+        G_t(n) = \sum_{\delta_k B(t, T_k)}, \quad G_t(n-j) = \sum_{k=j+1}^n \delta_k B(t, T_k)
+    \]  
 \end{lem}
 
 A payer swaption with a fixed rate $\kappa$, maturing date $T = T_0$ and the underlying $n$-period fixed-for-floating forward swap can be identified with the payoff $\left(\mathbf{FS}_T(\kappa) \right)^+$ at time $T$.  A receiver swaption pays $\left(-\mathbf{FS}_T(\kappa) \right)^+$ at time $T$.  Of course, we have a put call parity relationship \[
-	\mathbf{PS}_t(\kappa) - \mathbf{RS}_t(\kappa) = \mathbf{FS}_t(\kappa)
+    \mathbf{PS}_t(\kappa) - \mathbf{RS}_t(\kappa) = \mathbf{FS}_t(\kappa)
 \]
 
 The inequality $\mathbf{FS}_t(\kappa) > 0$ holds if and only if $\kappa(T, T; n) > \kappa$ where $\kappa(T, T; n)$ is the spot swap rate at time $T_0$. Hence if $\kappa(T, T; n) \leq \kappa$ the swaption expires worthless, but it is still possible to enter at $T$ a forward swap with fixed rate $\kappa(T, T; n) \leq \kappa$.
 
 If we define \[
-	Y_k = \delta_k \left( \kappa(T, T; n) - \kappa \right)^+,
+    Y_k = \delta_k \left( \kappa(T, T; n) - \kappa \right)^+,
 \] we know that \begin{align*}
-	\left( \mathbf{FS}_t(\kappa) \right)^+ &= \sum_{k=1}^n \delta_k B(T, T_k) \left(\kappa(T, T; n) - \kappa \right)^+ \\
-	&= \sum_{k=1}^n B(T, T_k) Y_k
+    \left( \mathbf{FS}_t(\kappa) \right)^+ &= \sum_{k=1}^n \delta_k B(T, T_k) \left(\kappa(T, T; n) - \kappa \right)^+ \\
+    &= \sum_{k=1}^n B(T, T_k) Y_k
 \end{align*} which is equivalent to a sequence of payoffs $Y_1, \dots, Y_n$ at times $T_1, \dots, T_n$.  Also for $j = 0, 1, \dots, n-1$, \begin{align*}
-	\left( \mathbf{FS}_{T_0}^0 (\kappa) \right)^+ = G_{T_0}(n) \left( \kappa(T_0, T_0; n) - \kappa \right)^+ \\
-	\left( \mathbf{FS}_{T_j}^j (\kappa) \right)^+ = G_{T_j} (n-j) \left( \kappa(T_j, T_j) ;n) - \kappa \right)^+
+    \left( \mathbf{FS}_{T_0}^0 (\kappa) \right)^+ = G_{T_0}(n) \left( \kappa(T_0, T_0; n) - \kappa \right)^+ \\
+    \left( \mathbf{FS}_{T_j}^j (\kappa) \right)^+ = G_{T_j} (n-j) \left( \kappa(T_j, T_j) ;n) - \kappa \right)^+
 \end{align*}
 
 We now seek to construct a model for the joint dynamics of a co-terminal family of forward swap rates \[
-	\kappa(t, T_j; n-j) = \tilde \kappa(t, T_j), t \in [0, T_j] 
+    \kappa(t, T_j; n-j) = \tilde \kappa(t, T_j), t \in [0, T_j] 
 \] such that the volatility $\nu(t, T_j)$ is given in advance by a deterministic function and the model is driven by a $d$-dimensional Brownian motion.\footnote{Any process that we can apply Girsanov's theorem to will be sufficient.}
 
 We expect that each process $\tilde \kappa(t, T_j)$ will be a martingale under some probability measure $\tilde P_{T_{j+1}}$ so that \[
-	d\tilde \kappa(t, T_j) = \tilde \kappa(t, T_j) \nu(t, T_j) \, d\tilde W^{T_{j+1}}_t
+    d\tilde \kappa(t, T_j) = \tilde \kappa(t, T_j) \nu(t, T_j) \, d\tilde W^{T_{j+1}}_t
 \] where $\tilde W_t^{T_{j+1}}$ is a Brownian motion under $\tilde P_{T_{j+1}}$ and the Radon-Nikodym densities for $j=0, \dots, n-1$ should be given by \[
-	\frac{d \tilde P_{T_{j+1}}}{d \tilde \P_{T_n}} = \mathbf{?}
+    \frac{d \tilde P_{T_{j+1}}}{d \tilde \P_{T_n}} = \mathbf{?}
 \] which should be expressed in terms of $\tilde W^{T_n}, \tilde \kappa(t, T_k), \nu(t, T_k)$ for $k = n-j+1, \dots, n$. 
 
 \section{Valuation of Swaptions in Jamshidian's Model} % (fold)
 \label{sec:valuation_of_swaptions_in_jamshidian_s_model}
 Let us assume that the model is well defined.  We will value the $j$-th swaption for $j = 0, \dots, n-1$.  Suppose that it is attainable, so that the price can be computed using the martingale method, meaning here that \[
-	\pi_t(X) = G_t(n-j) \E_{\tilde \P_{T_{j+1}}} \left( \frac{X}{G_{T_j}(n-j)} \given \sigf_t \right)
+    \pi_t(X) = G_t(n-j) \E_{\tilde \P_{T_{j+1}}} \left( \frac{X}{G_{T_j}(n-j)} \given \sigf_t \right)
 \] where $X$ is any attainable claim in Jamshidian's model with maturity $T$.  Observe that only a finite family of forward swaps are traded in this model.  In our case, $X = G_{T_j}(n-j) \left( \tilde \kappa(T_j, T_j) - \kappa \right)^+$, and thus \[
-	\mathbf{PS}_t^i(\kappa) = G_t(n-j) \E_{\tilde \P_{T_{j+1}}} \left( \left( \tilde \kappa(T_j, T_j) - \kappa \right)^+ \given \sigf_t \right).
+    \mathbf{PS}_t^i(\kappa) = G_t(n-j) \E_{\tilde \P_{T_{j+1}}} \left( \left( \tilde \kappa(T_j, T_j) - \kappa \right)^+ \given \sigf_t \right).
 \]  Since $\eta(t, T_j): [0, T_j] \rightarrow \R^d$ is deterministic, we can evaluated this expression using the Black formula, and obtain \[
-	\tilde \kappa(t, T_j) \Phi \left( \tilde d_+^j(\tilde \kappa(t, T_j), t, T_j) \right) - \kappa \Phi \left(\tilde d_-^j (\tilde \kappa(t, T_j), t, T_j) \right)
+    \tilde \kappa(t, T_j) \Phi \left( \tilde d_+^j(\tilde \kappa(t, T_j), t, T_j) \right) - \kappa \Phi \left(\tilde d_-^j (\tilde \kappa(t, T_j), t, T_j) \right)
 \]
 
  where \begin{align*}
-	\tilde d_{\pm}(x, t, T_j) &= \frac{\ln \frac{x}{\kappa} \pm \frac{1}{2} v^2_j(t, T_j)}{v_j(t, T_j)} \\
-	v_j(t, T_j) &= \int_t^{T_j} \left| v(u, T_j) \right|^2 \, du.
+    \tilde d_{\pm}(x, t, T_j) &= \frac{\ln \frac{x}{\kappa} \pm \frac{1}{2} v^2_j(t, T_j)}{v_j(t, T_j)} \\
+    v_j(t, T_j) &= \int_t^{T_j} \left| v(u, T_j) \right|^2 \, du.
 \end{align*}
 
 
 For replication of a swaption, we formally define the relative price \[
-	\mathbf{F}_{S_j, G}(t, T_j) = \frac{\mathbf{PS}_t^j}{G_t(n-j)} = \tilde \kappa(t, T_j) \Phi \left( \tilde d_+^j(t) \right) - \kappa \Phi(\tilde d^j_-(t)).
+    \mathbf{F}_{S_j, G}(t, T_j) = \frac{\mathbf{PS}_t^j}{G_t(n-j)} = \tilde \kappa(t, T_j) \Phi \left( \tilde d_+^j(t) \right) - \kappa \Phi(\tilde d^j_-(t)).
 \]  In this case, \[
-	dF_{S_j, G}(t, T_j) = \Phi(\tilde d_+^j(t)) \, d \tilde \kappa(t, T_j).
+    dF_{S_j, G}(t, T_j) = \Phi(\tilde d_+^j(t)) \, d \tilde \kappa(t, T_j).
 \]
 
 It is possible to then hedge this option using forward swaps in discrete time.  
 
 Let $\psi^j$ be any trading strategy in the $j$-th forward swap.  At time $0$ the value of our strategy is zero.  Then the trading strategy: \begin{align*}
-	t = 0 & \quad \text{$\psi^j_0$ positions in market forward swap with rate $\tilde \kappa(0, T_j)$} \\
-	t = t_1  & \quad \text{$\phi^j_{t_1}$ positions in market forward swap with rate $\tilde \kappa(t_1, T_j)$} \\
-		&\downarrow
-	t = t_n = T_j
+    t = 0 & \quad \text{$\psi^j_0$ positions in market forward swap with rate $\tilde \kappa(0, T_j)$} \\
+    t = t_1  & \quad \text{$\phi^j_{t_1}$ positions in market forward swap with rate $\tilde \kappa(t_1, T_j)$} \\
+        &\downarrow
+    t = t_n = T_j
 \end{align*}  Then gains and losses can be conveniently expressed in units of $G_t(n-j)$.  For instance, the value of our $\psi^j_0$ positions at time $t_1$ equals \begin{align*}
-	\mathbf{PL}_{t_1} = G_{t_1}(n-j) \psi^j_0 \left( \tilde \kappa(t_1, T_j) - \tilde \kappa(0, T_j) \right) \\
-	\tilde{\mathbf{PL}}_{t_1} = \underbrace{\psi^j_0 \left( \tilde \kappa(t_1, T_j) - \tilde \kappa(0, T_j) \right)}_{\text{paid in installments at times $T_{j+1}, \dots, T_n$.}}
+    \mathbf{PL}_{t_1} = G_{t_1}(n-j) \psi^j_0 \left( \tilde \kappa(t_1, T_j) - \tilde \kappa(0, T_j) \right) \\
+    \tilde{\mathbf{PL}}_{t_1} = \underbrace{\psi^j_0 \left( \tilde \kappa(t_1, T_j) - \tilde \kappa(0, T_j) \right)}_{\text{paid in installments at times $T_{j+1}, \dots, T_n$.}}
 \end{align*}  After $n$ steps, \begin{align*}
-	\tilde{\mathbf{PL}}_{T_j} = \sum_{k=0}^{n-1} \psi_{t_k}^j \left( \kappa(t_{k+1}, T_j) - \tilde \kappa(t_k, T_j) \right) \\
-	&\rightarrow_{\substack{n \rightarrow \infty \\ t_k = \frac{k}{n} T_j}} \int_0^{T_j} \psi^j_u \, d\kappa(u, T_j) 
+    \tilde{\mathbf{PL}}_{T_j} = \sum_{k=0}^{n-1} \psi_{t_k}^j \left( \kappa(t_{k+1}, T_j) - \tilde \kappa(t_k, T_j) \right) \\
+    &\rightarrow_{\substack{n \rightarrow \infty \\ t_k = \frac{k}{n} T_j}} \int_0^{T_j} \psi^j_u \, d\kappa(u, T_j) 
 \end{align*}
 
 The premium $\mathbf{PS}_0^j$ is totlaly invested in the level porftolio $G(n-j)$ so that the totla value of the profit and loss at time $T_j$ equals \[
-	\frac{\mathbf{PS}^j_0}{G_0(n-j)} + \int_0^{T_j} \psi^j_u \, d \kappa(u, T_j)
+    \frac{\mathbf{PS}^j_0}{G_0(n-j)} + \int_0^{T_j} \psi^j_u \, d \kappa(u, T_j)
 \]  Taking derivatives, we can show that by setting $\psi^j_t = \Phi \left( \tilde d_+^j(t) \right)$ we obtain the replicating strategy for the $j$-th swaption.
 % section valuation_of_swaptions_in_jamshidian_s_model (end)
 % section payer_swaptions (end)

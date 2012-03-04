@@ -18,22 +18,22 @@
 % \setmonofont[Scale=MatchLowercase]{Andale Mono}
 
 
-	% AMS Theorems
-	\theoremstyle{plain}% default 
-	\newtheorem{thm}{Theorem}[section] 
-	\newtheorem{lem}[thm]{Lemma} 
-	\newtheorem{prop}[thm]{Proposition} 
-	\newtheorem{cor}[thm]{Corollary} 
+    % AMS Theorems
+    \theoremstyle{plain}% default 
+    \newtheorem{thm}{Theorem}[section] 
+    \newtheorem{lem}[thm]{Lemma} 
+    \newtheorem{prop}[thm]{Proposition} 
+    \newtheorem{cor}[thm]{Corollary} 
 
-	\theoremstyle{definition} 
-		\newtheorem{defn}[thm]{Definition}
-		\newtheorem{conj}[thm]{Conjecture}
-		\newtheorem{exmp}[thm]{Example}
-	
-	\theoremstyle{remark} 
-		\newtheorem*{rem}{Remark} 
-		\newtheorem*{note}{Note} 
-		\newtheorem{case}{Case} 
+    \theoremstyle{definition} 
+        \newtheorem{defn}[thm]{Definition}
+        \newtheorem{conj}[thm]{Conjecture}
+        \newtheorem{exmp}[thm]{Example}
+    
+    \theoremstyle{remark} 
+        \newtheorem*{rem}{Remark} 
+        \newtheorem*{note}{Note} 
+        \newtheorem{case}{Case} 
 
 \newcommand{\al}{\alpha}
 \newcommand{\Q}{\mathbb{Q}}
@@ -62,18 +62,18 @@
 \newcommand{\minpoly}[2]{m_{#1, #2}(x)}
 
 \newcommand{\mapping}[5]{\begin{align*}
-	#1 : \quad     #2 &\rightarrow #3 \\
-			#4  &\mapsto #5
+    #1 : \quad     #2 &\rightarrow #3 \\
+            #4  &\mapsto #5
 \end{align*}}
 
 \newcommand{\intr}{\text{Int}\,} 
 \newcommand{\ol}[1]{\overline{#1}} 
 \newcommand{\xbf}{X \,\backslash \, F}
 
-		
+        
 \usepackage{hyperref}
-		
-\title{MATH 3961 - Metric Spaces}								% Document Title
+        
+\title{MATH 3961 - Metric Spaces}                               % Document Title
 \author{Andrew Tulloch}
 %\date{}                                           % Activate to display a given date or no date
 
@@ -87,114 +87,114 @@
 \label{sec:metric_spaces}
 
 \begin{defn}[Metric]
-	A metric, or distance function, on a set $X$ is a mapping $d : X \times X \rightarrow \R$ such that 
-	\begin{itemize}
-		\item $d(x,y) \geq 0$ for all $x,y \in X$, and $d(x,y) = 0$ if and only if $x = y$.
-		\item $d(x,y) = d(y,x)$ for all $x,y \in X$.
-		\item $d(x,z) \leq d(x,y) + d(y,z)$ for all $x,y,z \in X$.
-	\end{itemize}
-	
-	We call $(X,d)$ a \textbf{metric space}.
+    A metric, or distance function, on a set $X$ is a mapping $d : X \times X \rightarrow \R$ such that 
+    \begin{itemize}
+        \item $d(x,y) \geq 0$ for all $x,y \in X$, and $d(x,y) = 0$ if and only if $x = y$.
+        \item $d(x,y) = d(y,x)$ for all $x,y \in X$.
+        \item $d(x,z) \leq d(x,y) + d(y,z)$ for all $x,y,z \in X$.
+    \end{itemize}
+    
+    We call $(X,d)$ a \textbf{metric space}.
 \end{defn}
 
 \begin{defn}[Open ball]
-	Let $(X,d)$ be a metric space.  For $x \in X$ and $\epsilon > 0$, the set $B_d(x, \epsilon)$ defined by \[
-		B_d(x,\epsilon) = \{ y \in X \, | \, d(x,y) < \epsilon \}
-	\]
-	is callen an \textbf{open ball} in the set $X$.  
+    Let $(X,d)$ be a metric space.  For $x \in X$ and $\epsilon > 0$, the set $B_d(x, \epsilon)$ defined by \[
+        B_d(x,\epsilon) = \{ y \in X \, | \, d(x,y) < \epsilon \}
+    \]
+    is callen an \textbf{open ball} in the set $X$.  
 \end{defn}
 
 \begin{defn}[Open sets in metric spaces]
-	Let $(X,d)$ be a metric space and let $U$ be any subset of $X$.  Then $U$ is called an \textbf{open set} in $X$ if every point of $U$ is an interior point of $U$; that is, for any $a \in U$, there is an open ball $B(a, \epsilon)$ such that $B(a, \epsilon) \subseteq U$.
+    Let $(X,d)$ be a metric space and let $U$ be any subset of $X$.  Then $U$ is called an \textbf{open set} in $X$ if every point of $U$ is an interior point of $U$; that is, for any $a \in U$, there is an open ball $B(a, \epsilon)$ such that $B(a, \epsilon) \subseteq U$.
 \end{defn}
 
 \begin{defn}[Properties of open sets]
-	Let $\met$ be a metric space.
-	\begin{itemize}
-		\item $\emptyset$ and $X$ are open.
-		\item The union of an arbitrary collection of open sets is open.
-		\item The intersection of a \textbf{finite} number of open sets is open.
-	\end{itemize}
+    Let $\met$ be a metric space.
+    \begin{itemize}
+        \item $\emptyset$ and $X$ are open.
+        \item The union of an arbitrary collection of open sets is open.
+        \item The intersection of a \textbf{finite} number of open sets is open.
+    \end{itemize}
 \end{defn}
 
 
 
 
 \begin{defn}[Closed set]
-	A subset $A$ of a metric space $\met$ is \textbf{closed} if it's complement $X \backslash A$ is open in $X$.
+    A subset $A$ of a metric space $\met$ is \textbf{closed} if it's complement $X \backslash A$ is open in $X$.
 \end{defn}
 
 \begin{defn}[Properties of closed sets]
-	Let $\met$ be a metric space.
-	\begin{itemize}
-		\item $\emptyset$ and $X$ are closed.
-		\item The union of an finite collection of closed sets is closed.
-		\item The intersection of an arbitrary number of closed sets is closed.
-	\end{itemize}
+    Let $\met$ be a metric space.
+    \begin{itemize}
+        \item $\emptyset$ and $X$ are closed.
+        \item The union of an finite collection of closed sets is closed.
+        \item The intersection of an arbitrary number of closed sets is closed.
+    \end{itemize}
 \end{defn}
 
 \begin{defn}[Limit point of a subset]
-	Let $\met$ be a metric space and let $A$ be a subset of $X$.  Then a point $x$ in $X$ is a \textbf{limit point} of $A$ if every open ball $B(x, \epsilon)$ contains at least one point of $A$.
-	
-	The set of all limit points of $A$ is called the \textbf{derived set} $A'$.
+    Let $\met$ be a metric space and let $A$ be a subset of $X$.  Then a point $x$ in $X$ is a \textbf{limit point} of $A$ if every open ball $B(x, \epsilon)$ contains at least one point of $A$.
+    
+    The set of all limit points of $A$ is called the \textbf{derived set} $A'$.
 \end{defn}
 
 \begin{defn}[Closure of a set]
-	Let $\met$ be a metric space and let $A \subseteq X$.  Then the set consisting of $A$ and its limit points is called the \textbf{closure} of $A$, denoted $\ol{A}$.  \[
-		\ol{A} = A \cup A'
-	\]
+    Let $\met$ be a metric space and let $A \subseteq X$.  Then the set consisting of $A$ and its limit points is called the \textbf{closure} of $A$, denoted $\ol{A}$.  \[
+        \ol{A} = A \cup A'
+    \]
 \end{defn}
 
 \begin{thm}
-	The closure of a set is a closed set, and a set is closed if and only if it is equal to its closure.
+    The closure of a set is a closed set, and a set is closed if and only if it is equal to its closure.
 \end{thm}
 
 \begin{defn}[Interior of a set]
-	Let $\met$ be a metric space and let $A \subseteq X$.  A point $a \in A$ is an \textbf{interior point} of $A$ if there exists $\epsilon > 0$ such that \[
-		B(a, \epsilon) \subseteq A
-	\]
-	
-	The set of interior points of $A$ is called $\intr A$, the \textbf{interior} of $A$.
+    Let $\met$ be a metric space and let $A \subseteq X$.  A point $a \in A$ is an \textbf{interior point} of $A$ if there exists $\epsilon > 0$ such that \[
+        B(a, \epsilon) \subseteq A
+    \]
+    
+    The set of interior points of $A$ is called $\intr A$, the \textbf{interior} of $A$.
 \end{defn}
 
 \begin{thm}
-	The set $\intr A$ is open, and a set $A$ is open if and only if $\intr A = A$.
+    The set $\intr A$ is open, and a set $A$ is open if and only if $\intr A = A$.
 \end{thm}
 
 \begin{thm}[Properties of interior and closure]
-	The interior of a set $A$ is the largest open subset contained in $A$, and the closure of $A$ is the smallest closed set containing $A$.
+    The interior of a set $A$ is the largest open subset contained in $A$, and the closure of $A$ is the smallest closed set containing $A$.
 \end{thm}
 
 
 \begin{defn}[Isolated point]
-	Let $\met$ be a metric space and let $A$ be a subset of $X$.  A point $x \in A$ is called an \textbf{isolated point} if there exists an $\epsilon > 0$ such that \[
-		B(x, \epsilon) \backslash \{ x \} \cap A = \emptyset
-	\]
+    Let $\met$ be a metric space and let $A$ be a subset of $X$.  A point $x \in A$ is called an \textbf{isolated point} if there exists an $\epsilon > 0$ such that \[
+        B(x, \epsilon) \backslash \{ x \} \cap A = \emptyset
+    \]
 \end{defn}
 
 \begin{defn}[Boundary of a subset]
 Let $\met$ be a metric space and $A \subseteq X$.  Then the \textbf{boundary} of $A$ is defined as \[
-	\partial A = \ol{A} \cap \ol{X \backslash A} = \ol{A} \backslash \intr A
+    \partial A = \ol{A} \cap \ol{X \backslash A} = \ol{A} \backslash \intr A
 \]
 \end{defn}
 \begin{thm}[Properties of the boundary]
-	Let $\met$ be a metric space and $A \subset X$. Then we have \begin{itemize}
-		\item $\ol A = \intr A \cup \partial A$.
-		\item $A$ is closed if and only if $\partial A \subseteq A$.
-		\item $A$ is open if and only if $\partial A \subseteq X \backslash A$.
-		\item $\partial (X \backslash A) = \partial A$.
-	\end{itemize}
+    Let $\met$ be a metric space and $A \subset X$. Then we have \begin{itemize}
+        \item $\ol A = \intr A \cup \partial A$.
+        \item $A$ is closed if and only if $\partial A \subseteq A$.
+        \item $A$ is open if and only if $\partial A \subseteq X \backslash A$.
+        \item $\partial (X \backslash A) = \partial A$.
+    \end{itemize}
 \end{thm}
 
 
 \begin{defn}[Diameter of a set]
-	The diameter of a subset $A$ of a metric space $\met$, $\delta(A)$ is defined as \[
-		\delta(A) = \sup_{x,y \in A} d(x,y)
-	\]
+    The diameter of a subset $A$ of a metric space $\met$, $\delta(A)$ is defined as \[
+        \delta(A) = \sup_{x,y \in A} d(x,y)
+    \]
 \end{defn}
 
 \begin{defn}[Bounded set]
-	A subset $A$ of a metric space $\met$ is \textbf{bounded} if its diameter is finite.  Alternatively, a subset is bounded if it is contained in a large enough open set - i.e., there exists $x \in X$ and $\epsilon > 0$ such that $ A \subseteq B(x, \epsilon)$ 
+    A subset $A$ of a metric space $\met$ is \textbf{bounded} if its diameter is finite.  Alternatively, a subset is bounded if it is contained in a large enough open set - i.e., there exists $x \in X$ and $\epsilon > 0$ such that $ A \subseteq B(x, \epsilon)$ 
 \end{defn}
 
 \subsection{Separable metric spaces} % (fold)
@@ -202,11 +202,11 @@ Let $\met$ be a metric space and $A \subseteq X$.  Then the \textbf{boundary} of
 
 
 \begin{defn}[Separable metric space]
-	Let $\met$ be a metric space.  Then a subset $A$ of $X$ is said to be \textbf{dense} in $X$ if $\ol A = X$.  A metric space $\met$ is said to be \textbf{separable} if $X$ has a countable dense subset.
+    Let $\met$ be a metric space.  Then a subset $A$ of $X$ is said to be \textbf{dense} in $X$ if $\ol A = X$.  A metric space $\met$ is said to be \textbf{separable} if $X$ has a countable dense subset.
 \end{defn}
 
 \begin{cor}
-	We note that $A$ is dense in $X$ if and only if for any $x \in X$ and $\epsilon > 0$, there is a point $a \in A$ such that $d(x,a) < \epsilon$.
+    We note that $A$ is dense in $X$ if and only if for any $x \in X$ and $\epsilon > 0$, there is a point $a \in A$ such that $d(x,a) < \epsilon$.
 \end{cor}
 
 % subsection separable_metric_spaces (end)
@@ -215,14 +215,14 @@ Let $\met$ be a metric space and $A \subseteq X$.  Then the \textbf{boundary} of
 \label{sec:subspaces}
 
 \begin{defn}[Open sets in a subspace]
-	Let $\met$ be a metric space and $(Y, d_Y)$ be a metric subspace of $\met$.  Let $G$ be a subset of $Y$.  Then $G$ is open in $Y$ if and only if, for any $x \in G$, there is an open ball $B(x, \epsilon)$ in $X$ such that \[
-		B(x, \epsilon) \cap Y \subseteq G
-	\]
-	A subset $H$ of $Y$ is closed in $Y$ if its complement $G = Y \backslash H$ of $H$ is open in $Y$.
+    Let $\met$ be a metric space and $(Y, d_Y)$ be a metric subspace of $\met$.  Let $G$ be a subset of $Y$.  Then $G$ is open in $Y$ if and only if, for any $x \in G$, there is an open ball $B(x, \epsilon)$ in $X$ such that \[
+        B(x, \epsilon) \cap Y \subseteq G
+    \]
+    A subset $H$ of $Y$ is closed in $Y$ if its complement $G = Y \backslash H$ of $H$ is open in $Y$.
 
 \end{defn}
 \begin{thm}[Open sets in a metric subspace]
-	Let $(Y, d_Y)$ be a metric subspace of a metric space $\met$, and let $G \subseteq Y$.  Then $G$ is open in $Y$ if and only if there exists an open subset $U$ in $X$ such that $G = U \cap Y$.
+    Let $(Y, d_Y)$ be a metric subspace of a metric space $\met$, and let $G \subseteq Y$.  Then $G$ is open in $Y$ if and only if there exists an open subset $U$ in $X$ such that $G = U \cap Y$.
 \end{thm}
 
 
@@ -233,34 +233,34 @@ Let $\met$ be a metric space and $A \subseteq X$.  Then the \textbf{boundary} of
 \label{sub:convergence_in_a_metric_space}
 
 \begin{defn}[Convergence]
-	A sequence $(x_n)$ in a metric space $\met$ is said to \textbf{converge} to a point $x \in X$ if for any $\epsilon > 0$, there exists $N$ such that \[
-		n > N \quad \text{implies} \quad d(x_n, x) < \epsilon
-	\]
-	The point $x$ is called a \textbf{limit} of the sequence $(x_n)$
+    A sequence $(x_n)$ in a metric space $\met$ is said to \textbf{converge} to a point $x \in X$ if for any $\epsilon > 0$, there exists $N$ such that \[
+        n > N \quad \text{implies} \quad d(x_n, x) < \epsilon
+    \]
+    The point $x$ is called a \textbf{limit} of the sequence $(x_n)$
 \end{defn}
 
 \begin{cor}
-	A sequence $(x_n)$ in a metric space $\met$ is said to \textbf{converge} to a point $x \in X$ if any open ball $B(x, \epsilon)$ contains almost all $x_n$.
+    A sequence $(x_n)$ in a metric space $\met$ is said to \textbf{converge} to a point $x \in X$ if any open ball $B(x, \epsilon)$ contains almost all $x_n$.
 \end{cor}
 
 \begin{thm}[Connection between closed sets and convergent sequences]
-	Let $\met$ be a metric space, $A \subseteq X$ and $x \in X$.  Then 
-	\begin{itemize}
-		\item $x \in \ol{A}$ if and only if there is a sequence $(x_n)$ in $A$ such that $x_n \rightarrow x$.
-		\item $A$ is closed if and only if $A$ contains all the limits of convergent sequences in $A$.
-	\end{itemize}
+    Let $\met$ be a metric space, $A \subseteq X$ and $x \in X$.  Then 
+    \begin{itemize}
+        \item $x \in \ol{A}$ if and only if there is a sequence $(x_n)$ in $A$ such that $x_n \rightarrow x$.
+        \item $A$ is closed if and only if $A$ contains all the limits of convergent sequences in $A$.
+    \end{itemize}
 \end{thm}
 
 \begin{defn}[Uniform convergence]
 Let $(f_n)$ be a sequence of real-valued functions defined on a set $S$ and let $f$ be a function defined on $S$.  Then we say that the sequence $(f_n)$ converges to $f$ uniformly if for any $\epsilon > 0$, there exists $N$ such that \[
-	\sup_{x \in S} d(f_n(x), f(x)) < \epsilon
+    \sup_{x \in S} d(f_n(x), f(x)) < \epsilon
 \] for all $n > N$, and where $N$ is independent of $x$.
 \end{defn}
 
 \begin{defn}[Cauchy Sequences]
-	A sequence $(x_n)$ in a metric space $\met$ is said to be \textbf{Cauchy} in $X$ if for any $\epsilon > 0$, there exists $N$ such that \[
-		m,n > N \Rightarrow d(x_m, x_n) < \epsilon
-	\]
+    A sequence $(x_n)$ in a metric space $\met$ is said to be \textbf{Cauchy} in $X$ if for any $\epsilon > 0$, there exists $N$ such that \[
+        m,n > N \Rightarrow d(x_m, x_n) < \epsilon
+    \]
 \end{defn}
 
 \begin{defn}[Completeness in Metric Spaces]
@@ -268,15 +268,15 @@ A space $X$ is said to be complete if every Cauchy sequence in $X$ converges in 
 \end{defn}
 
 \begin{prop}
-	Every convergent sequence $(x_n)$ in a metric space $\met$ is a Cauchy sequence.
+    Every convergent sequence $(x_n)$ in a metric space $\met$ is a Cauchy sequence.
 \end{prop}
 
 \begin{cor}
-	Let $\met$ be a complete metric space.  Then a closed metric subspace $Y = (Y, d_Y)$ of $X$ is complete.  
+    Let $\met$ be a complete metric space.  Then a closed metric subspace $Y = (Y, d_Y)$ of $X$ is complete.  
 \end{cor}
 
 \begin{prop}
-	Let $\met$ be a metric space.  If a Cauchy sequence $(x_n)$ in $\met$ has a subsequence converging to $x$, then $(x_n)$ converges to $x$.
+    Let $\met$ be a metric space.  If a Cauchy sequence $(x_n)$ in $\met$ has a subsequence converging to $x$, then $(x_n)$ converges to $x$.
 \end{prop}
 % subsection convergence_in_a_metric_space (end)
 
@@ -288,30 +288,30 @@ A space $X$ is said to be complete if every Cauchy sequence in $X$ converges in 
 \label{sec:continuous_mappings}
 
 \begin{defn}[Continuous mapping between metric spaces]
-	Let $\met$ and $(Y, d_Y)$ be two metric spaces.  Then a mapping $f : X \rightarrow Y$ is said to be \textbf{continuous} at a point $a \in X$ if for any $\epsilon > 0$, there exists $\delta$ such that \[
-		d_X(x,a) < \delta \Rightarrow d_Y(f(x), f(a)) < \epsilon
-	\]
+    Let $\met$ and $(Y, d_Y)$ be two metric spaces.  Then a mapping $f : X \rightarrow Y$ is said to be \textbf{continuous} at a point $a \in X$ if for any $\epsilon > 0$, there exists $\delta$ such that \[
+        d_X(x,a) < \delta \Rightarrow d_Y(f(x), f(a)) < \epsilon
+    \]
 \end{defn}
 
 \begin{thm}[Topological characterisations of continuity]
-	A funtion $f : X \rightarrow Y$ is continuous at $a \in X$ if and only if for any open set $W$ containing $f(a)$, there exists an open set $G$ containing $A$ such that $f(G) \subseteq W$.  
+    A funtion $f : X \rightarrow Y$ is continuous at $a \in X$ if and only if for any open set $W$ containing $f(a)$, there exists an open set $G$ containing $A$ such that $f(G) \subseteq W$.  
 \end{thm}
 
 \begin{thm}[Sequential characterisation of continuity]
-	A function $f: X \rightarrow Y$ is continuous at $a \in X$ if and only if for any sequence $(x_n)$ which converges to $a$ in $X$, the corresponding sequence $(f(x_n))$ converges to $f(a)$ in $Y$.
+    A function $f: X \rightarrow Y$ is continuous at $a \in X$ if and only if for any sequence $(x_n)$ which converges to $a$ in $X$, the corresponding sequence $(f(x_n))$ converges to $f(a)$ in $Y$.
 \end{thm}
 
 
 \begin{defn}[Continuous mapping]
-	A map is continuous on $X$ if any only if it is continuous at every point in $X$.
+    A map is continuous on $X$ if any only if it is continuous at every point in $X$.
 \end{defn}
 
 \begin{thm}[Topological definition of continuous mapping]
-	A mapping $f: X \rightarrow Y$ is continuous on $X$ if and only if for any open set $W$ in $Y$, the set $f^{-1}(W)$ is open in $X$. Alternatively, a function is continuous if the preimage of open sets are open in $X$.
+    A mapping $f: X \rightarrow Y$ is continuous on $X$ if and only if for any open set $W$ in $Y$, the set $f^{-1}(W)$ is open in $X$. Alternatively, a function is continuous if the preimage of open sets are open in $X$.
 \end{thm}
 
 \begin{thm}[Continuity in terms of closed sets]
-	A mapping $f: X \rightarrow Y$ is continuous on $X$ if and only if the preimage of closed sets are closed in $X$.
+    A mapping $f: X \rightarrow Y$ is continuous on $X$ if and only if the preimage of closed sets are closed in $X$.
 \end{thm}
 
 % section continuous_mappings (end)
@@ -321,100 +321,100 @@ A space $X$ is said to be complete if every Cauchy sequence in $X$ converges in 
 \section{Homeomorphism and Equivalent Metrics} % (fold)
 \label{sec:homeomorphism_and_equivalent_metrics}
 \begin{defn}[Homeomorphism]
-	Let $X$ and $Y$ be metric spaces and let $f: X \rightarrow Y$ be a map between them.  Then $f$ is a \textbf{homeomorphism} from $X$ to $Y$ if we have \begin{itemize}
-		\item $f$ is a bijection.
-		\item $f$ and $f^{-1}$ are continuous
-	\end{itemize}
+    Let $X$ and $Y$ be metric spaces and let $f: X \rightarrow Y$ be a map between them.  Then $f$ is a \textbf{homeomorphism} from $X$ to $Y$ if we have \begin{itemize}
+        \item $f$ is a bijection.
+        \item $f$ and $f^{-1}$ are continuous
+    \end{itemize}
 
-	If a homeomorphism exists between $X$ and $Y$, we say that $X$ and $Y$ are \textbf{homeomorphic}, and that $X \simeq Y$.
+    If a homeomorphism exists between $X$ and $Y$, we say that $X$ and $Y$ are \textbf{homeomorphic}, and that $X \simeq Y$.
 \end{defn}
 
 \begin{defn}[Characterisations of homeomorphism]
 Let $f: X \rightarrow Y$ be a bijective mapping.  Then the following are equivalent.
 \begin{itemize}
-	\item $f$ is a homeomorphism;
-	\item for any $U \subseteq X$, $U$ is open in $X$ if and only if $f(U)$ is open in $Y$;
-	\item for any $G \subseteq X$, $G$ is closed in $X$ if and only if $f(G)$ is closed in $Y$;
-	\item for any $A \subseteq X$, $f(\ol{A}) = \ol{f(A)}$;
-	\item for any $B \subseteq Y$, $\ol{f^{-1}(B)} = f^{-1}(\ol{B})$
-	\item for any $B \subseteq Y$, $f^{-1}(\intr B) = \intr f^{-1}(B)$
+    \item $f$ is a homeomorphism;
+    \item for any $U \subseteq X$, $U$ is open in $X$ if and only if $f(U)$ is open in $Y$;
+    \item for any $G \subseteq X$, $G$ is closed in $X$ if and only if $f(G)$ is closed in $Y$;
+    \item for any $A \subseteq X$, $f(\ol{A}) = \ol{f(A)}$;
+    \item for any $B \subseteq Y$, $\ol{f^{-1}(B)} = f^{-1}(\ol{B})$
+    \item for any $B \subseteq Y$, $f^{-1}(\intr B) = \intr f^{-1}(B)$
 \end{itemize}
 \end{defn}
 
 \begin{defn}[Isometric mappings]
-	Let $\met$ and $(Y, d_Y)$ be two metric spaces and $f: X \rightarrow Y$ a mapping.  Then $f$ is said to be \textbf{isometric} or an \textbf{isometry} if $f$ preserves distances; that is, for all $x,y \in X$, \[
-		d_Y(f(x), f(y)) = d_X(x,y)
-	\]
-	The space $X$ is said to be isometric with the space $Y$ if there exists a bijective isometry of $X$ onto $Y$.  The spaces $X$ and $Y$ are isometric spaces
+    Let $\met$ and $(Y, d_Y)$ be two metric spaces and $f: X \rightarrow Y$ a mapping.  Then $f$ is said to be \textbf{isometric} or an \textbf{isometry} if $f$ preserves distances; that is, for all $x,y \in X$, \[
+        d_Y(f(x), f(y)) = d_X(x,y)
+    \]
+    The space $X$ is said to be isometric with the space $Y$ if there exists a bijective isometry of $X$ onto $Y$.  The spaces $X$ and $Y$ are isometric spaces
 \end{defn}
 
 \begin{thm}
-	Any isometric mapping from $X$ onto $Y$ is a homeomorphism.  Moreover, if $X$ is complete and $Y$ is isometric with $X$, then $Y$ is also complete.
-	\end{thm}
-	
+    Any isometric mapping from $X$ onto $Y$ is a homeomorphism.  Moreover, if $X$ is complete and $Y$ is isometric with $X$, then $Y$ is also complete.
+    \end{thm}
+    
 \begin{defn}[Equivalent metrics]
-	Let $(X, d_1)$ and $(X, d_2)$ be two metric spaces.  If the identity mapping $\text{id} : (X, d_1) \rightarrow (X, d_2)$ is a homeomorphism, then the metrics $d_1$ and $d_2$ are said to be equivalent on $X$.
+    Let $(X, d_1)$ and $(X, d_2)$ be two metric spaces.  If the identity mapping $\text{id} : (X, d_1) \rightarrow (X, d_2)$ is a homeomorphism, then the metrics $d_1$ and $d_2$ are said to be equivalent on $X$.
 \end{defn}
 
 \begin{thm}[Characterisations of equivalent metrics]
-	Let $(X, d_1)$ and $(X, d_2)$ be two metric spaces.  Then the following are equivalent.
-	\begin{itemize}
-		\item The metrics $d_1$ and $d_2$ are equivalent on $X$;
-		\item for any $U \subseteq X$, $U$ is open in $(X, d_1)$ if and only if $U$ is open in $(X, d_2)$;
-		\item for any $G \subseteq X$, $G$ is closed in $(X, d_1)$ if and only if $G$ is closed in $(X, d_2)$;
-		\item The sequence $(x_n)$ converges to $a$ in $(X, d_1)$ if and only if it converges to $a$ in $(X, d_2)$.
-	\end{itemize}
+    Let $(X, d_1)$ and $(X, d_2)$ be two metric spaces.  Then the following are equivalent.
+    \begin{itemize}
+        \item The metrics $d_1$ and $d_2$ are equivalent on $X$;
+        \item for any $U \subseteq X$, $U$ is open in $(X, d_1)$ if and only if $U$ is open in $(X, d_2)$;
+        \item for any $G \subseteq X$, $G$ is closed in $(X, d_1)$ if and only if $G$ is closed in $(X, d_2)$;
+        \item The sequence $(x_n)$ converges to $a$ in $(X, d_1)$ if and only if it converges to $a$ in $(X, d_2)$.
+    \end{itemize}
 \end{thm}
 
 \begin{thm}[Equivalent metrics]
-	Let $(X, d_1)$ and $(X, d_2)$ be two metric spaces.  If there exist strictly positive numbers $c$ and $C$ such that \[
-		c d_1(x,y) \leq d_2(x,y) \leq C d_1(x,y)
-	\] for all $x,y \in X$, then the metrics $d_1, d_2$ are equivalent on $X$.
-	\end{thm}
+    Let $(X, d_1)$ and $(X, d_2)$ be two metric spaces.  If there exist strictly positive numbers $c$ and $C$ such that \[
+        c d_1(x,y) \leq d_2(x,y) \leq C d_1(x,y)
+    \] for all $x,y \in X$, then the metrics $d_1, d_2$ are equivalent on $X$.
+    \end{thm}
 % section homeomorphism_and_equivalent_metrics (end)
 
 \section{Contraction Mapping Theorem} % (fold)
 \label{sec:contraction_mapping_theorem}
 
 \begin{defn}[Uniformly continuous]
-	A function $f: X \rightarrow Y$ is uniformly continuous if for any $\epsilon > 0$ there exists $\delta > 0$ such that \[
-		d_X(x,y) < \delta \Rightarrow d_Y(f(x), f(y)) < \epsilon
-	\] where $\delta$ is independent of $x,y$.
+    A function $f: X \rightarrow Y$ is uniformly continuous if for any $\epsilon > 0$ there exists $\delta > 0$ such that \[
+        d_X(x,y) < \delta \Rightarrow d_Y(f(x), f(y)) < \epsilon
+    \] where $\delta$ is independent of $x,y$.
 \end{defn}
 
 \begin{defn}[Contraction mapping]
-	Let $f$ be a mapping from a metric space $\met$ to itself.  Then $f$ is called a \textbf{contraction mapping} if there exists a constant $K > 1$ such that for all $x,y \in X$, \[
-		d(f(x), f(y)) \leq K (x,y)
-	\] 
+    Let $f$ be a mapping from a metric space $\met$ to itself.  Then $f$ is called a \textbf{contraction mapping} if there exists a constant $K > 1$ such that for all $x,y \in X$, \[
+        d(f(x), f(y)) \leq K (x,y)
+    \] 
 \end{defn}
 
 \begin{prop}
-	If $f: X \rightarrow X$ is a contraction mapping, then $f$ is \textbf{uniformly continuous}, and hence continuous, on $X$
+    If $f: X \rightarrow X$ is a contraction mapping, then $f$ is \textbf{uniformly continuous}, and hence continuous, on $X$
 \end{prop}
 
 
 
 \begin{thm}[Banach fixed point theorem]
-	Let $\met$ be a complete metric space and let $f: X \rightarrow X$ be a contraction mapping.  Then $f$ has a unique fixed point $p$ in $X$
+    Let $\met$ be a complete metric space and let $f: X \rightarrow X$ be a contraction mapping.  Then $f$ has a unique fixed point $p$ in $X$
 \end{thm}
 
 \begin{proof}
-	\textbf{Existence:} Show that the sequence $(x_n)$, defined as $x_n = f^n(x_0)$ for some $x_0 \in X$ is Cauchy.
-	
-	\textbf{Uniqueness:} If $p$ and $q$ are fixed points of $f$, the we have that \[
-			d(p,q) = d(f(p), f(q)) \leq K d(p,q)
-			\] and so $p = q$.
+    \textbf{Existence:} Show that the sequence $(x_n)$, defined as $x_n = f^n(x_0)$ for some $x_0 \in X$ is Cauchy.
+    
+    \textbf{Uniqueness:} If $p$ and $q$ are fixed points of $f$, the we have that \[
+            d(p,q) = d(f(p), f(q)) \leq K d(p,q)
+            \] and so $p = q$.
 \end{proof}
 
 \begin{cor}[Application of Banach fixed point theorem to ordinary differential equations]
-	We seek to solve the differential equation \[
-		\frac{dx}{dt} = f(t,x)
-	\] given the initial condition $x(t_0) = x_0$.
-	
-	Define $Y$ be the subspace of the set of all continuous functions on $[t_0 - \beta, t_0 + \beta]$ with the supremum metric, satisfying $d(x(t), x_0) < c \beta$
-	We claim that the mapping $F: Y \rightarrow Y$ defined by\[
-		F(x(t)) = x_0 + \int_{t_0}^t f(s, x(s)) \, ds
-	\] is a contraction mapping.  As $F$ is a contraction mapping on a complete metric space, we must have that it has a unique fixed point, which satisfies the differential equation above.
+    We seek to solve the differential equation \[
+        \frac{dx}{dt} = f(t,x)
+    \] given the initial condition $x(t_0) = x_0$.
+    
+    Define $Y$ be the subspace of the set of all continuous functions on $[t_0 - \beta, t_0 + \beta]$ with the supremum metric, satisfying $d(x(t), x_0) < c \beta$
+    We claim that the mapping $F: Y \rightarrow Y$ defined by\[
+        F(x(t)) = x_0 + \int_{t_0}^t f(s, x(s)) \, ds
+    \] is a contraction mapping.  As $F$ is a contraction mapping on a complete metric space, we must have that it has a unique fixed point, which satisfies the differential equation above.
 \end{cor}
 
 % section contraction_mapping_theorem (end)
@@ -431,11 +431,11 @@ A space $X$ is said to be complete if every Cauchy sequence in $X$ converges in 
 We now state the theorem that every metric space can be completed. The space $\hat{X}$ in the theorem is called the completion of the given space $X$.
 
 \begin{thm}[Completion of a metric spaces]
-	Let $\met$ be a metric space.  Then there exists a complete metric space $\hat{X} = (\hat{X}, \hat{d})$ which has a subspace $W$ that is isometric with $X$ and is dense in $\hat{X}$
+    Let $\met$ be a metric space.  Then there exists a complete metric space $\hat{X} = (\hat{X}, \hat{d})$ which has a subspace $W$ that is isometric with $X$ and is dense in $\hat{X}$
 \end{thm}
 
 \begin{proof}
-	TO DO
+    TO DO
 \end{proof}
 % section completeness (end)
 
@@ -445,53 +445,53 @@ We now state the theorem that every metric space can be completed. The space $\h
 
 \begin{defn}[Disconnected]
 Let $X$ be a metric space (or topological space). Then $X$ is said to be \textbf{disconnected} if there exist two non-empty subsets $A_1, A_2$ of $X$ such that \[
-	X= A_1 \cup A_2 \text{ and } A_1 \cap \ol A_2 , \ol A_1 \cap A_2 = \emptyset
+    X= A_1 \cup A_2 \text{ and } A_1 \cap \ol A_2 , \ol A_1 \cap A_2 = \emptyset
 \]
 
 If no two sets $A_1, A_2$ exist, we say that $X$ is \textbf{connected}
 \end{defn}
 
 \begin{thm}[Characterisations of connectedness]
-	Let $\met$ be a metric space. Then the following statements are equivalent:
-	\begin{itemize}
-		\item $X$ is disconnected;
-		\item There exist two non-empty disjoint open subsets $A_1, A_2$ in $X$ such that $X = A_1 \cup A_2$;
-		\item There exist two non-empty disjoint closed subsets $A_1, A_2$ in $X$ such that $X = A_1 \cup A_2$; 
-		\item There exists are proper subset of $X$ which is both open and closed in $X$
-	\end{itemize}
+    Let $\met$ be a metric space. Then the following statements are equivalent:
+    \begin{itemize}
+        \item $X$ is disconnected;
+        \item There exist two non-empty disjoint open subsets $A_1, A_2$ in $X$ such that $X = A_1 \cup A_2$;
+        \item There exist two non-empty disjoint closed subsets $A_1, A_2$ in $X$ such that $X = A_1 \cup A_2$; 
+        \item There exists are proper subset of $X$ which is both open and closed in $X$
+    \end{itemize}
 \end{thm}
 
 \begin{defn}[Connected subspace]
-	Let $\met$ be a metric space and $A$ a non-empty subset of $X$.  Then $A$ is said to be a connected subst of $X$ if $A$ is connected as a metric subspace and to be a \textbf{disconnected} subset of $X$ if $A$ is disconnected as a metric subspace.
+    Let $\met$ be a metric space and $A$ a non-empty subset of $X$.  Then $A$ is said to be a connected subst of $X$ if $A$ is connected as a metric subspace and to be a \textbf{disconnected} subset of $X$ if $A$ is disconnected as a metric subspace.
 \end{defn}
 
 \begin{thm}[Intervals in $\R$]
-	A subset $A$ of $\R$ containing at least two points is connected if and only if $A$ is a interval.
+    A subset $A$ of $\R$ containing at least two points is connected if and only if $A$ is a interval.
 \end{thm}
 
 \begin{thm}[Characterisations of connectedness]
-	Let $\mathcal{S}(2)$ be the two point discrete metric space.
-	If $A$ is connected then any continuous mapping $f: A \rightarrow \mathcal{S}(2)$ is a constant mapping.  Alternatively, if $f : A \rightarrow \mathcal{S}(2)$ is continuous, then $f(A) = \{0\}$ or $\{1\}$.
+    Let $\mathcal{S}(2)$ be the two point discrete metric space.
+    If $A$ is connected then any continuous mapping $f: A \rightarrow \mathcal{S}(2)$ is a constant mapping.  Alternatively, if $f : A \rightarrow \mathcal{S}(2)$ is continuous, then $f(A) = \{0\}$ or $\{1\}$.
 \end{thm}
 
 \begin{thm}[Connectedness is a topological property]
-	Let $X$ and $Y$ be two metric spaces, and let $f: X \rightarrow Y$ be a continuous mapping.  Then if $A \subseteq X$ is connected in $X$, then the image $f(A)$ is connected in $Y$.
+    Let $X$ and $Y$ be two metric spaces, and let $f: X \rightarrow Y$ be a continuous mapping.  Then if $A \subseteq X$ is connected in $X$, then the image $f(A)$ is connected in $Y$.
 \end{thm}
 
 
 \begin{defn}[Path-connected]
-	Let $X$ be a metric space and $A$ a subset of $X$. Then $A$ is said to be \textbf{path-connected} if for any $a,b \in A$, there is a path joining $a$ and $b$, that is, a continuous mapping $f: [0,1] \rightarrow A$ such that $f(0) = a, f(1) = b$.
+    Let $X$ be a metric space and $A$ a subset of $X$. Then $A$ is said to be \textbf{path-connected} if for any $a,b \in A$, there is a path joining $a$ and $b$, that is, a continuous mapping $f: [0,1] \rightarrow A$ such that $f(0) = a, f(1) = b$.
 \end{defn}
 
 
 
 \begin{thm}[Path-connectedness implies connectedness]
-	Let $X$ be a metric space and $A$ a subset of $X$.  If $A$ is path-connected, then $A$ is connected. 
+    Let $X$ be a metric space and $A$ a subset of $X$.  If $A$ is path-connected, then $A$ is connected. 
 \end{thm}
 We note that the converse is not necessarily true - that is, there exist connected sets that are not path connected.  However, in $\R^n$, we have the following.
 
 \begin{thm}[For open sets in $\R^n$, path-connectedness is equivalent to connectedness]
-	Let $X$ be any open set in $\R^n$.  Then $X$ is connected if and only if $X$ is path-connected.
+    Let $X$ be any open set in $\R^n$.  Then $X$ is connected if and only if $X$ is path-connected.
 \end{thm}
 % section connectedness (end)
 
@@ -503,58 +503,58 @@ We note that the converse is not necessarily true - that is, there exist connect
 Compactness in metric spaces.
 
 \begin{defn}[Open covering of a set]
-	Let $X$ be a metric space (or any topological space), and let $A \subseteq X$.  Then a family $\mathcal{U}$ of open sets in $X$, is called an \textbf{open covering} of $A$ if \[
-		A \subseteq \cup_{U \in \mathcal{U}} U
-	\]
+    Let $X$ be a metric space (or any topological space), and let $A \subseteq X$.  Then a family $\mathcal{U}$ of open sets in $X$, is called an \textbf{open covering} of $A$ if \[
+        A \subseteq \cup_{U \in \mathcal{U}} U
+    \]
 A subset $\mathcal{V}$ of $\mathcal{U}$ is called a \textbf{finite subcovering} if $\mathcal{V}$ covers $A$ and has a finite number of elements.
 \end{defn}
 
 \begin{defn}[Compact subset of a topological space]
-	let $X$ be a metric space (or any topological space), and let $A \subseteq X$.  Then $A$ is called a \textbf{compact subset} of $X$ if \textbf{every} open covering $\mathcal{U}$ of $A$ has a finite subcovering $\mathcal{V}$ of $A$. 
+    let $X$ be a metric space (or any topological space), and let $A \subseteq X$.  Then $A$ is called a \textbf{compact subset} of $X$ if \textbf{every} open covering $\mathcal{U}$ of $A$ has a finite subcovering $\mathcal{V}$ of $A$. 
 \end{defn}
 
 In metric spaces, we have the following useful theorem.
 
 \begin{thm}[Implications of compactness in metric spaces]
-	Let $\met$ be a metric space.  If $A$ is a compact subset in $X$, then $A$ is closed and bounded in $X$.  
+    Let $\met$ be a metric space.  If $A$ is a compact subset in $X$, then $A$ is closed and bounded in $X$.  
 \end{thm}
 
 In $\R^n$, we have the following, more general, results.  These are key results in characterising compact subsets of Euclidean space.
 
 \begin{thm}[Heine-Borel]
-	Every closed and bounded interval in $\R$ is compact.
+    Every closed and bounded interval in $\R$ is compact.
 \end{thm}
 
 \begin{thm}[Compactness in $\R^n$]
-	Let $A$ be a subset of $\R^n$.  Then $A$ is compact if and only if $A$ is closed and bounded.
+    Let $A$ be a subset of $\R^n$.  Then $A$ is compact if and only if $A$ is closed and bounded.
 \end{thm}
 
 \subsection{Properties of compact sets} % (fold)
 \label{sub:properties_of_compact_sets}
 \begin{thm}
-	A subset $A$ in $\R^n$ is compact if and only if every sequence in $A$ has a convergent subsequence with limit in $A$.
+    A subset $A$ in $\R^n$ is compact if and only if every sequence in $A$ has a convergent subsequence with limit in $A$.
 \end{thm}
 
 \begin{defn}[Compactness is a topological property]
-	Let $X$ and $Y$ be topological spaces, and let $f : X \rightarrow Y$ be a continuous mapping.  If a subset $A$ in $X$ is compact, then the image $f(A)$ is compact in $Y$.
-	
-	That is, continuous images of compact sets are compact.
+    Let $X$ and $Y$ be topological spaces, and let $f : X \rightarrow Y$ be a continuous mapping.  If a subset $A$ in $X$ is compact, then the image $f(A)$ is compact in $Y$.
+    
+    That is, continuous images of compact sets are compact.
 \end{defn}
 
 \begin{cor}
-	The following are true in an arbitrary metric space.
-	\begin{itemize}
-		\item A continuous image of a compact subset is closed.
-		\item A continuous image of a compact subset is bounded.
-	\end{itemize}
+    The following are true in an arbitrary metric space.
+    \begin{itemize}
+        \item A continuous image of a compact subset is closed.
+        \item A continuous image of a compact subset is bounded.
+    \end{itemize}
 \end{cor}
 
 \begin{thm}
-	Any closed subspace $A$ of a compact space $X$ is compact.
+    Any closed subspace $A$ of a compact space $X$ is compact.
 \end{thm}
 
 \begin{proof}
-	TO DO
+    TO DO
 \end{proof}
 % subsection properties_of_compact_sets (end)
 % section compactness (end)
@@ -563,11 +563,11 @@ In $\R^n$, we have the following, more general, results.  These are key results 
 \section{Applications to Continuous Functions $f : [a,b] \rightarrow \R$} % (fold)
 \label{sec:applications_to_f_a_b_rightarrow_r_}
 \begin{thm}[Intermediate Value Theorem]
-	Let $f: [a,b] \rightarrow \R$ be a continuous function.  Let $K$ be a number lying between $f(a)$ and $f(b)$.  Then there exists a point $c \in [a,b]$ such that $f(c) = K$.
+    Let $f: [a,b] \rightarrow \R$ be a continuous function.  Let $K$ be a number lying between $f(a)$ and $f(b)$.  Then there exists a point $c \in [a,b]$ such that $f(c) = K$.
 \end{thm}
 
 \begin{proof}
-	Using connectedness of $[a,b]$, we have that $f([a,b])$ is connected.  Thus, if $f(a) < K < f(b)$, then $K \in f([a,b])$.  Hence, there exists $c \in [a,b]$ such that $f(c) = K$.
+    Using connectedness of $[a,b]$, we have that $f([a,b])$ is connected.  Thus, if $f(a) < K < f(b)$, then $K \in f([a,b])$.  Hence, there exists $c \in [a,b]$ such that $f(c) = K$.
 \end{proof}
 % section applications_to_f_a_b_rightarrow_r_ (end)
 
@@ -577,132 +577,132 @@ In $\R^n$, we have the following, more general, results.  These are key results 
 
 A topological space is defined as follows.  Let $X$ be a non-empty set.  Then a family $\tau$ of subsets of $X$ is called a topology for $X$ if $\tau$ satisfies 
 \begin{itemize}
-	\item $\emptyset, X \in \tau$;
-	\item The union of any subfamily of members of $\tau$ is in $\tau$;
-	\item The intersection of any \textbf{finite} subfamily of members of $\tau$ is in $\tau$.
+    \item $\emptyset, X \in \tau$;
+    \item The union of any subfamily of members of $\tau$ is in $\tau$;
+    \item The intersection of any \textbf{finite} subfamily of members of $\tau$ is in $\tau$.
 \end{itemize}
 
 The pair $(X, \tau)$ is called a \textbf{topological space}, and the members of $\tau$ are called the \textbf{open sets} in $(X, \tau)$. 
 
 
 \begin{defn}[Interior of a subset]
-	Let $\topo$ be any topological space and $A \subseteq X$.  Then $a \in A$ is called an \textbf{interior point} of $A$ if there exists an open set $U$ containing $a$ such that $U \subseteq A$.  We denote by $\intr A$ the set of all interior points of $A$.
+    Let $\topo$ be any topological space and $A \subseteq X$.  Then $a \in A$ is called an \textbf{interior point} of $A$ if there exists an open set $U$ containing $a$ such that $U \subseteq A$.  We denote by $\intr A$ the set of all interior points of $A$.
 \end{defn}
 
 \begin{thm}[Properties of the interior]
-	Let $\topo$ be any topological space and let $A \subseteq X$.  Then $\intr A$ is the \textbf{largest} open subset contained in $A$.
+    Let $\topo$ be any topological space and let $A \subseteq X$.  Then $\intr A$ is the \textbf{largest} open subset contained in $A$.
 \end{thm}
 
 \begin{defn}[Closed subsets]
-	Let $A$ be a subset of a topological space $\topo$.  Then $A$ is called a \textbf{closed set} in $X$ if the complement $X \backslash A$ is open in $X$, that is, if $X \backslash A \in \tau$.
+    Let $A$ be a subset of a topological space $\topo$.  Then $A$ is called a \textbf{closed set} in $X$ if the complement $X \backslash A$ is open in $X$, that is, if $X \backslash A \in \tau$.
 \end{defn}
 
 \begin{thm}
-	In a topological space $\topo$,
-	\begin{itemize}
-		\item $\emptyset$ and $X$ are closed;
-		\item The intersection of any collection of closed sets is closed;
-		\item The union of any \textbf{finite} collection of closed sets are closed.
-	\end{itemize}
+    In a topological space $\topo$,
+    \begin{itemize}
+        \item $\emptyset$ and $X$ are closed;
+        \item The intersection of any collection of closed sets is closed;
+        \item The union of any \textbf{finite} collection of closed sets are closed.
+    \end{itemize}
 \end{thm}
 
 \begin{defn}[Limit point of a subset]
-	Let $\topo$ be a topological space and let $A \subseteq X$.  Then a point $x \in X$ is called a \textbf{limit point} or \textbf{accumulation point} of $A$ if every open set $G$ containing $x$ contains a point of $A$ different from $x$, i.e.,\[
-		G \in \tau, x \in G \Rightarrow (G \backslash \{x \}) \cap A \neq \emptyset
-	\]
+    Let $\topo$ be a topological space and let $A \subseteq X$.  Then a point $x \in X$ is called a \textbf{limit point} or \textbf{accumulation point} of $A$ if every open set $G$ containing $x$ contains a point of $A$ different from $x$, i.e.,\[
+        G \in \tau, x \in G \Rightarrow (G \backslash \{x \}) \cap A \neq \emptyset
+    \]
 We denote by $A'$ the set of all limit points of $A$, and is called the derived set of $A$.
 \end{defn}
 
 \begin{thm}[Properties of closed sets]
-	Let $\topo$ be a topological space and let $A \subseteq X$.  Then $A$ is closed if and only if $A' \subseteq A$.
+    Let $\topo$ be a topological space and let $A \subseteq X$.  Then $A$ is closed if and only if $A' \subseteq A$.
 \end{thm}
 
 
 \begin{defn}[Closure of a subset]
-	Let $\topo$ be a topological space and $A \subseteq X$.  Then the set consisting of $A$ together with all its limit points is called the \textbf{closure} of $A$, and is denoted by $\ol A$.  Thus,\[
-		\ol A = A \cup A'
- 	\]
+    Let $\topo$ be a topological space and $A \subseteq X$.  Then the set consisting of $A$ together with all its limit points is called the \textbf{closure} of $A$, and is denoted by $\ol A$.  Thus,\[
+        \ol A = A \cup A'
+    \]
 \end{defn}
 
 \begin{prop}
-	Let $\topo$ be a topological space and $A \subseteq X$.  Then \[
-		\ol A = \{ x \in X \, | \, \text{for every open set $U$ containing $x$, $U \cap A \neq \emptyset$} \}.
-	\]
+    Let $\topo$ be a topological space and $A \subseteq X$.  Then \[
+        \ol A = \{ x \in X \, | \, \text{for every open set $U$ containing $x$, $U \cap A \neq \emptyset$} \}.
+    \]
 \end{prop}
 
 \begin{thm}
-		Let $\topo$ be a topological space and $A \subseteq X$.  Then $\ol A$ is the smallest closed set containing $A$.
+        Let $\topo$ be a topological space and $A \subseteq X$.  Then $\ol A$ is the smallest closed set containing $A$.
 \end{thm}
 
 \begin{defn}[Dense subset]
-		Let $\topo$ be a topological space and $A \subseteq X$.  Then a subset $A$ of $X$ is said to be \textbf{dense} in $X$ if $\ol A = X$.
+        Let $\topo$ be a topological space and $A \subseteq X$.  Then a subset $A$ of $X$ is said to be \textbf{dense} in $X$ if $\ol A = X$.
 \end{defn}
 
 \begin{defn}[Nowhere dense]
-		Let $\topo$ be a topological space and $A \subseteq X$. Then $A$ is \textbf{nowhere dense} in $X$ if and only if the interior of the closure of $A$ is empty.  That is, $\intr (\ol A) = \emptyset$.  
-		
-		Alternatively, a set is nowhere dense if and only if $X \backslash \ol A$ is dense in $X$.
+        Let $\topo$ be a topological space and $A \subseteq X$. Then $A$ is \textbf{nowhere dense} in $X$ if and only if the interior of the closure of $A$ is empty.  That is, $\intr (\ol A) = \emptyset$.  
+        
+        Alternatively, a set is nowhere dense if and only if $X \backslash \ol A$ is dense in $X$.
 \end{defn}
 
 \begin{defn}[Boundary of a subset]
-	Let $\topo$ be a topological space and $A \subseteq X$.  Then the \textbf{boundary} of $A$, denoted by $\partial A$, is defined as \[
-		\partial A = \ol A \cap \ol{X \backslash A}
-	\]
+    Let $\topo$ be a topological space and $A \subseteq X$.  Then the \textbf{boundary} of $A$, denoted by $\partial A$, is defined as \[
+        \partial A = \ol A \cap \ol{X \backslash A}
+    \]
 \end{defn}
 
 \begin{thm}[Characterisation of the boundary]
-		Let $\topo$ be a topological space and $A \subseteq X$. Then \[
-			\ol A = \intr A \cup \partial A
-		\]
+        Let $\topo$ be a topological space and $A \subseteq X$. Then \[
+            \ol A = \intr A \cup \partial A
+        \]
 \end{thm}
 
 \begin{defn}[Convergence in topological spaces]
-	Let $\topo$ be a topological space.  Then a sequence $(x_n)$ of points in $X$ is said to \textbf{converge} to a point $x \in X$ if for any open set $U$ containing $x$, there exists a positive integer $N$ such that \[
-		n > N \Rightarrow x_n \in U
-	\]
-	That is, if any open set $U$ containing $x$ contains almost all of the terms of the sequence.
+    Let $\topo$ be a topological space.  Then a sequence $(x_n)$ of points in $X$ is said to \textbf{converge} to a point $x \in X$ if for any open set $U$ containing $x$, there exists a positive integer $N$ such that \[
+        n > N \Rightarrow x_n \in U
+    \]
+    That is, if any open set $U$ containing $x$ contains almost all of the terms of the sequence.
 \end{defn}
 
 \begin{defn}[Induced or relative topology]
-		Let $\topo$ be a topological space and $Y \subseteq X$. Let \[
-			\tau_Y = \{ G \subseteq Y \, | \, G = U \cap Y \text{ for some $U \in \tau$} \}
-		\]
-	Then $\tau_Y$ is a topology for $Y$, called the \textbf{induced} or \textbf{relative topology} on $Y$ and the space $(Y, \tau_Y)$ is called a subspace of $\topo$
+        Let $\topo$ be a topological space and $Y \subseteq X$. Let \[
+            \tau_Y = \{ G \subseteq Y \, | \, G = U \cap Y \text{ for some $U \in \tau$} \}
+        \]
+    Then $\tau_Y$ is a topology for $Y$, called the \textbf{induced} or \textbf{relative topology} on $Y$ and the space $(Y, \tau_Y)$ is called a subspace of $\topo$
 \end{defn}
 
 \begin{defn}[Bases for a topology]
-	Let $\topo$ be a topological space.  Then a subfamily $\mathcal{B}$ of $\tau$ is called a \textbf{base} for the topology if for every open set $U$ in $\tau$ is the union of members of $\mathcal{B}$.  Equivalently, $\mathcal{B} \subseteq \tau$ is a basis for $\tau$ if and only if for any point $a$ in an open set $U \in \tau$, there exists $V \in \mathcal{B}$ such that $a \in V \subseteq U$.
+    Let $\topo$ be a topological space.  Then a subfamily $\mathcal{B}$ of $\tau$ is called a \textbf{base} for the topology if for every open set $U$ in $\tau$ is the union of members of $\mathcal{B}$.  Equivalently, $\mathcal{B} \subseteq \tau$ is a basis for $\tau$ if and only if for any point $a$ in an open set $U \in \tau$, there exists $V \in \mathcal{B}$ such that $a \in V \subseteq U$.
 \end{defn}
 
 \begin{thm}[Characterisation of a basis for a topology]
-	A family of nonempty subsets of a set $X$ is a base for some topology $\tau$ on $X$ if and only if it satisfies the following properties.
-	\begin{itemize}
-		\item $X = \cup_{B \in \mathcal{B}} B$
-		\item For any $B_1, B_2 \in \mathcal{B}$, $B_1 \cap B_2$ is the union of members of $\mathcal{B}$.  Equivalently, if $b \in B_1 \cap B_2$, then there exists $B_b \in \mathcal{B}$ such that $b \in B_b \subseteq B_1 \cap B_2$.
-	\end{itemize}
+    A family of nonempty subsets of a set $X$ is a base for some topology $\tau$ on $X$ if and only if it satisfies the following properties.
+    \begin{itemize}
+        \item $X = \cup_{B \in \mathcal{B}} B$
+        \item For any $B_1, B_2 \in \mathcal{B}$, $B_1 \cap B_2$ is the union of members of $\mathcal{B}$.  Equivalently, if $b \in B_1 \cap B_2$, then there exists $B_b \in \mathcal{B}$ such that $b \in B_b \subseteq B_1 \cap B_2$.
+    \end{itemize}
 \end{thm}
 
 \begin{thm}[Continuity in terms of a basis]
-	Let $(X, \tau_X)$ and $(Y, \tau_Y)$ be topological spaces and $f : X \rightarrow Y$ a mapping.  Let $\mathcal{B}_Y$ be a basis for $\tau_Y$.  Then $f$ is continuous if and only if for any $B \in \mathcal{B}_Y$, $f^{-1}(B)$ is open in $X$ - i.e., is in $\tau_X$.
+    Let $(X, \tau_X)$ and $(Y, \tau_Y)$ be topological spaces and $f : X \rightarrow Y$ a mapping.  Let $\mathcal{B}_Y$ be a basis for $\tau_Y$.  Then $f$ is continuous if and only if for any $B \in \mathcal{B}_Y$, $f^{-1}(B)$ is open in $X$ - i.e., is in $\tau_X$.
 \end{thm}
 
 
 \begin{thm}[Product spaces]
-	Let $(X, \tau_X)$ and $(Y, \tau_Y)$ be topological spaces.  Then the family $\mathcal{B}$ given by \[
-		\mathcal{B} = \{ U \times V \, | \, U \in \tau_X, V \in \tau_Y \}
-	\]
-	is a base for a topology on $X \times Y$.
+    Let $(X, \tau_X)$ and $(Y, \tau_Y)$ be topological spaces.  Then the family $\mathcal{B}$ given by \[
+        \mathcal{B} = \{ U \times V \, | \, U \in \tau_X, V \in \tau_Y \}
+    \]
+    is a base for a topology on $X \times Y$.
 \end{thm}
 
 \subsection{Compactness} % (fold)
 \label{sub:compactness}
 
 \begin{defn}[Compactness in terms of a basis]
-	A topological space $\topo$ is compact if and only if there exists a base $\mathcal{B}$ for $\tau$ such that every open covering of $X$ be members of $\mathcal{B}$ has a finite subcovering. 
+    A topological space $\topo$ is compact if and only if there exists a base $\mathcal{B}$ for $\tau$ such that every open covering of $X$ be members of $\mathcal{B}$ has a finite subcovering. 
 \end{defn}
 
 \begin{thm}
-	The product space of two compact topological spaces is compact.
+    The product space of two compact topological spaces is compact.
 \end{thm}
 
 % subsection compactness (end)
@@ -711,11 +711,11 @@ We denote by $A'$ the set of all limit points of $A$, and is called the derived 
 \label{sub:connectedness}
 
 \begin{thm}
-	Let $X$ and $Y $ be topological spaces and let $f : X \rightarrow Y$ be a homeomorphism.  Then $X$ is connected if and only if $Y$ is connected.  	
+    Let $X$ and $Y $ be topological spaces and let $f : X \rightarrow Y$ be a homeomorphism.  Then $X$ is connected if and only if $Y$ is connected.    
 \end{thm}
 
 \begin{thm}
-	Let $X$ be a topological space.  Let $\{ A_i \}$be a family of connected subsets in $X$ and suppose that for all $i,j$, $A_i \cap A_j \neq \emptyset$.  Then the union $A = \cup_i A_i$ is connected.
+    Let $X$ be a topological space.  Let $\{ A_i \}$be a family of connected subsets in $X$ and suppose that for all $i,j$, $A_i \cap A_j \neq \emptyset$.  Then the union $A = \cup_i A_i$ is connected.
 \end{thm}
 
 % subsection connectedness (end)
@@ -727,7 +727,7 @@ We denote by $A'$ the set of all limit points of $A$, and is called the derived 
 \label{sec:spearation_properties}
 
 \begin{defn}[$T_0$-spaces]
-	A topological space $\topo$ is called a \textbf{$T_0$-space} if for any pair of distinct points $a,b$ of $X$, either there exists an open set $U$ containing $a$ and not $b$ or an open set $V$ containing $b$ and not $a$.
+    A topological space $\topo$ is called a \textbf{$T_0$-space} if for any pair of distinct points $a,b$ of $X$, either there exists an open set $U$ containing $a$ and not $b$ or an open set $V$ containing $b$ and not $a$.
 \end{defn}
 
 \begin{defn}[$T_1$-spaces]
@@ -737,36 +737,36 @@ A topological space $\topo$ is called a \textbf{$T_1$-space} if for any pair of 
 Every $T_1$-space is $T_0$, but not the reverse.
 
 \begin{thm}[Characterisation of $T_1$-spaces]
-	AA topological space $\topo$ is called a \textbf{$T_1$-space} if and only if eery singleton set $\{ a \}$ of $X$ is closed (and so every finite subset of $X$ is closed).
+    AA topological space $\topo$ is called a \textbf{$T_1$-space} if and only if eery singleton set $\{ a \}$ of $X$ is closed (and so every finite subset of $X$ is closed).
 \end{thm}
-	
+    
 \begin{defn}[$T_2$-spaces or Hausdorff spaces]
-	A topological space $\topo$ is called a \textbf{$T_2$-space} or a \textbf{Hausdorff space} if for any pair of distinct points $a,b$ of $X$, there are disjoint open sets $U$ and $V$ in $X$ such that $a \in U$ and $b \in V$.
+    A topological space $\topo$ is called a \textbf{$T_2$-space} or a \textbf{Hausdorff space} if for any pair of distinct points $a,b$ of $X$, there are disjoint open sets $U$ and $V$ in $X$ such that $a \in U$ and $b \in V$.
 \end{defn}
 
 Every $T_2$-space is $T_1$, but not the reverse.
 
 \begin{exmp}
-	Any metric space is a $T_2$-space
+    Any metric space is a $T_2$-space
 \end{exmp}
-	
+    
 \begin{thm}
-	Every subspace of a $T_1$- or $T_2$-space is a $T_1$- or $T_2$-space. 
+    Every subspace of a $T_1$- or $T_2$-space is a $T_1$- or $T_2$-space. 
 \end{thm}
 
 \begin{thm}
-	Every product space of a $T_1$- or $T_2$-space is a $T_1$- or $T_2$-space. 
+    Every product space of a $T_1$- or $T_2$-space is a $T_1$- or $T_2$-space. 
 \end{thm}
 
 \subsection{Regular Spaces and $T_3$-spaces} % (fold)
 \label{sub:regular_spaces}
 
 \begin{defn}[Regular space]
-	A topological space $\topo$ is called a \textbf{regular} space if for any closed set $F$ in $X$ and $a \in X \backslash F$, there are disjoint open sets $U$ and $V$ in $X$ such that $F \subseteq U$ and $a \in V$.  A regular $T_1$-space is called a $T_3$-space.
+    A topological space $\topo$ is called a \textbf{regular} space if for any closed set $F$ in $X$ and $a \in X \backslash F$, there are disjoint open sets $U$ and $V$ in $X$ such that $F \subseteq U$ and $a \in V$.  A regular $T_1$-space is called a $T_3$-space.
 \end{defn}
 
 \begin{thm}
-	A topological space $X$ is regular if and only if for any point $a$ in $X$ and any open set $U$ containing $A$, there is an open set $W$ containing $a$ such that $\ol W \subseteq U$.
+    A topological space $X$ is regular if and only if for any point $a$ in $X$ and any open set $U$ containing $A$, there is an open set $W$ containing $a$ such that $\ol W \subseteq U$.
 
 \end{thm}
 
@@ -778,27 +778,27 @@ Every $T_3$-space is $T_2$, but not the reverse.
 \label{sub:normal_spaces_and_t_4_spaces}
 
 \begin{defn}[Normal spaces and $T_4$-spaces]
-	A topological space $\topo$ is called a \textbf{normal space} if for any two disjoint closed sets $A$ and $B$ in $X$, there are disjoint open sets $U$ and $V$ in $X$ such that $A \subseteq U$ and $B \subseteq V$.  A normal $T_1$-space is called a $T_4$-space.
+    A topological space $\topo$ is called a \textbf{normal space} if for any two disjoint closed sets $A$ and $B$ in $X$, there are disjoint open sets $U$ and $V$ in $X$ such that $A \subseteq U$ and $B \subseteq V$.  A normal $T_1$-space is called a $T_4$-space.
 \end{defn}
 
 Clearly every $T_4$-space is a $T_3$-space.  However, a normal space may not be a $T_1$-space or a regular space and a regular space may not be normal.
 
 \begin{thm}
-	Every metric space $\met$ is a $T_4$-space
+    Every metric space $\met$ is a $T_4$-space
 \end{thm}
 
 \begin{thm}
-	Every compact Hausdorff space is normal.  Additionally, any compact subset $A$ of a Hausdorff space $X$ is closed.
+    Every compact Hausdorff space is normal.  Additionally, any compact subset $A$ of a Hausdorff space $X$ is closed.
 \end{thm}
 % subsection normal_spaces_and_t_4_spaces (end)
 
 Our final theorem is \textbf{Urysohn's Lemma}.
 \begin{thm}[Urysohn's Lemma]
-	Let $X$ be a normal space.  Then, for any disjoint closed sets $A$ and $B$ in $X$, there exists a continuous function $f: X \rightarrow [0,1]$ such that $F(A) = \{0 \}$ and $F(B) = \{1 \}.$
+    Let $X$ be a normal space.  Then, for any disjoint closed sets $A$ and $B$ in $X$, there exists a continuous function $f: X \rightarrow [0,1]$ such that $F(A) = \{0 \}$ and $F(B) = \{1 \}.$
 \end{thm}
 
 \begin{thm}[Tietze Extension Theorem]
-	Let $X$ be a normal space, $A$ a closed subset of $X$, and $f : A \rightarrow \R$ continuous.  Then there is a continuous function $g: X \rightarrow R$ such that $g |_A = f$ - that is, $g$ restricted to $A$ is $f$. 
+    Let $X$ be a normal space, $A$ a closed subset of $X$, and $f : A \rightarrow \R$ continuous.  Then there is a continuous function $g: X \rightarrow R$ such that $g |_A = f$ - that is, $g$ restricted to $A$ is $f$. 
 \end{thm}
 
 % section spearation_properties (end)
@@ -808,71 +808,71 @@ Our final theorem is \textbf{Urysohn's Lemma}.
 Let $V$ be a vector space over a field $\F$, where $\F$ is either $\R$ or $\Com$.
 
 \begin{defn}[Inner product space]
-	A function $\langle \cdot, \cdot \rangle: V \times V \rightarrow \F$ is called an inner product if 
-	\begin{itemize}
-		\item $\iprod{u}{v} = \ol{\iprod{u}{v}}$ for all $u,v \in V$.
-		\item $\iprod{u}{u} \geq 0$ for all $u \in V$ with equality if and only if $u = 0$.
-		\item $\iprod{\alpha u + \beta v}{w} = \alpha \iprod{u}{w} + \beta \iprod{v}{w}$ for all $u,v,w \in V$ and $\alpha, \beta \in \F$.
-	\end{itemize}
-	We say that $V$ equipped with $\iprod{\cdot}{\cdot}$ is an \textbf{inner product space}.
+    A function $\langle \cdot, \cdot \rangle: V \times V \rightarrow \F$ is called an inner product if 
+    \begin{itemize}
+        \item $\iprod{u}{v} = \ol{\iprod{u}{v}}$ for all $u,v \in V$.
+        \item $\iprod{u}{u} \geq 0$ for all $u \in V$ with equality if and only if $u = 0$.
+        \item $\iprod{\alpha u + \beta v}{w} = \alpha \iprod{u}{w} + \beta \iprod{v}{w}$ for all $u,v,w \in V$ and $\alpha, \beta \in \F$.
+    \end{itemize}
+    We say that $V$ equipped with $\iprod{\cdot}{\cdot}$ is an \textbf{inner product space}.
 \end{defn}
 
 \begin{defn}[Induced norm]
-	If $V$ is an inner product space with $\iprod{\cdot}{\cdot}$, we define \[
-		\| u \| := \sqrt{\iprod{u}{u}}
-	\] for all $u \in E$.  The operation $\| \cdot \|$ is the \textbf{induced norm}.
+    If $V$ is an inner product space with $\iprod{\cdot}{\cdot}$, we define \[
+        \| u \| := \sqrt{\iprod{u}{u}}
+    \] for all $u \in E$.  The operation $\| \cdot \|$ is the \textbf{induced norm}.
 \end{defn}
 
 \begin{thm}[Cauchy-Schwarz inequality]
-	Let $V$ be an inner product space.  The \[
-		|\iprod{u}{v}| \leq \|u \| \| v \|
-	\]
+    Let $V$ be an inner product space.  The \[
+        |\iprod{u}{v}| \leq \|u \| \| v \|
+    \]
 \end{thm}
 
 \begin{defn}[Hilbert space]
-	An inner product space which is complete with respect to the induced norm is called a \textbf{Hilbert space}.
+    An inner product space which is complete with respect to the induced norm is called a \textbf{Hilbert space}.
 \end{defn}
 
 \begin{prop}[Continuity of the inner product]
-	Let $V$ be an inner product space.  Then the inner product is continuous with respect to the induced norm.  
+    Let $V$ be an inner product space.  Then the inner product is continuous with respect to the induced norm.  
 \end{prop}
 
 \begin{prop}[Parallelogram identity]
-	Let $V$ be an inner product space and $\| \cdot \|$ the induced norm.  Then \[
-		\| u + v \|^2 + \| u - v \|^2 = 2 \|u \|^2 + 2 \| v \|^2
-	\] for all $u,v \in E$
+    Let $V$ be an inner product space and $\| \cdot \|$ the induced norm.  Then \[
+        \| u + v \|^2 + \| u - v \|^2 = 2 \|u \|^2 + 2 \| v \|^2
+    \] for all $u,v \in E$
 \end{prop}
 
 \subsection{Projections and orthogonal complements} % (fold)
 \label{sub:projections_and_orthogonal_complements}
 
 \begin{defn}[Projection]
-	Let $V$ be a normed space and $M$ a non-empty closed subset of $V$.  We define the \textbf{set of projections of $x$ onto $M$} by \[
-		P_M(x) = \{ m \in M \, | \, \|x - m \| = d(x, M) \}
-	\]
-	This set is non-empty as $M$ is closed.
+    Let $V$ be a normed space and $M$ a non-empty closed subset of $V$.  We define the \textbf{set of projections of $x$ onto $M$} by \[
+        P_M(x) = \{ m \in M \, | \, \|x - m \| = d(x, M) \}
+    \]
+    This set is non-empty as $M$ is closed.
 \end{defn}
 \begin{defn}[Orthogonal complement]
-	For an arbitrary non-empty subset $M$ of an inner product space $H$ we set \[
-		M^{\perp} := \{ x \in H \, | \, \iprod{x}{m} = 0 \text{ for all $m \in M$} \}
-	\]
-	We call $M^\perp$ the orthogonal complement of $M$ in $H$.
+    For an arbitrary non-empty subset $M$ of an inner product space $H$ we set \[
+        M^{\perp} := \{ x \in H \, | \, \iprod{x}{m} = 0 \text{ for all $m \in M$} \}
+    \]
+    We call $M^\perp$ the orthogonal complement of $M$ in $H$.
 \end{defn}
 
 \begin{lem}[Properties of the orthogonal complement]
-	Suppose $M$ is a non-empty subset of the inner product space $H$.  Then $M^\perp$ is a closed subspace of $H$ and $M^\perp = \ol M^\perp = (\text{span $M$})^\perp = (\text{span $\ol M$})\perp$
+    Suppose $M$ is a non-empty subset of the inner product space $H$.  Then $M^\perp$ is a closed subspace of $H$ and $M^\perp = \ol M^\perp = (\text{span $M$})^\perp = (\text{span $\ol M$})\perp$
 \end{lem}
 
 \begin{thm}[Key properties of the orthogonal complement]
-	Suppose that $M$ is a closed subspace of a Hilbert space $H$. Then 
-	\begin{itemize}
-		\item $H = M \oplus M^\perp$ 
-	\end{itemize}
-	
-	\end{thm}
+    Suppose that $M$ is a closed subspace of a Hilbert space $H$. Then 
+    \begin{itemize}
+        \item $H = M \oplus M^\perp$ 
+    \end{itemize}
+    
+    \end{thm}
 
 \begin{cor}[Dense subspace of a Hilbert space]
-	A subspace $M$ of a Hilbert space $H$ is dense in $H$ if and only if $M^\perp = \{0 \}$.
+    A subspace $M$ of a Hilbert space $H$ is dense in $H$ if and only if $M^\perp = \{0 \}$.
 \end{cor}
 
 % subsection projections_and_orthogonal_complements (end)
@@ -881,30 +881,30 @@ Let $V$ be a vector space over a field $\F$, where $\F$ is either $\R$ or $\Com$
 \label{sub:orthogonal_systems}
 
 \begin{defn}[Orthogonal systems]  
-	Let $H$ be an inner product space with inner product $\iprod{\cdot}{\cdot}$ and induced norm $\| \cdot \|$.  Let $M \subset H$ be a non-empty subset.
-	\begin{itemize}
-		\item $M$ is called an \textbf{orthogonal system} if $\iprod{u}{v} = 0$ for all $u,v \in M$ with $u \neq v$.
-		\item $M$ is called an \textbf{orthonomal system} if it is orthogonal and $\| u \| = 1$.
-		\item $M$ is called a \textbf{complete orthonormal sytem} or \textbf{orthonormal basis} of $H$ if it is an orthonormal system and $\ol{\text{span $M$}} = H$.
-	\end{itemize}
+    Let $H$ be an inner product space with inner product $\iprod{\cdot}{\cdot}$ and induced norm $\| \cdot \|$.  Let $M \subset H$ be a non-empty subset.
+    \begin{itemize}
+        \item $M$ is called an \textbf{orthogonal system} if $\iprod{u}{v} = 0$ for all $u,v \in M$ with $u \neq v$.
+        \item $M$ is called an \textbf{orthonomal system} if it is orthogonal and $\| u \| = 1$.
+        \item $M$ is called a \textbf{complete orthonormal sytem} or \textbf{orthonormal basis} of $H$ if it is an orthonormal system and $\ol{\text{span $M$}} = H$.
+    \end{itemize}
 
 \end{defn}
 
 \begin{thm}[Pythagoras's Theorem]
-	Suppose that $H$ is an inner product space and $M$ an orthogonal system in $H$.  Then the following assertions are true:
-	\begin{itemize}
-		\item $M \backslash \{0\}$ is linearly independent.
-		\item If $(x_n)$ is a sequence in $M$ with distinct terms and $H$ is complete, then $\sum x_k$ converges if and only if $\sum \| x_k \|^2$ converges.  In that case, \[
-			\left\| \sum x_k \right\|^2 = \sum \|x_k \|^2
-		\]
-	\end{itemize}
+    Suppose that $H$ is an inner product space and $M$ an orthogonal system in $H$.  Then the following assertions are true:
+    \begin{itemize}
+        \item $M \backslash \{0\}$ is linearly independent.
+        \item If $(x_n)$ is a sequence in $M$ with distinct terms and $H$ is complete, then $\sum x_k$ converges if and only if $\sum \| x_k \|^2$ converges.  In that case, \[
+            \left\| \sum x_k \right\|^2 = \sum \|x_k \|^2
+        \]
+    \end{itemize}
 \end{thm}
 
 \begin{thm}[Bessel's Inequality]
-	Let $H$ be an inner product space and $M$ an orthonormal system in $H$.  Then \[
-		\sum_{m \in M} | \iprod{x}{m}|^2 \leq \| x \|^2
-	\]
-	for all $x \in H$.  Moreover, the set $\{ m \in M \, | \, \iprod{x}{m} \neq 0 \}$ is at most countable for all $x \in H$.
+    Let $H$ be an inner product space and $M$ an orthonormal system in $H$.  Then \[
+        \sum_{m \in M} | \iprod{x}{m}|^2 \leq \| x \|^2
+    \]
+    for all $x \in H$.  Moreover, the set $\{ m \in M \, | \, \iprod{x}{m} \neq 0 \}$ is at most countable for all $x \in H$.
 \end{thm}
 
 % subsection orthogonal_systems (end)

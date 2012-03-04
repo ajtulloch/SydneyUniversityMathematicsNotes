@@ -35,8 +35,8 @@
 \newtheorem{case}{Case} 
 
 \usepackage{hyperref}
-		
-\title{MATH 3968 - Differential Geometry}								% Document Title
+        
+\title{MATH 3968 - Differential Geometry}                               % Document Title
 \author{Andrew Tulloch}
 %\date{}                                           % Activate to display a given date or no date
 
@@ -47,74 +47,74 @@
 
 \section{Curves in $\mathbb{R}^N$}
 \begin{defn}
-	A curve is said to be \emph{regular} if $\alpha'(t) \neq 0$ for all $t$
+    A curve is said to be \emph{regular} if $\alpha'(t) \neq 0$ for all $t$
 \end{defn}
 
 \begin{defn}
-	Let $\alpha$ be a curve parametrized by arc length.  The number $| \alpha''(s)| = k(s)$ is called the \emph{curvature} of $\alpha$ at $s$.
+    Let $\alpha$ be a curve parametrized by arc length.  The number $| \alpha''(s)| = k(s)$ is called the \emph{curvature} of $\alpha$ at $s$.
 \end{defn}
 
 \begin{defn}[Frenet equations]
-	\begin{align*}
-		\mathbf{t'} = k \mathbf{n} \\
-		\mathbf{n'} = -\mathbf{k}t + \tau \mathbf{b}\\
-		\mathbf{b'} = - \tau \mathbf{n}\\
-	\end{align*}	
+    \begin{align*}
+        \mathbf{t'} = k \mathbf{n} \\
+        \mathbf{n'} = -\mathbf{k}t + \tau \mathbf{b}\\
+        \mathbf{b'} = - \tau \mathbf{n}\\
+    \end{align*}    
 \end{defn}
 
 \begin{defn}
-	Total curvature of a unit speed curve $\alpha(s)$ from $a$ to $b$ is defined as \[
-		\int_a^b k ds = \theta(b)-\theta(a)
-	\]
+    Total curvature of a unit speed curve $\alpha(s)$ from $a$ to $b$ is defined as \[
+        \int_a^b k ds = \theta(b)-\theta(a)
+    \]
 \end{defn}
 
 \begin{defn}
-	The winding number $k$ is defined as the integer such that, for a closed curve, the total curvature \[
-		\int_a^b k ds = 2 \pi k
-	\]
+    The winding number $k$ is defined as the integer such that, for a closed curve, the total curvature \[
+        \int_a^b k ds = 2 \pi k
+    \]
 \end{defn}
 
 \begin{thm}[Rotation Theorem]
-	For a piecewise smooth simple closed curve, traversed in an anti-clockwise direction around a bounded region of the plane, the winding number is 1
+    For a piecewise smooth simple closed curve, traversed in an anti-clockwise direction around a bounded region of the plane, the winding number is 1
 \end{thm}
 
 \section{General Analysis}
 \begin{defn}[Homeomorphism]
-	A map is a \emph{homeomorphism} is it is continuous and has a continuous inverse.
+    A map is a \emph{homeomorphism} is it is continuous and has a continuous inverse.
 \end{defn}
 
 \begin{defn}[Diffeomorphism] 
-	A map is a \emph{diffeomorphism} is it is smooth and has a smooth inverse
+    A map is a \emph{diffeomorphism} is it is smooth and has a smooth inverse
 \end{defn}
 
 \begin{defn}[Differential of a smooth map]
-	The differential of a smooth map $\varphi: \R^N \rightarrow \R^M$ is defined as follows.  Let $w \in R^M$, and let $\alpha$ be a differentiable curve such that $\alpha(0) = p$, $\alpha'(0) = w$.  Then the composition $\beta = \varphi \circ \alpha$ is differentiable, and we have \[
-		d \varphi_p (w) = \beta'(0) = (\varphi \circ \alpha)'(0)
-	\]
-	
+    The differential of a smooth map $\varphi: \R^N \rightarrow \R^M$ is defined as follows.  Let $w \in R^M$, and let $\alpha$ be a differentiable curve such that $\alpha(0) = p$, $\alpha'(0) = w$.  Then the composition $\beta = \varphi \circ \alpha$ is differentiable, and we have \[
+        d \varphi_p (w) = \beta'(0) = (\varphi \circ \alpha)'(0)
+    \]
+    
 \end{defn}
 
 \begin{thm}[Inverse function theorem]
-	Let  $\phi : U \subset \R^N \rightarrow \R^M$ be a differentiable mapping and suppose that the differential $d \phi$ is an isomorphism at $p \in U$.  Then there exists a neighbourhood $V \subset U$ and a neighbourhood $W$ of $F(p)$ such that $\phi$ is a diffeomorphism. 
+    Let  $\phi : U \subset \R^N \rightarrow \R^M$ be a differentiable mapping and suppose that the differential $d \phi$ is an isomorphism at $p \in U$.  Then there exists a neighbourhood $V \subset U$ and a neighbourhood $W$ of $F(p)$ such that $\phi$ is a diffeomorphism. 
 \end{thm}
 
 \begin{thm}[Implicit function theorem]
-	%% TODO Find this
-	
+    %% TODO Find this
+    
 \end{thm}
 
 \begin{defn}
-	A map $\phi$ is \emph{regular} at a point $p$ if the matrix of $d\phi$ has full rank at $p$.  A critical point has that the matrix of $d\phi$ does not have a full rank at $p$.
+    A map $\phi$ is \emph{regular} at a point $p$ if the matrix of $d\phi$ has full rank at $p$.  A critical point has that the matrix of $d\phi$ does not have a full rank at $p$.
 \end{defn}
 
 \begin{defn}[Implicitly defined surfaces]
-	Let $f: \R^3 \rightarrow \R$ be a smooth function.  Let $p$ be a point in $\R^3$ with $f(p) =0$ and $f'(p) \neq 0$.  Then there exists a neighbourhood of the point $a$ such that there exists a smooth parameterisation $\phi : U \rightarrow \R^3$ of the set of solutions to $f(x) = 0$.
+    Let $f: \R^3 \rightarrow \R$ be a smooth function.  Let $p$ be a point in $\R^3$ with $f(p) =0$ and $f'(p) \neq 0$.  Then there exists a neighbourhood of the point $a$ such that there exists a smooth parameterisation $\phi : U \rightarrow \R^3$ of the set of solutions to $f(x) = 0$.
 \end{defn}
 
 \begin{rem}
-	This allows us to define surfaces implicitly as the set of solutions to some function.  E.g. the sphere in $\R^3$, the sphere $S^2$ is defined as the set of solutions to \[
-		f(x,y,z) = x^2 +y^2 + z^2 - 1 = 0
-	\]
+    This allows us to define surfaces implicitly as the set of solutions to some function.  E.g. the sphere in $\R^3$, the sphere $S^2$ is defined as the set of solutions to \[
+        f(x,y,z) = x^2 +y^2 + z^2 - 1 = 0
+    \]
 \end{rem}
 
 \section{Surfaces in $\R^3$}
@@ -122,249 +122,249 @@
 
 
 \begin{defn}
-	A \emph{regular surface} is defined intuitively that for every point $p \in S$, there exists a diffeomorphism between some open set $U \in \R^2$ and a neighbourhood $V$ of that point $p \in S$
+    A \emph{regular surface} is defined intuitively that for every point $p \in S$, there exists a diffeomorphism between some open set $U \in \R^2$ and a neighbourhood $V$ of that point $p \in S$
 \end{defn}
 
 \begin{defn}
-	Let $\phi: U \rightarrow R^3$ be a parametrization of a surface S.  The tangent space $T_p S$ to the surface at a point $p \in U$ is the image of the mapping \[
-		d\phi_p : \R^2 \rightarrow \R^3
-	\]
+    Let $\phi: U \rightarrow R^3$ be a parametrization of a surface S.  The tangent space $T_p S$ to the surface at a point $p \in U$ is the image of the mapping \[
+        d\phi_p : \R^2 \rightarrow \R^3
+    \]
 \end{defn}
 \begin{thm}[Surface as a graph]
-	Let $S \subset \R^3$ be a regular surface and $p \in S$.  Then there exists a neighbourhood $V$ of $p$ in $S$ such that $V$ is the graph of a differentiable function which has one of the following forms: $z = f(x,y), y = g(z,x), x = h(z,y)$.
+    Let $S \subset \R^3$ be a regular surface and $p \in S$.  Then there exists a neighbourhood $V$ of $p$ in $S$ such that $V$ is the graph of a differentiable function which has one of the following forms: $z = f(x,y), y = g(z,x), x = h(z,y)$.
 \end{thm}
 
 
 \begin{defn}[Surface of revolution]
-	Let $C(v) = (\alpha(v),0,\beta(v))$ be a curve in the $xz$ plane.  Then we can parameterise the surface formed by revolving the curve about the $z$ axis by \[
-		\phi(u,v) = (\alpha(v)\cos u, \alpha(v) \sin u,\beta v )
-	\]
+    Let $C(v) = (\alpha(v),0,\beta(v))$ be a curve in the $xz$ plane.  Then we can parameterise the surface formed by revolving the curve about the $z$ axis by \[
+        \phi(u,v) = (\alpha(v)\cos u, \alpha(v) \sin u,\beta v )
+    \]
 \end{defn}
 \begin{defn}[First fundamental form]
-	Let $S$ be a surface parameterised by $\phi : (u^1,u^2) \subset \R^2 \rightarrow \R^3$.  Write $\mathbf{E_i} = \frac{\partial \phi}{\partial u^i}$.  Then we can define the matrix $g$ of the second fundamental form $I$  as $g_{ij} = \langle E_i,E_j \rangle$
+    Let $S$ be a surface parameterised by $\phi : (u^1,u^2) \subset \R^2 \rightarrow \R^3$.  Write $\mathbf{E_i} = \frac{\partial \phi}{\partial u^i}$.  Then we can define the matrix $g$ of the second fundamental form $I$  as $g_{ij} = \langle E_i,E_j \rangle$
 \end{defn}
 
 \begin{defn}
-	The arc length of a parameterised curve $\alpha(t) = \phi(u^1(t),u^2(t))$ is given by \[
-		s(t) = \int_0^t |\alpha'(t)| dt = \int_0^t \sqrt{\sum g_{ij} u'^i u'^j }
-			\]
+    The arc length of a parameterised curve $\alpha(t) = \phi(u^1(t),u^2(t))$ is given by \[
+        s(t) = \int_0^t |\alpha'(t)| dt = \int_0^t \sqrt{\sum g_{ij} u'^i u'^j }
+            \]
 \end{defn}
 
 \begin{defn}[Area of a regular surface]
-	Let $R \subset S$ be a bounded region of a regular surface, contained in the coordinate neighbourhood of the parameterization $\phi: U \subset \R^2 \rightarrow \R^3$.  The positive number \[
-		\iint_Q |\mathbf{E_1} \times \mathbf{E_2} | du^1 du^2 = A(R), \qquad Q = \phi^{-1}(R) 
-	\]
+    Let $R \subset S$ be a bounded region of a regular surface, contained in the coordinate neighbourhood of the parameterization $\phi: U \subset \R^2 \rightarrow \R^3$.  The positive number \[
+        \iint_Q |\mathbf{E_1} \times \mathbf{E_2} | du^1 du^2 = A(R), \qquad Q = \phi^{-1}(R) 
+    \]
 \end{defn}
 
 \begin{defn}[Orientation]
-	A regular surface is \emph{orientable} if it is possible to cover it with a family of coordinate neighbourhoods in such a way that if a point $p \in S$ belongs to two neighbourhoods of this family, then the change of coordinate matrix has a positive determinant at $p$.  If such a choice is not possible, then the surface is called \emph{non-orientable}.
+    A regular surface is \emph{orientable} if it is possible to cover it with a family of coordinate neighbourhoods in such a way that if a point $p \in S$ belongs to two neighbourhoods of this family, then the change of coordinate matrix has a positive determinant at $p$.  If such a choice is not possible, then the surface is called \emph{non-orientable}.
 \end{defn}
 
 \begin{defn}[Normal vector]
-	We define the \emph{normal vector} \textbf{N} to a regular surface $S$ as \[
-		\mathbf{N}(p) = \frac{E_1 \times E_2}{|E_1 \times E_2|}(p)
-	\]
+    We define the \emph{normal vector} \textbf{N} to a regular surface $S$ as \[
+        \mathbf{N}(p) = \frac{E_1 \times E_2}{|E_1 \times E_2|}(p)
+    \]
 \end{defn}
 
 \begin{defn}[Gauss Map]
-	Let $S \subset \R^3$ be a regular surface with an orientation $\mathbf{N}$.  The map $\mathbf{N}: S \rightarrow \R^3$ takes its values in the unit sphere $S^2$, and this map $\mathbf{N}: S \rightarrow S^2$ is called the \emph{Gauss map}.  
+    Let $S \subset \R^3$ be a regular surface with an orientation $\mathbf{N}$.  The map $\mathbf{N}: S \rightarrow \R^3$ takes its values in the unit sphere $S^2$, and this map $\mathbf{N}: S \rightarrow S^2$ is called the \emph{Gauss map}.  
 \end{defn}
 
 \begin{prop}
-	The differential $dN_p : T_p(S) \rightarrow T_p(S)$ is a self adjoint linear map - \emph{i.e.} \[
-		\langle dN_p(w),v \rangle = \langle w,dN_p(v) \rangle
-	\]
+    The differential $dN_p : T_p(S) \rightarrow T_p(S)$ is a self adjoint linear map - \emph{i.e.} \[
+        \langle dN_p(w),v \rangle = \langle w,dN_p(v) \rangle
+    \]
 \end{prop}
 
 \begin{defn}
-	The matrix of the second fundamental form is given by \[ II_{ij} = h_{ij} = -\langle \mathbf{N_{u_i}},\mathbf{E_j} \rangle = -\langle  \mathbf{dN(E_i)},\mathbf{E_j} \rangle = \langle \mathbf{N}, \mathbf{E_{ij}} \rangle \]
+    The matrix of the second fundamental form is given by \[ II_{ij} = h_{ij} = -\langle \mathbf{N_{u_i}},\mathbf{E_j} \rangle = -\langle  \mathbf{dN(E_i)},\mathbf{E_j} \rangle = \langle \mathbf{N}, \mathbf{E_{ij}} \rangle \]
 
 We have \[
-	II_p(X) = - \langle dN_p(X),X \rangle
+    II_p(X) = - \langle dN_p(X),X \rangle
 \]
 \end{defn}
 
 \begin{defn}[Normal curvature]
-	The \emph{normal curvature} of a space curve $k_n$ is defined as $k_n = k cos \theta$, where $\theta$ is the angle between \textbf{N} and \textbf{n}.
+    The \emph{normal curvature} of a space curve $k_n$ is defined as $k_n = k cos \theta$, where $\theta$ is the angle between \textbf{N} and \textbf{n}.
 \end{defn}
 
 \begin{defn}
-	The \emph{principle curvatures} are the eigenvalues of $-dN_p$.     
+    The \emph{principle curvatures} are the eigenvalues of $-dN_p$.     
 \end{defn}
 
 \begin{thm}
-	If the normal curvatures $	II_p(X) $ with $|X| = 1$ are not all equal, then there is an orthonormal basis $\mathbf{e_1}, \mathbf{e_2}$ of $T_p S$ such that \[
-			II_p(\cos \theta \mathbf{e_1} + \sin \theta \mathbf{e_2} = k_1 \cos^2 \theta + k_2 \sin^2 \theta
-	\]
-	where $k_1,k_2$ are the principle curvatures as defined above.
+    If the normal curvatures $  II_p(X) $ with $|X| = 1$ are not all equal, then there is an orthonormal basis $\mathbf{e_1}, \mathbf{e_2}$ of $T_p S$ such that \[
+            II_p(\cos \theta \mathbf{e_1} + \sin \theta \mathbf{e_2} = k_1 \cos^2 \theta + k_2 \sin^2 \theta
+    \]
+    where $k_1,k_2$ are the principle curvatures as defined above.
 \end{thm}
 
 \begin{defn}
-	A point $p \in S$ where $k_1 = k_2$ is called an umbilical point
+    A point $p \in S$ where $k_1 = k_2$ is called an umbilical point
 \end{defn}
 
 \begin{defn}
-	A curve $\alpha(t)$ is \emph{asymptotic} if its normal curvature is zero for all $t$.
+    A curve $\alpha(t)$ is \emph{asymptotic} if its normal curvature is zero for all $t$.
 \end{defn}
 
 \begin{defn}
-	A curve is a \emph{line of curvature} if $\alpha'(t)$ is an eigenvector of $-dN_{\alpha(t)}$ for all $t$
+    A curve is a \emph{line of curvature} if $\alpha'(t)$ is an eigenvector of $-dN_{\alpha(t)}$ for all $t$
 \end{defn}
 \begin{defn}
-	The \emph{Gauss curvature} of an oriented surface at a point $p$ is \[
-		K(p) = \det(-dN_p) = k_1(p) k_2(p)
-	\]
-	
-	The \emph{mean curvature} of $S$ at $p$ is \[
-		H(p) = \frac{1}{2} \text{trace} (-dN_p)
-	\]
+    The \emph{Gauss curvature} of an oriented surface at a point $p$ is \[
+        K(p) = \det(-dN_p) = k_1(p) k_2(p)
+    \]
+    
+    The \emph{mean curvature} of $S$ at $p$ is \[
+        H(p) = \frac{1}{2} \text{trace} (-dN_p)
+    \]
 \end{defn}
 
 
 \begin{thm}
-	\[
-	-(dN_p)^T = (II)(I)^{-1}	
-	\]
-	\[
-		K = \frac{h_{11}h_{22}-{h^2_{12}}}{g_{11}g_{22}-g^2_{12}}
-	\]
-	\[
-		H = \frac{h_{11}g_{22}-2h_{12}g_{12}+h_{22}g_{11}}{2 ({g_{11}g_{22}-g^2_{12})}}
-	\]
+    \[
+    -(dN_p)^T = (II)(I)^{-1}    
+    \]
+    \[
+        K = \frac{h_{11}h_{22}-{h^2_{12}}}{g_{11}g_{22}-g^2_{12}}
+    \]
+    \[
+        H = \frac{h_{11}g_{22}-2h_{12}g_{12}+h_{22}g_{11}}{2 ({g_{11}g_{22}-g^2_{12})}}
+    \]
 \end{thm}
 
 \begin{defn}[Minimal surface]
-	A surface is a \emph{minimal surface} if its mean curvature is identically zero. \[
-		H \equiv 0
-	\]
+    A surface is a \emph{minimal surface} if its mean curvature is identically zero. \[
+        H \equiv 0
+    \]
 \end{defn}
 
 \begin{defn}
-	A coordinate chart $\phi: U \subset \R^2 \rightarrow \Sigma \subset \R^3$ is called \emph{isothermal} if $g_{11} = g_{22}, g_{12} = g_{22} = 0$.  This is equivalent to saying $(I)$ is a multiple of the identity.
+    A coordinate chart $\phi: U \subset \R^2 \rightarrow \Sigma \subset \R^3$ is called \emph{isothermal} if $g_{11} = g_{22}, g_{12} = g_{22} = 0$.  This is equivalent to saying $(I)$ is a multiple of the identity.
 \end{defn}
 
 \begin{thm}
-	If $\phi$ is isothermal, then $\phi(U) = \Sigma$ is a minimal surface if and only if $\nabla^2 \phi = \mathbf{0}$
+    If $\phi$ is isothermal, then $\phi(U) = \Sigma$ is a minimal surface if and only if $\nabla^2 \phi = \mathbf{0}$
 \end{thm}
 
 \begin{defn}[Isometry]
-	A diffeomorphism \[
-		\psi: \S_1 \rightarrow S_2 
-	\]
-	is an isometry if it preserves the inner product, i.e. for all $p \in S_1$ and $X,Y \in T_P S_1$ \[
-		\langle X,Y \rangle_p = \langle d \psi_p(X),d \psi_p(Y) \rangle_{\psi(p)}
-	\]
-	
-	This is equivalent to \[
-		I_p(X) = I_{\psi(p)} (d\psi_p(X)
-	\]
-	If for each $p \in S_1$, there is an open neighbourhood $U_1$ of p and a map $\psi : U_1 \rightarrow S_2$, then we say that $S_1$ is \emph{locally isometric} to $S_2$.
+    A diffeomorphism \[
+        \psi: \S_1 \rightarrow S_2 
+    \]
+    is an isometry if it preserves the inner product, i.e. for all $p \in S_1$ and $X,Y \in T_P S_1$ \[
+        \langle X,Y \rangle_p = \langle d \psi_p(X),d \psi_p(Y) \rangle_{\psi(p)}
+    \]
+    
+    This is equivalent to \[
+        I_p(X) = I_{\psi(p)} (d\psi_p(X)
+    \]
+    If for each $p \in S_1$, there is an open neighbourhood $U_1$ of p and a map $\psi : U_1 \rightarrow S_2$, then we say that $S_1$ is \emph{locally isometric} to $S_2$.
 \end{defn}
 
 \begin{thm}
-	If two surfaces $\psi: U \rightarrow S_1$ and $\varphi: U \rightarrow S_2 $  have the same coefficients for $g_{ij}$, then $S_1$ and $S_2$ are locally isometric.
+    If two surfaces $\psi: U \rightarrow S_1$ and $\varphi: U \rightarrow S_2 $  have the same coefficients for $g_{ij}$, then $S_1$ and $S_2$ are locally isometric.
 \end{thm}
 \begin{defn}[Christoffel symbols]
-	Define the \emph{Christoffel symbols} $\christ{i}{j}{k}$ by 
-	\begin{align*}
-		\phi_{u_1 u_1} & = \christ{1}{1}{1} \phi_{u_1} + \christ{2}{1}{1} \phi_{u_2} + L_1 \mathbf{N} \\
-		\phi_{u_1 u_2} & = \christ{1}{1}{2} \phi_{u_1} + \christ{2}{1}{2} \phi_{u_2} + L_2 \mathbf{N} \\
-		\phi_{u_2 u_1} & = \christ{1}{2}{1} \phi_{u_1} + \christ{2}{2}{1} \phi_{u_2} + \hat{L}_2 \mathbf{N}\\
-		\phi_{u_2 u_2} & = \christ{1}{2}{2} \phi_{u_1} + \christ{2}{2}{2} \phi_{u_2} + L_3 \mathbf{N}\\
-	\end{align*}
-	
-	Taking inner products with $\mathbf{E_i}$ gives
-	
-	\begin{align*}
-		\christ{1}{1}{1}g_{11} + \christ{2}{1}{1}g_{12} &= \frac{1}{2}(g_{11})_{u_1} \\
-			\christ{1}{1}{1}g_{12} + \christ{2}{1}{1}g_{22} &= (g_{12})_{u_1} - \frac{1}{2}(g_{11})_{u_2}\\
-				\christ{1}{1}{2}g_{11} + \christ{2}{1}{2}g_{12} &= \frac{1}{2}(g_{11})_{u_2}\\
-					\christ{1}{1}{2}g_{12} + \christ{2}{1}{2}g_{22} &= \frac{1}{2}(g_{22})_{u_1} \\
-						\christ{1}{2}{2}g_{11} + \christ{2}{2}{2}g_{12} &= (g_{12})_{u_2} - \frac{1}{2}(g_{22})_{u_1}\\
-							\christ{1}{2}{2}g_{12} + \christ{2}{2}{2}g_{22} &= \frac{1}{2}(g_{22})_{u_2}
-	\end{align*}
+    Define the \emph{Christoffel symbols} $\christ{i}{j}{k}$ by 
+    \begin{align*}
+        \phi_{u_1 u_1} & = \christ{1}{1}{1} \phi_{u_1} + \christ{2}{1}{1} \phi_{u_2} + L_1 \mathbf{N} \\
+        \phi_{u_1 u_2} & = \christ{1}{1}{2} \phi_{u_1} + \christ{2}{1}{2} \phi_{u_2} + L_2 \mathbf{N} \\
+        \phi_{u_2 u_1} & = \christ{1}{2}{1} \phi_{u_1} + \christ{2}{2}{1} \phi_{u_2} + \hat{L}_2 \mathbf{N}\\
+        \phi_{u_2 u_2} & = \christ{1}{2}{2} \phi_{u_1} + \christ{2}{2}{2} \phi_{u_2} + L_3 \mathbf{N}\\
+    \end{align*}
+    
+    Taking inner products with $\mathbf{E_i}$ gives
+    
+    \begin{align*}
+        \christ{1}{1}{1}g_{11} + \christ{2}{1}{1}g_{12} &= \frac{1}{2}(g_{11})_{u_1} \\
+            \christ{1}{1}{1}g_{12} + \christ{2}{1}{1}g_{22} &= (g_{12})_{u_1} - \frac{1}{2}(g_{11})_{u_2}\\
+                \christ{1}{1}{2}g_{11} + \christ{2}{1}{2}g_{12} &= \frac{1}{2}(g_{11})_{u_2}\\
+                    \christ{1}{1}{2}g_{12} + \christ{2}{1}{2}g_{22} &= \frac{1}{2}(g_{22})_{u_1} \\
+                        \christ{1}{2}{2}g_{11} + \christ{2}{2}{2}g_{12} &= (g_{12})_{u_2} - \frac{1}{2}(g_{22})_{u_1}\\
+                            \christ{1}{2}{2}g_{12} + \christ{2}{2}{2}g_{22} &= \frac{1}{2}(g_{22})_{u_2}
+    \end{align*}
 \end{defn}
 
 \begin{thm}[Gauss' Theorem]
-\[	g_{11}K = (\christ{2}{1}{1})_{u_2} - (\christ{2}{1}{2})_{u_1} + \christ{2}{1}{1} \christ{2}{2}{2} + \christ{1}{1}{1}\christ{2}{1}{2} - \christ{1}{1}{2}\christ{2}{1}{1} - \christ{2}{1}{2}\christ{2}{1}{2}     \]
+\[  g_{11}K = (\christ{2}{1}{1})_{u_2} - (\christ{2}{1}{2})_{u_1} + \christ{2}{1}{1} \christ{2}{2}{2} + \christ{1}{1}{1}\christ{2}{1}{2} - \christ{1}{1}{2}\christ{2}{1}{1} - \christ{2}{1}{2}\christ{2}{1}{2}     \]
 \end{thm}
 
 \begin{thm}[Mainardi-Codazzi equations]
-	\begin{align*}
-		(h_{11})_{u_2} - (h_{12})_{u_1} = h_{11} \christ{1}{1}{2} + h_{12}(\christ{2}{1}{2}-\christ{1}{1}{1}) - h_{22}\christ{2}{1}{1} \\
-			(h_{12})_{u_2} - (h_{22})_{u_1} = h_{11} \christ{1}{2}{2} + h_{12}(\christ{2}{2}{2}-\christ{1}{1}{2}) - h_{22}\christ{2}{1}{2} 
-	\end{align*}
+    \begin{align*}
+        (h_{11})_{u_2} - (h_{12})_{u_1} = h_{11} \christ{1}{1}{2} + h_{12}(\christ{2}{1}{2}-\christ{1}{1}{1}) - h_{22}\christ{2}{1}{1} \\
+            (h_{12})_{u_2} - (h_{22})_{u_1} = h_{11} \christ{1}{2}{2} + h_{12}(\christ{2}{2}{2}-\christ{1}{1}{2}) - h_{22}\christ{2}{1}{2} 
+    \end{align*}
 \end{thm}
 
 \begin{thm}[Christoffel symbols in terms of the metric]
-	\[
-		\christ{l}{i}{k} = \frac{1}{2}g^{jl}\left( g_{ij,k} + g_{jk,i} - g_{ki,j} \right)
-	\]
+    \[
+        \christ{l}{i}{k} = \frac{1}{2}g^{jl}\left( g_{ij,k} + g_{jk,i} - g_{ki,j} \right)
+    \]
 \end{thm}
 
 \begin{defn}
-	Let $w$ be a smooth vector field in a neighbourhood $U$ of $p \in S$.  Let $\alpha \subset S$ be a smooth curve with $\alpha(0) = p, \alpha'(0) = v$.  Define \[
-		\frac{Dw}{dt}(0) = D_v w(p)
-	\]
-	to be the projection of $\frac{dw}{dt} = dw_v(p)$ to $T_p S$, and call it the covariant derivative at $p$ of the vector field $w$ in the direction of $v$.
+    Let $w$ be a smooth vector field in a neighbourhood $U$ of $p \in S$.  Let $\alpha \subset S$ be a smooth curve with $\alpha(0) = p, \alpha'(0) = v$.  Define \[
+        \frac{Dw}{dt}(0) = D_v w(p)
+    \]
+    to be the projection of $\frac{dw}{dt} = dw_v(p)$ to $T_p S$, and call it the covariant derivative at $p$ of the vector field $w$ in the direction of $v$.
 \end{defn}
 
 
 \begin{defn}
-	Let the vector field $w = a^i \mathbf{E_i}$ and $v = b^j \mathbf{E_j}$.  Then we have \[
-		\nabla w (v) = \nabla_v(w) = \frac{Dw}{dt} = \frac{da^i}{dt}\mathbf{E_i} + a^i b^j \christ{k}{i}{j} \mathbf{E_k}
-	\]
+    Let the vector field $w = a^i \mathbf{E_i}$ and $v = b^j \mathbf{E_j}$.  Then we have \[
+        \nabla w (v) = \nabla_v(w) = \frac{Dw}{dt} = \frac{da^i}{dt}\mathbf{E_i} + a^i b^j \christ{k}{i}{j} \mathbf{E_k}
+    \]
 \end{defn}
 
 \begin{defn}[Parallel transport]
-	A vector field $w$ along a curve $\alpha \subset S$ is called \emph{parallel} if \[
-		\nabla_{\alpha'(t)}w = 0
-	\]
-	for all $t$.
+    A vector field $w$ along a curve $\alpha \subset S$ is called \emph{parallel} if \[
+        \nabla_{\alpha'(t)}w = 0
+    \]
+    for all $t$.
 \end{defn}
 
 \begin{defn}
-	A nonconstant parameterised curve $\alpha$ is a parameterised geodesic if \[
-	\nabla_{\alpha'(t)} \alpha'(t) = 0	
-	\]
-	i.e. if its tangent vector field is parallel along the curve.
+    A nonconstant parameterised curve $\alpha$ is a parameterised geodesic if \[
+    \nabla_{\alpha'(t)} \alpha'(t) = 0  
+    \]
+    i.e. if its tangent vector field is parallel along the curve.
 \end{defn}
 
 \begin{defn}
-	Let $w$ be a smooth field of unit vectors along a curve $\alpha$ where $\alpha$ lies in an oriented surface.  Then define the \emph{algebraic value of the covariant derivative} $[	\nabla_{\alpha'(t)}w]$ by \[
-			\nabla_{\alpha'(t)}w = [	\nabla_{\alpha'(t)}w] \mathbf{N} \times w(t)
-	\]
+    Let $w$ be a smooth field of unit vectors along a curve $\alpha$ where $\alpha$ lies in an oriented surface.  Then define the \emph{algebraic value of the covariant derivative} $[ \nabla_{\alpha'(t)}w]$ by \[
+            \nabla_{\alpha'(t)}w = [    \nabla_{\alpha'(t)}w] \mathbf{N} \times w(t)
+    \]
 \end{defn}
 
 \begin{defn}
-		Let $\alpha$ be a curve parameterised by arc length.  The algebraic value of  $	\nabla_{\alpha'(t)} \alpha'(t)$ is called the \emph{geodesic curvature of $\alpha$} and is denoted by $k_g$.
+        Let $\alpha$ be a curve parameterised by arc length.  The algebraic value of  $ \nabla_{\alpha'(t)} \alpha'(t)$ is called the \emph{geodesic curvature of $\alpha$} and is denoted by $k_g$.
 \end{defn}
 
 \begin{rem}
-	Up to sign, $	\nabla_{\alpha'(t)} \alpha'(t)$ is the tangential projection of $\alpha''(s)$, and so the geodesic curvature is up to sign the tangential component of $a''(s)$.
+    Up to sign, $   \nabla_{\alpha'(t)} \alpha'(t)$ is the tangential projection of $\alpha''(s)$, and so the geodesic curvature is up to sign the tangential component of $a''(s)$.
 \end{rem}
 
 \begin{thm}
-	For a curve $\alpha$ in an oriented surface $S$, we have \[
-		k^2 = k_n^2 + k_g^2
-	\]
+    For a curve $\alpha$ in an oriented surface $S$, we have \[
+        k^2 = k_n^2 + k_g^2
+    \]
 \end{thm}
 
 \begin{rem}
-	Thus, $\alpha$ is a geodesic if and only if its geodesic curvature is identically zero.
+    Thus, $\alpha$ is a geodesic if and only if its geodesic curvature is identically zero.
 \end{rem}
 
 \begin{thm}
-	Let $\gamma(t) = \phi(u^1(t), u^2(t))$.  Then $\gamma'(t) = (u^i)'\mathbf{E_i}$.  Then we have $\gamma$ is a geodesic if and only if 
-	\begin{align*}
-		0 &= 	\nabla_{\gamma'(t)} \gamma'(t) \\
-		&= \nabla_{\gamma'(t)} (u^j)' \mathbf{E_j} \\
-		&= (u^j)'' \mathbf{E_j} + (u^j)' \nabla_{(u^i)' \mathbf{E_i}} \mathbf{E_j} \\
-		&=  [(u^k)'' + (u^j)' (u^i)' \christ{k}{i}{j}] \mathbf{E_k}
-	\end{align*}
-	if and only if \[
-		(u^k)'' + (u^j)' (u^i)' \christ{k}{i}{j} = 0
-	\] for $k = 1,2$
+    Let $\gamma(t) = \phi(u^1(t), u^2(t))$.  Then $\gamma'(t) = (u^i)'\mathbf{E_i}$.  Then we have $\gamma$ is a geodesic if and only if 
+    \begin{align*}
+        0 &=    \nabla_{\gamma'(t)} \gamma'(t) \\
+        &= \nabla_{\gamma'(t)} (u^j)' \mathbf{E_j} \\
+        &= (u^j)'' \mathbf{E_j} + (u^j)' \nabla_{(u^i)' \mathbf{E_i}} \mathbf{E_j} \\
+        &=  [(u^k)'' + (u^j)' (u^i)' \christ{k}{i}{j}] \mathbf{E_k}
+    \end{align*}
+    if and only if \[
+        (u^k)'' + (u^j)' (u^i)' \christ{k}{i}{j} = 0
+    \] for $k = 1,2$
 \end{thm}
 
 \begin{thm}
@@ -372,12 +372,12 @@ A point and a tangent vector to that point uniquely determine a geodesic in a su
 \end{thm}
 
 \begin{thm}
-	For each $p \in \Sigma$, there is some neighbourhood $U$ of $p$ such that for any $q \in U$, the geodesic from $p$ to $q$ has length less than or equal to the length of any other path from $p$ to $q$.
+    For each $p \in \Sigma$, there is some neighbourhood $U$ of $p$ such that for any $q \in U$, the geodesic from $p$ to $q$ has length less than or equal to the length of any other path from $p$ to $q$.
 \end{thm}
 
 \begin{thm}
-	Let $v$ and $w$ be smooth \emph{unit} vector fields along a curve $\alpha \subset S$.  Then \[[	\nabla_{\alpha'(t)} w] - [	\nabla_{\alpha'(t)} v] = \frac{d \theta}{dt} \]
-	where $\theta$ is a smooth choice of angle from $v$ to $w$.
+    Let $v$ and $w$ be smooth \emph{unit} vector fields along a curve $\alpha \subset S$.  Then \[[ \nabla_{\alpha'(t)} w] - [  \nabla_{\alpha'(t)} v] = \frac{d \theta}{dt} \]
+    where $\theta$ is a smooth choice of angle from $v$ to $w$.
 \end{thm}
 
 \subsection{The Gauss Bonnet Theorem}
@@ -388,242 +388,242 @@ The depth of this (global) theorem lies in its topological content rather than i
 In fact, a corollary is
 
 \begin{cor}
-	For an orientable compact surface $S$, \[ \iint_S K d \sigma = 2 \pi \chi(S) \]
+    For an orientable compact surface $S$, \[ \iint_S K d \sigma = 2 \pi \chi(S) \]
 \end{cor}
 
 \begin{thm}[Theorem of Turning Tangents]
-	Let $S$ be an oriented surface, and $\phi : U \rightarrow S$ a coordinate chart.  Let $\alpha$ be a simple, closed, parameterised curve, regular in each interval $[ t_i, t_{i+1}]$. 
-	
-	Choose a smooth angle function $\theta_i$ on each $[t_i, t_{i+1}]$ which measures the angle from $\mathbf{E_1}$ to $\alpha'$.  Denote by $\gamma_i$ the external angle at $t_i$.  Then \[
-		\sum_{i=0}^k (\theta_i(t_{i+1})- \theta_i(t_i)) + \sum_{i = 0}^k \gamma_i = \pm 2 \pi
-	\]
-	and the above sum is $2 \pi$ if $\alpha $ is a positively oriented curve.
+    Let $S$ be an oriented surface, and $\phi : U \rightarrow S$ a coordinate chart.  Let $\alpha$ be a simple, closed, parameterised curve, regular in each interval $[ t_i, t_{i+1}]$. 
+    
+    Choose a smooth angle function $\theta_i$ on each $[t_i, t_{i+1}]$ which measures the angle from $\mathbf{E_1}$ to $\alpha'$.  Denote by $\gamma_i$ the external angle at $t_i$.  Then \[
+        \sum_{i=0}^k (\theta_i(t_{i+1})- \theta_i(t_i)) + \sum_{i = 0}^k \gamma_i = \pm 2 \pi
+    \]
+    and the above sum is $2 \pi$ if $\alpha $ is a positively oriented curve.
 \end{thm}
 
 \begin{thm}[Local Gauss-Bonnet Theorem]
-	Let $S$ be an oriented surface, $U \subset \R^2$ be homeomorphic to an open disk and $\phi: U \rightarrow S$ be a coordinate chart compatible with the orientation, such that $g_{12} = 0$.
-	
-	Let $R \subset \phi(U)$ be a simple region and $\alpha$ a positively oriented piecewise regular curve whose trace equals $\partial R$. Let $\alpha$ be parameterised by arc length, with vertices at $s_0, s_1, \dots, s_k$.
-	
-	Then \[
-		\sum_{i=0}^k \int_{s_i}^{s_{i+1}} k_g(s) ds + \iint_R K d \sigma + \sum_{i = 0}^k \gamma_i = 2 \pi
-	\]
+    Let $S$ be an oriented surface, $U \subset \R^2$ be homeomorphic to an open disk and $\phi: U \rightarrow S$ be a coordinate chart compatible with the orientation, such that $g_{12} = 0$.
+    
+    Let $R \subset \phi(U)$ be a simple region and $\alpha$ a positively oriented piecewise regular curve whose trace equals $\partial R$. Let $\alpha$ be parameterised by arc length, with vertices at $s_0, s_1, \dots, s_k$.
+    
+    Then \[
+        \sum_{i=0}^k \int_{s_i}^{s_{i+1}} k_g(s) ds + \iint_R K d \sigma + \sum_{i = 0}^k \gamma_i = 2 \pi
+    \]
 \end{thm}
 
 \begin{cor}
-	Let $R \subset \phi(U)$ be a simple region with piecewise regular boundary, and $\alpha: [0,l] \rightarrow S$ be an arc length parametrisation of $\partial R$.   
-	Take a unit vector $w_0 \in T_{\alpha(0)}S$ and let $w$ be the vector field along $\alpha$ generated by the parallel transport of $w_0$.  Then we have 
-	\[ \Delta \theta = \theta(l) - \theta(0) = \iint_R K d \sigma \]
-	where $\theta$ is a continuous choice of angle from $\mathbf{E_1}$ to $w$.
+    Let $R \subset \phi(U)$ be a simple region with piecewise regular boundary, and $\alpha: [0,l] \rightarrow S$ be an arc length parametrisation of $\partial R$.   
+    Take a unit vector $w_0 \in T_{\alpha(0)}S$ and let $w$ be the vector field along $\alpha$ generated by the parallel transport of $w_0$.  Then we have 
+    \[ \Delta \theta = \theta(l) - \theta(0) = \iint_R K d \sigma \]
+    where $\theta$ is a continuous choice of angle from $\mathbf{E_1}$ to $w$.
 \end{cor}
 
 
 \begin{defn}
-	The \emph{Euler characteristic} $ \chi(S)$ of a surface $S$ is given by $\chi(S) = V - E + F$, where $V,E,F$ are the number of vertices, edges and faces of any triangulation of $S$.
+    The \emph{Euler characteristic} $ \chi(S)$ of a surface $S$ is given by $\chi(S) = V - E + F$, where $V,E,F$ are the number of vertices, edges and faces of any triangulation of $S$.
 \end{defn}
 
 \begin{thm}
-	If two surfaces $S_1$ and $S_2$ are homeomorphic, then $\chi(S_1) = \chi(S_2)$.
+    If two surfaces $S_1$ and $S_2$ are homeomorphic, then $\chi(S_1) = \chi(S_2)$.
 \end{thm}
 
 \begin{thm}
-	\[\chi(S) = 2 - 2g \]
-	where $g$ is the number of holes of $S$, called the \emph{genus} of $S$.
+    \[\chi(S) = 2 - 2g \]
+    where $g$ is the number of holes of $S$, called the \emph{genus} of $S$.
 \end{thm}
 
 \begin{thm}[Global Gauss-Bonnet]
-	Let $R \subset S$ be a regular region of an oriented surface with positively oriented boundary curves $C_i$. Write $\gamma_j$ for the external angles of the curves $C_i$.  THen \[
-		\sum_{i} \int_{C_i} k_g(s) ds + \iint_R K d \sigma + \sum_j \gamma_j = 2 \pi \chi(S)
-	\]
+    Let $R \subset S$ be a regular region of an oriented surface with positively oriented boundary curves $C_i$. Write $\gamma_j$ for the external angles of the curves $C_i$.  THen \[
+        \sum_{i} \int_{C_i} k_g(s) ds + \iint_R K d \sigma + \sum_j \gamma_j = 2 \pi \chi(S)
+    \]
 \end{thm}
 
 
 \begin{defn}
-	A point $p$ is said to be a \emph{singular point} of the smooth vector field $v$ on $S$ if \[
-		v(p) = 0
-	\]
-	
-	Take a positively oriented simple closed curve $\alpha$ enclosing an isolated singular point of a vector field $v$.  Let $\theta_v$ be a smooth choice of angle from $\mathbf{E_1}$ to $v$.  THen \[
-		\theta_v(l) - \theta_v(0) = 2 \pi I
-	\]
-	for some \textbf{integer} $I$.  We call $I$ the \emph{index} of $v$ at $p$.
+    A point $p$ is said to be a \emph{singular point} of the smooth vector field $v$ on $S$ if \[
+        v(p) = 0
+    \]
+    
+    Take a positively oriented simple closed curve $\alpha$ enclosing an isolated singular point of a vector field $v$.  Let $\theta_v$ be a smooth choice of angle from $\mathbf{E_1}$ to $v$.  THen \[
+        \theta_v(l) - \theta_v(0) = 2 \pi I
+    \]
+    for some \textbf{integer} $I$.  We call $I$ the \emph{index} of $v$ at $p$.
 \end{defn}
 
 \begin{thm}[Poincar\`{e}-Hopf Theorem]
-	Let $v$ be a smooth vector field on $S$ with isolated singular points $p_1,\dots, p_n$.  Then \[
-		\sum_{i=1}^n I_i = \chi(S)
-	\]
+    Let $v$ be a smooth vector field on $S$ with isolated singular points $p_1,\dots, p_n$.  Then \[
+        \sum_{i=1}^n I_i = \chi(S)
+    \]
 \end{thm}
 
 \begin{cor}[Hairy-Ball theorem]
-	If $S$ is not homeomorphic to a torus, then any smooth vector field on $S$ must vanish somewhere.
+    If $S$ is not homeomorphic to a torus, then any smooth vector field on $S$ must vanish somewhere.
 \end{cor}
 
 \begin{thm}[Morse's Theorem]
-	Let $f: S \rightarrow \R$ be a smooth function on a compact oriented surface $S$ such that all critical points ($df_p = 0$) are non-degenerate ($\det A(p) \neq 0$, where $A$ is the \emph{Hessian} matrix of $f$).
+    Let $f: S \rightarrow \R$ be a smooth function on a compact oriented surface $S$ such that all critical points ($df_p = 0$) are non-degenerate ($\det A(p) \neq 0$, where $A$ is the \emph{Hessian} matrix of $f$).
 
 Let
 \begin{itemize}
 
-	\item 	$M$ = number of local maxima, 
+    \item   $M$ = number of local maxima, 
 
-	\item 	$m$ = number of local minima, 
+    \item   $m$ = number of local minima, 
 
-	\item 	$s$ = number of saddle points.
+    \item   $s$ = number of saddle points.
 
 \end{itemize}
-	
-	Then \[
-		M - s + m = \chi(S)
-	\]
-	This is independent of the function $f$, and depends only upon the topology of $S$.
+    
+    Then \[
+        M - s + m = \chi(S)
+    \]
+    This is independent of the function $f$, and depends only upon the topology of $S$.
 \end{thm}
 
 \section{Abstract Manifolds}
 
 \begin{defn}[Abstract manifolds]
-	
+    
 \end{defn}
 An abstract surface is a set $\Sigma$ together with a family of maps \[
-	\phi_\alpha: U_\alpha \rightarrow \Sigma
+    \phi_\alpha: U_\alpha \rightarrow \Sigma
 \] of open sets $U_\alpha \subset \R^2$ into $\Sigma$ so that
 
 \begin{itemize}
 
-	\item $\cup_\alpha \phi_\alpha(U_\alpha) = \Sigma$
+    \item $\cup_\alpha \phi_\alpha(U_\alpha) = \Sigma$
 
 
-	\item Whenever $\alpha, \beta$ are such that $W_{\alpha \beta} = \phi_\alpha (U_\alpha) \cap \phi_\beta (U_\beta) \neq \emptyset$, then $\phi^{-1}_\alpha (W_{\alpha \beta}), \phi^{-1}_\beta (W)_{\alpha \beta} \subset \R^2$ are open and
+    \item Whenever $\alpha, \beta$ are such that $W_{\alpha \beta} = \phi_\alpha (U_\alpha) \cap \phi_\beta (U_\beta) \neq \emptyset$, then $\phi^{-1}_\alpha (W_{\alpha \beta}), \phi^{-1}_\beta (W)_{\alpha \beta} \subset \R^2$ are open and
   \[
- 	\phi^{-1}_\beta \circ \phi_\alpha : \phi^{-1}_\alpha (W_{\alpha \beta}) \rightarrow \phi^{-1}_\beta (W_{\alpha \beta})
+    \phi^{-1}_\beta \circ \phi_\alpha : \phi^{-1}_\alpha (W_{\alpha \beta}) \rightarrow \phi^{-1}_\beta (W_{\alpha \beta})
  \]
 
 \end{itemize}
 
 \begin{defn}
-	A function $f: M \rightarrow \R$ is \emph{smooth} at $p \in M$ if for all coordinate charts $\phi: U \rightarrow M$ about $p$, \[
-		f \circ \phi : U \subset \R^N \rightarrow R
-	\] is smooth
-	
-	A map $f : M_1 \rightarrow M_2$ between smooth manifolds is \emph{smooth} at $p \in M_1$ if for all coordinate charts $\phi : U \rightarrow M_1$ about $p$, and coordinate chart $\psi : V \rightarrow M_2$\[
-		\psi^{-1} \circ f \circ \phi : U \subset \R^{N_1} \rightarrow \R^{N_2}
-	\]
-	It is called smooth if it is smooth at every point.
+    A function $f: M \rightarrow \R$ is \emph{smooth} at $p \in M$ if for all coordinate charts $\phi: U \rightarrow M$ about $p$, \[
+        f \circ \phi : U \subset \R^N \rightarrow R
+    \] is smooth
+    
+    A map $f : M_1 \rightarrow M_2$ between smooth manifolds is \emph{smooth} at $p \in M_1$ if for all coordinate charts $\phi : U \rightarrow M_1$ about $p$, and coordinate chart $\psi : V \rightarrow M_2$\[
+        \psi^{-1} \circ f \circ \phi : U \subset \R^{N_1} \rightarrow \R^{N_2}
+    \]
+    It is called smooth if it is smooth at every point.
 
 \end{defn}
 
 \begin{defn}
-	Two manifolds $M_1$ and $M_2$ are \emph{diffeomorphic} if there is a smooth map $f: M_1 \rightarrow M_2$ that has a smooth inverse.
-	
-	A necessary condition is that the manifolds have the same dimension.
+    Two manifolds $M_1$ and $M_2$ are \emph{diffeomorphic} if there is a smooth map $f: M_1 \rightarrow M_2$ that has a smooth inverse.
+    
+    A necessary condition is that the manifolds have the same dimension.
 \end{defn}
 
 \begin{defn}
-	A smooth parameterised curve in a (smooth) manifold $M$ is a smooth map $\alpha : (a,b) \rightarrow M$
+    A smooth parameterised curve in a (smooth) manifold $M$ is a smooth map $\alpha : (a,b) \rightarrow M$
 \end{defn}
 
 \begin{defn}[Tangent vectors as equivalence classes of curves]
-	A \emph{tangent vector} $v$ to the smooth manifold $M$ at $p \in M$ is an equivalence class $[\alpha]$ of curve $\alpha: (-\epsilon, \epsilon) \rightarrow M$ with $\alpha(0) = p$. 
-	
-	Fix a coordinate chart $\phi: U \rightarrow M$ around $p$.  If $\alpha_1, \alpha_2$ satisfy $\alpha_1(0) = \alpha_2(0) = p$, then we define \[
-		\alpha_1 \sim \alpha_2 \Leftrightarrow (\phi^{-1} \circ \alpha_1)'(0) = (\phi^{-1} \circ \alpha_2)'(0)
-	\]
-	
-	This is independent of the choice of $\phi$
+    A \emph{tangent vector} $v$ to the smooth manifold $M$ at $p \in M$ is an equivalence class $[\alpha]$ of curve $\alpha: (-\epsilon, \epsilon) \rightarrow M$ with $\alpha(0) = p$. 
+    
+    Fix a coordinate chart $\phi: U \rightarrow M$ around $p$.  If $\alpha_1, \alpha_2$ satisfy $\alpha_1(0) = \alpha_2(0) = p$, then we define \[
+        \alpha_1 \sim \alpha_2 \Leftrightarrow (\phi^{-1} \circ \alpha_1)'(0) = (\phi^{-1} \circ \alpha_2)'(0)
+    \]
+    
+    This is independent of the choice of $\phi$
 \end{defn}
 
 \begin{defn}[Derivation]
-	A derivation is a map from the real vector space of smooth function on $M$ to $\R$, which is linear and satisfies the product rule at $p$, \emph{i.e.} \[
-		D(fg) = fD(g) + gD(f)
- 	\]
+    A derivation is a map from the real vector space of smooth function on $M$ to $\R$, which is linear and satisfies the product rule at $p$, \emph{i.e.} \[
+        D(fg) = fD(g) + gD(f)
+    \]
 \end{defn}
 
 \begin{thm}
-	THe set of all derivations at $p \in M^N$ forms an $n$-dimensional vector space, with basis \[
-		\frac{\partial}{\partial u^i} : \phi \mapsto \frac{\partial \phi(p)}{\partial u^i}
-	\]
-	where \[
-		\phi :(u^1,\dots, u^n) \mapsto \phi(u^1,\dots,u^n)
-	\]
+    THe set of all derivations at $p \in M^N$ forms an $n$-dimensional vector space, with basis \[
+        \frac{\partial}{\partial u^i} : \phi \mapsto \frac{\partial \phi(p)}{\partial u^i}
+    \]
+    where \[
+        \phi :(u^1,\dots, u^n) \mapsto \phi(u^1,\dots,u^n)
+    \]
 \end{thm}
 
 \begin{defn}[Tangent vector as an operator that acts on functions]
-	There is a one-to-one correspondence between equivalence classes of curves through $p$ and derivations at $p$.  We can thus alternatively define a tangent vector at $p$ to be a derivation at $p$.  
+    There is a one-to-one correspondence between equivalence classes of curves through $p$ and derivations at $p$.  We can thus alternatively define a tangent vector at $p$ to be a derivation at $p$.  
 \end{defn}
 
 \begin{defn}
-	A smooth manifold $M$ is orientable if it has an atlas (i.e. may be covered with coordinate neighbourhoods) so that whenever $p ∈\in M$ lies in the image of two local parameterisations $\phi$ and $\psi$, the change of basis matrix at $p$ has positive determinant.
-	
-	If this is possible, then the choice of such an atlas is called an orientation of $M$, and we say that $M$ is oriented.
-	
-	An orientation of a smooth manifold M can be thought of as an orientation of every tangent plane that “varies smoothly”.
+    A smooth manifold $M$ is orientable if it has an atlas (i.e. may be covered with coordinate neighbourhoods) so that whenever $p ∈\in M$ lies in the image of two local parameterisations $\phi$ and $\psi$, the change of basis matrix at $p$ has positive determinant.
+    
+    If this is possible, then the choice of such an atlas is called an orientation of $M$, and we say that $M$ is oriented.
+    
+    An orientation of a smooth manifold M can be thought of as an orientation of every tangent plane that “varies smoothly”.
 \end{defn}
 
 \begin{defn}[Tangent Bundle]
 Define \[
-	TM = \{ (p,v): p ]in M, v \in T_p M \}
+    TM = \{ (p,v): p ]in M, v \in T_p M \}
 \]
 \end{defn}
 
 \begin{defn}
-	A \emph{smooth vector field} on the smooth manifold $M$ is a smooth map $v : M \rightarrow TM$ such that $v_p \in T_pM$ for each $p \in M$.
+    A \emph{smooth vector field} on the smooth manifold $M$ is a smooth map $v : M \rightarrow TM$ such that $v_p \in T_pM$ for each $p \in M$.
 \end{defn}
 
 \begin{defn}
-	Let $v,w$ be smooth vector fields on $M$.  A \emph{covariant derivative} on a smooth manifold $M$ is a map \[
-		\nabla : (v,w) \mapsto \nabla_v w
- 	\] 
+    Let $v,w$ be smooth vector fields on $M$.  A \emph{covariant derivative} on a smooth manifold $M$ is a map \[
+        \nabla : (v,w) \mapsto \nabla_v w
+    \] 
 such that 
 \begin{itemize}
 
 
-	\item $\nabla_v$ is linear in $v$ \emph{i.e.} $\nabla_{fu + gv}(w) = f \nabla_u(w) + g \nabla_v(w)$
+    \item $\nabla_v$ is linear in $v$ \emph{i.e.} $\nabla_{fu + gv}(w) = f \nabla_u(w) + g \nabla_v(w)$
 
 
-	\item Each $\nabla_v$ satisfies linearity over $\R$: $\nabla_v(u +w) = \nabla_v(u) + \nabla_v(w)$
+    \item Each $\nabla_v$ satisfies linearity over $\R$: $\nabla_v(u +w) = \nabla_v(u) + \nabla_v(w)$
 
 
-	\item Each $\nabla_v$ satisfies the product rule \[
- 	\nabla_v (fu) = f \nabla_v(u) + v(f) u
+    \item Each $\nabla_v$ satisfies the product rule \[
+    \nabla_v (fu) = f \nabla_v(u) + v(f) u
  \]
 
 \end{itemize}
 \end{defn}
 
 \begin{defn}[Levi-Civita connection]
-	On a Riemannian manifold, there is a unique covariant derivative satisfying the following two conditions:
-	\[
-		\nabla_{\frac{\partial}{\partial u^i}} \frac{\partial}{\partial u^j} = \nabla_{\frac{\partial}{\partial u^j}} \frac{\partial}{\partial u^i} 
-	\]
-	and viewing $\frac{\partial}{\partial u^i}$ as a derivation,\[
-		\deriv{i} (\langle \deriv{j},\deriv{k}\rangle) = \langle \nabla_{\deriv{i}} \deriv{j},\deriv{k}\rangle + \langle \deriv{j},\nabla_{\deriv{i}} \deriv{k} \rangle
-	\]
-	
+    On a Riemannian manifold, there is a unique covariant derivative satisfying the following two conditions:
+    \[
+        \nabla_{\frac{\partial}{\partial u^i}} \frac{\partial}{\partial u^j} = \nabla_{\frac{\partial}{\partial u^j}} \frac{\partial}{\partial u^i} 
+    \]
+    and viewing $\frac{\partial}{\partial u^i}$ as a derivation,\[
+        \deriv{i} (\langle \deriv{j},\deriv{k}\rangle) = \langle \nabla_{\deriv{i}} \deriv{j},\deriv{k}\rangle + \langle \deriv{j},\nabla_{\deriv{i}} \deriv{k} \rangle
+    \]
+    
 \end{defn}
 
 \begin{defn}[Christoffel symbols on an abstract manifold]
-	Define the Christoffel symbols \christ{k}{i}{j} with respect to a local coordinate chart by \[
-		\nabla_\deriv{i} \deriv{j} = \christ{k}{i}{j} \deriv{k}
-	\]
-	We have \[
-		\christ{k}{i}{j} = \frac{1}{2}g^{kl}\left( g_{il,j} + g_{jl,i} - g_{ij,l} \right)
-		\] which defines a unique covariant derivative.
+    Define the Christoffel symbols \christ{k}{i}{j} with respect to a local coordinate chart by \[
+        \nabla_\deriv{i} \deriv{j} = \christ{k}{i}{j} \deriv{k}
+    \]
+    We have \[
+        \christ{k}{i}{j} = \frac{1}{2}g^{kl}\left( g_{il,j} + g_{jl,i} - g_{ij,l} \right)
+        \] which defines a unique covariant derivative.
 \end{defn}
 
 \begin{defn}[Geodesic]
-	A geodesic is a curve $\alpha$ satisfying 
-	\[ \nabla_\alpha' \alpha' = 0 \]
-	
-	This gives us the equations \[
-		(u^k)'' + \christ{k}{i}{j}(u^i)'(u^j)' = 0
-	\] for $k = 1,\dots,n$
+    A geodesic is a curve $\alpha$ satisfying 
+    \[ \nabla_\alpha' \alpha' = 0 \]
+    
+    This gives us the equations \[
+        (u^k)'' + \christ{k}{i}{j}(u^i)'(u^j)' = 0
+    \] for $k = 1,\dots,n$
 \end{defn}
 
 
 \begin{defn}
-	The \emph{hyperbolic plane} is defined to be the upper half plane with the metric (writing $u^1 = x, u^2 = y$) \[
-		g_{11} = \frac{1}{y^2}, g_{12} = 0, g_{22} = \frac{1}{y^2}
- 	\]
+    The \emph{hyperbolic plane} is defined to be the upper half plane with the metric (writing $u^1 = x, u^2 = y$) \[
+        g_{11} = \frac{1}{y^2}, g_{12} = 0, g_{22} = \frac{1}{y^2}
+    \]
 \end{defn}
 
 
