@@ -59,11 +59,11 @@ Thanks
 
 Thanks must go to the excellent lecturers at Sydney University, who have made this possible.
 
-The list of lecturers for the courses are
+The list of lecturers for the courses are:
 
 * [Prof. Marek Rutkowski](http://www.maths.usyd.edu.au/ut/people?who=M_Rutkowski) (AMH3 - Interest Rate Models, STAT 3911 - Stochastic Processes and Time Series Analysis)
 * [Prof. Christian Ewald](http://www.maths.usyd.edu.au/ut/people?who=CO_Ewald) (AMH4 - Advanced Option Pricing, MATH 3975 - Financial Mathematics)
-* Tasos Viglas (COMP 2907 - Algorithms and Complexity)
+* [Tasos Viglas](http://sydney.edu.au/engineering/it/~tasos/) (COMP 2907 - Algorithms and Complexity)
 * [A/Prof. Laurentiu Paunescu](http://www.maths.usyd.edu.au/ut/people?who=L_Paunescu) (MATH 3961 - Metric Spaces)
 * [Adrian Nelson](http://www.maths.usyd.edu.au/ut/people?who=AM_Nelson) (MATH 3962 - Rings, Fields, and Galois Theory)
 * [Chris Cosgrove](http://www.maths.usyd.edu.au/ut/people?who=CM_Cosgrove) (MATH 3964 - Complex Analysis)
