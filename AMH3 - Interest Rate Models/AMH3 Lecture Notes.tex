@@ -5,88 +5,41 @@
 
 
 \documentclass[10pt, oneside, reqno]{amsbook}
-% \chapterstyle{bianchi}
-% 
-% \makeatletter
-% \newcommand\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
-% \setlength\midchapskip{10pt}
-% \makechapterstyle{VZ14}{
-% \renewcommand\chapternamenum{}
-% \renewcommand\printchaptername{}
-% \renewcommand\chapnamefont{\Large\scshape}
-% \renewcommand\printchapternum{%
-% \chapnamefont\null\thickhrulefill\quad
-% \@chapapp\space\thechapter\quad\thickhrulefill}
-% \renewcommand\printchapternonum{%
-% \par\thickhrulefill\par\vskip\midchapskip
-% \hrule\vskip\midchapskip
-% }
-% \renewcommand\chaptitlefont{\Huge\scshape\centering}
-% \renewcommand\afterchapternum{%
-% \par\nobreak\vskip\midchapskip\hrule\vskip\midchapskip}
-% \renewcommand\afterchaptertitle{%
-% \par\vskip\midchapskip\hrule\nobreak\vskip\afterchapskip}
-% }
-% \makeatother
-% \chapterstyle{VZ14}
-
-% \OnehalfSpacing
-
-
-% \makechapterstyle{AlexanderGrebenkov}{%
-% \renewcommand{\chapterheadstart}{\vspace*{\beforechapskip}\hrule\medskip}
-% \renewcommand{\chapnamefont}{\normalfont\large\scshape}
-% \renewcommand{\chapnumfont}{\normalfont\large\scshape}
-% \renewcommand{\chaptitlefont}{\normalfont\large\scshape}
-% \renewcommand{\printchaptername}{\S}
-% \renewcommand{\chapternamenum}{ }
-% \renewcommand{\printchapternum}{\chapnumfont \thechapter}
-% \renewcommand{\afterchapternum}{. }
-% \renewcommand{\afterchaptertitle}{\par\nobreak\medskip\hrule\vskip
-% \afterchapskip}
-% }
-% \chapterstyle{AlexanderGrebenkov}
 \usepackage{amsthm, amsmath, amssymb}
 \usepackage{setspace, graphicx, enumerate}
 \onehalfspacing    
-% \usepackage[landscape, scale=0.90]{geometry}       
-% \usepackage{fullpage}      
 \usepackage{fontspec,xltxtra,xunicode}
 \defaultfontfeatures{Mapping=tex-text}
 
-%\setromanfont[Mapping=tex-text,Contextuals= 
-%{NoWordInitial,NoWordFinal,NoLineInitial,NoLineFinal}]{Hoefler Text}
-%\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Hoefler Text}
-%\setmonofont[Scale=MatchLowercase]{Andale Mono}
 
 
-	% AMS Theorems
-	\theoremstyle{plain}% default 
-	\newtheorem{thm}{Theorem}[chapter] 
-	\newtheorem{lem}[thm]{Lemma} 
-	\newtheorem{prop}[thm]{Proposition} 
-	\newtheorem{exer}[thm]{Exercise} 
-	\newtheorem*{cor}{Corollary} 
+% AMS Theorems
+\theoremstyle{plain}% default 
+\newtheorem{thm}{Theorem}[chapter] 
+\newtheorem{lem}[thm]{Lemma} 
+\newtheorem{prop}[thm]{Proposition} 
+\newtheorem{exer}[thm]{Exercise} 
+\newtheorem*{cor}{Corollary} 
 
 
 \newcommand{\res}[2]{\text{Res}(#1,#2)}
-	\theoremstyle{definition} 
-		\newtheorem{defn}[thm]{Definition}
-		\newtheorem{conj}[thm]{Conjecture}
-		\newtheorem{exmp}[thm]{Example}
-	
-	\theoremstyle{remark} 
-		\newtheorem*{rem}{Remark} 
-		\newtheorem*{note}{Note} 
-		\newtheorem{case}{Case} 
+\theoremstyle{definition} 
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{exmp}[thm]{Example}
 
-		\newcommand{\expc}[1]{\mathbb{E}\left[#1\right]}
-		\newcommand{\var}{\text{Var}}
-		\newcommand{\cov}[1]{\text{Cov}\left(#1\right)}
-		\newcommand{\prob}[1]{\mathbb{P}(#1)}
-		\newcommand{\given}{ \, | \,}
-		\newcommand{\us}{0 \leq u \leq s}
-		\newcommand{\ts}[1]{\{ #1 \}}
+\theoremstyle{remark} 
+\newtheorem*{rem}{Remark} 
+\newtheorem*{note}{Note} 
+\newtheorem{case}{Case} 
+
+\newcommand{\expc}[1]{\mathbb{E}\left[#1\right]}
+\newcommand{\var}{\text{Var}}
+\newcommand{\cov}[1]{\text{Cov}\left(#1\right)}
+\newcommand{\prob}[1]{\mathbb{P}(#1)}
+\newcommand{\given}{ \, | \,}
+\newcommand{\us}{0 \leq u \leq s}
+\newcommand{\ts}[1]{\{ #1 \}}
 
 \renewcommand{\phi}{\varphi}
 \newcommand{\sigf}{\mathcal{F}}
@@ -154,12 +107,6 @@
 
 
 \begin{document}
-% \maketitle \tableofcontents \clearpage
-
-% \chapter*{AMH3 - Interest Rate Modelling} % (fold)
-% \label{cha:}
-% \clearpage
-% % chapter  (end)
 
 \maketitle \tableofcontents \clearpage
 

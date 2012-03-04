@@ -12,36 +12,30 @@
 \usepackage{fontspec,xltxtra,xunicode}
 \defaultfontfeatures{Mapping=tex-text}
 
-%\setromanfont[Mapping=tex-text,Contextuals= 
-%{NoWordInitial,NoWordFinal,NoLineInitial,NoLineFinal}]{Hoefler Text}
-%\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Hoefler Text}
-%\setmonofont[Scale=MatchLowercase]{Andale Mono}
+% AMS Theorems
+\theoremstyle{plain}% default 
+\newtheorem{thm}{Theorem}[section] 
+\newtheorem{lem}[thm]{Lemma} 
+\newtheorem{prop}[thm]{Proposition} 
+\newtheorem*{cor}{Corollary} 
 
+\theoremstyle{definition} 
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{exmp}[thm]{Example}
 
-	% AMS Theorems
-	\theoremstyle{plain}% default 
-	\newtheorem{thm}{Theorem}[section] 
-	\newtheorem{lem}[thm]{Lemma} 
-	\newtheorem{prop}[thm]{Proposition} 
-	\newtheorem*{cor}{Corollary} 
+\theoremstyle{remark} 
+\newtheorem*{rem}{Remark} 
+\newtheorem*{note}{Note} 
+\newtheorem{case}{Case} 
 
-	\theoremstyle{definition} 
-		\newtheorem{defn}[thm]{Definition}
-		\newtheorem{conj}[thm]{Conjecture}
-		\newtheorem{exmp}[thm]{Example}
-	
-	\theoremstyle{remark} 
-		\newtheorem*{rem}{Remark} 
-		\newtheorem*{note}{Note} 
-		\newtheorem{case}{Case} 
-
-		\newcommand{\expc}[1]{\mathbb{E}\left[#1\right]}
-		\newcommand{\var}[1]{\text{Var}\left(#1\right)}
-		\newcommand{\cov}[1]{\text{Cov}\left(#1\right)}
-		\newcommand{\prob}[1]{\mathbb{P}(#1)}
-		\newcommand{\given}{ \, | \,}
-		\newcommand{\us}{0 \leq u \leq s}
-		\newcommand{\ts}[1]{\{ #1 \}}
+\newcommand{\expc}[1]{\mathbb{E}\left[#1\right]}
+\newcommand{\var}[1]{\text{Var}\left(#1\right)}
+\newcommand{\cov}[1]{\text{Cov}\left(#1\right)}
+\newcommand{\prob}[1]{\mathbb{P}(#1)}
+\newcommand{\given}{ \, | \,}
+\newcommand{\us}{0 \leq u \leq s}
+\newcommand{\ts}[1]{\{ #1 \}}
 
 
 \newcommand{\al}{\alpha}
@@ -64,14 +58,14 @@
 \newcommand{\minpoly}[2]{m_{#1, #2}(x)}
 
 \newcommand{\mapping}[5]{\begin{align*}
-	#1 : \quad     #2 &\rightarrow #3 \\
-			#4  &\mapsto #5
-\end{align*}	
+    #1 : \quad     #2 &\rightarrow #3 \\
+            #4  &\mapsto #5
+\end{align*}    
 }
-		
+        
 \usepackage{hyperref}
-		
-\title{STAT 3911 - Stochastic Processes}								% Document Title
+        
+\title{STAT 3911 - Stochastic Processes}                                % Document Title
 \author{Andrew Tulloch}
 %\date{}                                           % Activate to display a given date or no date
 
@@ -82,109 +76,109 @@
 \section{Stochastic Processes} % (fold)
 \label{sec:stochastic_processes}
 \begin{defn}[Markov process]
-	A process $X = \{X_t : t \in T\}$ is a \textbf{Markov process} if 
-	\[
-		\prob{X(t) \leq x \, | \, X(t_1) = x_1, X(t_2) = x_2, \dots, X(t_n) = x_n} = \prob{X(t) \leq x \, | \, X(t_n) = x_n}
-	\]
-	whenever $t_1 < t_2 < \cdots < t_n < t$.
+    A process $X = \{X_t : t \in T\}$ is a \textbf{Markov process} if 
+    \[
+        \prob{X(t) \leq x \, | \, X(t_1) = x_1, X(t_2) = x_2, \dots, X(t_n) = x_n} = \prob{X(t) \leq x \, | \, X(t_n) = x_n}
+    \]
+    whenever $t_1 < t_2 < \cdots < t_n < t$.
 
-	In other words, a Markov process is a stochastic process satisfying the Markov property: the conditional distribution of future values is independent of the past.
+    In other words, a Markov process is a stochastic process satisfying the Markov property: the conditional distribution of future values is independent of the past.
 
 \end{defn}
 
 
 \begin{defn}[Markov chain]
-	A \emph{Markov chain} is a stochastic process with a finite or countable state space is a Markov chain if it satisfies the Markov property.  Define the transition probabilities $P_{ij}$ by \[
-		P_{ij} = \prob{X_{n+1} = j \, | \, X_n = i}
-	\]
+    A \emph{Markov chain} is a stochastic process with a finite or countable state space is a Markov chain if it satisfies the Markov property.  Define the transition probabilities $P_{ij}$ by \[
+        P_{ij} = \prob{X_{n+1} = j \, | \, X_n = i}
+    \]
 \end{defn}
 
 \begin{thm}[Chapman-Kolmogorov equation]
-	Let $P^n_{ij}$ denote the probability of going from state $i$ to state $j$ in $n$ steps, that is, \[
-		P_{ij}^n = \prob{X_{n+m} = j \, | \, X_m = i} = \prob{X_n = j \, | \, X_0 = i}
-	\]
-	
-	Then we have, for any $m,n = 0,1,2,\dots$ and $i,j \in S$, \[
-		P_{ij}^{n+m} = \sum_{k=0}^\infty P^m_{ik} P^n_{kj}.
-	\]
-	In terms of matrix multiplication, this is equivalent to \[
-		P^{n+m} = P^{n}P^{m}
-	\]
+    Let $P^n_{ij}$ denote the probability of going from state $i$ to state $j$ in $n$ steps, that is, \[
+        P_{ij}^n = \prob{X_{n+m} = j \, | \, X_m = i} = \prob{X_n = j \, | \, X_0 = i}
+    \]
+    
+    Then we have, for any $m,n = 0,1,2,\dots$ and $i,j \in S$, \[
+        P_{ij}^{n+m} = \sum_{k=0}^\infty P^m_{ik} P^n_{kj}.
+    \]
+    In terms of matrix multiplication, this is equivalent to \[
+        P^{n+m} = P^{n}P^{m}
+    \]
 \end{thm}
 
 
 \begin{prop}[Initial distribution]
-	At time $t$, let $\pi_n$ denote the column vector such that $\pi_n(j) = \prob{X_n = j}$ for all $j \in S$.
-	\[
-		\pi_n = \pi_0 P^n
-	\]
+    At time $t$, let $\pi_n$ denote the column vector such that $\pi_n(j) = \prob{X_n = j}$ for all $j \in S$.
+    \[
+        \pi_n = \pi_0 P^n
+    \]
 \end{prop}
 
 \section{Classification of states} % (fold)
 \label{sub:classification_of_states}
 
 \begin{defn}[Classification of states]
-	Define an equivalence relation $\sim$ on the set of states such that $i \leftrightarrow j$ if and only if $P^n_{ij} > 0$ for some $n \geq 0$.  Two states $i$ and $j$ which are accessible to each other are said to communicate and we write $i \leftrightarrow j$
+    Define an equivalence relation $\sim$ on the set of states such that $i \leftrightarrow j$ if and only if $P^n_{ij} > 0$ for some $n \geq 0$.  Two states $i$ and $j$ which are accessible to each other are said to communicate and we write $i \leftrightarrow j$
 \end{defn}
 
 \begin{lem}
-	Communication is an equivalence relation on the set of states.
+    Communication is an equivalence relation on the set of states.
 \end{lem}
 
 If two states communicate with each other we say they belong to the same \textbf{communicating class}.  
 
 \begin{defn}[Irreducible]
-	A Markov chain is said to be \textbf{irreducible} if there is only one class, i.e., all states communicate with each other.  A class $C$ is closed if no state outside $C$ can be reached from any state in $C$.  A state $i$ is called \textbf{absorbing} if the set $\{i \}$ is a closed class, i.e., $P_{ii} = 1$.
+    A Markov chain is said to be \textbf{irreducible} if there is only one class, i.e., all states communicate with each other.  A class $C$ is closed if no state outside $C$ can be reached from any state in $C$.  A state $i$ is called \textbf{absorbing} if the set $\{i \}$ is a closed class, i.e., $P_{ii} = 1$.
 \end{defn}
 
 \begin{defn}[Period of a state]
-	A state $i$ is said to have \textbf{period} $d_i$ if $P^{n}_{ii} = 0$ except when $n = d_i, 2d_i, 3d_i, \dots$.
+    A state $i$ is said to have \textbf{period} $d_i$ if $P^{n}_{ii} = 0$ except when $n = d_i, 2d_i, 3d_i, \dots$.
 \end{defn}
 
 \begin{prop}
-	If $i \leftrightarrow j$ then $d_i = d_j$.  
+    If $i \leftrightarrow j$ then $d_i = d_j$.  
 \end{prop}
 
 \begin{defn}[First transition time]
-	For any states $i$ and $j$, define $f^n_{ij}$ as the probability that starting in $i$, the first transition into $j$ occurs at time $n$, that is \begin{align*}
-		f^0_{ij} = 0 \\
-		f^n_{ij} = \prob{X_n = j, X_k \neq j, k = 1,2,\dots, n-1 \, | \, X_0 = i}
-	\end{align*}
+    For any states $i$ and $j$, define $f^n_{ij}$ as the probability that starting in $i$, the first transition into $j$ occurs at time $n$, that is \begin{align*}
+        f^0_{ij} = 0 \\
+        f^n_{ij} = \prob{X_n = j, X_k \neq j, k = 1,2,\dots, n-1 \, | \, X_0 = i}
+    \end{align*}
 Let $T_j$ be the random time of the \textbf{first transition} into state $j$.  Thus we have \[
-	\prob{T_j = n \given X_0 = i} = f^n_{ij}
+    \prob{T_j = n \given X_0 = i} = f^n_{ij}
 \]
 If $X_0 = j$ then $T_j$ is the \textbf{first return} time to $j$.  If $X_0 = i \neq j$ then $T_j$ is the \textbf{first hitting} time of $j$.
 
 We define the quantity $f_{ij}$ by the equality \[
-	f_{ij} = \sum_{n=1}^\infty f^n_{ij}
+    f_{ij} = \sum_{n=1}^\infty f^n_{ij}
 \]
 
 $f^{ij}$ is the probability of ever making a transition into state $j$, given that the process starts in state $i$.  We also have that $f_{ij} > 0$ if and only if state $j$ is accessible from state $i$.
 \end{defn}
 
 \begin{defn}[Recurrent states]
-	A state is \textbf{recurrent} if \[
-		\prob{X_n = i \text{ for some } n \geq 1 \given X_0 = i} = 1
-	\]
-	
-	A state $i$ is recurrent if and only if $f_{ii} = 1$.  A state $i$ is transient if and only if $f_{ii} < 1$.
+    A state is \textbf{recurrent} if \[
+        \prob{X_n = i \text{ for some } n \geq 1 \given X_0 = i} = 1
+    \]
+    
+    A state $i$ is recurrent if and only if $f_{ii} = 1$.  A state $i$ is transient if and only if $f_{ii} < 1$.
 \end{defn}
 
 \begin{prop}
-	A state $i$ is recurrent if and only if \[
-		\sum_{n=1}^\infty P^n_{ii} = \infty
-	\]
+    A state $i$ is recurrent if and only if \[
+        \sum_{n=1}^\infty P^n_{ii} = \infty
+    \]
 A state $i$ is transient if and only if \[
-	\sum_{n=1}^\infty P^n_{ii} < \infty
+    \sum_{n=1}^\infty P^n_{ii} < \infty
 \]
 \end{prop}
 
 \begin{cor}
-	If $i$ is recurrent and $i \leftrightarrow j$ then state $j$ is recurrent.
+    If $i$ is recurrent and $i \leftrightarrow j$ then state $j$ is recurrent.
 \end{cor}
 
 \begin{cor}
-	If $i \leftrightarrow j$ and $j$ is recurrent then $f_{ij} = 1$.
+    If $i \leftrightarrow j$ and $j$ is recurrent then $f_{ij} = 1$.
 \end{cor}
 % subsection classification_of_states (end)
 
@@ -192,49 +186,49 @@ A state $i$ is transient if and only if \[
 \label{sub:limit_theorems_for_markov_chains}
 
 Let $m_{jj}$ be the \textbf{mean recurrence time}, that is, the expected number of transitions until a Markov chain starting in $j$ returns to that state, so \[
-	m_jj = \begin{cases}
-		 \infty &\text{if $j$ is transient} \\
-							\sum_{n=1}^\infty n f^n_{jj} &\text{if $j$ is recurrent}
-	\end{cases}
+    m_jj = \begin{cases}
+         \infty &\text{if $j$ is transient} \\
+                            \sum_{n=1}^\infty n f^n_{jj} &\text{if $j$ is recurrent}
+    \end{cases}
 \]
 
 \begin{defn}[Ergodic state]
-	Let $j$ be recurrent.  Then a state $j$ is called \textbf{positive recurrent} if $m_{jj} < \infty$ and \textbf{null recurrent} if $m_{jj} = \infty$.  A positive recurrent, aperiodic state is called \textbf{ergodic}.
+    Let $j$ be recurrent.  Then a state $j$ is called \textbf{positive recurrent} if $m_{jj} < \infty$ and \textbf{null recurrent} if $m_{jj} = \infty$.  A positive recurrent, aperiodic state is called \textbf{ergodic}.
 \end{defn}
 
 We have $\frac{1}{m_{jj}} = 0$ if a state $j$ is either transient of null recurrent.  If $j$ is positive recurrent then $0 < \frac{1}{m_{jj}} < \infty$. 
 
 
 \begin{thm}
-	Assume $i \leftrightarrow j$. If a state $j$ is aperiodic, then \[
-		\lim_{n \rightarrow \infty} P^n_{ij} = \frac{1}{m_{jj}}
-	\]
-	
-	If a state $j$ has period $d_j$, then \[
-			\lim_{n \rightarrow \infty} P^n_{ij} = \frac{d_j}{m_{jj}}
-	\]
+    Assume $i \leftrightarrow j$. If a state $j$ is aperiodic, then \[
+        \lim_{n \rightarrow \infty} P^n_{ij} = \frac{1}{m_{jj}}
+    \]
+    
+    If a state $j$ has period $d_j$, then \[
+            \lim_{n \rightarrow \infty} P^n_{ij} = \frac{d_j}{m_{jj}}
+    \]
 \end{thm}
 
 % subsection limit_theorems_for_markov_chains (end)
 
 \begin{defn}[Stationary distributions]
-	A probability distribution $\pi^\star$ is called \textbf{stationary} for for a Markov chain $X$ with transition matrix $P$ if \[
-		\pi^\star P = \pi^\star
-	\]
+    A probability distribution $\pi^\star$ is called \textbf{stationary} for for a Markov chain $X$ with transition matrix $P$ if \[
+        \pi^\star P = \pi^\star
+    \]
 We note that the stationary distribution $\pi^\star$ associated with a Markov chain is not necessarily unique, nor does it always exist.
 \end{defn}
 
 \begin{thm}[Irreducible aperiodic Markov chains]
-		Let $X$ be an irreducible aperiodic Markov chain.  Then
-		\begin{itemize}
-			\item Either all the states are transient or null recurrent; in that case we have that $\lim_{n \rightarrow \infty} P^n_{ij} = 0$ for all $i,j$ and there exists no stationary distribution.
-			\item or else all states are positive recurrent - in that case we have $\Pi_j = \lim_{n \rightarrow \infty} P^n_{ij} > 0$ for all $i,j$; moreover, $\Pi_j$ is a stationary distribution and the stationary distribution is unique.  Moreover, for all $j$, \[
-				\Pi_j = \frac{1}{m_{jj}}
-			\]
-		\end{itemize}
-		
+        Let $X$ be an irreducible aperiodic Markov chain.  Then
+        \begin{itemize}
+            \item Either all the states are transient or null recurrent; in that case we have that $\lim_{n \rightarrow \infty} P^n_{ij} = 0$ for all $i,j$ and there exists no stationary distribution.
+            \item or else all states are positive recurrent - in that case we have $\Pi_j = \lim_{n \rightarrow \infty} P^n_{ij} > 0$ for all $i,j$; moreover, $\Pi_j$ is a stationary distribution and the stationary distribution is unique.  Moreover, for all $j$, \[
+                \Pi_j = \frac{1}{m_{jj}}
+            \]
+        \end{itemize}
+        
 \end{thm}
-	We note that in a \textbf{finite-state}, irreducible, aperiodic Markov chain all states are positive recurrent/ergodic, and so the stationary distribution exists and is unique.
+    We note that in a \textbf{finite-state}, irreducible, aperiodic Markov chain all states are positive recurrent/ergodic, and so the stationary distribution exists and is unique.
 
 In a \textbf{finite state}, irreducible, \textbf{periodic} Markov chain all states are positive recurrent and the unique stationary distribution exists and is unique.
 
@@ -245,35 +239,35 @@ In a \textbf{finite state}, irreducible, \textbf{periodic} Markov chain all stat
 \label{sub:first_step_analysis}
 Consider the Markov chain $X$ with transition probability matrix 
 \[
-	P = \begin{bmatrix}
-			1 & 0 & 0 \\
-			\alpha & \beta & \gamma \\
-			0 & 0 & 1
-	\end{bmatrix}	
+    P = \begin{bmatrix}
+            1 & 0 & 0 \\
+            \alpha & \beta & \gamma \\
+            0 & 0 & 1
+    \end{bmatrix}   
 \]
 
 We ask the following questions.
 \begin{itemize}
-	\item What state will the process ultimately be absorbed in?
-	\item How long, on average, will it take to reach one of these states?
+    \item What state will the process ultimately be absorbed in?
+    \item How long, on average, will it take to reach one of these states?
 \end{itemize}
 
 Let \[T = \min \{n \geq 0 \given X_n = 0 \text{ or } X_n = 2 \}\]
 be the random \textbf{time of absorption} for the process $X$.  We ask the questions \[
-	u = \prob{X_T = 0 \given X_0 = 1} 
+    u = \prob{X_T = 0 \given X_0 = 1} 
 \] and \[
-	v = \expc{T \given X_0 = 1}
+    v = \expc{T \given X_0 = 1}
 \]
 
 Thus $u$ is the probability of begin absorbed in state $0$ given we start in state $1$, and $v$ is the expected time of being absorbed given we start in state $1$.
 
 Now we have the following.\[
-	u = 1\cdot \alpha + u \cdot \beta + 0 \cdot \gamma
+    u = 1\cdot \alpha + u \cdot \beta + 0 \cdot \gamma
 \]
 
 Similarly, we have 
 \[
-	v = 1 + a \cdot 0 + \beta \cdot v + \gamma \cdot 0
+    v = 1 + a \cdot 0 + \beta \cdot v + \gamma \cdot 0
 \]
 % subsection first_step_analysis (end)
 
@@ -282,44 +276,44 @@ Similarly, we have
 \label{sub:branching_processes}
 
 \begin{defn}[Branching process]
-	let $X_0 = 1$ and for every $n = 0,1,2,\dots$ define\[
-		X_{n+1} = \sum_{i=1}^{X_n} Z_i
-	\]
-	where $Z_i$ are independently, identically distributed random variables with probability distribution $\prob{Z=k} = P_k, k = 0,1,2,\dots$.  Then $X = \{ X_n, n \geq 0 \}$ is a branching process
+    let $X_0 = 1$ and for every $n = 0,1,2,\dots$ define\[
+        X_{n+1} = \sum_{i=1}^{X_n} Z_i
+    \]
+    where $Z_i$ are independently, identically distributed random variables with probability distribution $\prob{Z=k} = P_k, k = 0,1,2,\dots$.  Then $X = \{ X_n, n \geq 0 \}$ is a branching process
 \end{defn}
 
 We have the following formulas.
 
 \begin{lem}
-	We have \[
-		\expc{E(X_n)} = \mu \expc{X_{n-1}} = \mu^n
- 	\]
+    We have \[
+        \expc{E(X_n)} = \mu \expc{X_{n-1}} = \mu^n
+    \]
 and \[
-	\var{X_n} = \begin{cases}
-		\sigma^2 \mu^{n-1} \left( \frac{\mu^n - 1}{\mu - 1}\right) &\mu \neq 1 \\
-		n \sigma^2 &\mu = 1
-	\end{cases}
+    \var{X_n} = \begin{cases}
+        \sigma^2 \mu^{n-1} \left( \frac{\mu^n - 1}{\mu - 1}\right) &\mu \neq 1 \\
+        n \sigma^2 &\mu = 1
+    \end{cases}
 \]
 \end{lem}
 
 \begin{prop}[Extinction probabilities]
-	Define $u_n$ to be the probability of extinction at or prior to the $\nth$ generation, assuming $X_0 = 1$.  Then \[
-		u_n = \prob{X_n = 0 \given X_0 = 1}
-	\]
+    Define $u_n$ to be the probability of extinction at or prior to the $\nth$ generation, assuming $X_0 = 1$.  Then \[
+        u_n = \prob{X_n = 0 \given X_0 = 1}
+    \]
 
 Then we have \[
-	u_n = \sum_{k=0}^\infty P_k (u_{n-1})^k
+    u_n = \sum_{k=0}^\infty P_k (u_{n-1})^k
 \] where $P_k = \prob{Z = k}$.
 \end{prop}
 
 \begin{prop}
-	Let $\Pi_0 = \lim_{n \rightarrow \infty} \prob{X_n = 0}$ be the probability of eventual extinction.  Then, definining the probability generating functions $G_n(s) = \expc{s^{X_n}} = \sum_{j=0}^\infty s^j \prob{X_n = j}$, we have that 
-	\begin{itemize}
-		\item $\Pi_0 = 1$ if and only if $\mu \leq 1$,
-		\item If $\mu > 1$ then $\Pi_0 < 1$ is the smallest positive number $p$ satisfying $G(p) = p$ - that is, \[
-			\Pi_0 = G(\Pi_0)
-		\] where $G(p) = \sum_{j=0}^\infty p^j P_j$.
-	\end{itemize}
+    Let $\Pi_0 = \lim_{n \rightarrow \infty} \prob{X_n = 0}$ be the probability of eventual extinction.  Then, definining the probability generating functions $G_n(s) = \expc{s^{X_n}} = \sum_{j=0}^\infty s^j \prob{X_n = j}$, we have that 
+    \begin{itemize}
+        \item $\Pi_0 = 1$ if and only if $\mu \leq 1$,
+        \item If $\mu > 1$ then $\Pi_0 < 1$ is the smallest positive number $p$ satisfying $G(p) = p$ - that is, \[
+            \Pi_0 = G(\Pi_0)
+        \] where $G(p) = \sum_{j=0}^\infty p^j P_j$.
+    \end{itemize}
 \end{prop}
 % subsection branching_processes (end)
 
@@ -328,20 +322,20 @@ Then we have \[
 \section{Poisson process} % (fold)
 \label{sub:poisson_process}
 \begin{defn}[Poisson process]
-	A process $N = \{N(t), t \geq 0\}$ is a \textbf{Poisson process} if 
-	\begin{itemize}
-		\item $N(0) = 0$,
-		\item $N$ is a process of independent increments.
-		\item The number of events in any interval of length $t$ has a Poisson distribution with parameter $\lambda t$, that is \[
-			\prob{N(t+s) - N(s) = n}  = \frac{e^{-\lambda t} (\lambda t)^n}{n!}
-		\]
-	\end{itemize}
-	
-	The positive paramenter $\lambda > 0$ is called the \textbf{intensity} of the process.  We have that $\expc{N(t)} = \lambda t$ and $\var{N(t)} = \lambda t$
+    A process $N = \{N(t), t \geq 0\}$ is a \textbf{Poisson process} if 
+    \begin{itemize}
+        \item $N(0) = 0$,
+        \item $N$ is a process of independent increments.
+        \item The number of events in any interval of length $t$ has a Poisson distribution with parameter $\lambda t$, that is \[
+            \prob{N(t+s) - N(s) = n}  = \frac{e^{-\lambda t} (\lambda t)^n}{n!}
+        \]
+    \end{itemize}
+    
+    The positive paramenter $\lambda > 0$ is called the \textbf{intensity} of the process.  We have that $\expc{N(t)} = \lambda t$ and $\var{N(t)} = \lambda t$
 \end{defn}
 
 \begin{lem}
-	The sum of two Poisson processes of intensities $\lambda$ and $\mu$ is a Poisson process of intensity $\lambda + \mu$.
+    The sum of two Poisson processes of intensities $\lambda$ and $\mu$ is a Poisson process of intensity $\lambda + \mu$.
 \end{lem}
 
 % subsection poisson_process (end)
@@ -350,70 +344,70 @@ Then we have \[
 \label{sub:sojourn_and_waiting_times}
 
 \begin{defn}[Soujourn time]
-	For $n = 0,1,2,\dots$, the \textbf{sojourn time} in state $n$ equals \[
-		S_n = \inf \{t \in [0, \infty) \given N(t + S_{n-1}) - N(S_{n-1}) = 1 \}
-	\]
+    For $n = 0,1,2,\dots$, the \textbf{sojourn time} in state $n$ equals \[
+        S_n = \inf \{t \in [0, \infty) \given N(t + S_{n-1}) - N(S_{n-1}) = 1 \}
+    \]
 \end{defn}
 
 \begin{lem}
-	The sojourn times $S_n$ are independently, identically distributed exponential variables with parameter $\lambda$.
+    The sojourn times $S_n$ are independently, identically distributed exponential variables with parameter $\lambda$.
 \end{lem}
 
 \begin{defn}[Waiting time]
-	For $n = 0,1,2,\dots$, the \textbf{waiting time} until the $\nth$ event equals \[
-		W_n = \inf \{ t \in [0,\infty) \given N(t) = n\}
-	\]
+    For $n = 0,1,2,\dots$, the \textbf{waiting time} until the $\nth$ event equals \[
+        W_n = \inf \{ t \in [0,\infty) \given N(t) = n\}
+    \]
 \end{defn}
 
 \begin{lem}
-	If $X_i$ are independently, identically distributed exponential random variables with parameter $\lambda$ then $\sum_{i = 1}^n X_i$ is distributed with a gamma distribution with parameters $n, \lambda$, that is, $\Gamma(n,\lambda)$.
+    If $X_i$ are independently, identically distributed exponential random variables with parameter $\lambda$ then $\sum_{i = 1}^n X_i$ is distributed with a gamma distribution with parameters $n, \lambda$, that is, $\Gamma(n,\lambda)$.
 \end{lem}
 
 \begin{prop}
-	Given $N(t) = 1$, the waiting time $W_1 = S_0 = T_1$ has uniform distribution on $[0,t]$
+    Given $N(t) = 1$, the waiting time $W_1 = S_0 = T_1$ has uniform distribution on $[0,t]$
 \end{prop}
 
 \begin{thm}
-	Given that $N(t) = 1$, the waiting times $(W_1, \dots, W_n)$ have the same conditional joint probability density of $n$ independently, identically distributed uniformly distributed random variables on the interval $[0,t]$.
+    Given that $N(t) = 1$, the waiting times $(W_1, \dots, W_n)$ have the same conditional joint probability density of $n$ independently, identically distributed uniformly distributed random variables on the interval $[0,t]$.
 \end{thm}
 
 \begin{lem}
-	If $X_i, i = 1,2$ are independent exponential random variables with parameters $\lambda_i$, then \[
-		\prob{X_1 < X_2} = \frac{\lambda_1}{\lambda_1 + \lambda_2}
-	\]
+    If $X_i, i = 1,2$ are independent exponential random variables with parameters $\lambda_i$, then \[
+        \prob{X_1 < X_2} = \frac{\lambda_1}{\lambda_1 + \lambda_2}
+    \]
 \end{lem}
 % subsection sojourn_and_waiting_times (end)
 
 \section{Continuous-time Markov chains} % (fold)
 \label{sub:continuous_time_markov_chains}
 Consider a continuous time Markov process $X = \{X(t), t \geq 0 \}$ where transition probabilities \[
-	P_{ij}(t) = \prob{X(t+s) = j \given X(s) = i}
+    P_{ij}(t) = \prob{X(t+s) = j \given X(s) = i}
 \] are independent of $s$.  This is a \textbf{time-homogenous}, or \textbf{stationary}, process.
 
 \begin{defn}[Pure birth process]
-	A \textbf{pure birth process} is a Markov process satisfying the following conditions.
-	\begin{itemize}
-		\item $P_{k,k+1}(h) = \lambda_k h + o(h)$,
-		\item $P_{k,k}(h) = 1 - \lambda_k h + o(h)$,
-		\item $\prob{X(t+h) - X(t) < 0 \given X(t) = k} = 0$,
-		\item $X(0) = 0$ or $X(0) = 1$
-	\end{itemize}
+    A \textbf{pure birth process} is a Markov process satisfying the following conditions.
+    \begin{itemize}
+        \item $P_{k,k+1}(h) = \lambda_k h + o(h)$,
+        \item $P_{k,k}(h) = 1 - \lambda_k h + o(h)$,
+        \item $\prob{X(t+h) - X(t) < 0 \given X(t) = k} = 0$,
+        \item $X(0) = 0$ or $X(0) = 1$
+    \end{itemize}
 \end{defn}
 
 \begin{exmp}
-	Let us review some interesting special cases for birth intensities $\lambda_k$.
-	
-	\begin{itemize}
-		\item \textbf{Poisson process:} $\lambda_k = \lambda$ for all $k$.
-		\item \textbf{Simple birth:} $\lambda_k = k \beta$.  This model gives the probabiities \[
-			\prob{X(t+h) - X(t) = m \given X(t) =k} = \begin{cases}
-				1 - k\beta h + o(h) & m = 0 \\
-				k\beta h + o(h) &m=1\\
-				o(h) &\text{otherwise}
-			\end{cases}
-		\]
-		\item \textbf{Simple birth with immigration:} $\lambda_k = k \beta + \nu$.  
-	\end{itemize}
+    Let us review some interesting special cases for birth intensities $\lambda_k$.
+    
+    \begin{itemize}
+        \item \textbf{Poisson process:} $\lambda_k = \lambda$ for all $k$.
+        \item \textbf{Simple birth:} $\lambda_k = k \beta$.  This model gives the probabiities \[
+            \prob{X(t+h) - X(t) = m \given X(t) =k} = \begin{cases}
+                1 - k\beta h + o(h) & m = 0 \\
+                k\beta h + o(h) &m=1\\
+                o(h) &\text{otherwise}
+            \end{cases}
+        \]
+        \item \textbf{Simple birth with immigration:} $\lambda_k = k \beta + \nu$.  
+    \end{itemize}
 \end{exmp}
 
 % subsection continuous_time_markov_chains (end)
@@ -423,25 +417,25 @@ Consider a continuous time Markov process $X = \{X(t), t \geq 0 \}$ where transi
 
 Consider a pure birth process.  Let $P_n(t) = \prob{X(t) = n}$.  Assume $P_0(0) = 1$.
 \begin{thm}
-	The functions $P_n$ satisfy the following system of ordinary differential equations.
-	\begin{align*}
-		P'_0(t) &= -\lambda_0 P_0(t) \\
-		P'_n(t) &= -\lambda_n P_n(t) + \lambda_{n-1} P_{n-1}(t)
-	\end{align*}
+    The functions $P_n$ satisfy the following system of ordinary differential equations.
+    \begin{align*}
+        P'_0(t) &= -\lambda_0 P_0(t) \\
+        P'_n(t) &= -\lambda_n P_n(t) + \lambda_{n-1} P_{n-1}(t)
+    \end{align*}
 \end{thm}
 
 \begin{lem}
-	The marginal probability functions $P_n$ satisfy \[
-		P_0(t) = e^{-\lambda_0 t}
-	\] and \[
-		P_n(t) = \lambda_{n-1} e^{-\lambda_n t} \int_0^t e^{\lambda_n s} P_{n-1}(s) ds
-	\]
+    The marginal probability functions $P_n$ satisfy \[
+        P_0(t) = e^{-\lambda_0 t}
+    \] and \[
+        P_n(t) = \lambda_{n-1} e^{-\lambda_n t} \int_0^t e^{\lambda_n s} P_{n-1}(s) ds
+    \]
 \end{lem}
 
 As above, define $S_k$ to be the time between the $k$th and $(k+1)$th birth.  Then we have the following lemma.
 
 \begin{lem}
-	The random variables $S_k$ are independent and $S_k$ has an exponential distribution with parameter $\lambda_k$
+    The random variables $S_k$ are independent and $S_k$ has an exponential distribution with parameter $\lambda_k$
 \end{lem}
 % subsection differential_equations_for_marginal_probabilities (end)
 
@@ -449,59 +443,59 @@ As above, define $S_k$ to be the time between the $k$th and $(k+1)$th birth.  Th
 \section{Birth and death processes} % (fold)
 \label{sub:birth_and_death_processes}
 \begin{defn}[Pure birth process]
-	A \textbf{birth and death process} is a Markov process satisfying the following conditions.
-	\begin{itemize}
-		\item $P_{k,k+1}(h) = \lambda_k h + o(h)$,
-		\item $P_{k,k}(h) = 1 - (\lambda_k + \mu_k h + o(h)$,
-		\item $P_{k,k-1}(h) \mu_k h + o(h)$
-		\item $\prob{X(t+h) - X(t) < 0 \given X(t) = k} = 0$,
-		\item $X(0) = 0$ or $X(0) = 1$
-	\end{itemize}
+    A \textbf{birth and death process} is a Markov process satisfying the following conditions.
+    \begin{itemize}
+        \item $P_{k,k+1}(h) = \lambda_k h + o(h)$,
+        \item $P_{k,k}(h) = 1 - (\lambda_k + \mu_k h + o(h)$,
+        \item $P_{k,k-1}(h) \mu_k h + o(h)$
+        \item $\prob{X(t+h) - X(t) < 0 \given X(t) = k} = 0$,
+        \item $X(0) = 0$ or $X(0) = 1$
+    \end{itemize}
 \end{defn}
 
 \begin{prop}[Chapman-Kolmogorov equation]
-	\[
-		P_{ij}(t+s) = \sum_{k=0}^\infty P_{ij}(t) P_{kj}(s).
-	\]
+    \[
+        P_{ij}(t+s) = \sum_{k=0}^\infty P_{ij}(t) P_{kj}(s).
+    \]
 \end{prop}
 
 \begin{prop}[Sojourn times]
-	We wish to calculate the \textbf{sohourn time} in state $i$, denoted $S_i$.  Defining $\prob{S_i \geq t} = D_i(t)$. We have \[
-		D_i(t) = e^{-(\lambda_i + \mu_i)t}
-	\]
-	
-	Thus $S_i$ is exponential distributed with parameter $\lambda_i + \mu_i$.
+    We wish to calculate the \textbf{sohourn time} in state $i$, denoted $S_i$.  Defining $\prob{S_i \geq t} = D_i(t)$. We have \[
+        D_i(t) = e^{-(\lambda_i + \mu_i)t}
+    \]
+    
+    Thus $S_i$ is exponential distributed with parameter $\lambda_i + \mu_i$.
 \end{prop}
 
 \begin{prop}
-	The process stays in a given state $i$ for a random length of time whose distribution function is exponential with parameter $\lambda_i + \mu_i$.  The process leaves state $i$ by entering state $i+1$ or $i -1 $ with probability $\frac{\lambda_i}{\lambda_i + \mu_i}$ and $\frac{\mu_i}{\lambda_i + \mu_i}$.
+    The process stays in a given state $i$ for a random length of time whose distribution function is exponential with parameter $\lambda_i + \mu_i$.  The process leaves state $i$ by entering state $i+1$ or $i -1 $ with probability $\frac{\lambda_i}{\lambda_i + \mu_i}$ and $\frac{\mu_i}{\lambda_i + \mu_i}$.
 \end{prop}
 
 \begin{prop}
-	Transition probabilities $P_{ij}(t)$ satisfy a system of ordinary differential equations, known as the \textbf{backward Kolmogorov equations.}  For a fixed $j$, 
-	\begin{align*}
-		P'_{0j}(t) &= -\lambda_0 P_{0j}(t) + \lambda_0 P_{1j}(t) \\
-		P'_{ij}(t) &= \mu_i P_{i-1,j}(t) - (\lambda_i + \mu_i)P_{ij}(t) + \lambda_i P_{i+1,j}(t)
-	\end{align*} with initial conditions $P_{ij}(0) = \delta_{ij}$.  In matrix notation, \[
-		P'(t)  = AP(t),
-	\] with $P(0) = I$.
+    Transition probabilities $P_{ij}(t)$ satisfy a system of ordinary differential equations, known as the \textbf{backward Kolmogorov equations.}  For a fixed $j$, 
+    \begin{align*}
+        P'_{0j}(t) &= -\lambda_0 P_{0j}(t) + \lambda_0 P_{1j}(t) \\
+        P'_{ij}(t) &= \mu_i P_{i-1,j}(t) - (\lambda_i + \mu_i)P_{ij}(t) + \lambda_i P_{i+1,j}(t)
+    \end{align*} with initial conditions $P_{ij}(0) = \delta_{ij}$.  In matrix notation, \[
+        P'(t)  = AP(t),
+    \] with $P(0) = I$.
 \end{prop}
 
 \begin{prop}
-	Transition probabilities $P_{ij}(t)$ satisfy a system of ordinary differential equations, known as the \textbf{forward Kolmogorov equations.}  For a fixed $j$, 
-	\begin{align*}
-		P'_{i0}(t) &= -\lambda_0 P_{i,0}(t) + \mu_1 P_{i,1}(t) \\
-		P'_{ij}(t) &= \lambda_{j-1} P_{i,j-1}(t) - (\lambda_i + \mu_i)P_{ij}(t) + \mu_{j+1} P_{i,j+1}(t)
-	\end{align*} with initial conditions $P_{ij}(0) = \delta_{ij}$.  In matrix notation, \[
-		P'(t)  = P(t)A,
-	\] with $P(0) = I$.
+    Transition probabilities $P_{ij}(t)$ satisfy a system of ordinary differential equations, known as the \textbf{forward Kolmogorov equations.}  For a fixed $j$, 
+    \begin{align*}
+        P'_{i0}(t) &= -\lambda_0 P_{i,0}(t) + \mu_1 P_{i,1}(t) \\
+        P'_{ij}(t) &= \lambda_{j-1} P_{i,j-1}(t) - (\lambda_i + \mu_i)P_{ij}(t) + \mu_{j+1} P_{i,j+1}(t)
+    \end{align*} with initial conditions $P_{ij}(0) = \delta_{ij}$.  In matrix notation, \[
+        P'(t)  = P(t)A,
+    \] with $P(0) = I$.
 \end{prop}
 
 From the forward Kolmogorov equation, we can find a system of ordinary differential equations for the marginal probabilities $P_k = \prob{X(t) = j}$.  We have \begin{align*}
-	P'_0(t) &= - \lambda_0 P_0(t) + \mu_1 P_1(t) \\
-	P'_j(t) &= \lambda_{j-1}P_{j-1}(t) - (\lambda_j + \mu_j) P_j(t) + \mu_{j+1}P_{j+1}(t)
+    P'_0(t) &= - \lambda_0 P_0(t) + \mu_1 P_1(t) \\
+    P'_j(t) &= \lambda_{j-1}P_{j-1}(t) - (\lambda_j + \mu_j) P_j(t) + \mu_{j+1}P_{j+1}(t)
 \end{align*} with $P_j(0) = \pi_0(j)$.  In matrix notation, \[
-	\pi'_t = \pi_t A
+    \pi'_t = \pi_t A
 \]
 % subsection birth_and_death_processes (end)
 % section stochastic_processes (end)
@@ -511,38 +505,38 @@ From the forward Kolmogorov equation, we can find a system of ordinary different
 \label{sec:time_series_analysis}
 
 \begin{defn}[Time series]
-	Let $\ts{X_t}$ be a time series with $\expc{X_t^2} < \infty$.  The \textbf{mean function} for $\ts{X_t}$ is \[
-		\mu_X(t) = \expc{X_t}
-	\]
-	The \textbf{covariance function} of $\ts{X_t}$ is \[
-		\gamma_X(r,s) = \cov(X_r, X_s) = \expc{(X_r - \mu_X(r)(X_s - \mu_X(s)))}
-	\]
+    Let $\ts{X_t}$ be a time series with $\expc{X_t^2} < \infty$.  The \textbf{mean function} for $\ts{X_t}$ is \[
+        \mu_X(t) = \expc{X_t}
+    \]
+    The \textbf{covariance function} of $\ts{X_t}$ is \[
+        \gamma_X(r,s) = \cov(X_r, X_s) = \expc{(X_r - \mu_X(r)(X_s - \mu_X(s)))}
+    \]
 \end{defn}
 
 \begin{defn}[Stationary]
-	A time series $\ts{X_t}$ is \textbf{weakly stationary} if 
-	\begin{itemize}
-		\item $\mu_X(t)$ is independent of $t$,
-		\item $\gamma_X(t+h,t)$ is independent of $t$ for each $h$.
-	\end{itemize}
+    A time series $\ts{X_t}$ is \textbf{weakly stationary} if 
+    \begin{itemize}
+        \item $\mu_X(t)$ is independent of $t$,
+        \item $\gamma_X(t+h,t)$ is independent of $t$ for each $h$.
+    \end{itemize}
 \end{defn}
 
 \begin{defn}[Autocovariance function]
-	Let $\ts{X_t}$ be a stationary time series.  The \textbf{autocovariance function} (ACVF) of $\ts{X_t}$ at lag $h$ is \[
-		\gamma_X(t) = \cov{X_{t+h}, X_t}
-	\]
-	The \textbf{autocorrelation function} (ACF) of $\ts{X_t}$ at lag $h$ is \[
-		\rho_X(h) = \frac{\gamma_X(h)}{\gamma_X(0)} = \text{Cor}({X_{t+h}, X_t})
-	\]
+    Let $\ts{X_t}$ be a stationary time series.  The \textbf{autocovariance function} (ACVF) of $\ts{X_t}$ at lag $h$ is \[
+        \gamma_X(t) = \cov{X_{t+h}, X_t}
+    \]
+    The \textbf{autocorrelation function} (ACF) of $\ts{X_t}$ at lag $h$ is \[
+        \rho_X(h) = \frac{\gamma_X(h)}{\gamma_X(0)} = \text{Cor}({X_{t+h}, X_t})
+    \]
 \end{defn}
 
 \begin{defn}[Sample autocovariance function]
-	The \textbf{sample autocovariance function} is \[
-		\hat{\gamma}(h) = \frac{1}{n} \sum_{t=1}^{n-|h|} (x_{t+|h|} - \bar{x})(x_t - \bar{x})
-	\]
-	The \textbf{sample autocorrelation function} is \[
-			\ol{\rho}_X(h) = \frac{\ol{\gamma}_X(h)}{\ol{\gamma}_X(0)}
-	\]
+    The \textbf{sample autocovariance function} is \[
+        \hat{\gamma}(h) = \frac{1}{n} \sum_{t=1}^{n-|h|} (x_{t+|h|} - \bar{x})(x_t - \bar{x})
+    \]
+    The \textbf{sample autocorrelation function} is \[
+            \ol{\rho}_X(h) = \frac{\ol{\gamma}_X(h)}{\ol{\gamma}_X(0)}
+    \]
 \end{defn}
 
 
@@ -550,75 +544,75 @@ From the forward Kolmogorov equation, we can find a system of ordinary different
 \label{sec:arma_model}
 
 \begin{defn}[ARMA$(p,q)$ process]
-	A time series $\ts{X_t}$ is an \textbf{ARMA($p,q$)} process if $\ts{X_t}$ is stationary and if for every $t$,\[
-		X_t - \phi_1 X_{t-1} - \cdots - \phi_p X_{t-p} = Z_t + \theta_1 Z_t + \cdots + \theta_q Z_{t-q}
-	\] where $\ts{Z_t} \sim WN(0,\sigma^2)$ and the polynomials $\theta(z)$ and $\phi(z)$ have no common factors.
+    A time series $\ts{X_t}$ is an \textbf{ARMA($p,q$)} process if $\ts{X_t}$ is stationary and if for every $t$,\[
+        X_t - \phi_1 X_{t-1} - \cdots - \phi_p X_{t-p} = Z_t + \theta_1 Z_t + \cdots + \theta_q Z_{t-q}
+    \] where $\ts{Z_t} \sim WN(0,\sigma^2)$ and the polynomials $\theta(z)$ and $\phi(z)$ have no common factors.
 \end{defn}
 
 \begin{thm}[Stationary]
-	A stationary solution $\ts{X_t}$ of the equations exists, and is the unique stationary solution if and only if \[
-		\phi(z) = 1 - \phi_1 z - \cdots - \phi_p z^p \neq 0
-	\] for all $|z| = 1$
+    A stationary solution $\ts{X_t}$ of the equations exists, and is the unique stationary solution if and only if \[
+        \phi(z) = 1 - \phi_1 z - \cdots - \phi_p z^p \neq 0
+    \] for all $|z| = 1$
 \end{thm}
 
 \begin{thm}[Causality]
-	An ARMA($p,q$) process is \textbf{causal}, if there exists constants $\ts{\psi_j}$ with \[
-		X_t = \sum_{j=0}^\infty \psi_j Z_{t-j}
-	\] for all $t$.
-	
-	Causality is equivalent to the condition \[
-		\phi(z) = \phi(z) = 1 - \phi_1 z - \cdots - \phi_p z^p \neq 0
-	\] for all $|z| \leq 1$.
+    An ARMA($p,q$) process is \textbf{causal}, if there exists constants $\ts{\psi_j}$ with \[
+        X_t = \sum_{j=0}^\infty \psi_j Z_{t-j}
+    \] for all $t$.
+    
+    Causality is equivalent to the condition \[
+        \phi(z) = \phi(z) = 1 - \phi_1 z - \cdots - \phi_p z^p \neq 0
+    \] for all $|z| \leq 1$.
 \end{thm}
 
 The coefficients $\psi_j$ can be determined by the identity \[
-	\psi(z) = \psi_0 + \psi_1 z + \dots = \frac{\theta(z)}{\phi(z)}
-	\]
+    \psi(z) = \psi_0 + \psi_1 z + \dots = \frac{\theta(z)}{\phi(z)}
+    \]
 
 
 \begin{defn}[Invertibility]
-	An ARMA($p,q$) process $\ts{X_t}$ is \textbf{invertible} if there exist constants $\pi_j$ such that \[
-		Z_t = \sum_{j=0}^\infty \pi_j X_{t-j}
-	\]
-	Invertibility is equivalent to the condition \[
-		\theta(z) = 1 + \theta_1 z + \cdots + \theta_q z^q
-	\] for all $|z| \leq 1$.
+    An ARMA($p,q$) process $\ts{X_t}$ is \textbf{invertible} if there exist constants $\pi_j$ such that \[
+        Z_t = \sum_{j=0}^\infty \pi_j X_{t-j}
+    \]
+    Invertibility is equivalent to the condition \[
+        \theta(z) = 1 + \theta_1 z + \cdots + \theta_q z^q
+    \] for all $|z| \leq 1$.
 \end{defn}
 
 The coeffients $\pi_j$ can be determined by the identity \[
-	\pi(z) = \pi_0 + \pi_1 z + \dots = \frac{\phi(z)}{\theta(z)}
-	\]
+    \pi(z) = \pi_0 + \pi_1 z + \dots = \frac{\phi(z)}{\theta(z)}
+    \]
 
 
 \begin{defn}[Partial autocorrelation function]
-	The \textbf{partial autocorrelation function} $\alpha(\cdot)$ satisfies the following equations.
-	\begin{align*}
-		\alpha(0) &= 1\\
-		\alpha(1) &= \rho(1) \\
-		\alpha(2) &= \frac{\rho(2) - \rho(1)^2}{1 - \rho(1)^2}
-	\end{align*}
-	and in general, is the last component of \[
-		\phi_h  =\Gamma_h^{-1} \gamma_y
-	\] where $\Gamma_h$ is the covariance matrix and $\gamma_y$ is a vector of covariances. 
+    The \textbf{partial autocorrelation function} $\alpha(\cdot)$ satisfies the following equations.
+    \begin{align*}
+        \alpha(0) &= 1\\
+        \alpha(1) &= \rho(1) \\
+        \alpha(2) &= \frac{\rho(2) - \rho(1)^2}{1 - \rho(1)^2}
+    \end{align*}
+    and in general, is the last component of \[
+        \phi_h  =\Gamma_h^{-1} \gamma_y
+    \] where $\Gamma_h$ is the covariance matrix and $\gamma_y$ is a vector of covariances. 
 \end{defn}
 
 \begin{thm}
-	The PACF of an AR($p$) process is given by \[
-		\alpha(p) = \phi_p
-	\]
-	and \[
-		\alpha(h) = 0
-	\] for $h > p$
+    The PACF of an AR($p$) process is given by \[
+        \alpha(p) = \phi_p
+    \]
+    and \[
+        \alpha(h) = 0
+    \] for $h > p$
 \end{thm}
 
 
 \begin{thm}[Stationary AR($2$) process]
-	An AR($2$) process $X_t = \alpha_1 X_{t-1} + \alpha_2 X_{t-2} + Z_t$ is stationary if and only if the following all hold.
-	\begin{align*}
-		\alpha_1 + \alpha_2 < 1 \\
-		\alpha_1 - \alpha_2 > -1 \\
-		\alpha_2 > -1
-	\end{align*}
+    An AR($2$) process $X_t = \alpha_1 X_{t-1} + \alpha_2 X_{t-2} + Z_t$ is stationary if and only if the following all hold.
+    \begin{align*}
+        \alpha_1 + \alpha_2 < 1 \\
+        \alpha_1 - \alpha_2 > -1 \\
+        \alpha_2 > -1
+    \end{align*}
 \end{thm}
 % section arma_model (end)
 
@@ -627,33 +621,33 @@ The coeffients $\pi_j$ can be determined by the identity \[
 \label{sec:arima_models}
 
 \begin{defn}[ARIMA process]
-	If $d$ is a nonnegative integer, then $\{X_t\}$ is an \textbf{ARIMA$(p,d,q)$ process} if $Y_t = (1-B)^d X_t$ is a causal ARMA($p,q$) process.
+    If $d$ is a nonnegative integer, then $\{X_t\}$ is an \textbf{ARIMA$(p,d,q)$ process} if $Y_t = (1-B)^d X_t$ is a causal ARMA($p,q$) process.
 \end{defn}
 
 % section arima_models (end)
 
 \section{Model selection} % (fold)
 \label{sec:model_selection}
-	To select a model, we must first transform the data until we are examining a stationary process. 
-	Then, we consider the ACF and PACF functions.  A few general points.
-	\begin{itemize}
-		\item A slowly decaying (slower than exponential decay) ACF indicates the data needs to be differenced, i.e., that an ARIMA($p,d,q$) model should be considered.
-		\item A PACF that cuts out sharply after lag $p$ indicates an AR($p$) model.  This can be quantified by Quenoille's Test.  \begin{thm}[Quenouille's Test]
-			If a process is AR($m$), and if $N$ is large, then \[
-				\hat \pi_k \sim \mathcal{N}(0, \frac{1}{N}), \quad k > m
-			\]
-		Thus any $\hat \pi_k$ satisfying $|\hat \pi_k| > \frac{2}{\sqrt{N}}$ for $k > m$, indicates disagreement with $H_0$ at the $5\%$ significance level.
-		\end{thm}
-		\item Any MA process must have $\rho(1) < 0.5$
-		\item An MA($q$) process must have $\rho(k) = 0$ for all $k > q$.
-		\item An AR($p$) process will have the ACF function exhibiting exponential decay.
-		\end{itemize}
+    To select a model, we must first transform the data until we are examining a stationary process. 
+    Then, we consider the ACF and PACF functions.  A few general points.
+    \begin{itemize}
+        \item A slowly decaying (slower than exponential decay) ACF indicates the data needs to be differenced, i.e., that an ARIMA($p,d,q$) model should be considered.
+        \item A PACF that cuts out sharply after lag $p$ indicates an AR($p$) model.  This can be quantified by Quenoille's Test.  \begin{thm}[Quenouille's Test]
+            If a process is AR($m$), and if $N$ is large, then \[
+                \hat \pi_k \sim \mathcal{N}(0, \frac{1}{N}), \quad k > m
+            \]
+        Thus any $\hat \pi_k$ satisfying $|\hat \pi_k| > \frac{2}{\sqrt{N}}$ for $k > m$, indicates disagreement with $H_0$ at the $5\%$ significance level.
+        \end{thm}
+        \item Any MA process must have $\rho(1) < 0.5$
+        \item An MA($q$) process must have $\rho(k) = 0$ for all $k > q$.
+        \item An AR($p$) process will have the ACF function exhibiting exponential decay.
+        \end{itemize}
 
 To test the fit of a model, we use the Box-Pierce test and consider the AIC statistic.
 
 \begin{thm}[Box-Pierce test]
-	Assume an ARIMA$(p,d,q)$ model has been fitted to time series.  Consider the series of residual $\ts{s_t}$.  Then, for a fixed maximum lag $K$, we consider the statistic \[
-		BP = N \sum_{k = 1}^K \hat r_k^2	\] where $\hat r_k^2$ is the squared sample autocorrelation coefficient for the residual time series.
+    Assume an ARIMA$(p,d,q)$ model has been fitted to time series.  Consider the series of residual $\ts{s_t}$.  Then, for a fixed maximum lag $K$, we consider the statistic \[
+        BP = N \sum_{k = 1}^K \hat r_k^2    \] where $\hat r_k^2$ is the squared sample autocorrelation coefficient for the residual time series.
 
 This is distributed with according to a $\chi^2$-distribution with $K - p - q$ degrees of freedom.  
 This statistic is then used to test the hypothesis that the none of the autocorrelation coefficients for the residuals are different from zero against the alternate that at least one autocorrelation coefficient is greater than zero.
@@ -661,7 +655,7 @@ This statistic is then used to test the hypothesis that the none of the autocorr
 
 
 \begin{thm}[AIC]
-	The AIC statistic for a fitted model is a sum of the likelihood (as estimate of model fit) and the number of parameters ($p$ and $q$).  The \emph{best} model is the one that minimizes the value of the AIC.
+    The AIC statistic for a fitted model is a sum of the likelihood (as estimate of model fit) and the number of parameters ($p$ and $q$).  The \emph{best} model is the one that minimizes the value of the AIC.
 \end{thm}
 % section model_selection (end)
 
@@ -670,61 +664,61 @@ This statistic is then used to test the hypothesis that the none of the autocorr
 \label{sec:prediction_using_arima_p_d_q_models}
 
 \begin{defn}[Best linear predictor]
-	The best linear predictor of $Y$ in terms of $X_i, i = 1,2,\dots, n$ in the least squares sense, is the linear function of $\mathbf{X}$\[
-		\lambda(\mathbf{X}) = \beta_0 + \sum_{i = 1}^n \beta_i X_i
-	\] where $\beta_i, i = 0,1,2,\dots,n$ are chosen to minimise \[
-		\expc{\left(Y - \beta_0 - \sum_{i=1}^n \beta_i X_i\right)^2}
-	\]
+    The best linear predictor of $Y$ in terms of $X_i, i = 1,2,\dots, n$ in the least squares sense, is the linear function of $\mathbf{X}$\[
+        \lambda(\mathbf{X}) = \beta_0 + \sum_{i = 1}^n \beta_i X_i
+    \] where $\beta_i, i = 0,1,2,\dots,n$ are chosen to minimise \[
+        \expc{\left(Y - \beta_0 - \sum_{i=1}^n \beta_i X_i\right)^2}
+    \]
 \end{defn}
-	
+    
 \begin{thm}[Properties of the best linear predictor]
-	If $\hat \lambda(\mathbf{X}) = \hat \beta_0 + \sum_{i=1}^n \hat \beta_i X_i$ is the best linear predictor for $Y$ in terms of $X_i, i = 1,2,\dots,n$, the the residual \[
-		U = Y - \hat \lambda(\mathbf{X})
-	\] has expectation 0 and is uncorrelated with \textbf{every} linear function $\lambda(\mathbf{X})$.
-\end{thm}	
+    If $\hat \lambda(\mathbf{X}) = \hat \beta_0 + \sum_{i=1}^n \hat \beta_i X_i$ is the best linear predictor for $Y$ in terms of $X_i, i = 1,2,\dots,n$, the the residual \[
+        U = Y - \hat \lambda(\mathbf{X})
+    \] has expectation 0 and is uncorrelated with \textbf{every} linear function $\lambda(\mathbf{X})$.
+\end{thm}   
 
 \begin{thm}[Uniqueness of the best linear predictor]
-	Let $\hat \lambda(\mathbf{X}) = \hat \beta_0 + \sum_{i=1}^N \hat \beta_i X_i $ be the best linear predictor, and let $U  = Y - \hat \lambda(\mathbf{X})$.  
-	
-	Suppose $\lambda^\star(\mathbf{X}) = \beta_0^\star + \sum_{i=1}^N \beta_i^\star X_i$ and $U^\star = Y - \lambda^\star (\mathbf{X})$ has the properties:
-	\begin{enumerate}
-		\item $\expc{U^\star} = 0$
-		\item $U^\star$ is uncorrelated with every linear function of $X_1, X_2, \dots X_n$.  Then
-		\[
-			\lambda^\star(\mathbf{X}) = \hat \lambda(\mathbf{X})
-		\]
-	\end{enumerate}
+    Let $\hat \lambda(\mathbf{X}) = \hat \beta_0 + \sum_{i=1}^N \hat \beta_i X_i $ be the best linear predictor, and let $U  = Y - \hat \lambda(\mathbf{X})$.  
+    
+    Suppose $\lambda^\star(\mathbf{X}) = \beta_0^\star + \sum_{i=1}^N \beta_i^\star X_i$ and $U^\star = Y - \lambda^\star (\mathbf{X})$ has the properties:
+    \begin{enumerate}
+        \item $\expc{U^\star} = 0$
+        \item $U^\star$ is uncorrelated with every linear function of $X_1, X_2, \dots X_n$.  Then
+        \[
+            \lambda^\star(\mathbf{X}) = \hat \lambda(\mathbf{X})
+        \]
+    \end{enumerate}
 \end{thm}
-	
-	
+    
+    
 \begin{exmp}[Best linear predictor for AR($p$)]
-	Let $\ts{X_t}$ be an AR$(p)$ process.  Then we have \[
-	 X_{t-1}(1) = \mu +	\alpha_1 X_{t-1} + \cdots + \alpha_p X_{t-p}
-	\]
-	is the \textbf{best linear predictor} for $X_t$ in terms of $X_{t-1}, \dots, X_{t-p}$
-\end{exmp}	
+    Let $\ts{X_t}$ be an AR$(p)$ process.  Then we have \[
+     X_{t-1}(1) = \mu + \alpha_1 X_{t-1} + \cdots + \alpha_p X_{t-p}
+    \]
+    is the \textbf{best linear predictor} for $X_t$ in terms of $X_{t-1}, \dots, X_{t-p}$
+\end{exmp}  
 
 \begin{exmp}[Best linear predictor for ARMA($p,q$)]
-	Let $\ts{X_t}$ be an ARIMA($p,q$) process.  Then we have \[
-		X_{t-1}(1) = \mu + \alpha_1 X_{t-1} + \cdots + \alpha_p X_{t-p} + \beta_1 Z_{t-1} + \cdots + \beta_q Z_{t-q}
-	\]
-	
-	As we have \[
-		X_{N+1} - X_N(1) = Z_t \sim \mathcal{N}(0,\sigma_Z^2),
-	\]
-	we then have a $(1- \alpha)100 \%$ confidence interval for $X_{N+1}$ is given by \[
-		X_N(1) \pm \Phi\left(1 - \frac{\alpha}{2}\right) \sigma_Z
-	\]
+    Let $\ts{X_t}$ be an ARIMA($p,q$) process.  Then we have \[
+        X_{t-1}(1) = \mu + \alpha_1 X_{t-1} + \cdots + \alpha_p X_{t-p} + \beta_1 Z_{t-1} + \cdots + \beta_q Z_{t-q}
+    \]
+    
+    As we have \[
+        X_{N+1} - X_N(1) = Z_t \sim \mathcal{N}(0,\sigma_Z^2),
+    \]
+    we then have a $(1- \alpha)100 \%$ confidence interval for $X_{N+1}$ is given by \[
+        X_N(1) \pm \Phi\left(1 - \frac{\alpha}{2}\right) \sigma_Z
+    \]
 \end{exmp}
 
 \begin{exmp}[Two step predictors for an AR($p$) process]
-	We have the best linear predictor for $X_{t-2}(2)$ is given as \[
-		X_{t-2}(2) = \mu +  \alpha_1 X_{t-2}(1) + \alpha_2 X_{t-2} + \cdots + \alpha_p X_{t-p}
-	\]
-	where $X_{t-2}(1)$ is the one step predicted value for the AR($p$) process above.
-	
+    We have the best linear predictor for $X_{t-2}(2)$ is given as \[
+        X_{t-2}(2) = \mu +  \alpha_1 X_{t-2}(1) + \alpha_2 X_{t-2} + \cdots + \alpha_p X_{t-p}
+    \]
+    where $X_{t-2}(1)$ is the one step predicted value for the AR($p$) process above.
+    
 We can calculate that the $(1- \alpha)100\%$ confidence intervals for $X_{t}$ are given by \[
-	X_{t-2}(2) \pm \Phi\left(1 - \frac{\alpha}{2}\right) \sqrt{(1 + \alpha_1^2) \sigma_Z^2}
+    X_{t-2}(2) \pm \Phi\left(1 - \frac{\alpha}{2}\right) \sqrt{(1 + \alpha_1^2) \sigma_Z^2}
 \]
 \end{exmp}
 % section prediction_using_arima_p_d_q_models (end)

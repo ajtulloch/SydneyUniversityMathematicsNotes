@@ -10,34 +10,34 @@
 \usepackage{fontspec,xltxtra,xunicode}
 \defaultfontfeatures{Mapping=tex-text}
 
-	% AMS Theorems
-	\theoremstyle{plain}% default 
-	\newtheorem{thm}{Theorem}[section]
-	\newtheorem{lem}[thm]{Lemma} 
-	\newtheorem{prop}[thm]{Proposition} 
-	\newtheorem*{cor}{Corollary} 
+% AMS Theorems
+\theoremstyle{plain}% default 
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma} 
+\newtheorem{prop}[thm]{Proposition} 
+\newtheorem*{cor}{Corollary} 
 
-	\numberwithin{equation}{section}
+\numberwithin{equation}{section}
 
 \newcommand{\res}[2]{\text{Res}(#1,#2)}
-	\theoremstyle{definition} 
-		\newtheorem{defn}[thm]{Definition}
-		\newtheorem{conj}[thm]{Conjecture}
-		\newtheorem{exmp}[thm]{Example}
-		\newtheorem{exer}[thm]{Exercise}
-	
-	\theoremstyle{remark} 
-		\newtheorem*{rem}{Remark} 
-		\newtheorem*{note}{Note} 
-		\newtheorem{case}{Case} 
+\theoremstyle{definition} 
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{exer}[thm]{Exercise}
 
-		\newcommand{\expc}[1]{\mathbb{E}\left[#1\right]}
-		\newcommand{\var}{\text{Var}}
-		\newcommand{\cov}[1]{\text{Cov}\left(#1\right)}
-		\newcommand{\prob}[1]{\mathbb{P}(#1)}
-		\newcommand{\given}{ \, | \,}
-		\newcommand{\us}{0 \leq u \leq s}
-		\newcommand{\ts}[1]{\{ #1 \}}
+\theoremstyle{remark} 
+\newtheorem*{rem}{Remark} 
+\newtheorem*{note}{Note} 
+\newtheorem{case}{Case} 
+
+\newcommand{\expc}[1]{\mathbb{E}\left[#1\right]}
+\newcommand{\var}{\text{Var}}
+\newcommand{\cov}[1]{\text{Cov}\left(#1\right)}
+\newcommand{\prob}[1]{\mathbb{P}(#1)}
+\newcommand{\given}{ \, | \,}
+\newcommand{\us}{0 \leq u \leq s}
+\newcommand{\ts}[1]{\{ #1 \}}
 
 % \renewcommand{\phi}{\varphi}
 \newcommand{\sigf}{\mathcal{F}}
@@ -77,9 +77,9 @@
 \newcommand{\minpoly}[2]{m_{#1, #2}(x)}
 
 \newcommand{\mapping}[5]{\begin{align*}
-	#1 : \quad     #2 &\rightarrow #3 \\
-			#4  &\mapsto #5
-\end{align*}	
+    #1 : \quad     #2 &\rightarrow #3 \\
+            #4  &\mapsto #5
+\end{align*}    
 }
 \newcommand{\im}{\textsc{Im\ }}
 \renewcommand{\ker}{\textsc{Ker\ }}
@@ -93,15 +93,15 @@
 
 \def\eqd{\,{\buildrel d \over =}\,} 
 \def\eqas{\,{\buildrel a.s. \over =}\,}
-\newcommand{\sigg}{\mathcal{G}}		
+\newcommand{\sigg}{\mathcal{G}}     
 \newcommand{\indic}[1]{\mathbf{1}_{\{ #1 \}} }
 \newcommand{\iprod}[1]{\left\langle #1 \right\rangle}
 \renewcommand{\Re}{\text{Re}}
 
 
-\usepackage{hyperref}		
+\usepackage{hyperref}       
 
-\title{PMH8 - Spectral Theory and PDEs}								% Document Title
+\title{PMH8 - Spectral Theory and PDEs}                             % Document Title
 \author{Andrew Tulloch}
 %\date{}                                           % Activate to display a given date or no date
 
@@ -122,17 +122,17 @@ In general, we cannot solve arbitrary PDEs.  We generally seek to prove \textbf{
 % section preliminaries (end)
 \textbf{Assessment Schedule:}
 \begin{enumerate}[(i)]
-	\item Assignments - 2 or 3 (40\%)
-	\item Exam - (60\%) 
-	% Exam on Friday Nov 4
+    \item Assignments - 2 or 3 (40\%)
+    \item Exam - (60\%) 
+    % Exam on Friday Nov 4
 \end{enumerate}
 
 \textbf{References}
 \begin{enumerate}[(i)]
-	\item M. Protter and Weinberger -- \emph{Maximum Principle ...}
-	\item M. Renardy -- \emph{Elliptic PDEs}
-	\item A. Friedman -- \emph{Elliptic PDEs}
-	\item F. John -- \emph{PDEs}
+    \item M. Protter and Weinberger -- \emph{Maximum Principle ...}
+    \item M. Renardy -- \emph{Elliptic PDEs}
+    \item A. Friedman -- \emph{Elliptic PDEs}
+    \item F. John -- \emph{PDEs}
 \end{enumerate}
 
 \section{Introduction to Functional Analysis} % (fold)
@@ -140,103 +140,103 @@ In general, we cannot solve arbitrary PDEs.  We generally seek to prove \textbf{
 
 % section introduction_to_functional_analysis_ (end)
 \begin{defn}[Quotient space]
-	If $M$ is a closed subspace of a normed vector space $E$, then we define another normed space $E / M$, the \textbf{quotient space}.  Elements of $E / M$ are of the form  $\{ u + m \given m \in M \}$ where $u \in E$. 
+    If $M$ is a closed subspace of a normed vector space $E$, then we define another normed space $E / M$, the \textbf{quotient space}.  Elements of $E / M$ are of the form  $\{ u + m \given m \in M \}$ where $u \in E$. 
 
-	We now define the vector space operations.  Define $(u_1 + M) + (u_2 + M) = (u_1 + u_2) + M$.  If $\lambda \in \K$, define $\lambda(u + M) = \lambda u + M$.  These operations make $E/M$ a vector space.
+    We now define the vector space operations.  Define $(u_1 + M) + (u_2 + M) = (u_1 + u_2) + M$.  If $\lambda \in \K$, define $\lambda(u + M) = \lambda u + M$.  These operations make $E/M$ a vector space.
 \end{defn}
 
 \begin{exer}
-	Show these operations are well defined.  
+    Show these operations are well defined.  
 \end{exer}  
 
 \begin{defn}[Normed quotient space]
-	Define \[
-	\| u + M \| = \inf_{m \in M} \| u + m \|. 
-	\]  If $u \notin M$, $\| u + M \| > 0$.  This is because if there exists $(m_n) \in M$ with $\| u + m_n \| \rightarrow 0$, then $m_n \rightarrow -u$, and so $-u \in M$, which implies $u \in M$.  
+    Define \[
+    \| u + M \| = \inf_{m \in M} \| u + m \|. 
+    \]  If $u \notin M$, $\| u + M \| > 0$.  This is because if there exists $(m_n) \in M$ with $\| u + m_n \| \rightarrow 0$, then $m_n \rightarrow -u$, and so $-u \in M$, which implies $u \in M$.  
 
-	We can also show that  $\| \lambda u + M \| = |\lambda| \| u + m \|$, and \[
-		\| (u_1 + u_2) + M \| \leq \| u_1 + M \| + \| u_2 + M \|.
-	\]  
+    We can also show that  $\| \lambda u + M \| = |\lambda| \| u + m \|$, and \[
+        \| (u_1 + u_2) + M \| \leq \| u_1 + M \| + \| u_2 + M \|.
+    \]  
 
-	With this norm, $E/M$ is a normed space.
+    With this norm, $E/M$ is a normed space.
 \end{defn}
 
 \begin{exer}
-	Check the triangle and scaling inequalities.
+    Check the triangle and scaling inequalities.
 \end{exer}
 
 \begin{lem}
-	Define an operator $P$ by \mapping{P}{E}{E/M}{x}{x + M}  Then $P$ is linear and bounded.  
+    Define an operator $P$ by \mapping{P}{E}{E/M}{x}{x + M}  Then $P$ is linear and bounded.  
 \end{lem}  
 
 
 \begin{proof}
-	\begin{align*}
-		\| Px \| = \| x + M \| = \inf_{m \in M} \| x + M \| \leq \| x \|
-	\end{align*}  Hence $\| Px \| \leq \| x \|$ and so $P$ is bounded with $\| P \| \leq 1$.  
+    \begin{align*}
+        \| Px \| = \| x + M \| = \inf_{m \in M} \| x + M \| \leq \| x \|
+    \end{align*}  Hence $\| Px \| \leq \| x \|$ and so $P$ is bounded with $\| P \| \leq 1$.  
 \end{proof}
 
 \begin{thm}
-	If $E$ is a Banach space, then so is $E / M$, where $M$ is a closed subspace of $E$. 
+    If $E$ is a Banach space, then so is $E / M$, where $M$ is a closed subspace of $E$. 
 \end{thm}
 
 \begin{thm}
-	If $M$ is a closed subspace of a normed space $E$ and $z \in E \backslash M$, there exists $f \in E'$ such that $f(m) = 0$ for all $m \in M$, and $f(z) \neq 0$.  
+    If $M$ is a closed subspace of a normed space $E$ and $z \in E \backslash M$, there exists $f \in E'$ such that $f(m) = 0$ for all $m \in M$, and $f(z) \neq 0$.  
 \end{thm}
 
 \begin{proof}
-	$z + M$ is not zero in $E/M$, and so by the Hahn-Banach theorem, there exists $h \in (E/M)'$ such that $h(z+M) \neq 0$.  Then define $f: E \rightarrow \K$ by $f(x) = h(Px)$ where $P : E \rightarrow E/M$ is the projection operator defined previously.
-	
-	As $f$ is the composition of two continuous maps, we have that $f \in E'$.  Now, not that $f(m) = 0$ if $m \in M$, as $m + M$ is the zero coset.  If $z \in E\backslash M$, then $f(z) = h(z+M) \neq 0$ by definition.         
+    $z + M$ is not zero in $E/M$, and so by the Hahn-Banach theorem, there exists $h \in (E/M)'$ such that $h(z+M) \neq 0$.  Then define $f: E \rightarrow \K$ by $f(x) = h(Px)$ where $P : E \rightarrow E/M$ is the projection operator defined previously.
+    
+    As $f$ is the composition of two continuous maps, we have that $f \in E'$.  Now, not that $f(m) = 0$ if $m \in M$, as $m + M$ is the zero coset.  If $z \in E\backslash M$, then $f(z) = h(z+M) \neq 0$ by definition.         
 \end{proof}  
 
 \begin{thm}
-	\label{thm:rangeclosed}
-	If $T \in \El(X, Y)$ and $\im T$ is closed, then \[
-		\im T = \{ y \in Y \given f(y) = 0 \text{ for all } f \in \ker T' \}
-	\] 
+    \label{thm:rangeclosed}
+    If $T \in \El(X, Y)$ and $\im T$ is closed, then \[
+        \im T = \{ y \in Y \given f(y) = 0 \text{ for all } f \in \ker T' \}
+    \] 
 \end{thm}
 
 \begin{rem}{\ } 
-	\begin{enumerate}[(i)]
-		\item In fact, if $\im T$ is not closed, the above theorem holds with $\overline{\im T}$. 
-		\item This gives a solution to the inverse problem, i.e. given $y \in Y$, does there exists $x \in X$ such that $Tx = y$.   
-	\end{enumerate}
+    \begin{enumerate}[(i)]
+        \item In fact, if $\im T$ is not closed, the above theorem holds with $\overline{\im T}$. 
+        \item This gives a solution to the inverse problem, i.e. given $y \in Y$, does there exists $x \in X$ such that $Tx = y$.   
+    \end{enumerate}
 \end{rem}
 
 \begin{defn}[Dual mapping]
-	Let $T \in \El(X, Y)$. Define the dual mapping $T' \in \El(Y', X')$ with $(T'f)(x) = f(Tx)$ for all $f \in Y'$.  
+    Let $T \in \El(X, Y)$. Define the dual mapping $T' \in \El(Y', X')$ with $(T'f)(x) = f(Tx)$ for all $f \in Y'$.  
 \end{defn}
 
 \begin{proof}[Proof of Theorem \ref{thm:rangeclosed}]
-	Let $A = R(T)$, if $z \in A$ there exists$f \in Y'$ such that $f(y) = 0$ for all $y \in A$ and $f(z) \neq 0$.  Let $B = \{ y \in Y \given f(y) = 0 \, \forall f \in N(T') \}$.  
-	
-	Hence \begin{align*}
-		f(y) = 0 &\forall y \in A \\
-		f(Tx) = 0 &\forall x \in X \\
-		(T'f)(x) = 0 &\forall x \in X
-	\end{align*} so that $T'f = 0$, and so $f \in N(T')$.  But $f(z) \neq 0$, so $z \notin B$, and so $B \subseteq A$.  
-	
-	If $v \in R(T)$, then $v = Tx$.  If $f \in N(T')$, then $f(v) = f(Tx) = (T'f)(x) = 0$, and so $v \in B$.  Hence $A \subseteq B$.  \qedhere
+    Let $A = R(T)$, if $z \in A$ there exists$f \in Y'$ such that $f(y) = 0$ for all $y \in A$ and $f(z) \neq 0$.  Let $B = \{ y \in Y \given f(y) = 0 \, \forall f \in N(T') \}$.  
+    
+    Hence \begin{align*}
+        f(y) = 0 &\forall y \in A \\
+        f(Tx) = 0 &\forall x \in X \\
+        (T'f)(x) = 0 &\forall x \in X
+    \end{align*} so that $T'f = 0$, and so $f \in N(T')$.  But $f(z) \neq 0$, so $z \notin B$, and so $B \subseteq A$.  
+    
+    If $v \in R(T)$, then $v = Tx$.  If $f \in N(T')$, then $f(v) = f(Tx) = (T'f)(x) = 0$, and so $v \in B$.  Hence $A \subseteq B$.  \qedhere
 \end{proof}
 
 \begin{rem}
-	If $H$ is a Hilbert space, and $T \in \mathcal L(H)$, then \[
-		\iprod{Tx, y} = \iprod{x, T^\star y} \quad \forall x, y \in H
-	\] where $T^\star$ is the adjoint.  NOte that $T^\star = J^{-1} T' J$ where $J: H \rightarrow H'$ and $T'$ is the conjugate operator.  In this case, if $R(T)$ is closed, then \[
-		R(T) = \{ x \in H \given \iprod{x, y} = 0 \quad \forall y \in N(T^\star) \}.
-	\]
+    If $H$ is a Hilbert space, and $T \in \mathcal L(H)$, then \[
+        \iprod{Tx, y} = \iprod{x, T^\star y} \quad \forall x, y \in H
+    \] where $T^\star$ is the adjoint.  NOte that $T^\star = J^{-1} T' J$ where $J: H \rightarrow H'$ and $T'$ is the conjugate operator.  In this case, if $R(T)$ is closed, then \[
+        R(T) = \{ x \in H \given \iprod{x, y} = 0 \quad \forall y \in N(T^\star) \}.
+    \]
 \end{rem}
 
 
 \begin{rem}When is $R(T)$ closed?
-	
-	\begin{enumerate}[(i)]
-		\item If $\lambda \neq 0$ and $K \in \mathcal K(X)$, $\lambda I - K$ has closed range.
-		\item If $K \in \mathcal K(X)$, $R(K)$ is closed if and only if $R(K)$ is finite dimensional.  
-		\item If $N(T) = \{ 0 \}$, $X, Y$ are Banach spaces, and $T \in \mathcal L(X, Y)$, then $R(T)$ is closed if and only if there exists $c > 0$ such that $\| Tx \| \geq c \| x \|$ for all $x \in X$.  Note that if $R(T)$ is closed, it is a Banach space.  
-	\end{enumerate}
-	
+    
+    \begin{enumerate}[(i)]
+        \item If $\lambda \neq 0$ and $K \in \mathcal K(X)$, $\lambda I - K$ has closed range.
+        \item If $K \in \mathcal K(X)$, $R(K)$ is closed if and only if $R(K)$ is finite dimensional.  
+        \item If $N(T) = \{ 0 \}$, $X, Y$ are Banach spaces, and $T \in \mathcal L(X, Y)$, then $R(T)$ is closed if and only if there exists $c > 0$ such that $\| Tx \| \geq c \| x \|$ for all $x \in X$.  Note that if $R(T)$ is closed, it is a Banach space.  
+    \end{enumerate}
+    
 \end{rem}
 % subsection functional_analysis (end)
 
@@ -244,114 +244,114 @@ In general, we cannot solve arbitrary PDEs.  We generally seek to prove \textbf{
 
 
 \begin{cor}[Corollary to Theorem \ref{thm:rangeclosed}]
-	If $X$ and $Y$ are Banach spaces and $T \in \mathcal L(X, Y)$, then $T$ is invertible if and only if $\ker T = \{ 0 \}$, $\ker T' = \{ 0 \}$ and $\im T$ is closed. 
-	
-	Note that the open mapping theorems shows that $T$ is invertible if and only if $\im T = Y$ and $\ker T = \{ 0 \}$. 
+    If $X$ and $Y$ are Banach spaces and $T \in \mathcal L(X, Y)$, then $T$ is invertible if and only if $\ker T = \{ 0 \}$, $\ker T' = \{ 0 \}$ and $\im T$ is closed. 
+    
+    Note that the open mapping theorems shows that $T$ is invertible if and only if $\im T = Y$ and $\ker T = \{ 0 \}$. 
 \end{cor}
 
 \begin{proof}
-	If $\im T$ is closed, then by Theorem \ref{thm:rangeclosed}, \[
-		\im T = Y \iff \ker T' = \{ 0 \},
-	\] as $\im T = \{ y \in Y \given f(y) = 0 \text{ for all } f \in \ker T' \}$.  
+    If $\im T$ is closed, then by Theorem \ref{thm:rangeclosed}, \[
+        \im T = Y \iff \ker T' = \{ 0 \},
+    \] as $\im T = \{ y \in Y \given f(y) = 0 \text{ for all } f \in \ker T' \}$.  
 \end{proof}  
 
 In a Hilbert space $\mathcal H$, if $T \in \mathcal L(\mathcal H)$, then $T^* = J^{-1} T' J$ where $J: \mathcal H \rightarrow \mathcal H'$ is an isomorphism of Hilbert spaces.  
 
 \begin{defn}[Weak convergence]
-	Let $(x_n)$ be a sequence in $X$.  We say that $x_n \rightharpoonup x$ \textbf{weakly} if $f(x_n) \rightarrow f(x)$ for all $f \in X'$.
+    Let $(x_n)$ be a sequence in $X$.  We say that $x_n \rightharpoonup x$ \textbf{weakly} if $f(x_n) \rightarrow f(x)$ for all $f \in X'$.
 \end{defn}
 
 \begin{lem}
-	If $x_n \rightarrow x$ in the usual sense, then $x_n \rightharpoonup x$ \textbf{weakly}. 
+    If $x_n \rightarrow x$ in the usual sense, then $x_n \rightharpoonup x$ \textbf{weakly}. 
 \end{lem}
 
 \begin{lem}
-	If $x_n \rightharpoonup x$ weakly, then $\{ x_n \}$ is bounded. Furthermore, $\| x \| \leq \liminf_{n \rightarrow \infty} \| x_n \|$.    
+    If $x_n \rightharpoonup x$ weakly, then $\{ x_n \}$ is bounded. Furthermore, $\| x \| \leq \liminf_{n \rightarrow \infty} \| x_n \|$.    
 \end{lem}
 
 \begin{proof}
-	By Hahn-Banach, there exists $f \in X'$ such that $\| f \| = 1$ and $f(x) = \| x \|$.  So $\| x \| = f(x) = \lim_{n \rightarrow \infty} f(x_n) = \liminf_{n \rightarrow \infty} f(x_n)$.  But \[
-		\| f(x_n) \| \leq \| f \| \| x_n \| \leq \| x_n \| 
-	\] as $\| f \| = 1$.  So \begin{align*}
-		\| x \| \leq \liminf_{n \rightarrow \infty} \| x_n \|
-	\end{align*}
-	
+    By Hahn-Banach, there exists $f \in X'$ such that $\| f \| = 1$ and $f(x) = \| x \|$.  So $\| x \| = f(x) = \lim_{n \rightarrow \infty} f(x_n) = \liminf_{n \rightarrow \infty} f(x_n)$.  But \[
+        \| f(x_n) \| \leq \| f \| \| x_n \| \leq \| x_n \| 
+    \] as $\| f \| = 1$.  So \begin{align*}
+        \| x \| \leq \liminf_{n \rightarrow \infty} \| x_n \|
+    \end{align*}
+    
 \end{proof}  
 
 \begin{exer}
-	If $(x_n)$ is bounded, then $x_n \rightharpoonup x$ weakly if and only if $f(x_n) \rightarrow f(x)$ as $n \rightarrow \infty$ for all functions in a dense subset of $X'$. 
-	
-	In fact, if $(x_n)$ is bounded, we only need prove that if $f(x_n) \rightarrow f(x)$ for a subset $M$ of $X'$, then $f(x_n) \rightarrow f(x)$ for all finite linear combinations of elements of $M$.     
+    If $(x_n)$ is bounded, then $x_n \rightharpoonup x$ weakly if and only if $f(x_n) \rightarrow f(x)$ as $n \rightarrow \infty$ for all functions in a dense subset of $X'$. 
+    
+    In fact, if $(x_n)$ is bounded, we only need prove that if $f(x_n) \rightarrow f(x)$ for a subset $M$ of $X'$, then $f(x_n) \rightarrow f(x)$ for all finite linear combinations of elements of $M$.     
 \end{exer}
 
 \begin{exmp}
-	Let $1 < p < \infty$, and consider the Banach space $\ell^p$.  Then let $e_n = (\overbrace{0, 0, 0, \dots}^{p-1}, 1, \dots)$.  Then $\| e_n \|_p = 1$ and $e_n \rightharpoonup 0$ weakly in $\ell^p$ as $n \rightarrow \infty$.  Let $\left(\ell^p \right)' = \ell^{p'}$ where $\frac{1}{p} + \frac{1}{p'} = 1$.  If fact, every $f \in \left( \ell^p \right)'$ can be uniquely written as \[
-		f(x) = \sum_{i=1}^\infty x_i y_i
-	\] where $(y_i) \in \ell^{p'}$.  In $\ell^{p'}$, the set of finite linear combinations of the $e_n$ are dense in $\ell^{p'}$, since we can approximate $(x_n)$ by $(x_1, x_2,\dots, x_m, 0, 0 \dots)$, which is a finite linear combination of the $(e_n)$.  
-	
-	Hence a \textbf{bounded} sequence in $\ell^p$, say $x^1 = (x^1_1, x^1_2, \dots), x^2 = (x^2_1, x^2_1, \dots)$ converges weakly if and only if $e_i(x^n) = x^n_i$ converges as $n \rightarrow \infty$ for each $i$.
+    Let $1 < p < \infty$, and consider the Banach space $\ell^p$.  Then let $e_n = (\overbrace{0, 0, 0, \dots}^{p-1}, 1, \dots)$.  Then $\| e_n \|_p = 1$ and $e_n \rightharpoonup 0$ weakly in $\ell^p$ as $n \rightarrow \infty$.  Let $\left(\ell^p \right)' = \ell^{p'}$ where $\frac{1}{p} + \frac{1}{p'} = 1$.  If fact, every $f \in \left( \ell^p \right)'$ can be uniquely written as \[
+        f(x) = \sum_{i=1}^\infty x_i y_i
+    \] where $(y_i) \in \ell^{p'}$.  In $\ell^{p'}$, the set of finite linear combinations of the $e_n$ are dense in $\ell^{p'}$, since we can approximate $(x_n)$ by $(x_1, x_2,\dots, x_m, 0, 0 \dots)$, which is a finite linear combination of the $(e_n)$.  
+    
+    Hence a \textbf{bounded} sequence in $\ell^p$, say $x^1 = (x^1_1, x^1_2, \dots), x^2 = (x^2_1, x^2_1, \dots)$ converges weakly if and only if $e_i(x^n) = x^n_i$ converges as $n \rightarrow \infty$ for each $i$.
 
-	In particular, $e_i \rightharpoonup 0$ weakly in $\ell^p$.  
+    In particular, $e_i \rightharpoonup 0$ weakly in $\ell^p$.  
 \end{exmp}
 
 \begin{thm}
-	If $x_n \rightharpoonup x$ weakly in $X$ and $T \in \El(X)$, then $Tx_n \rightharpoonup Tx$ weakly in $X$.  
-	
-	Note that this is \textbf{not true} for continuous non-linear maps. 
+    If $x_n \rightharpoonup x$ weakly in $X$ and $T \in \El(X)$, then $Tx_n \rightharpoonup Tx$ weakly in $X$.  
+    
+    Note that this is \textbf{not true} for continuous non-linear maps. 
 \end{thm}
 \begin{proof}
-	Let $f \in X'$.  Then \begin{align*}
-		f(Lx_n) = (L'f)(x_n) \rightharpoonup (L'f)(x) = f(Lx)
-	\end{align*} weakly as $x_n \rightarrow x$ weakly and $(L'f)$ is a bounded linear operator.  
+    Let $f \in X'$.  Then \begin{align*}
+        f(Lx_n) = (L'f)(x_n) \rightharpoonup (L'f)(x) = f(Lx)
+    \end{align*} weakly as $x_n \rightarrow x$ weakly and $(L'f)$ is a bounded linear operator.  
 \end{proof}
 
 
 \begin{defn}[Bidual]
-	Let $X$ be a normed vector space. Then $X'$ is a Banach space.  The dual of the dual space, $(X')' = X''$ is known as the \textbf{bidual} of $X$.  
+    Let $X$ be a normed vector space. Then $X'$ is a Banach space.  The dual of the dual space, $(X')' = X''$ is known as the \textbf{bidual} of $X$.  
 \end{defn}
 
 
 There is a natural map \mapping{c}{X}{X''}{x}{\hat x} of $X$ into $X''$, defined as folllows.  Let $\hat x(f) = f(x)$ for all $f \in X'$.  Then we can see that $\hat x$ is a linear mapping, and we must show that it is a bounded map from $X'$ to $\R$.  
 
 We have \begin{align*}
-	\| \hat x \| = \sup_{\| f \| \leq 1} |\hat x(f)| = \sup_{\| f \| \leq 1} |f(x)| \leq \sup_{\|f \| \leq 1} \| f \| \| x \| \leq \| x \|. 
+    \| \hat x \| = \sup_{\| f \| \leq 1} |\hat x(f)| = \sup_{\| f \| \leq 1} |f(x)| \leq \sup_{\|f \| \leq 1} \| f \| \| x \| \leq \| x \|. 
 \end{align*}  Thus $\| \hat x \| \leq \| x \|$.  (By Hahn-Banach, we can show $\| \hat x \| = \| x \|$. )
 
 \begin{exer}
-	Show that $\ker c = \{ 0 \}$.  
+    Show that $\ker c = \{ 0 \}$.  
 \end{exer}  
 
 Thus $c$ is a bounded linear map with a zero null-space.
 
 \begin{defn}[Reflexive]
-	A Banach space is refexive if this map of $X$ onto $X''$ is bijective.  
+    A Banach space is refexive if this map of $X$ onto $X''$ is bijective.  
 \end{defn}
 
 \begin{exmp}{\ }
-	\begin{enumerate}[(i)]
-		\item Finite dimensional spaces are reflexive (as the bidual has the same dimension as the base space).
-		\item $\ell^p, L^p$ are reflexive if $1 < p < \infty$, and are not reflexive otherwise.
-		\item Hilbert spaces $\mathcal H$ are reflexive.
-		\item $\mathcal C(\Omega)$, the set of continuous operators on a compact set in $\R^n$.  
-	\end{enumerate}
+    \begin{enumerate}[(i)]
+        \item Finite dimensional spaces are reflexive (as the bidual has the same dimension as the base space).
+        \item $\ell^p, L^p$ are reflexive if $1 < p < \infty$, and are not reflexive otherwise.
+        \item Hilbert spaces $\mathcal H$ are reflexive.
+        \item $\mathcal C(\Omega)$, the set of continuous operators on a compact set in $\R^n$.  
+    \end{enumerate}
 \end{exmp}
 
 \begin{thm}[Compactness property]
-	A Banach space $X$ is reflexive if and only if every bounded sequence in $X$ has a subsequence that converges weakly in $X$.
+    A Banach space $X$ is reflexive if and only if every bounded sequence in $X$ has a subsequence that converges weakly in $X$.
 \end{thm}
 
 \begin{rem}[Closeness property]
-	If $C$ is a closed and convex subset of a Banach space $X$, and $x_n$ is a sequence in $C$ with $x_n \rightharpoonup y \in X$ weakly, then $y \in C$.   
+    If $C$ is a closed and convex subset of a Banach space $X$, and $x_n$ is a sequence in $C$ with $x_n \rightharpoonup y \in X$ weakly, then $y \in C$.   
 \end{rem}
 
 \begin{proof}
-	Uses the geometric version of the Hahn-Banach theorem. 
-	
-	\begin{thm}[Geometric Hahn-Banach]
-		If $C$ is a closed and convex subset in $X$ and $z \notin C$, there exists $f \in X'$ and $m \in \R$, such that $f(x) \leq m$ for all $x \in C$ and $f(z) > m$. 
-	\end{thm}
-	
-	If $y \notin C$, there exists $f \in X'$ and $m \in \R$ such that $f(x) \leq m$ for all $x \in C$ and $f(y) > m$.  But as $f(x_n) \leq m$ and $f(x_n) \rightarrow f(y)$ (by weak convergence), we must have $f(y) \leq m$.  Thus we achieve our required result, $y \in C$.  
+    Uses the geometric version of the Hahn-Banach theorem. 
+    
+    \begin{thm}[Geometric Hahn-Banach]
+        If $C$ is a closed and convex subset in $X$ and $z \notin C$, there exists $f \in X'$ and $m \in \R$, such that $f(x) \leq m$ for all $x \in C$ and $f(z) > m$. 
+    \end{thm}
+    
+    If $y \notin C$, there exists $f \in X'$ and $m \in \R$ such that $f(x) \leq m$ for all $x \in C$ and $f(y) > m$.  But as $f(x_n) \leq m$ and $f(x_n) \rightarrow f(y)$ (by weak convergence), we must have $f(y) \leq m$.  Thus we achieve our required result, $y \in C$.  
 \end{proof}
 % section lecture_4 (end)
 
@@ -361,28 +361,28 @@ Thus $c$ is a bounded linear map with a zero null-space.
 
 % section linear_operators_on_hilbert_spaces (end)
 \begin{thm}[Lax-Milgram theorem]
-	\label{thm:lax_milgram}
-	If $T \in \mathcal L(\mathcal H)$ and there exists $\mu > 0$ such that $\Re \iprod{Tx, x} \geq \mu \| x \|^2$ for all $x \in \mathcal H$, then $T$ is invertible.  
+    \label{thm:lax_milgram}
+    If $T \in \mathcal L(\mathcal H)$ and there exists $\mu > 0$ such that $\Re \iprod{Tx, x} \geq \mu \| x \|^2$ for all $x \in \mathcal H$, then $T$ is invertible.  
 \end{thm}
 
 \begin{proof}
-	If suffices to prove that $\ker T = \{ 0 \}$, $\im T$ is closed, and $\ker T^\star = \{ 0 \}$, by a corollary to Theorem \ref{thm:rangeclosed}. 
-	
-	By Cauchy-Swartz, we have \begin{align*}
-		\mu \| x \|^2 \leq \Re\iprod{Tx, x} \leq |\iprod{Tx, x}| \leq \| Tx \| \| x \|.
-	\end{align*}  If $x \neq 0$, then $\mu \| x \| \leq \| Tx \|$, so $\ker T = \{ 0 \}$.  
-	
-	Secondly, $\| Tx \| \geq \mu \| x \|$ for $\mu > 0$ implies $\im T$ is closed.
-	
-	\begin{exer}
-		Prove this proposition.
-	\end{exer}
-	
-	Then finally, we have \begin{align*}
-		\Re \iprod{Tx, x} = \Re \iprod{x, T^\star x} \leq | \iprod{x, T^\star x} | \leq \| x \| \|T^\star x \|
-	\end{align*} by Cauchy-Swartz.  So \[
-		\mu \| x \|^2 \leq \| x \| \| T^\star x \|
-	\] and so $\mu \| x \| \leq \| T^\star x \|$ and so $\ker T^\star = \{ 0 \}$.
+    If suffices to prove that $\ker T = \{ 0 \}$, $\im T$ is closed, and $\ker T^\star = \{ 0 \}$, by a corollary to Theorem \ref{thm:rangeclosed}. 
+    
+    By Cauchy-Swartz, we have \begin{align*}
+        \mu \| x \|^2 \leq \Re\iprod{Tx, x} \leq |\iprod{Tx, x}| \leq \| Tx \| \| x \|.
+    \end{align*}  If $x \neq 0$, then $\mu \| x \| \leq \| Tx \|$, so $\ker T = \{ 0 \}$.  
+    
+    Secondly, $\| Tx \| \geq \mu \| x \|$ for $\mu > 0$ implies $\im T$ is closed.
+    
+    \begin{exer}
+        Prove this proposition.
+    \end{exer}
+    
+    Then finally, we have \begin{align*}
+        \Re \iprod{Tx, x} = \Re \iprod{x, T^\star x} \leq | \iprod{x, T^\star x} | \leq \| x \| \|T^\star x \|
+    \end{align*} by Cauchy-Swartz.  So \[
+        \mu \| x \|^2 \leq \| x \| \| T^\star x \|
+    \] and so $\mu \| x \| \leq \| T^\star x \|$ and so $\ker T^\star = \{ 0 \}$.
 \end{proof}
 
 
@@ -392,71 +392,71 @@ $T$ is coercive if there exists $\mu > 0$ such that $\Re \iprod{Tx, x} \geq \mu 
 
 
 \begin{defn}[Spectral radius]
-	Let $X$ be a complex Banach space.  If $T \in \mathcal L(X)$, then we can define the spectral radius $r(T)$ by the formula \[
-		r(T) = \limsup_{n \rightarrow \infty} \| T^n \|^{1/n}.
-	\]
+    Let $X$ be a complex Banach space.  If $T \in \mathcal L(X)$, then we can define the spectral radius $r(T)$ by the formula \[
+        r(T) = \limsup_{n \rightarrow \infty} \| T^n \|^{1/n}.
+    \]
 \end{defn}
 
 \begin{thm} 
-	We have \[
-		r(T) = \sup \{ |\lambda | \given \lambda \in \sigma(T) \}.
-	\]  
-	
-	Note that $r(T) \leq \| T \|$.  
+    We have \[
+        r(T) = \sup \{ |\lambda | \given \lambda \in \sigma(T) \}.
+    \]  
+    
+    Note that $r(T) \leq \| T \|$.  
 \end{thm}
 
 \begin{thm} 
-	If $T \in \mathcal L(\mathcal H)$ and $T$ is a self-adjoint operator then $r(T) = \| T \|$.   
+    If $T \in \mathcal L(\mathcal H)$ and $T$ is a self-adjoint operator then $r(T) = \| T \|$.   
 \end{thm}
 
 \begin{proof}
-	We have \[
-		\| T \|^2 = \| T^\star T \| = \| T^2 \|,
-	\] since for any linear operator $T$, we have \[
-		\| T \|^2 = \| T^\star T \|. 
-	\]
-	
-	Then by induction, we have \[
-		r(T) = \limsup_{n \rightarrow \infty} \| T^{2^n} \|^{1/2^n} = \| T \|
-	\]
+    We have \[
+        \| T \|^2 = \| T^\star T \| = \| T^2 \|,
+    \] since for any linear operator $T$, we have \[
+        \| T \|^2 = \| T^\star T \|. 
+    \]
+    
+    Then by induction, we have \[
+        r(T) = \limsup_{n \rightarrow \infty} \| T^{2^n} \|^{1/2^n} = \| T \|
+    \]
 \end{proof}
 
 \begin{thm}[Raleigh-Rety algorithm]
-	\label{thm:raleigh_rety}
-	If $T \in \mathcal L(\mathcal H)$ is self-adjoint, then \begin{align*}
-		\sup \sigma(T) &= \sup \{ \iprod{Tx, x} \given \| x \| = 1 \} \\
-		\inf \sigma(T) &= \inf \{ \iprod{Tx, x} \given \| x \| = 1 \}
-	\end{align*}
+    \label{thm:raleigh_rety}
+    If $T \in \mathcal L(\mathcal H)$ is self-adjoint, then \begin{align*}
+        \sup \sigma(T) &= \sup \{ \iprod{Tx, x} \given \| x \| = 1 \} \\
+        \inf \sigma(T) &= \inf \{ \iprod{Tx, x} \given \| x \| = 1 \}
+    \end{align*}
 \end{thm}
 
 \begin{proof}
-	If suffices to prove the first statement (and then apply to $-T$).  We first show $\sup \sigma(T) \leq \sup \{ \iprod{Tx, x} \given \| x \| = 1 \} \equiv \mu$.    
-	
-	If $\lambda > \mu$, then \[
-		\lambda \| x \|^2 - \iprod{Tx, x} \geq \lambda - \mu > 0
-	\] if $\| x \| = 1$.  Hence \begin{align*}
-		\lambda - \mu 	&\leq \iprod{(\lambda I - T)x, x} \quad \| x \| = 1 \\
-						&\leq \| (\lambda I - T)x \| \| x \| \\
-					\Rightarrow \| (\lambda I - T)\| x \| \geq (\lambda - \mu) \| x \|
-	\end{align*} and hence $\ker \lambda I - T = \{ 0 \}$, and as $\im \lambda I - T$ is closed by Exercise \ref{exer:closed_range_condition}, we have that $\lambda I - T$ is invertible.  Thus $\sup \sigma(T) \geq \sup \{ \iprod{Tx, x} \given \| x \| = 1 \}$. 
-	
-	Consequently, it suffices to assume $\sigma(T)$ is non-negative (replace $T$ with $T + rI$).  Then if $\mu \in \sigma(T_1)$ with $T_1$ self-adjoint, then there exists a sequence $x_n$ with $\| x_n \| = 1$ such that \[
-		\| T_1 x_n - \mu x_n \| \rightarrow 0 
-	\] as $n \rightarrow \infty$.  Existence of such a sequence is proven as if $\| T_1 x - \mu x \| \geq \alpha \| x \|$, then $\mu \notin \sigma(T_1)$.  
-	
-	Thus \begin{align*}
-		\iprod{T_1 x_n, x_n} &\rightarrow \mu \\
-		\iprod{T_1 x_n, x_n} &= \underbrace{\iprod{ (T_1 - \mu I) x_n, x_n}}_{\rightarrow 0} + \underbrace{\mu \iprod{x_n, x_n}}_{\mu}.
-	\end{align*}
-	
-	Thus \[
-		\sup \{ \iprod{Tx, x} \given \| x \| = 1\} \geq \sup \sigma(T).
-	\]
+    If suffices to prove the first statement (and then apply to $-T$).  We first show $\sup \sigma(T) \leq \sup \{ \iprod{Tx, x} \given \| x \| = 1 \} \equiv \mu$.    
+    
+    If $\lambda > \mu$, then \[
+        \lambda \| x \|^2 - \iprod{Tx, x} \geq \lambda - \mu > 0
+    \] if $\| x \| = 1$.  Hence \begin{align*}
+        \lambda - \mu   &\leq \iprod{(\lambda I - T)x, x} \quad \| x \| = 1 \\
+                        &\leq \| (\lambda I - T)x \| \| x \| \\
+                    \Rightarrow \| (\lambda I - T)\| x \| \geq (\lambda - \mu) \| x \|
+    \end{align*} and hence $\ker \lambda I - T = \{ 0 \}$, and as $\im \lambda I - T$ is closed by Exercise \ref{exer:closed_range_condition}, we have that $\lambda I - T$ is invertible.  Thus $\sup \sigma(T) \geq \sup \{ \iprod{Tx, x} \given \| x \| = 1 \}$. 
+    
+    Consequently, it suffices to assume $\sigma(T)$ is non-negative (replace $T$ with $T + rI$).  Then if $\mu \in \sigma(T_1)$ with $T_1$ self-adjoint, then there exists a sequence $x_n$ with $\| x_n \| = 1$ such that \[
+        \| T_1 x_n - \mu x_n \| \rightarrow 0 
+    \] as $n \rightarrow \infty$.  Existence of such a sequence is proven as if $\| T_1 x - \mu x \| \geq \alpha \| x \|$, then $\mu \notin \sigma(T_1)$.  
+    
+    Thus \begin{align*}
+        \iprod{T_1 x_n, x_n} &\rightarrow \mu \\
+        \iprod{T_1 x_n, x_n} &= \underbrace{\iprod{ (T_1 - \mu I) x_n, x_n}}_{\rightarrow 0} + \underbrace{\mu \iprod{x_n, x_n}}_{\mu}.
+    \end{align*}
+    
+    Thus \[
+        \sup \{ \iprod{Tx, x} \given \| x \| = 1\} \geq \sup \sigma(T).
+    \]
 \end{proof}
 
 \begin{exer}
-	\label{exer:closed_range_condition}
-	If $\| Tx \| \geq m \| x \|$ for all $x$, then $\im T$ is closed.
+    \label{exer:closed_range_condition}
+    If $\| Tx \| \geq m \| x \|$ for all $x$, then $\im T$ is closed.
 \end{exer}
 
 \section{Generalised Derivatives} % (fold)
@@ -464,145 +464,145 @@ $T$ is coercive if there exists $\mu > 0$ such that $\Re \iprod{Tx, x} \geq \mu 
 
 % section generalised_derivatives (end)
 \begin{defn}[$L^1_{loc}(\Omega)$]
-	Let $\Omega \subset \R^n$ be open.  Then $u \in L^1_{loc}(\Omega)$ if $u$ is measurable and $u|_K \in L^1(K)$ for every compact $K \subseteq \Omega$. 
+    Let $\Omega \subset \R^n$ be open.  Then $u \in L^1_{loc}(\Omega)$ if $u$ is measurable and $u|_K \in L^1(K)$ for every compact $K \subseteq \Omega$. 
 \end{defn}
 
 \begin{defn}[Generalised derivative]
-	We say $u \in L^1_{loc}(\Omega)$ has a (weak) generalised $j$-th partial derivative if there exists $g \in L^1_{loc}(\Omega)$ such that \begin{equation}
-	\label{eq:generalised_derivative}
-		\int_\Omega u \frac{\partial \phi}{\partial x_j} = - \int_\Omega g \phi
-	\end{equation}
-	for all $\phi \in C_c^\infty(\Omega)$.
-	
-	Note that $g$ is defined only up to sets of measure zero.
+    We say $u \in L^1_{loc}(\Omega)$ has a (weak) generalised $j$-th partial derivative if there exists $g \in L^1_{loc}(\Omega)$ such that \begin{equation}
+    \label{eq:generalised_derivative}
+        \int_\Omega u \frac{\partial \phi}{\partial x_j} = - \int_\Omega g \phi
+    \end{equation}
+    for all $\phi \in C_c^\infty(\Omega)$.
+    
+    Note that $g$ is defined only up to sets of measure zero.
 \end{defn}
 
 \begin{note}
-	The motivation comes from the integration by parts formula, where if $u$ is $C^1(\Omega)$, then \[
-		\int_\Omega u \frac{\partial \phi}{\partial x_j} = - \int_\Omega \frac{\partial u}{\partial x_j} \phi
-	\] for all $\phi \in C^1_c(\Omega)$ by integration by parts. Thus we can write $g = \frac{\partial u}{\partial x_j}$.   
+    The motivation comes from the integration by parts formula, where if $u$ is $C^1(\Omega)$, then \[
+        \int_\Omega u \frac{\partial \phi}{\partial x_j} = - \int_\Omega \frac{\partial u}{\partial x_j} \phi
+    \] for all $\phi \in C^1_c(\Omega)$ by integration by parts. Thus we can write $g = \frac{\partial u}{\partial x_j}$.   
 \end{note}
 
 \begin{lem}
-	\label{lem:uniqueness_of_generalised_derivative}
-	The function $g$, if it exists, is unique (up to sets of measure zero).  
+    \label{lem:uniqueness_of_generalised_derivative}
+    The function $g$, if it exists, is unique (up to sets of measure zero).  
 \end{lem}
 
 \begin{proof}
-	If $g_1, g_2$ both satisfy \eqref{eq:generalised_derivative}, then \[
-		-\int_\Omega u \frac{\partial \phi}{\partial x_j} = \int_\Omega g_1 \phi = \int_\Omega g_2 \phi
-	\] for all $\phi \in C_c^\infty(\Omega)$.  Thus \[
-		\int_\Omega (g_1 - g_2) \phi = 0
-		\tag{$\star$}
-	\] for all $\phi \in C_c^\infty(\Omega)$.
-	
-	Suppose $B$ is a ball with $\overline B \subseteq \Omega$.  Then \[
-		(g_1 - g_2) |_B \in L^1(B).  
-	\]   Since ($\star$) holds for all $\phi \in C_c^\infty(B)$, consider the measurable function \[
-		\text{sgn}(g_1 - g_2) = \begin{cases}
-			1 & (g_1 - g_2)(x) \geq 0 \\
-			-1 & (g_1 - g_2)(x) < 0.
-		\end{cases}  
-	\]  
-	We assume that there exists $(\phi_n) \in C_c^\infty(B)$ such that $\phi_n$ are uniformly bounded and $\phi_n(x) \rightarrow \text{sgn}(g_1 - g_2)$ almost everywhere.  This can be justified by Young's inequality, where if \[
-		f_n(x) = \int_B \psi_n(x-y) f(y) \, dy
-	\] then $\| f_n \|_\infty \leq \| \psi_n \| \ | f \|_\infty$, so our approximating function $f_n$ are uniformly bounded.
-	
-	Then \[
-		0 = \int_\Omega (g_1 - g_2) \phi_n \rightarrow \int_B (g_1 - g_2) \text{sgn}(g_1 - g_2) = \int_B |g_1 - g_2 |
-	\] as $n \rightarrow \infty$ by the dominate convergence theorem. 
-	
-	Thus $g_1 - g_2 = 0$ almost everywhere on $B$.  By the Lindeloff property (Lemma \ref{lem:lindeloff}), $\Omega$ is a countable union of balls, and so we can extend this result to the result, \[
-		g_1 - g_2 = 0
-	\] almost everywhere on $\phi$.  
+    If $g_1, g_2$ both satisfy \eqref{eq:generalised_derivative}, then \[
+        -\int_\Omega u \frac{\partial \phi}{\partial x_j} = \int_\Omega g_1 \phi = \int_\Omega g_2 \phi
+    \] for all $\phi \in C_c^\infty(\Omega)$.  Thus \[
+        \int_\Omega (g_1 - g_2) \phi = 0
+        \tag{$\star$}
+    \] for all $\phi \in C_c^\infty(\Omega)$.
+    
+    Suppose $B$ is a ball with $\overline B \subseteq \Omega$.  Then \[
+        (g_1 - g_2) |_B \in L^1(B).  
+    \]   Since ($\star$) holds for all $\phi \in C_c^\infty(B)$, consider the measurable function \[
+        \text{sgn}(g_1 - g_2) = \begin{cases}
+            1 & (g_1 - g_2)(x) \geq 0 \\
+            -1 & (g_1 - g_2)(x) < 0.
+        \end{cases}  
+    \]  
+    We assume that there exists $(\phi_n) \in C_c^\infty(B)$ such that $\phi_n$ are uniformly bounded and $\phi_n(x) \rightarrow \text{sgn}(g_1 - g_2)$ almost everywhere.  This can be justified by Young's inequality, where if \[
+        f_n(x) = \int_B \psi_n(x-y) f(y) \, dy
+    \] then $\| f_n \|_\infty \leq \| \psi_n \| \ | f \|_\infty$, so our approximating function $f_n$ are uniformly bounded.
+    
+    Then \[
+        0 = \int_\Omega (g_1 - g_2) \phi_n \rightarrow \int_B (g_1 - g_2) \text{sgn}(g_1 - g_2) = \int_B |g_1 - g_2 |
+    \] as $n \rightarrow \infty$ by the dominate convergence theorem. 
+    
+    Thus $g_1 - g_2 = 0$ almost everywhere on $B$.  By the Lindeloff property (Lemma \ref{lem:lindeloff}), $\Omega$ is a countable union of balls, and so we can extend this result to the result, \[
+        g_1 - g_2 = 0
+    \] almost everywhere on $\phi$.  
 \end{proof}
 
 \begin{lem}[Lindeloff property]
-	\label{lem:lindeloff}
-	A separable metric space, such as $R^n$, any open set is a countable union of open balls.
+    \label{lem:lindeloff}
+    A separable metric space, such as $R^n$, any open set is a countable union of open balls.
 \end{lem} 
 
 \begin{rem}{\ }
-	\begin{enumerate}[(i)]
-		\item If $g$ is the generalised $j$-th partial derivative of $u$ on $\Omega$ and $\Omega_1 \subset \Omega$ is open, then $g |_{\Omega_1}$ is the $j$-th generalised partial derivative of $u|_{\Omega_1}$.
-		\item Assume $A \subseteq \Omega$, $u$ has a generalised $j$-th partial derivative on $\Omega$, $A$ is open, and $u$ is $C^1$ on $A$. 
-		
-		Then the generalised $j$-the partial derivative of $u$ is equal to the classical partial derivative almost everywhere on $A$.
-	\end{enumerate}
+    \begin{enumerate}[(i)]
+        \item If $g$ is the generalised $j$-th partial derivative of $u$ on $\Omega$ and $\Omega_1 \subset \Omega$ is open, then $g |_{\Omega_1}$ is the $j$-th generalised partial derivative of $u|_{\Omega_1}$.
+        \item Assume $A \subseteq \Omega$, $u$ has a generalised $j$-th partial derivative on $\Omega$, $A$ is open, and $u$ is $C^1$ on $A$. 
+        
+        Then the generalised $j$-the partial derivative of $u$ is equal to the classical partial derivative almost everywhere on $A$.
+    \end{enumerate}
 \end{rem} 
 
 \begin{exmp}
-	Consider the function \[
-		u(x, y) = \begin{cases}
-			1 & y \geq 0	\\
-			0 & y < 0		
-		\end{cases}
-	\]  If the generalised derivative $\frac{\partial u}{\partial x}$ exists, it must be zero when $y > 0$ and when $y < 0$.  
-	
-	It turns out that $\frac{\partial u}{\partial x}$ exists but $\frac{\partial u}{\partial y}$ does not.
+    Consider the function \[
+        u(x, y) = \begin{cases}
+            1 & y \geq 0    \\
+            0 & y < 0       
+        \end{cases}
+    \]  If the generalised derivative $\frac{\partial u}{\partial x}$ exists, it must be zero when $y > 0$ and when $y < 0$.  
+    
+    It turns out that $\frac{\partial u}{\partial x}$ exists but $\frac{\partial u}{\partial y}$ does not.
 \end{exmp}
 
 \begin{exmp}
-	$f: \R \rightarrow \R$ define by $f(x) = |x|$ has a generalised derivative $g$ defined by \[
-		g(x) = \begin{cases}
-			1 & x > 0 \\
-			-1 & x > 0
-		\end{cases}
-	\]  Note that $f$ is $C^1$ if $x \neq 0$ so if the generalised derivative exists it must be equal to $g$. 
-	\end{exmp}
+    $f: \R \rightarrow \R$ define by $f(x) = |x|$ has a generalised derivative $g$ defined by \[
+        g(x) = \begin{cases}
+            1 & x > 0 \\
+            -1 & x > 0
+        \end{cases}
+    \]  Note that $f$ is $C^1$ if $x \neq 0$ so if the generalised derivative exists it must be equal to $g$. 
+    \end{exmp}
 
 \begin{exmp}
-	If $B_1$ is the open unit ball in $\R^2$ and \[
-		f(x) = \begin{cases}
-			\ln(x^2 + y^2) & (x, y) \neq (0, 0) 
-		\end{cases}
-	\] - thus $f(x) = 2 \ln r$ in polar coordinates.
-	
-	Then \begin{align*}
-		\frac{\partial u}{\partial x} = \frac{2x}{x^2 + y^2}  \\
-		\frac{\partial u}{\partial y} = \frac{2y}{x^2 + y^2} 
-	\end{align*} are the generalised partial derivatives on $\R^2$.
+    If $B_1$ is the open unit ball in $\R^2$ and \[
+        f(x) = \begin{cases}
+            \ln(x^2 + y^2) & (x, y) \neq (0, 0) 
+        \end{cases}
+    \] - thus $f(x) = 2 \ln r$ in polar coordinates.
+    
+    Then \begin{align*}
+        \frac{\partial u}{\partial x} = \frac{2x}{x^2 + y^2}  \\
+        \frac{\partial u}{\partial y} = \frac{2y}{x^2 + y^2} 
+    \end{align*} are the generalised partial derivatives on $\R^2$.
 \end{exmp}
 
 \begin{defn}[Generalised derivative]
-	We say that $u \in L^1_{loc}(\Omega)$ has a generalised derivative on $\Omega$ if all the generalised partial derivatives $\frac{\partial u}{\partial x_j}$ exist for $1 \leq j \leq n$ (where $\Omega$ is an open set in $\R^n$).
+    We say that $u \in L^1_{loc}(\Omega)$ has a generalised derivative on $\Omega$ if all the generalised partial derivatives $\frac{\partial u}{\partial x_j}$ exist for $1 \leq j \leq n$ (where $\Omega$ is an open set in $\R^n$).
 \end{defn}
 
 \begin{rem}{\ }
-	\begin{enumerate}[(i)]
-		\item If $u_1$ and $u_2$ have generalised derivatives on $\Omega$ and $C_1, C_2$ are constant, then $C_1u_1 + C_2 u_2$ has a generalised derivative on $\Omega,$ given by the appropriate linear combination.  
-		\item If $u$ has a generalised derivative on $\Omega$ and $\Psi \in C^\infty(\Omega)$, then  $u\Psi$ has a generalised derivative on $\Omega$ and \[
-			\frac{\partial}{\partial x_j} (u \Psi) = \frac{\partial u}{\partial x_j} \Psi + u \frac{\partial \Psi}{\partial x_j}
-		\]
-	\end{enumerate}
+    \begin{enumerate}[(i)]
+        \item If $u_1$ and $u_2$ have generalised derivatives on $\Omega$ and $C_1, C_2$ are constant, then $C_1u_1 + C_2 u_2$ has a generalised derivative on $\Omega,$ given by the appropriate linear combination.  
+        \item If $u$ has a generalised derivative on $\Omega$ and $\Psi \in C^\infty(\Omega)$, then  $u\Psi$ has a generalised derivative on $\Omega$ and \[
+            \frac{\partial}{\partial x_j} (u \Psi) = \frac{\partial u}{\partial x_j} \Psi + u \frac{\partial \Psi}{\partial x_j}
+        \]
+    \end{enumerate}
 \end{rem}
-	
+    
 \begin{lem}
-	\label{lem:convergence_of_gen_deriv}
-	If $u_k$ has a generalised derivative on $\Omega$ and $u_k \rightarrow u$ in $L^1_{loc}(\Omega)$ as $k \rightarrow \infty$ and if $\frac{\partial u_k}{\partial x_l} \rightarrow g_l$ in $L^1_{loc}(\Omega)$ then $u$ has a generalised derivative on $\Omega$ and \[
-		\frac{\partial u}{\partial x_l} = g_l.
-	\]
+    \label{lem:convergence_of_gen_deriv}
+    If $u_k$ has a generalised derivative on $\Omega$ and $u_k \rightarrow u$ in $L^1_{loc}(\Omega)$ as $k \rightarrow \infty$ and if $\frac{\partial u_k}{\partial x_l} \rightarrow g_l$ in $L^1_{loc}(\Omega)$ then $u$ has a generalised derivative on $\Omega$ and \[
+        \frac{\partial u}{\partial x_l} = g_l.
+    \]
 \end{lem}
 
 \begin{proof}
-	\[
-		\int_\Omega u_k \frac{\partial \phi}{\partial x_j} = -\int_\Omega \frac{\partial u}{\partial x_j} \phi
-		\tag{$\star$}
-	\] if $\phi \in C_c^\infty(\Omega)$.  Fix $\phi$ and choose $K$ compact so the support of $\phi$ is contained in $K$.  Then $u_k {\frac{\partial \phi}{\partial x_j}} \rightarrow u \frac{\partial \phi}{\partial x_j}$ in $L^1$ on $K$.  
-	
-	Then letting $k \rightarrow \infty$ in $(\star)$ we obtain \[
-		\int_\Omega u \frac{\partial \phi}{\partial x_j} = - \int_\Omega g_j \phi.
-	\]
+    \[
+        \int_\Omega u_k \frac{\partial \phi}{\partial x_j} = -\int_\Omega \frac{\partial u}{\partial x_j} \phi
+        \tag{$\star$}
+    \] if $\phi \in C_c^\infty(\Omega)$.  Fix $\phi$ and choose $K$ compact so the support of $\phi$ is contained in $K$.  Then $u_k {\frac{\partial \phi}{\partial x_j}} \rightarrow u \frac{\partial \phi}{\partial x_j}$ in $L^1$ on $K$.  
+    
+    Then letting $k \rightarrow \infty$ in $(\star)$ we obtain \[
+        \int_\Omega u \frac{\partial \phi}{\partial x_j} = - \int_\Omega g_j \phi.
+    \]
 \end{proof}
 
 \begin{rem}
-	If $g_j \in L^p(\Omega)$ and $g_j \rightarrow g$ in $L^p(\Omega), (1 \leq p \leq \infty)$, then $g_j \rightarrow g$ in $L^1_{loc}(\Omega)$.  
+    If $g_j \in L^p(\Omega)$ and $g_j \rightarrow g$ in $L^p(\Omega), (1 \leq p \leq \infty)$, then $g_j \rightarrow g$ in $L^1_{loc}(\Omega)$.  
 \end{rem}
 
 \begin{proof}
-	If $K$ is compact, then \[
-		\int_K (g_j - g) \leq \| g_j - g\|_{p, K}^\frac{1}{p} \| 1 \|^{1/p'}_{p', K}
-	\] by H\"older's inequality.
+    If $K$ is compact, then \[
+        \int_K (g_j - g) \leq \| g_j - g\|_{p, K}^\frac{1}{p} \| 1 \|^{1/p'}_{p', K}
+    \] by H\"older's inequality.
 \end{proof}
 
 \section{Sobolev Spaces} % (fold)
@@ -610,58 +610,58 @@ $T$ is coercive if there exists $\mu > 0$ such that $\Re \iprod{Tx, x} \geq \mu 
 
 % section sobolev_spaces (end)
 \begin{defn}[Sobolev spaces]
-	If $1 \leq p \leq \infty$ and $\Omega$ is open in $\R^n$, then the space \[
-		W^{1, p}(\Omega) = \{ u \in L^p(\Omega) \given \underbrace{\frac{\partial u}{\partial x_i} \in L^p(\Omega)}_{\substack{\text{generalised} \\ \text{derivatives}}} \text{ for } 1 \leq i \leq n \}
-	\] 
-	equipped with the norm \[
-		\| u \|_{1, p} = \| u \|_p + \sum_{i=1}^n \| \frac{\partial u}{\partial x_i} \|_p
-	\] is a Banach space.  We call $W^{1, p}$ a Sobolev space.
+    If $1 \leq p \leq \infty$ and $\Omega$ is open in $\R^n$, then the space \[
+        W^{1, p}(\Omega) = \{ u \in L^p(\Omega) \given \underbrace{\frac{\partial u}{\partial x_i} \in L^p(\Omega)}_{\substack{\text{generalised} \\ \text{derivatives}}} \text{ for } 1 \leq i \leq n \}
+    \] 
+    equipped with the norm \[
+        \| u \|_{1, p} = \| u \|_p + \sum_{i=1}^n \| \frac{\partial u}{\partial x_i} \|_p
+    \] is a Banach space.  We call $W^{1, p}$ a Sobolev space.
 
-	It is a linear space by linearity of the generalised derivatives.  Similarly, the triangle inequality holds as all components of the norm $\| \cdot \|_{1, p}$ satisfy the triangle inequality.  It can be shown that $W^{1, p} \subseteq L^p(\Omega)^{N+1}$ and $W^{1, p}$ is a closed subspace, which shows that $W^{1, p}$ is Banach, being the closed subspace of a Banach space.
+    It is a linear space by linearity of the generalised derivatives.  Similarly, the triangle inequality holds as all components of the norm $\| \cdot \|_{1, p}$ satisfy the triangle inequality.  It can be shown that $W^{1, p} \subseteq L^p(\Omega)^{N+1}$ and $W^{1, p}$ is a closed subspace, which shows that $W^{1, p}$ is Banach, being the closed subspace of a Banach space.
 \end{defn}
 
 
 \begin{prop}
-	$W^{1, p}$ is a Banach space.  In fact, $W^{1,p}$ is a closed subspace of $L^p(\Omega)^{n+1}$.
+    $W^{1, p}$ is a Banach space.  In fact, $W^{1,p}$ is a closed subspace of $L^p(\Omega)^{n+1}$.
 \end{prop}
 
 \newcommand{\parder}[2]{\frac{\partial #1}{\partial #2}}
 \begin{proof}
-	Consider the the map \begin{align*}
-		(u_j, \parder{u_j}{x_1}, \dots, \parder{u_j}{x_n}) \rightarrow (w_0, w_1, \dots, w_n)
-	\end{align*}  If $u_j \rightarrow w_0 \in L^p(\Omega)$, then $\parder{u_j}{x_1} \rightarrow w_1$ in $L^p(\Omega)$ which implies that $\parder{u_j}{x_1} \rightarrow w_1$ in $L^1_{loc}(\Omega)$.
-	
-	By Lemma \ref{lem:convergence_of_gen_deriv}, $\parder{w_0}{x_1}$ exists on $\Omega$ and equals $w^1$.  Similarly, $\parder{w_0}{x_l}$ exists and equals $w_l$.  Then since $w_0 \in W^{1, p}(\Omega)$ and $\parder{w_0}{x_l} = w_l$ the closure property holds.  Hence we have a Banach space.
+    Consider the the map \begin{align*}
+        (u_j, \parder{u_j}{x_1}, \dots, \parder{u_j}{x_n}) \rightarrow (w_0, w_1, \dots, w_n)
+    \end{align*}  If $u_j \rightarrow w_0 \in L^p(\Omega)$, then $\parder{u_j}{x_1} \rightarrow w_1$ in $L^p(\Omega)$ which implies that $\parder{u_j}{x_1} \rightarrow w_1$ in $L^1_{loc}(\Omega)$.
+    
+    By Lemma \ref{lem:convergence_of_gen_deriv}, $\parder{w_0}{x_1}$ exists on $\Omega$ and equals $w^1$.  Similarly, $\parder{w_0}{x_l}$ exists and equals $w_l$.  Then since $w_0 \in W^{1, p}(\Omega)$ and $\parder{w_0}{x_l} = w_l$ the closure property holds.  Hence we have a Banach space.
 \end{proof}
 
 \begin{note}
-	Recall that all norms on a finite dimensional vector space are equivalent.  For example, \[
-		\left( \| u \|_p^p + \sum_{j=1}^n \| \parder{u}{x_j}\|_p^p)^{1/p} \right)
-	\] and \[
-		\| u \|_p + \left( \sum_{j=1}^n \| \parder{u}{x_j} \|_p^p \right)^{1/p}
-	\] are equivalent.
+    Recall that all norms on a finite dimensional vector space are equivalent.  For example, \[
+        \left( \| u \|_p^p + \sum_{j=1}^n \| \parder{u}{x_j}\|_p^p)^{1/p} \right)
+    \] and \[
+        \| u \|_p + \left( \sum_{j=1}^n \| \parder{u}{x_j} \|_p^p \right)^{1/p}
+    \] are equivalent.
 \end{note}
 
 
 \begin{defn}[Higher Sobolev spaces]
-	We have \[
-	W^{2, p}(\Omega) = \{ u \in L^p(\Omega) \given \frac{\partial u}{\partial x_i}, \parder{u}{x_i x_j} \in L^p(\Omega) \text{ for } 1 \leq i \leq n, 1 \leq j \leq n \}
-	\]
+    We have \[
+    W^{2, p}(\Omega) = \{ u \in L^p(\Omega) \given \frac{\partial u}{\partial x_i}, \parder{u}{x_i x_j} \in L^p(\Omega) \text{ for } 1 \leq i \leq n, 1 \leq j \leq n \}
+    \]
 \end{defn}
 
 \begin{defn}
-	$\dot W^{1, p}(\Omega)$ is the closure of $C^\infty_c(\Omega)$ in $W^{1, p}(\Omega)$ in the norm $\| \cdot \|_{1, p}$.  	
-	In general, $\dot W^{1, p}(\Omega) \subseteq W^{1, p}(\Omega)$.
+    $\dot W^{1, p}(\Omega)$ is the closure of $C^\infty_c(\Omega)$ in $W^{1, p}(\Omega)$ in the norm $\| \cdot \|_{1, p}$.      
+    In general, $\dot W^{1, p}(\Omega) \subseteq W^{1, p}(\Omega)$.
 \end{defn}
 
 \begin{prop}
-	$\dot W^{1, p}(\R^n) = W^{1, p}(\R^n)$.  
+    $\dot W^{1, p}(\R^n) = W^{1, p}(\R^n)$.  
 \end{prop}
 
 \begin{prop}
-	$\dot W^{1, 2}(\Omega), W^{1, 2}(\Omega)$ are Hilbert spaces under the inner product $\iprod{\cdot, \cdot}$ defined by \[
-		\iprod{u, v} = (u, v) + \sum_{i=1}^n \left(\parder{u}{x_i}, \parder{v}{x_i}\right)
-	\] where $(u, v) = \int_\Omega u(x) \overline{v(x)} \, dx$.
+    $\dot W^{1, 2}(\Omega), W^{1, 2}(\Omega)$ are Hilbert spaces under the inner product $\iprod{\cdot, \cdot}$ defined by \[
+        \iprod{u, v} = (u, v) + \sum_{i=1}^n \left(\parder{u}{x_i}, \parder{v}{x_i}\right)
+    \] where $(u, v) = \int_\Omega u(x) \overline{v(x)} \, dx$.
 \end{prop}
 
 \section{Convolutions and Approximations} % (fold)
@@ -669,74 +669,74 @@ $T$ is coercive if there exists $\mu > 0$ such that $\Re \iprod{Tx, x} \geq \mu 
 Recall that there exists $\phi  \in C^\infty_c(\R^n)$ such that $\phi(x) > 0$ if $\| x \| < 1$ and $\phi(x) = 0$ if $\| x \| \geq 1$.  We can assume that $\int_{\R^n} \phi = 1$.
 
 If $f \in L^p_{loc}(\R^n)$ and $1 \leq p < \infty$, we define $T_\epsilon f$ by \[
-	(T_\epsilon f)(x) = \epsilon^{-N} \int \phi \left( \frac{x-y}{\epsilon} \right) f(y) \, dy = \phi_\epsilon \star f
+    (T_\epsilon f)(x) = \epsilon^{-N} \int \phi \left( \frac{x-y}{\epsilon} \right) f(y) \, dy = \phi_\epsilon \star f
 \] where $\phi_\epsilon = \epsilon^{-N} \phi\left( \frac{x}{\epsilon}\right)$.
 
 
 \begin{prop}
-	\label{prop:convergence_of_covolution}
-	If $f \in L^p(\R^n)$ where $1 \leq p < \infty$, then \[
-		T_\epsilon f \rightarrow f
-	\] in $L^p(\R^n)$ as $\epsilon \rightarrow 0$.  
+    \label{prop:convergence_of_covolution}
+    If $f \in L^p(\R^n)$ where $1 \leq p < \infty$, then \[
+        T_\epsilon f \rightarrow f
+    \] in $L^p(\R^n)$ as $\epsilon \rightarrow 0$.  
 \end{prop}  
 
 \begin{lem}
-	If $f$ has support in a compact set $K$, then $T_e f$ has support in $\{ x \in \R^n \given d(x, K) \leq \epsilon \}$. 
+    If $f$ has support in a compact set $K$, then $T_e f$ has support in $\{ x \in \R^n \given d(x, K) \leq \epsilon \}$. 
 \end{lem}
 
 \begin{lem}
-	By Proposition \ref{prop:convergence_of_covolution}, if $f \in L^p(\R^n)$, there exists $\epsilon_l \rightarrow 0$ such that $T_{\epsilon_l} f \rightarrow f$ almost everywhere as $l \rightarrow \infty$.
+    By Proposition \ref{prop:convergence_of_covolution}, if $f \in L^p(\R^n)$, there exists $\epsilon_l \rightarrow 0$ such that $T_{\epsilon_l} f \rightarrow f$ almost everywhere as $l \rightarrow \infty$.
 \end{lem}
 
 \begin{lem}
-	 \[
-		\| T_\epsilon f \|_{\infty} \leq \| f \|_\infty
-	\] if $f \in L^\infty(\R^n)$.
+     \[
+        \| T_\epsilon f \|_{\infty} \leq \| f \|_\infty
+    \] if $f \in L^\infty(\R^n)$.
 \end{lem}
 
 \begin{proof}
-	If $-1 \leq f \leq 1$ on $\R^n$, then as \[
-		T_\epsilon(-1) \leq T_\epsilon f \leq T_\epsilon 1
-	\] that is, \[
-		-1 \leq T_\epsilon f(x) \leq 1 \quad \forall x
-	\] then since $T_\epsilon f$ is linear we have \[
-		\| T_\epsilon f \|_{\infty} \leq \| f \|_\infty
-	\] if $f \in L^\infty(\R^n)$.
+    If $-1 \leq f \leq 1$ on $\R^n$, then as \[
+        T_\epsilon(-1) \leq T_\epsilon f \leq T_\epsilon 1
+    \] that is, \[
+        -1 \leq T_\epsilon f(x) \leq 1 \quad \forall x
+    \] then since $T_\epsilon f$ is linear we have \[
+        \| T_\epsilon f \|_{\infty} \leq \| f \|_\infty
+    \] if $f \in L^\infty(\R^n)$.
 \end{proof}
 
 \begin{prop}
-	$C_c^\infty(\R^n)$ is dense in $W^{1, 2}(\R^n)$ that is, if $f \in W^{1, 2}(\R^n)$, there exists $(f_n) \in C^\infty_c(\R^n)$ such that $\| f - f_n \|_{1, 2} \rightarrow 0$ as $n \rightarrow \infty$. 
-	
-	Note that this is non-trivial as if $\Omega$ is bounded the corresponding result is false.
+    $C_c^\infty(\R^n)$ is dense in $W^{1, 2}(\R^n)$ that is, if $f \in W^{1, 2}(\R^n)$, there exists $(f_n) \in C^\infty_c(\R^n)$ such that $\| f - f_n \|_{1, 2} \rightarrow 0$ as $n \rightarrow \infty$. 
+    
+    Note that this is non-trivial as if $\Omega$ is bounded the corresponding result is false.
 \end{prop}
 
 \begin{proof}
-	Let $f \in W^{1, 2}(\R^n)$ and $\delta > 0$.  By a previous exercise, there exists $\tilde f \in W^{1, 2}(\R^n)$ of compact support such that \[
-		\| f - \tilde f \| \leq \frac{\delta}{2}.
-	\]  Hence it suffices to find $f_n \in C^\infty_c(\R^n)$ such that $\| f_n - \tilde f\|_{1, 2} \rightarrow 0$ as $n \rightarrow \infty$ (as this would imply $\| f_n - f \| \leq \delta$ for large enough $n$).  
-	
-	We prove that $T_\epsilon \tilde f \in W^{1, 2}(\R^n)$ and $T_\epsilon \tilde f \rightarrow \tilde f$ in $W^{1, 2}(\R^n)$ as $\epsilon \rightarrow 0$.  Recall that $T_\epsilon \tilde f \in C^{\infty}(\R^n)$.  Suppose that $T_\epsilon \tilde f \subseteq B(\epsilon)\{ \text{supp}(\tilde f) \} = \{ x \in \R^n \given d(x, \text{supp}(\tilde f)) \leq \epsilon \}$.  Recall that $T_\epsilon \tilde f \rightarrow \tilde f$ in $L^2(\R^n)$ as $\epsilon \rightarrow 0$ from \textsc{math 3969}.  
-	
-	We thus need to prove \begin{equation}
-		\parder{}{x_l} T_\epsilon \tilde f = T_\epsilon \underbrace{\left( \parder{\tilde f}{x_l} \right)}_{\substack{\text{generalised} \\ \text{derivative}}}
-	\end{equation}
+    Let $f \in W^{1, 2}(\R^n)$ and $\delta > 0$.  By a previous exercise, there exists $\tilde f \in W^{1, 2}(\R^n)$ of compact support such that \[
+        \| f - \tilde f \| \leq \frac{\delta}{2}.
+    \]  Hence it suffices to find $f_n \in C^\infty_c(\R^n)$ such that $\| f_n - \tilde f\|_{1, 2} \rightarrow 0$ as $n \rightarrow \infty$ (as this would imply $\| f_n - f \| \leq \delta$ for large enough $n$).  
+    
+    We prove that $T_\epsilon \tilde f \in W^{1, 2}(\R^n)$ and $T_\epsilon \tilde f \rightarrow \tilde f$ in $W^{1, 2}(\R^n)$ as $\epsilon \rightarrow 0$.  Recall that $T_\epsilon \tilde f \in C^{\infty}(\R^n)$.  Suppose that $T_\epsilon \tilde f \subseteq B(\epsilon)\{ \text{supp}(\tilde f) \} = \{ x \in \R^n \given d(x, \text{supp}(\tilde f)) \leq \epsilon \}$.  Recall that $T_\epsilon \tilde f \rightarrow \tilde f$ in $L^2(\R^n)$ as $\epsilon \rightarrow 0$ from \textsc{math 3969}.  
+    
+    We thus need to prove \begin{equation}
+        \parder{}{x_l} T_\epsilon \tilde f = T_\epsilon \underbrace{\left( \parder{\tilde f}{x_l} \right)}_{\substack{\text{generalised} \\ \text{derivative}}}
+    \end{equation}
   If we prove that \[
-		\parder{}{x_l}\left(T_\epsilon \tilde f \right) = T_\epsilon \left(\parder{\tilde f}{x_l} \right) \rightarrow \parder{\tilde f}{x_l}
-	\] in $L^2(\R^n)$.  
-	
-	We have \begin{align*}
-		\parder{}{x_l} T_\epsilon \tilde f(x) &= \parder{}{x_l} \left( \epsilon^{-n} \int \phi\left(\frac{x-y}{\epsilon} \right) \tilde f(y) \, dy \right) \\
-		&= \epsilon^{-n} \int \parder{}{x_l} \phi\left(\frac{x-y}{\epsilon} \right) \tilde f(y) \, dy \\
-		&= e^{-n} \int -\parder{}{y_l} \phi\left( \frac{x-y}{\epsilon} \right) \tilde f(y) \, dy 
-	\end{align*} where we use the fact that \[
-		\parder{}{x_l}g(x-y) = - \parder{}{y_l} g(x-y).
-	\]  Continuing, we obtain \begin{align*}
-		\parder{}{x_l} T_\epsilon \tilde f(x)	&= -\epsilon^{-n} \int \parder{}{y_l} \left( \phi\left(\frac{x-y}{\epsilon} \right) \right) \tilde f(y) \, dy \\
-		\tag{$\star$}
-		 &= \epsilon^{-n} \int \phi \left(\frac{x-y}{\epsilon} \right) \parder{}{y_l} \tilde f(y) \, dy \\
-		&= T_\epsilon \left( \parder{\tilde f}{ y_l}\right)
-	\end{align*} as $\phi\left(\frac{x-y}{\epsilon} \right)$ is a smooth function of compact support.  Thus the generalised derivative exists as $\tilde f \in W^{1, 2}(\R^n)$, and so the manipulation in $(\star)$ is justified.
-	
+        \parder{}{x_l}\left(T_\epsilon \tilde f \right) = T_\epsilon \left(\parder{\tilde f}{x_l} \right) \rightarrow \parder{\tilde f}{x_l}
+    \] in $L^2(\R^n)$.  
+    
+    We have \begin{align*}
+        \parder{}{x_l} T_\epsilon \tilde f(x) &= \parder{}{x_l} \left( \epsilon^{-n} \int \phi\left(\frac{x-y}{\epsilon} \right) \tilde f(y) \, dy \right) \\
+        &= \epsilon^{-n} \int \parder{}{x_l} \phi\left(\frac{x-y}{\epsilon} \right) \tilde f(y) \, dy \\
+        &= e^{-n} \int -\parder{}{y_l} \phi\left( \frac{x-y}{\epsilon} \right) \tilde f(y) \, dy 
+    \end{align*} where we use the fact that \[
+        \parder{}{x_l}g(x-y) = - \parder{}{y_l} g(x-y).
+    \]  Continuing, we obtain \begin{align*}
+        \parder{}{x_l} T_\epsilon \tilde f(x)   &= -\epsilon^{-n} \int \parder{}{y_l} \left( \phi\left(\frac{x-y}{\epsilon} \right) \right) \tilde f(y) \, dy \\
+        \tag{$\star$}
+         &= \epsilon^{-n} \int \phi \left(\frac{x-y}{\epsilon} \right) \parder{}{y_l} \tilde f(y) \, dy \\
+        &= T_\epsilon \left( \parder{\tilde f}{ y_l}\right)
+    \end{align*} as $\phi\left(\frac{x-y}{\epsilon} \right)$ is a smooth function of compact support.  Thus the generalised derivative exists as $\tilde f \in W^{1, 2}(\R^n)$, and so the manipulation in $(\star)$ is justified.
+    
 \end{proof}
 % section convolutions_and_approximations (end)
 
@@ -745,117 +745,117 @@ If $f \in L^p_{loc}(\R^n)$ and $1 \leq p < \infty$, we define $T_\epsilon f$ by 
 \label{sec:fourier_transforms_and_weak_derivatives}
 
 \begin{defn}[Fourier transform]
-	If $f \in L^1(\R^n), \lambda \in \R^n$, then the Fourier transform $\hat f$ of $f$ is defined by \begin{equation}
-		\hat f(\lambda) = \int_{\R^n} f(t) e^{i \lambda t} \, dt.
-	\end{equation}
+    If $f \in L^1(\R^n), \lambda \in \R^n$, then the Fourier transform $\hat f$ of $f$ is defined by \begin{equation}
+        \hat f(\lambda) = \int_{\R^n} f(t) e^{i \lambda t} \, dt.
+    \end{equation}
 \end{defn}
 
 \begin{thm}
-	The map $f \mapsto \hat f$ is a bijection on $L^2(\R^n)$. 
+    The map $f \mapsto \hat f$ is a bijection on $L^2(\R^n)$. 
 \end{thm}
 
 \begin{thm}[Parseval's theorem]
-	If $f \in L^2(\R^n)$, then $(2 \pi)^n \| f \|_2^2 = \| \hat f \|_2^2$.  This can be generalised slightly to if $f, g \in L^2(\R^n)$, then \[
-		(2 \pi)^n \iprod{f, g} = \iprod{\hat f, \hat g} = \int_{\R^n} \hat f(x) \overline{\hat g(x)} \, dx
-	\]
+    If $f \in L^2(\R^n)$, then $(2 \pi)^n \| f \|_2^2 = \| \hat f \|_2^2$.  This can be generalised slightly to if $f, g \in L^2(\R^n)$, then \[
+        (2 \pi)^n \iprod{f, g} = \iprod{\hat f, \hat g} = \int_{\R^n} \hat f(x) \overline{\hat g(x)} \, dx
+    \]
 \end{thm}
 
 \begin{thm}
-	\label{thm:his_thm_4.1}
-	If $f \in L^2(\R^n)$, the following are equivalent:
-	\begin{enumerate}[(i)]
-		\item $f \in W^{1, 2}(\R^n)$,
-		\item $-i \lambda_j \hat f(\lambda) \in L^2(\R^n)$ for $1 \leq j \leq n$, 
-		\item $1 + |\lambda| \hat f(\lambda) \in L^2(\R^n)$.  
-	\end{enumerate}
-	
-	If any of these hold, the generalised derivative $\parder{f}{x_j}$ exists and $\hat{ \parder{f}{x_j}}(\lambda) = -i \lambda_j \hat f (\lambda)$ for $1 \leq j \leq n$.
+    \label{thm:his_thm_4.1}
+    If $f \in L^2(\R^n)$, the following are equivalent:
+    \begin{enumerate}[(i)]
+        \item $f \in W^{1, 2}(\R^n)$,
+        \item $-i \lambda_j \hat f(\lambda) \in L^2(\R^n)$ for $1 \leq j \leq n$, 
+        \item $1 + |\lambda| \hat f(\lambda) \in L^2(\R^n)$.  
+    \end{enumerate}
+    
+    If any of these hold, the generalised derivative $\parder{f}{x_j}$ exists and $\hat{ \parder{f}{x_j}}(\lambda) = -i \lambda_j \hat f (\lambda)$ for $1 \leq j \leq n$.
 \end{thm}
 
 \begin{proof}
-	$(ii) \iff (iii)$ $|\lambda_j \hat f(\lambda) | \leq |\lambda | | \hat f(\lambda)|$ and hence (ii) $\iff$ (iii).  
-	
-	$(i) \Rightarrow (ii)$  The only thing left to prove is that \[
-		\parder{\hat f}{x_j}(\lambda) = -i \lambda_j \hat f(\lambda) 
-	\] for $f \in W^{1, 2}(\R^n)$.  We have \begin{align*}
-		f \in W^{1, 2}(\R^n) &\Rightarrow \parder{f}{x_j} \in L^2(\R^n) \\
-			&\Rightarrow \hat{\parder{f}{x_j}}(\lambda) \in L^2(\R^n)
-	\end{align*} so to prove the previous result we choose $f_n \in C^\infty_c(\R^n)$ such that $\| f_n - f\|_{1, 2} \rightarrow 0$ as $n \rightarrow \infty$.  Since \[
-		\hat{\parder{f_n}{x_j}}(\lambda) = -i \lambda_j \hat f_n (\lambda),
-	\] and $f_n \rightarrow f$ in $W^{1, 2}(\Omega)$, we have \begin{align*}
-		&\Rightarrow f_n \rightarrow f \text{ in } L^2(\R^n) \\
-		&\Rightarrow \hat f_n \rightarrow \hat f \text{ in } L^2(\R^n) \\
-		&\Rightarrow \hat f_n(\lambda) \rightarrow \hat f(\lambda) \text{ a.e. (taking subsequences)} \\
-		&\Rightarrow \parder{f_n}{x_j} \rightarrow \parder{f}{x_j} \text{ in } L^2(\R^n) \\
-		&\Rightarrow \hat{\parder{f_n}{x_j}} \rightarrow \hat{\parder{u}{x_j}} \text{ in} L^2(\R^n) \\
-		&\Rightarrow -i \lambda_j \hat f_n(\lambda) \rightarrow \hat{\parder{f}{x_j}}(\lambda) \text{ in } L^2(\R^n) \\
-		&\Rightarrow \hat{\parder{f}{x_j}}(\lambda) = -i \lambda_j \hat f(\lambda) \text{ a.e.}
-	\end{align*} 
-	
-	$(ii) \Rightarrow (i)$ As $-i \lambda_j \hat f(\lambda) \in L^2(\R^n)$, and so there exists $g_j \in L^2(\R^n)$ such that \[
-		\hat g_j = -i \lambda_j \hat f(\lambda).
-	\]  Thus we have 
-	
-	\begin{align*}
-		(2\pi)^n \left(f, \parder{\phi}{x_j} \right) &=  \left(\hat f, \hat{ \parder{\phi}{x_j}} \right) \quad \phi \in C^\infty_c(\R^n)\\
-		&= \int_{\R^n} \hat f(\lambda) \overline{-i \lambda_j \hat \phi(\lambda)} \\
-		&= \int_{\R^n} \hat f(\lambda) i \lambda_j \overline{\hat \phi(\lambda)} \\
-		&= \int_{\R^n} i \lambda_j \hat u(\lambda) \overline{\hat \phi(\lambda)} \\
-		&= \int_{\R^n} \hat g_j \overline{\hat \phi(\lambda)} \\
-		&= -(2\pi)^n \left(g_j, \phi \right) \\
-		&\Rightarrow \int_{\R^n} f \parder{\phi}{x_j} = -\int g_j \phi
-	\end{align*} and so $g_j$ is the $j$-th generalised derivative of $f$ and $g_j \in L^2(\R^n)$, thus $f \in W^{1, 2}(\R^n)$   
+    $(ii) \iff (iii)$ $|\lambda_j \hat f(\lambda) | \leq |\lambda | | \hat f(\lambda)|$ and hence (ii) $\iff$ (iii).  
+    
+    $(i) \Rightarrow (ii)$  The only thing left to prove is that \[
+        \parder{\hat f}{x_j}(\lambda) = -i \lambda_j \hat f(\lambda) 
+    \] for $f \in W^{1, 2}(\R^n)$.  We have \begin{align*}
+        f \in W^{1, 2}(\R^n) &\Rightarrow \parder{f}{x_j} \in L^2(\R^n) \\
+            &\Rightarrow \hat{\parder{f}{x_j}}(\lambda) \in L^2(\R^n)
+    \end{align*} so to prove the previous result we choose $f_n \in C^\infty_c(\R^n)$ such that $\| f_n - f\|_{1, 2} \rightarrow 0$ as $n \rightarrow \infty$.  Since \[
+        \hat{\parder{f_n}{x_j}}(\lambda) = -i \lambda_j \hat f_n (\lambda),
+    \] and $f_n \rightarrow f$ in $W^{1, 2}(\Omega)$, we have \begin{align*}
+        &\Rightarrow f_n \rightarrow f \text{ in } L^2(\R^n) \\
+        &\Rightarrow \hat f_n \rightarrow \hat f \text{ in } L^2(\R^n) \\
+        &\Rightarrow \hat f_n(\lambda) \rightarrow \hat f(\lambda) \text{ a.e. (taking subsequences)} \\
+        &\Rightarrow \parder{f_n}{x_j} \rightarrow \parder{f}{x_j} \text{ in } L^2(\R^n) \\
+        &\Rightarrow \hat{\parder{f_n}{x_j}} \rightarrow \hat{\parder{u}{x_j}} \text{ in} L^2(\R^n) \\
+        &\Rightarrow -i \lambda_j \hat f_n(\lambda) \rightarrow \hat{\parder{f}{x_j}}(\lambda) \text{ in } L^2(\R^n) \\
+        &\Rightarrow \hat{\parder{f}{x_j}}(\lambda) = -i \lambda_j \hat f(\lambda) \text{ a.e.}
+    \end{align*} 
+    
+    $(ii) \Rightarrow (i)$ As $-i \lambda_j \hat f(\lambda) \in L^2(\R^n)$, and so there exists $g_j \in L^2(\R^n)$ such that \[
+        \hat g_j = -i \lambda_j \hat f(\lambda).
+    \]  Thus we have 
+    
+    \begin{align*}
+        (2\pi)^n \left(f, \parder{\phi}{x_j} \right) &=  \left(\hat f, \hat{ \parder{\phi}{x_j}} \right) \quad \phi \in C^\infty_c(\R^n)\\
+        &= \int_{\R^n} \hat f(\lambda) \overline{-i \lambda_j \hat \phi(\lambda)} \\
+        &= \int_{\R^n} \hat f(\lambda) i \lambda_j \overline{\hat \phi(\lambda)} \\
+        &= \int_{\R^n} i \lambda_j \hat u(\lambda) \overline{\hat \phi(\lambda)} \\
+        &= \int_{\R^n} \hat g_j \overline{\hat \phi(\lambda)} \\
+        &= -(2\pi)^n \left(g_j, \phi \right) \\
+        &\Rightarrow \int_{\R^n} f \parder{\phi}{x_j} = -\int g_j \phi
+    \end{align*} and so $g_j$ is the $j$-th generalised derivative of $f$ and $g_j \in L^2(\R^n)$, thus $f \in W^{1, 2}(\R^n)$   
 \end{proof}
 
 \begin{rem}
-	As a consequence, \[
-		u \in W^{2, 2}(\R^n) \iff \left(1 + |\lambda|^2 \right) \hat u(\lambda) \in L^2(\R^n)
-	\] and a similar result can be obtained for $W^{k, 2}(\R^n)$.  This follows from the fact that \[
-		C_2 \leq \frac{1 + |\lambda|^2}{(1 + |\lambda|)^2} \leq C_1
-	\] on $\R^n$ where $C_1, C_2 > 0$.
+    As a consequence, \[
+        u \in W^{2, 2}(\R^n) \iff \left(1 + |\lambda|^2 \right) \hat u(\lambda) \in L^2(\R^n)
+    \] and a similar result can be obtained for $W^{k, 2}(\R^n)$.  This follows from the fact that \[
+        C_2 \leq \frac{1 + |\lambda|^2}{(1 + |\lambda|)^2} \leq C_1
+    \] on $\R^n$ where $C_1, C_2 > 0$.
 \end{rem}
 
 \begin{exmp}
-	Consider the PDE \begin{equation}
-		\label{eq:poisson_pde}
-		-\Delta u + u = f
-	\end{equation}
-	on $\R^n$, where $f \in L^2(\R)$ and we look for $u \in W^{2, 2}(\R^n)$.  Taking Fourier transformations, we have \begin{align*}
-		\hat{\frac{\partial^2 u}{\partial x_j \partial x_k}} &= (-i \lambda_k)(-i\lambda_j) \hat u(\lambda) \\
-		&= - \lambda_k \lambda_j \hat u(\lambda) \\
-		- \left(-\sum_{k=1}^n \lambda_k^2 \right) \hat u(\lambda) + \hat u(\lambda) &= \hat f(\lambda) \\
-		\left(1 + |\lambda|^2 \right) \hat u(\lambda) &= \hat f(\lambda). 
-	\end{align*}  So \[
-		\hat u(\lambda) = \frac{\hat f(\lambda)}{1 + |\lambda|^2}
-	\] and $u \in W^{2, 2}(\R^n)$ (since $\left(1 + |\lambda|^2\right) \hat u (\lambda) = \hat f(\lambda) \in L^2(\R^n)$.  This is the unique solution in $W^{2, 2}$.
+    Consider the PDE \begin{equation}
+        \label{eq:poisson_pde}
+        -\Delta u + u = f
+    \end{equation}
+    on $\R^n$, where $f \in L^2(\R)$ and we look for $u \in W^{2, 2}(\R^n)$.  Taking Fourier transformations, we have \begin{align*}
+        \hat{\frac{\partial^2 u}{\partial x_j \partial x_k}} &= (-i \lambda_k)(-i\lambda_j) \hat u(\lambda) \\
+        &= - \lambda_k \lambda_j \hat u(\lambda) \\
+        - \left(-\sum_{k=1}^n \lambda_k^2 \right) \hat u(\lambda) + \hat u(\lambda) &= \hat f(\lambda) \\
+        \left(1 + |\lambda|^2 \right) \hat u(\lambda) &= \hat f(\lambda). 
+    \end{align*}  So \[
+        \hat u(\lambda) = \frac{\hat f(\lambda)}{1 + |\lambda|^2}
+    \] and $u \in W^{2, 2}(\R^n)$ (since $\left(1 + |\lambda|^2\right) \hat u (\lambda) = \hat f(\lambda) \in L^2(\R^n)$.  This is the unique solution in $W^{2, 2}$.
 \end{exmp}
 
 
 \begin{exmp}
-	Consider a slightly modified version of \eqref{eq:poisson_pde} \[
-		-\Delta u = f. 
-	\] we obtain $\hat u (\lambda) = \frac{\hat f(\lambda)}{|\lambda|^2}$ and this is not well defined for $\lambda$ near zero.
+    Consider a slightly modified version of \eqref{eq:poisson_pde} \[
+        -\Delta u = f. 
+    \] we obtain $\hat u (\lambda) = \frac{\hat f(\lambda)}{|\lambda|^2}$ and this is not well defined for $\lambda$ near zero.
 \end{exmp}
 
 \newcommand{\grad}{\nabla}
 \begin{exmp}
-	Considering the equation \eqref{eq:poisson_pde}, we take $u \in W^{1, 2}(\R^n)$ such that \[
-		\int \left( \grad u \grad \phi + u \phi \right) = \int f \phi \quad \forall \phi \in C_c^\infty(\R^n).
-		\tag{$\star$}
-	\] If this holds, it follows that $\phi \in W^{1, 2}(\R^n)$.  By Parseval's theorem, we have \[
-		\int \sum_{j} -i \lambda_j \hat u(\lambda) \overline{-i \lambda_j \hat \phi(\lambda)} + \int \hat u(\lambda) \overline{\hat \phi(\lambda)} = \int \hat f(\lambda) \overline{ \hat\phi(\lambda)}
-	\] and this is solved by \[
-		\hat u(\lambda) = \frac{\hat f(\lambda)}{1 + |\lambda|^2}
-	\]
-	
-	Note that $(\star)$ has at most one solution in $W^{1, 2}(\R^n)$.  If $u_1, u_2$ are solutions then we have \begin{align*}
-		\int \grad u_1 \grad \phi  + u_1 \phi &= \int f \phi \quad \forall \phi \in W^{1, 2}(\R^n). \\
-		\int \grad u_2 \grad \phi + u_2 \phi &= \int f \phi.
-	\end{align*}  Subtracting these obtains \[
-		\int \grad{u_1 - u_2} \grad \phi + (u_1 - u_2 \phi) = 0.
-	\]  Letting $\phi = u_1 - u_2 \in W^{1, 2}(\R^n)$, we have \[
-		\int \underbrace{\grad(u_1 - u_2) \grad{u_1 - u_2}}_{\geq 0} + \underbrace{(u_1 - u_2)^2}_{\geq 0} = 0.
-	\]
+    Considering the equation \eqref{eq:poisson_pde}, we take $u \in W^{1, 2}(\R^n)$ such that \[
+        \int \left( \grad u \grad \phi + u \phi \right) = \int f \phi \quad \forall \phi \in C_c^\infty(\R^n).
+        \tag{$\star$}
+    \] If this holds, it follows that $\phi \in W^{1, 2}(\R^n)$.  By Parseval's theorem, we have \[
+        \int \sum_{j} -i \lambda_j \hat u(\lambda) \overline{-i \lambda_j \hat \phi(\lambda)} + \int \hat u(\lambda) \overline{\hat \phi(\lambda)} = \int \hat f(\lambda) \overline{ \hat\phi(\lambda)}
+    \] and this is solved by \[
+        \hat u(\lambda) = \frac{\hat f(\lambda)}{1 + |\lambda|^2}
+    \]
+    
+    Note that $(\star)$ has at most one solution in $W^{1, 2}(\R^n)$.  If $u_1, u_2$ are solutions then we have \begin{align*}
+        \int \grad u_1 \grad \phi  + u_1 \phi &= \int f \phi \quad \forall \phi \in W^{1, 2}(\R^n). \\
+        \int \grad u_2 \grad \phi + u_2 \phi &= \int f \phi.
+    \end{align*}  Subtracting these obtains \[
+        \int \grad{u_1 - u_2} \grad \phi + (u_1 - u_2 \phi) = 0.
+    \]  Letting $\phi = u_1 - u_2 \in W^{1, 2}(\R^n)$, we have \[
+        \int \underbrace{\grad(u_1 - u_2) \grad{u_1 - u_2}}_{\geq 0} + \underbrace{(u_1 - u_2)^2}_{\geq 0} = 0.
+    \]
 \end{exmp}
 % section fourier_transforms_and_weak_derivatives (end)
 
@@ -864,140 +864,140 @@ If $f \in L^p_{loc}(\R^n)$ and $1 \leq p < \infty$, we define $T_\epsilon f$ by 
 \label{sec:poincar'e_inequality_and_applications}
 
 \begin{lem}
-	\label{lem:poincare_lemma}
-	If $v \in C^1(\R)$, $a \neq b$ and $v(a) = v(b) = 0$, then \begin{equation}
-		\int_a^b v^2(t) \, dt \leq (b-a)^2 \int_a^b \left(v'(t) \right)^2 \, dt.
-	\end{equation}	
+    \label{lem:poincare_lemma}
+    If $v \in C^1(\R)$, $a \neq b$ and $v(a) = v(b) = 0$, then \begin{equation}
+        \int_a^b v^2(t) \, dt \leq (b-a)^2 \int_a^b \left(v'(t) \right)^2 \, dt.
+    \end{equation}  
 \end{lem}
 
 \begin{proof}
-	We have $v(x) = v(a) + \int_a^x v'(t) \, dt = \int_a^x v'(t) \, dt$ for $a < x < b$.  So \begin{align*}
-		|v(x)| 	&\leq \left| \int_a^x v'(t) \, dt \right| \\
-				&\leq \int_a^b |v'(t)| \, dt \\
-				&\leq (b-a)^{1/2} \left( \int_a^b \left(v'(t) \right)^2 \, dt \right)^{1/2}.  
-	\end{align*}  Squaring and integrating from $a$ to $b$, we obtain our result, \[
-		\int_a^b v^2(t) \, dt \leq (b-a)^2 \int_a^b \left(v'(t) \right)^2 \, dt. \qedhere
-	\]
+    We have $v(x) = v(a) + \int_a^x v'(t) \, dt = \int_a^x v'(t) \, dt$ for $a < x < b$.  So \begin{align*}
+        |v(x)|  &\leq \left| \int_a^x v'(t) \, dt \right| \\
+                &\leq \int_a^b |v'(t)| \, dt \\
+                &\leq (b-a)^{1/2} \left( \int_a^b \left(v'(t) \right)^2 \, dt \right)^{1/2}.  
+    \end{align*}  Squaring and integrating from $a$ to $b$, we obtain our result, \[
+        \int_a^b v^2(t) \, dt \leq (b-a)^2 \int_a^b \left(v'(t) \right)^2 \, dt. \qedhere
+    \]
 \end{proof}
 
 \begin{thm}[\poincare inequality]
-	\label{thm:poincare_inequality}
-	If $\Omega$ is a domain in $\R^n$ with $\Omega \subseteq C$ where $C$ is a cube of side $d$, then 
-	\begin{equation}
-		\label{eq:poincare_inequality}
-		\| w \|_{2, \Omega} \leq d \| \grad w \|_{2, \Omega}
-	\end{equation}
-	for $w \in \dot W^{1, 2}(\Omega)$.
+    \label{thm:poincare_inequality}
+    If $\Omega$ is a domain in $\R^n$ with $\Omega \subseteq C$ where $C$ is a cube of side $d$, then 
+    \begin{equation}
+        \label{eq:poincare_inequality}
+        \| w \|_{2, \Omega} \leq d \| \grad w \|_{2, \Omega}
+    \end{equation}
+    for $w \in \dot W^{1, 2}(\Omega)$.
 \end{thm}
 
 \begin{rem}
-	Recall that $\cdot W^{1, 2}(\Omega) \subset W^{1, 2}(\Omega)$ if $\Omega$ is a bounded domain.  Note that the identity function $1 \in W^{1, 2}(\Omega)$ does not satisfy this inequality.
+    Recall that $\cdot W^{1, 2}(\Omega) \subset W^{1, 2}(\Omega)$ if $\Omega$ is a bounded domain.  Note that the identity function $1 \in W^{1, 2}(\Omega)$ does not satisfy this inequality.
 \end{rem}
 
 \begin{proof}
-	First assume $u \in C^\infty_c(\Omega)$.  We can extend $u$ to $\tilde u$ in $C^\infty_c(C)$ by defining $\tilde u(x) = 0$ if $x \in C \, \backslash \Omega$.  Assume $C = [a, b]^n$.  Then (identifying $u$ with $\tilde u$), \begin{align*}
-		\int_a^b  u(x_1, \dots, x_n)^2 \, dx_1 \leq (b-a)^2 \int_a^b \left(\parder{u}{x_1} \right)^2 \, dx_1
-	\end{align*} by Lemma \ref{lem:poincare_lemma}.  Integrating over the entire $n$-cube, we then have \begin{align*}
-		\int_a^b \dots \int_a^b u(x_1, \dots, x_n)^2 \, dx_1 \dots dx_n &\leq (b-a)^2 \int_a^b \dots \int_a^b \left(\parder{u}{x_1} \right)^2 \, dx_1 \dots dx_n \\
-		&\leq (b-a)^2 \int_C |\grad u|^2 
-	\end{align*} as $|\grad u |^2 = \sum_{i=1}^n \left(\parder{u}{x_1} \right)^2$.  As $u$ is zero on $C \, \backslash \, \Omega$ we have the result \[
-	\tag{$\star$}
-		\int_\Omega u^2 \leq d^2 \int_\Omega |\grad u|^2
-	\] for $u \in C^\infty_c(\Omega)$.  
-	
-	Now, if $u \in \dot W^{1, 2}(\Omega)$, there exists $u_n \in C^\infty_c(\Omega)$ such that $\| u_n - u \|_{1, 2} \rightarrow 0$ as $n \rightarrow \infty$.  For each $n$, we then have \[
-		\int_\Omega u_n^2 \leq d^2 \int_\Omega |\grad u_n |^2
-	\] by $(\star)$.  Taking the limit, we obtain our required result, \[
-		\int_\Omega u^2 \leq d^2 \int_\Omega |\grad u|^2. \qedhere
-	\] 
+    First assume $u \in C^\infty_c(\Omega)$.  We can extend $u$ to $\tilde u$ in $C^\infty_c(C)$ by defining $\tilde u(x) = 0$ if $x \in C \, \backslash \Omega$.  Assume $C = [a, b]^n$.  Then (identifying $u$ with $\tilde u$), \begin{align*}
+        \int_a^b  u(x_1, \dots, x_n)^2 \, dx_1 \leq (b-a)^2 \int_a^b \left(\parder{u}{x_1} \right)^2 \, dx_1
+    \end{align*} by Lemma \ref{lem:poincare_lemma}.  Integrating over the entire $n$-cube, we then have \begin{align*}
+        \int_a^b \dots \int_a^b u(x_1, \dots, x_n)^2 \, dx_1 \dots dx_n &\leq (b-a)^2 \int_a^b \dots \int_a^b \left(\parder{u}{x_1} \right)^2 \, dx_1 \dots dx_n \\
+        &\leq (b-a)^2 \int_C |\grad u|^2 
+    \end{align*} as $|\grad u |^2 = \sum_{i=1}^n \left(\parder{u}{x_1} \right)^2$.  As $u$ is zero on $C \, \backslash \, \Omega$ we have the result \[
+    \tag{$\star$}
+        \int_\Omega u^2 \leq d^2 \int_\Omega |\grad u|^2
+    \] for $u \in C^\infty_c(\Omega)$.  
+    
+    Now, if $u \in \dot W^{1, 2}(\Omega)$, there exists $u_n \in C^\infty_c(\Omega)$ such that $\| u_n - u \|_{1, 2} \rightarrow 0$ as $n \rightarrow \infty$.  For each $n$, we then have \[
+        \int_\Omega u_n^2 \leq d^2 \int_\Omega |\grad u_n |^2
+    \] by $(\star)$.  Taking the limit, we obtain our required result, \[
+        \int_\Omega u^2 \leq d^2 \int_\Omega |\grad u|^2. \qedhere
+    \] 
 \end{proof}
 
 Intuitively, $\dot W^{1, 2}(\Omega)$ is the set of functions in $W^{1, 2}(\Omega)$ vanishing on $\partial \Omega$.  If $\Omega$ is a domain with a smooth boundary, then it can be proven there is a map $T$, known as the trace map, \[
-	T : W^{1, 2}(\Omega) \rightarrow L^2(\partial \Omega)
+    T : W^{1, 2}(\Omega) \rightarrow L^2(\partial \Omega)
 \] such that $\dot W^{1, 2}(\Omega) = \ker T$.   The key difficulty in the proof is showing the inequality \[
-	\int_{\partial \Omega} \left(v|_{\partial \Omega}\right)^2 \leq K \| v \|_{1, 2}^2
+    \int_{\partial \Omega} \left(v|_{\partial \Omega}\right)^2 \leq K \| v \|_{1, 2}^2
 \] if $v \in W^{1, 2}(\Omega)$.  By the \poincare inequality, we can use $\| \grad u \|_2$ as a norm on $\dot W^{1, 2}(\Omega)$ if $\Omega$ is abounded domain.  This is equivalent to $\|u \|_2 + \| \grad u \|_2$.  
 
 Note that this norm is induced by the scalar product (assuming real $u, v$) \[
-	\iprod{u, v} = \int_\Omega \grad u \grad v =  \sum_{j=1}^n \int_\Omega \parder{u}{x_j} \parder{v}{x_j}
+    \iprod{u, v} = \int_\Omega \grad u \grad v =  \sum_{j=1}^n \int_\Omega \parder{u}{x_j} \parder{v}{x_j}
 \]
 
 \begin{prop}
-	Consider the equation 
-	\begin{equation}
-	-\Delta u = f
-	\end{equation} in $\Omega$, with boundary conditions $u = 0$ on $\partial \Omega$ and $f \in L^2(\Omega)$.  If $\Omega$ is bounded, then this has a unique weak solution in $\dot W^{1, 2}(\Omega)$.
-	
-	That is, there exists a unique $u \in \dot W^{1, 2}(\Omega)$ such that \[
-		\int_\Omega - \Delta u \phi = \int_\Omega \grad u \cdot \grad \phi = \int_\Omega f \phi
-	\]  for all $\phi \in C^\infty_c(\Omega).$  This equation follows from multiplying by a smooth function $\phi$ and integrating by parts. 
+    Consider the equation 
+    \begin{equation}
+    -\Delta u = f
+    \end{equation} in $\Omega$, with boundary conditions $u = 0$ on $\partial \Omega$ and $f \in L^2(\Omega)$.  If $\Omega$ is bounded, then this has a unique weak solution in $\dot W^{1, 2}(\Omega)$.
+    
+    That is, there exists a unique $u \in \dot W^{1, 2}(\Omega)$ such that \[
+        \int_\Omega - \Delta u \phi = \int_\Omega \grad u \cdot \grad \phi = \int_\Omega f \phi
+    \]  for all $\phi \in C^\infty_c(\Omega).$  This equation follows from multiplying by a smooth function $\phi$ and integrating by parts. 
 \end{prop}
 
 \begin{proof}
-	Let $\iprod{u, v} = \int_\Omega \grad u \grad v$ is a scalar product on $\dot W^{1, 2}(\Omega)$ generalising the norm.  The map $\phi \mapsto \int_\Omega f \phi$ is linear in $\phi$.  Our equation then reduces to \[
-		\iprod{u, \phi} = \left( f, \phi \right)
-	\] where the right hand side is the $L^2$ inner product.  Then we have \begin{align*}
-		\left| (f, \phi) \right| &\leq \| f \|_2 \| \phi \|_2 \\
-					&\leq C \| f \|_2 \| \grad \phi \|_2 \quad \text{by \poincare inequality}  
-	\end{align*} and so $(f, \phi)$ is a bounded linear functional on $\dot W^{1, 2}(\Omega)$.  
-	
-	So $(f, \phi) = \iprod{F, \phi}$ where $F \in \dot W^{1, 2}(\Omega)$ by the Reisz representation theorem.  Thus setting $u = F$ we obtain our solution.  
-	
-	Uniqueness is clear from $\iprod{u - F, \phi} = 0 \Rightarrow u - F = 0$.
+    Let $\iprod{u, v} = \int_\Omega \grad u \grad v$ is a scalar product on $\dot W^{1, 2}(\Omega)$ generalising the norm.  The map $\phi \mapsto \int_\Omega f \phi$ is linear in $\phi$.  Our equation then reduces to \[
+        \iprod{u, \phi} = \left( f, \phi \right)
+    \] where the right hand side is the $L^2$ inner product.  Then we have \begin{align*}
+        \left| (f, \phi) \right| &\leq \| f \|_2 \| \phi \|_2 \\
+                    &\leq C \| f \|_2 \| \grad \phi \|_2 \quad \text{by \poincare inequality}  
+    \end{align*} and so $(f, \phi)$ is a bounded linear functional on $\dot W^{1, 2}(\Omega)$.  
+    
+    So $(f, \phi) = \iprod{F, \phi}$ where $F \in \dot W^{1, 2}(\Omega)$ by the Reisz representation theorem.  Thus setting $u = F$ we obtain our solution.  
+    
+    Uniqueness is clear from $\iprod{u - F, \phi} = 0 \Rightarrow u - F = 0$.
 \end{proof}
 
 \begin{note}
-	Consider looking for a solution $u \in C^2(\Omega) \wedge C(\overline\Omega)$ for the equation \begin{align*}
-		-\Delta u &= f \quad \text{in $\Omega$}\\
-			u &= 0 \quad \text{on $\partial \Omega$}
-	\end{align*} with $f \in L^2(\Omega)$.
+    Consider looking for a solution $u \in C^2(\Omega) \wedge C(\overline\Omega)$ for the equation \begin{align*}
+        -\Delta u &= f \quad \text{in $\Omega$}\\
+            u &= 0 \quad \text{on $\partial \Omega$}
+    \end{align*} with $f \in L^2(\Omega)$.
 \end{note}
 
-	We can prove existence of a weak solution quite generally. If $a(u, v): \mathcal H \oplus \mathcal H \rightarrow k$ which is linear in $v$ for fixed $u$ and linear in $u$ for fixed $v$ (bilinear) and there exists $K$ such that \[
-		|a(u, v)| \leq K \| u \| \| v \|,
-	\] then we can write $a(u, v) = \iprod{Lu, v}$ where $L : \mathcal H \rightarrow \mathcal H$ is bounded and linear.  
+    We can prove existence of a weak solution quite generally. If $a(u, v): \mathcal H \oplus \mathcal H \rightarrow k$ which is linear in $v$ for fixed $u$ and linear in $u$ for fixed $v$ (bilinear) and there exists $K$ such that \[
+        |a(u, v)| \leq K \| u \| \| v \|,
+    \] then we can write $a(u, v) = \iprod{Lu, v}$ where $L : \mathcal H \rightarrow \mathcal H$ is bounded and linear.  
 
-	If $a$ is of this class on on $\dot W^{1, 2}(\Omega)$ and $f \in L^2(\Omega)$, then the equation 
-	\[ 
-		a(u, v) = (f, v)
-		\tag{$\star$}
-	\] for all $v \in \dot W^{1, 2}(\Omega)$ can be written as \[
-		\iprod{Lu, v} = \iprod{F, v}
-	\] where $L: \dot W^{1, 2}(\Omega) \rightarrow \dot W^{1, 2}(\Omega)$ is bounded linear.  Thus $Lu = F$.  Thus the equation is uniquely soluble if $L$ is invertible.  By the Lax-Milgram result (Theorem \ref{thm:lax_milgram}), $L$ is invertible if \[
-	\Re \iprod{Lu, u} \geq c \| u \|^2_{1, 2}
-	\tag{$\star \star$}
-	\]
-	on $\dot W^{1, 2}(\Omega)$ where $c > 0$.  Thus $(\star)$ has a unique solution if $(\star \star)$ holds and $\iprod{Lu, v}$ is bilinear and bounded on $\dot W^{1, 2}(\Omega)$.  Notice that $(\star \star)$ can be written as $\Re a(u, u) \geq c \| u \|_{1, 2}^2$.  
+    If $a$ is of this class on on $\dot W^{1, 2}(\Omega)$ and $f \in L^2(\Omega)$, then the equation 
+    \[ 
+        a(u, v) = (f, v)
+        \tag{$\star$}
+    \] for all $v \in \dot W^{1, 2}(\Omega)$ can be written as \[
+        \iprod{Lu, v} = \iprod{F, v}
+    \] where $L: \dot W^{1, 2}(\Omega) \rightarrow \dot W^{1, 2}(\Omega)$ is bounded linear.  Thus $Lu = F$.  Thus the equation is uniquely soluble if $L$ is invertible.  By the Lax-Milgram result (Theorem \ref{thm:lax_milgram}), $L$ is invertible if \[
+    \Re \iprod{Lu, u} \geq c \| u \|^2_{1, 2}
+    \tag{$\star \star$}
+    \]
+    on $\dot W^{1, 2}(\Omega)$ where $c > 0$.  Thus $(\star)$ has a unique solution if $(\star \star)$ holds and $\iprod{Lu, v}$ is bilinear and bounded on $\dot W^{1, 2}(\Omega)$.  Notice that $(\star \star)$ can be written as $\Re a(u, u) \geq c \| u \|_{1, 2}^2$.  
 
 Recall that the equation \begin{align*}
-	-\Delta u &= f \quad \text{in $\Omega$}\\
-		u &= 0 \quad \text{on $\partial \Omega$}
+    -\Delta u &= f \quad \text{in $\Omega$}\\
+        u &= 0 \quad \text{on $\partial \Omega$}
 \end{align*} with $f \in L^2(\Omega)$.
 has a unique weak solution if $\Omega$ is bounded.  We prove that $u \in W^{2, 2}_{loc}(\Omega)$.  To prove thius, suppose that $x_0 \in \Omega$ and choose $\phi \in C^\infty_c(\Omega)$ and that $\phi = 1$ in a neighbourhood of $x_0$.  We prove that $u \phi$ is the weak solution of the problem \[
-	- \Delta (u \phi) + (u \phi) = w 
-	\tag{$\star \star \star$}
+    - \Delta (u \phi) + (u \phi) = w 
+    \tag{$\star \star \star$}
 \]  on $\R^n$ where \[
-	w = \underbrace{f \phi - 2 \grad u \grad \phi - u \Delta \phi + u \phi}_{L^2(\R^n)}
+    w = \underbrace{f \phi - 2 \grad u \grad \phi - u \Delta \phi + u \phi}_{L^2(\R^n)}
 \]  But the solution of $(\star \star \star)$ is $W^{2,2}(\R^n)$, which can be derived by Fourier transforms.  
 
 We now seek to prove $(\star \star \star)$.  Choose $\psi \in C^\infty_c(\R^n)$.  Then \begin{align*}
-	\int \grad(u \phi) \cdot \grad \psi &= \int \left( \psi \grad u  + u \grad \phi \right) \cdot \grad \psi \\
-	&= \int u \grad \phi \cdot \grad \psi + \int \phi \grad u \cdot \grad \psi \tag{$\dagger$} 
+    \int \grad(u \phi) \cdot \grad \psi &= \int \left( \psi \grad u  + u \grad \phi \right) \cdot \grad \psi \\
+    &= \int u \grad \phi \cdot \grad \psi + \int \phi \grad u \cdot \grad \psi \tag{$\dagger$} 
 \end{align*} and similarly,
 \begin{align*}
 \int \grad u \cdot \grad(\phi \psi)  &= \int \grad u \cdot (\grad \phi) \psi + \int \grad u (\grad \psi) \grad \phi \\
 &= \int_\Omega(f \phi \psi)  \\
 &= \int f \phi \psi
 \end{align*} and so \[
-	\int \grad u \cdot (\grad \phi) \psi = \int f \phi \psi - \int \grad u \cdot (\grad \psi ) \phi \tag{$\ddag$}
+    \int \grad u \cdot (\grad \phi) \psi = \int f \phi \psi - \int \grad u \cdot (\grad \psi ) \phi \tag{$\ddag$}
 \]  Then we have \begin{align*}
-	\int \grad(u \phi) \cdot \grad \psi &= \int u (\grad \phi) \cdot \grad \psi + \int \phi \grad u \cdot \grad \psi &\text{by $(\dagger)$} \\
-	&=  \int u \grad \phi \cdot \grad \psi + \int f \phi \psi - \int \grad u \cdot (\grad \phi) \psi &\text{by $(\ddag)$} \\
-	&= - \int \psi \grad(u \grad \phi) + \int f \phi \psi - \int \grad u \cdot (\grad \phi) \psi \\
-	&= - \int \psi \left( \grad u \cdot \grad \phi + u \Delta \phi \right) + \int f \phi \psi - \int \grad u \cdot (\grad \phi) \psi \\
-	&= \int (f \phi) \psi - 2 (\grad u \cdot \grad \phi) - u (\Delta \phi) \psi.
+    \int \grad(u \phi) \cdot \grad \psi &= \int u (\grad \phi) \cdot \grad \psi + \int \phi \grad u \cdot \grad \psi &\text{by $(\dagger)$} \\
+    &=  \int u \grad \phi \cdot \grad \psi + \int f \phi \psi - \int \grad u \cdot (\grad \phi) \psi &\text{by $(\ddag)$} \\
+    &= - \int \psi \grad(u \grad \phi) + \int f \phi \psi - \int \grad u \cdot (\grad \phi) \psi \\
+    &= - \int \psi \left( \grad u \cdot \grad \phi + u \Delta \phi \right) + \int f \phi \psi - \int \grad u \cdot (\grad \phi) \psi \\
+    &= \int (f \phi) \psi - 2 (\grad u \cdot \grad \phi) - u (\Delta \phi) \psi.
 \end{align*}  So \[
-	\int \left( \grad(u \phi) \cdot \grad \psi + u \phi \psi \right) = \int \left(f \phi \psi - (2 \grad u \cdot \grad \phi) \psi - u (\Delta \phi) \psi + u \phi \psi\right).
+    \int \left( \grad(u \phi) \cdot \grad \psi + u \phi \psi \right) = \int \left(f \phi \psi - (2 \grad u \cdot \grad \phi) \psi - u (\Delta \phi) \psi + u \phi \psi\right).
 \]
 Hence $u \phi$ is a weak solution on $\R^n$ of $-\Delta z + z = w$.  We can use similar arguments to show that $f \in W^{k, 2}(\Omega)$, which then implies that $u \in W^{k+2, 2}_{loc}(\Omega)$.  
 
@@ -1005,46 +1005,46 @@ It can be show that if $u \in L^p(\Omega)$ and $-\Delta u + u = f$ in $\Omega$, 
 
 
 Now, consider the weak solutions of \begin{equation}
-	-\parder{}{x_l} (a_{ij}(x) \parder{u}{x_j}) + b_l \parder{u}{x_l} + cu = f.
+    -\parder{}{x_l} (a_{ij}(x) \parder{u}{x_j}) + b_l \parder{u}{x_l} + cu = f.
 \end{equation} on $\Omega$, with $u \in \dot W^{1, 2}(\Omega)$.   We implicitly use the repeated index summation convention.
 
 We seek to find $u$ such that \[
-	\int_\Omega \left( a_{ij}(x) \parder{u}{x_j} \parder{\phi}{x_l}\right) + \int_\Omega b_l \parder{u}{x_l} \phi + \int_C c u \phi = \int_\Omega f \phi 
+    \int_\Omega \left( a_{ij}(x) \parder{u}{x_j} \parder{\phi}{x_l}\right) + \int_\Omega b_l \parder{u}{x_l} \phi + \int_C c u \phi = \int_\Omega f \phi 
  \] for all $\phi \in \dot W^{1, 2}(\Omega)$.  The left hand side is a bilinear operator $A(u, \phi)$ where
  \[
- 	A: \dot W^{1, 2}(\Omega) \times \dot W^{1, 2}(\Omega) \rightarrow \R
+    A: \dot W^{1, 2}(\Omega) \times \dot W^{1, 2}(\Omega) \rightarrow \R
  \] is bounded if $a_{ij}, b_j$, $c \in L^\infty(\Omega)$ and hence are bounded on $\Omega$.  In this case, there is a generalised theorem that \[
- 	A(u, \phi) = \iprod{Lu, \phi} 
+    A(u, \phi) = \iprod{Lu, \phi} 
  \] where $L$ is a bounded linear map $\dot W^{1, 2}(\Omega) \rightarrow W^{1, 2}(\Omega)$.  Then our equation becomes \[
- 	\iprod{Lu, \phi} = \int_\Omega f \phi = \iprod{F, \phi}
+    \iprod{Lu, \phi} = \int_\Omega f \phi = \iprod{F, \phi}
  \] by the Reisz representation theorem.  That is, $Lu = f$.  Then our problem has a unique solution if $L$ is invertible.  By Lax-Milgram (Theorem \ref{thm:lax_milgram}), this is true if \[
- 	A(u, u) \geq c \| u \|^2_{1, 2}.
+    A(u, u) \geq c \| u \|^2_{1, 2}.
 \]
 
 We now seek to find assumptions such that $A$ satisfies these conditions.  We assume that there exists $c_1 > 0$ such that \[
-	\iprod{a_{ij}(x)\eta_i, \eta_j} \geq c_1 |\eta|^2 \tag{$\dagger \dagger$}
+    \iprod{a_{ij}(x)\eta_i, \eta_j} \geq c_1 |\eta|^2 \tag{$\dagger \dagger$}
 \] for all $\eta \in \R^n, x \in \Omega$. 
 
 Consider the operator \[
-	A(u, v) = \int_\Omega a_{ij}(x) \parder{u}{x_i} \parder{v}{x_j} + \int_\Omega b_l \parder{u}{x_l} v + \int_\Omega cuv.
+    A(u, v) = \int_\Omega a_{ij}(x) \parder{u}{x_i} \parder{v}{x_j} + \int_\Omega b_l \parder{u}{x_l} v + \int_\Omega cuv.
  \]
 
 
 To bound the second term, we have have \begin{align*}
-	\left| \int_\Omega b_l \parder{u}{x_l} |v| \right| &\leq \int_\Omega |b_l| \left| \parder{u}{x_l} \right| |v| \\
-	&\leq K \int \left| \parder{u}{x_l} \right| |v| \\
-	&\leq K \left\| \parder{u}{x_l} \right\|_2 \| v \|_2  &\text{by Cauchy-Swartz} \\
-	&\leq K \left( \epsilon \left\| \parder{u}{x_l} \right \|_2^2 +  \frac{1}{\epsilon} \|v\|_2^2 \right) &\text{by the inequality $|st| \leq \epsilon s^2 + \frac{t^2}{\epsilon}$}
+    \left| \int_\Omega b_l \parder{u}{x_l} |v| \right| &\leq \int_\Omega |b_l| \left| \parder{u}{x_l} \right| |v| \\
+    &\leq K \int \left| \parder{u}{x_l} \right| |v| \\
+    &\leq K \left\| \parder{u}{x_l} \right\|_2 \| v \|_2  &\text{by Cauchy-Swartz} \\
+    &\leq K \left( \epsilon \left\| \parder{u}{x_l} \right \|_2^2 +  \frac{1}{\epsilon} \|v\|_2^2 \right) &\text{by the inequality $|st| \leq \epsilon s^2 + \frac{t^2}{\epsilon}$}
 \end{align*}
 
 Other terms are similar but easier to bound.  Thus we have a bounded bilinear map.
 
 With the above assumptions, we have \begin{align*}
-	A(u, u) &= \underbrace{\int_\Omega a_{ij}\parder{u}{x_i}\parder{u}{x_j}}_{\geq \mu \int_\Omega \left| \grad u \right|^2} + \int_\Omega b_l u \parder{u}{x_l} + \int c u^2			
+    A(u, u) &= \underbrace{\int_\Omega a_{ij}\parder{u}{x_i}\parder{u}{x_j}}_{\geq \mu \int_\Omega \left| \grad u \right|^2} + \int_\Omega b_l u \parder{u}{x_l} + \int c u^2           
 \end{align*}
 
 Estimating the final term, we have \[
-	\int c u^2 \geq \inf c \| u \|_2^2.
+    \int c u^2 \geq \inf c \| u \|_2^2.
 \]  
 
 The first term is bounded by the assumption $(\dagger \dagger)$.
@@ -1052,13 +1052,13 @@ The first term is bounded by the assumption $(\dagger \dagger)$.
 Coercivity is then given, $A(u, u) \geq \alpha \| u \|_{1, 2}^2$ for $\alpha > 0$ if $b_l = 0$ and $\inf c \geq 0$.  If $b_l = 0$ and $\Omega$ is bounded, then $\inf c \geq 0$ is sufficient. 
 
 If $b_l$ does not vanish on $\Omega$, then we have the estimate \[
-	A(u, u) \geq \mu \| \grad u \|_2^2 - K \left( \epsilon \| \grad u \|_2^2 + \frac{1}{\epsilon} \| u \|_2^2 \right) + \inf c \| u \|_2^2.
+    A(u, u) \geq \mu \| \grad u \|_2^2 - K \left( \epsilon \| \grad u \|_2^2 + \frac{1}{\epsilon} \| u \|_2^2 \right) + \inf c \| u \|_2^2.
 \]  Choose $\epsilon$ such that $K \epsilon < \mu$ and $\inf c > \frac{K}{\epsilon}$.  Then we get \[
-	A(u, u) \geq \tilde c \left( \| \grad u \|_2^2 + \| u \|_2^2 \right),
+    A(u, u) \geq \tilde c \left( \| \grad u \|_2^2 + \| u \|_2^2 \right),
 \] and we obtain coercivity.
 
 \begin{lem}
-	If $A(u, v) = \int_\Omega f v$ for all $v \in \dot W^{1, 2}(\Omega)$, then there is a unique weak solution in $\dot W^{1, 2}(\Omega)$ if $A$ is bounded and bilinear, $A$ is coercive, and $f \in L^2(\Omega)$. 
+    If $A(u, v) = \int_\Omega f v$ for all $v \in \dot W^{1, 2}(\Omega)$, then there is a unique weak solution in $\dot W^{1, 2}(\Omega)$ if $A$ is bounded and bilinear, $A$ is coercive, and $f \in L^2(\Omega)$. 
 \end{lem}
 % section poincar'e_inequality_and_applications (end)
 
@@ -1067,71 +1067,71 @@ If $b_l$ does not vanish on $\Omega$, then we have the estimate \[
 \label{sec:compactness_in_sobolev_spaces}
 
 \begin{thm}
-	\label{thm:compactness_of_w12_inclusion}
-	If $\Omega$ is bounded and open in $\R^n$ the natural inclusion $i: \dot W^{1, 2}(\Omega) \rightarrow L^2(\Omega)$ is compact.  That is, bounded sets in $\dot W^{1, 2}(\Omega)$ are contained in a compact set of $L^2(\Omega)$.  
+    \label{thm:compactness_of_w12_inclusion}
+    If $\Omega$ is bounded and open in $\R^n$ the natural inclusion $i: \dot W^{1, 2}(\Omega) \rightarrow L^2(\Omega)$ is compact.  That is, bounded sets in $\dot W^{1, 2}(\Omega)$ are contained in a compact set of $L^2(\Omega)$.  
 \end{thm}
 
 \begin{rem}
-	The theorem does not hold for $\Omega = R^n$, but true for $W^{1, 2}(\Omega)$ under minor assumptions on $\partial \Omega$.  There is a similar result for $\dot W^{1, p}(\Omega)$ for $1 < p < \infty$.
+    The theorem does not hold for $\Omega = R^n$, but true for $W^{1, 2}(\Omega)$ under minor assumptions on $\partial \Omega$.  There is a similar result for $\dot W^{1, p}(\Omega)$ for $1 < p < \infty$.
 \end{rem}
 
 \begin{lem}
-	\label{thm:fourier_bound_for_compact_sobolev}
-	For $\epsilon$ sufficiently small, \begin{equation}
-		\label{eq:fourier_bound_for_compact_sobolev}
-		\left| \left( \hat \phi(\epsilon s) - 1 \right) \right| \leq r \sqrt{1 - |s|^2}
-	\end{equation}
-	on $\R^n$. 
+    \label{thm:fourier_bound_for_compact_sobolev}
+    For $\epsilon$ sufficiently small, \begin{equation}
+        \label{eq:fourier_bound_for_compact_sobolev}
+        \left| \left( \hat \phi(\epsilon s) - 1 \right) \right| \leq r \sqrt{1 - |s|^2}
+    \end{equation}
+    on $\R^n$. 
 \end{lem}
 \begin{proof}
-	We have $\hat \phi(0) -= 1$, $\hat \phi$ is continuous and bounded, and so $\left|\hat \phi(s) \right| \leq K$ on $\R^n$.  
-	So \begin{align*}
-		\left| \hat \phi(\epsilon s) - 1 \right| &\leq K + 1 \leq r\sqrt{1 + |s|^2}
-	\end{align*} if \[
-		|s|^2 \geq \underbrace{\left( \frac{K+1}{r} \right)^2 - 1}_{\mu^2}.
-		\]  And so this is true if $|s| \geq \mu$ (uniformly in $\epsilon$).  Thus \eqref{eq:fourier_bound_for_compact_sobolev} holds if $|s| \geq \mu$.
-	 
-	If $|s| \leq \mu$, $\epsilon s$ is small, and so $\left|\hat \phi(\epsilon s) - 1 \right|$ is close to $\hat \phi(0) - 1 = 0$.  Note that $\left| \hat \phi(\epsilon s) - 1 \right| \leq r$ if $\epsilon$ is small and $|s| \leq \mu$.  Hence \[
-		\left| \hat \phi(\epsilon s) - 1 \right| \leq r \sqrt{1 + |s|^2}
-	\]  if $|s| \leq \mu$ and $\epsilon$ is small.  Hence \eqref{eq:fourier_bound_for_compact_sobolev} holds and our lemma is proven.
+    We have $\hat \phi(0) -= 1$, $\hat \phi$ is continuous and bounded, and so $\left|\hat \phi(s) \right| \leq K$ on $\R^n$.  
+    So \begin{align*}
+        \left| \hat \phi(\epsilon s) - 1 \right| &\leq K + 1 \leq r\sqrt{1 + |s|^2}
+    \end{align*} if \[
+        |s|^2 \geq \underbrace{\left( \frac{K+1}{r} \right)^2 - 1}_{\mu^2}.
+        \]  And so this is true if $|s| \geq \mu$ (uniformly in $\epsilon$).  Thus \eqref{eq:fourier_bound_for_compact_sobolev} holds if $|s| \geq \mu$.
+     
+    If $|s| \leq \mu$, $\epsilon s$ is small, and so $\left|\hat \phi(\epsilon s) - 1 \right|$ is close to $\hat \phi(0) - 1 = 0$.  Note that $\left| \hat \phi(\epsilon s) - 1 \right| \leq r$ if $\epsilon$ is small and $|s| \leq \mu$.  Hence \[
+        \left| \hat \phi(\epsilon s) - 1 \right| \leq r \sqrt{1 + |s|^2}
+    \]  if $|s| \leq \mu$ and $\epsilon$ is small.  Hence \eqref{eq:fourier_bound_for_compact_sobolev} holds and our lemma is proven.
 \end{proof}
 
 
 \newcommand{\interior}{\textsc{Int\ }}
 
 \begin{lem}
-	\label{lem:bound_on_continuity_of_convolution}
-	Given $r > 0$, there exists $\epsilon_0 > 0$ such that $\| T_\epsilon u - u \| \leq r \| u \|_{1, 2}$ if $0 < \epsilon \leq \epsilon_0$ and $u \in \dot W^{1, 2}(\Omega)$.
+    \label{lem:bound_on_continuity_of_convolution}
+    Given $r > 0$, there exists $\epsilon_0 > 0$ such that $\| T_\epsilon u - u \| \leq r \| u \|_{1, 2}$ if $0 < \epsilon \leq \epsilon_0$ and $u \in \dot W^{1, 2}(\Omega)$.
 \end{lem}
 
 \begin{proof} 
-	We choose a cube $C$ such that $\overline \Omega \subset \interior C$.  Notice that $\dot W^{1, 2}(\Omega)$ can be extended to $\dot W^{1, 2}(C)$ by letting $u = 0$ on $C \backslash \Omega$.  
-	
-	Choose $\phi \in C^\infty_c(\R^n)$ such that $\phi \geq 0$, $\int \phi = 1$, and $\phi$ even.  Let \[
-		T_\epsilon u = \epsilon^{-n} \int_\Omega \phi\left(\frac{x-y}{\epsilon} \right) u(y) \, dy = \phi_\epsilon \star u
-	\] where $\phi_\epsilon(x) = \epsilon^{-n} \phi \left( \frac{x}{\epsilon} \right)$.
-	
-	Taking Fourier transforms, we have
-	\begin{align*}
-		\hat \phi_\epsilon(S) &= \int_{\R^n} e^{its} \phi_\epsilon(t) \, dt \\
-			&= \epsilon^{-n} \int e^{its} \phi \left( \frac{t}{\epsilon} \right) \, dt \\
-			&= \hat \phi(\epsilon s).
-	\end{align*}  Then estimating $\| T_\epsilon u - u \|_2^2$ by Fourier transforms, we have \begin{align*}
-		A = \| T_\epsilon u - u \|_2^2 &= (2 \pi)^{-n} \left\| \hat{T_\epsilon u - u}\right\|_2^2 \\
-		&= \| \hat{T_\epsilon u } - \hat u \|_2^2.  
-	\end{align*}  But $\hat{T_\epsilon u} = \hat \phi_\epsilon \hat u = \hat \phi (\epsilon s) \hat u(s)$, and so \[
-		A = (2 \pi)^{-n} \int \left| \left( \left( \hat \phi(\epsilon s) - 1 \right) \hat u(s) \right)^2 \right| \, ds
-	\]
-	
-	
-	
-	 From Lemma \ref{thm:fourier_bound_for_compact_sobolev}, we have \begin{align*}
-		A &\leq (2 \pi)^{-n} \int r^2 \left(1 - |s|^2 \right)^2 \left| \hat u (s) \right|^2 \, ds \\
-		&\leq r^2 (2 \pi)^{-n} \int \left( 1 + |s|^2 \right) \left| \hat u(s)\right|^2 \, ds \\
-		&= r^2 \| u \|_{1, 2}^2
-	\end{align*} using the definition of the $\|u \|_{1, 2}^2$  as $\| u \|_2^2 + \| \grad u \|_2^2$.  
-	
-	Hence $\|T_\epsilon u - u \|_2^2 \leq r^2 \| u \|_{1, 2}^2$.
+    We choose a cube $C$ such that $\overline \Omega \subset \interior C$.  Notice that $\dot W^{1, 2}(\Omega)$ can be extended to $\dot W^{1, 2}(C)$ by letting $u = 0$ on $C \backslash \Omega$.  
+    
+    Choose $\phi \in C^\infty_c(\R^n)$ such that $\phi \geq 0$, $\int \phi = 1$, and $\phi$ even.  Let \[
+        T_\epsilon u = \epsilon^{-n} \int_\Omega \phi\left(\frac{x-y}{\epsilon} \right) u(y) \, dy = \phi_\epsilon \star u
+    \] where $\phi_\epsilon(x) = \epsilon^{-n} \phi \left( \frac{x}{\epsilon} \right)$.
+    
+    Taking Fourier transforms, we have
+    \begin{align*}
+        \hat \phi_\epsilon(S) &= \int_{\R^n} e^{its} \phi_\epsilon(t) \, dt \\
+            &= \epsilon^{-n} \int e^{its} \phi \left( \frac{t}{\epsilon} \right) \, dt \\
+            &= \hat \phi(\epsilon s).
+    \end{align*}  Then estimating $\| T_\epsilon u - u \|_2^2$ by Fourier transforms, we have \begin{align*}
+        A = \| T_\epsilon u - u \|_2^2 &= (2 \pi)^{-n} \left\| \hat{T_\epsilon u - u}\right\|_2^2 \\
+        &= \| \hat{T_\epsilon u } - \hat u \|_2^2.  
+    \end{align*}  But $\hat{T_\epsilon u} = \hat \phi_\epsilon \hat u = \hat \phi (\epsilon s) \hat u(s)$, and so \[
+        A = (2 \pi)^{-n} \int \left| \left( \left( \hat \phi(\epsilon s) - 1 \right) \hat u(s) \right)^2 \right| \, ds
+    \]
+    
+    
+    
+     From Lemma \ref{thm:fourier_bound_for_compact_sobolev}, we have \begin{align*}
+        A &\leq (2 \pi)^{-n} \int r^2 \left(1 - |s|^2 \right)^2 \left| \hat u (s) \right|^2 \, ds \\
+        &\leq r^2 (2 \pi)^{-n} \int \left( 1 + |s|^2 \right) \left| \hat u(s)\right|^2 \, ds \\
+        &= r^2 \| u \|_{1, 2}^2
+    \end{align*} using the definition of the $\|u \|_{1, 2}^2$  as $\| u \|_2^2 + \| \grad u \|_2^2$.  
+    
+    Hence $\|T_\epsilon u - u \|_2^2 \leq r^2 \| u \|_{1, 2}^2$.
 \end{proof}
 
 \begin{defn}[Finite $\epsilon$-net]
@@ -1139,49 +1139,49 @@ A finite set $\{ a_i \}_{i=1}^n$ in a metric space $Y$ is a finite $\epsilon$-ne
 \end{defn}
 
 \begin{thm}
-	A closed net $Y$ in a compact metric space is compact if and only if it has a finite $\epsilon$ -net for every $\epsilon > 0$. 
+    A closed net $Y$ in a compact metric space is compact if and only if it has a finite $\epsilon$ -net for every $\epsilon > 0$. 
 \end{thm}
 
 \begin{defn}[Precompact]
-	A subset $T$ in a complete metric space is said to be precompact if $\overline T$ is compact.  
-	
-	$T$ is precompact if and only if $T$ has a finite $\epsilon$ net for every $\epsilon > 0$.
+    A subset $T$ in a complete metric space is said to be precompact if $\overline T$ is compact.  
+    
+    $T$ is precompact if and only if $T$ has a finite $\epsilon$ net for every $\epsilon > 0$.
 \end{defn}
 
 \begin{proof}[Proof of Theorem \ref{thm:compactness_of_w12_inclusion}]
-	It suffices to show that for any $\delta > 0$, the set \[
-		\{ u \in \dot W^{1, 2}(\Omega) \given \| u \|_{1, 2} \leq 1 \}
-	\]  lies in a compact set of $L^2(\Omega)$ and hence it suffices to prove if $\delta > 0$ it haas a finite $\delta$-net in $L^2(\Omega)$.   Recall that \[
-		\| T_\epsilon u - u \| \leq \frac{1}{2}\delta
-	\]  if $u \in \dot W^{1, 2}(\Omega)$, $\| u \|_{1, 2} \leq 1$ by Lemma \ref{lem:bound_on_continuity_of_convolution}.  Thus it suffices to get a finite $\frac{\delta}{2}$-net in $L^2(\Omega)$ for \[
-		\{ T_\epsilon u \given \| u \|_{1, 2} \}
-	\] for $\epsilon$ small.
-	
-	There are $C^1$ function on $\R^n$, and so \[
-		(T_\epsilon u)' (x) = \epsilon^{-n-1} \int \phi' \left(\frac{x-y}{\epsilon} \right) u(y) \, dy.
-		\tag{$\star$}
-	\] It suffices to prove for a fixed $\epsilon$, \[
-		\{ T_\epsilon u \given \| u \|_{1, 2} \leq 1 \}
-	\] is precompact in $C(C)$ (the set of continuous functions on the cube $C$.)
-	
-	The map $i : C(C) \rightarrow L^2(C)$ is continuous and so maps compact sets to compact sets.  For \emph{fixed} $\epsilon$, $\left| (T_\epsilon u)' (x) \right| \leq K$ if $\| u \|_{1, 2} \leq 1$, as \begin{align*}
-		|T'(u)(x)| \leq K \int |u(y) | \, dy &\leq K \| u \|_1\\
-		&\leq K_1 \|u \|_2 \\
-		&\leq K_1 \| u \|_{1, 2} \\
-		&\leq K_1.
-	\end{align*}  
-	
-	On $C$, 
-	\begin{align*}
-		|T_\epsilon u(x_1) - T_\epsilon u(x_2)| &\leq \sup |(T_\epsilon u)'(x)| |x_1 - x_2| \\
-		&\leq K_1 |x_1 - x_2|
-	\end{align*} for any $x_1, x_2 \in C$.  So $T_\epsilon u$ is uniformly bounded. This shows that $\{ T_\epsilon u \given \| u \|_{1, 2} \leq 1 \}$ is \emph{equicontinuous}, in the sense that given $\mu > 0$, there exists $\tau > 0$ such that $\| T_\epsilon u(x_1) - T_\epsilon(x_2) \| \leq \mu$ if $|x_1 - x_2| \leq \tau$ for all $u$ such that $\| u \|_{1, 2} \leq 1$.
-	
+    It suffices to show that for any $\delta > 0$, the set \[
+        \{ u \in \dot W^{1, 2}(\Omega) \given \| u \|_{1, 2} \leq 1 \}
+    \]  lies in a compact set of $L^2(\Omega)$ and hence it suffices to prove if $\delta > 0$ it haas a finite $\delta$-net in $L^2(\Omega)$.   Recall that \[
+        \| T_\epsilon u - u \| \leq \frac{1}{2}\delta
+    \]  if $u \in \dot W^{1, 2}(\Omega)$, $\| u \|_{1, 2} \leq 1$ by Lemma \ref{lem:bound_on_continuity_of_convolution}.  Thus it suffices to get a finite $\frac{\delta}{2}$-net in $L^2(\Omega)$ for \[
+        \{ T_\epsilon u \given \| u \|_{1, 2} \}
+    \] for $\epsilon$ small.
+    
+    There are $C^1$ function on $\R^n$, and so \[
+        (T_\epsilon u)' (x) = \epsilon^{-n-1} \int \phi' \left(\frac{x-y}{\epsilon} \right) u(y) \, dy.
+        \tag{$\star$}
+    \] It suffices to prove for a fixed $\epsilon$, \[
+        \{ T_\epsilon u \given \| u \|_{1, 2} \leq 1 \}
+    \] is precompact in $C(C)$ (the set of continuous functions on the cube $C$.)
+    
+    The map $i : C(C) \rightarrow L^2(C)$ is continuous and so maps compact sets to compact sets.  For \emph{fixed} $\epsilon$, $\left| (T_\epsilon u)' (x) \right| \leq K$ if $\| u \|_{1, 2} \leq 1$, as \begin{align*}
+        |T'(u)(x)| \leq K \int |u(y) | \, dy &\leq K \| u \|_1\\
+        &\leq K_1 \|u \|_2 \\
+        &\leq K_1 \| u \|_{1, 2} \\
+        &\leq K_1.
+    \end{align*}  
+    
+    On $C$, 
+    \begin{align*}
+        |T_\epsilon u(x_1) - T_\epsilon u(x_2)| &\leq \sup |(T_\epsilon u)'(x)| |x_1 - x_2| \\
+        &\leq K_1 |x_1 - x_2|
+    \end{align*} for any $x_1, x_2 \in C$.  So $T_\epsilon u$ is uniformly bounded. This shows that $\{ T_\epsilon u \given \| u \|_{1, 2} \leq 1 \}$ is \emph{equicontinuous}, in the sense that given $\mu > 0$, there exists $\tau > 0$ such that $\| T_\epsilon u(x_1) - T_\epsilon(x_2) \| \leq \mu$ if $|x_1 - x_2| \leq \tau$ for all $u$ such that $\| u \|_{1, 2} \leq 1$.
+    
 \begin{lem}[Anzela-Anscoli]
-	A bounded set in $C(C)$ is precompact if and only if it is equicontinuous.
+    A bounded set in $C(C)$ is precompact if and only if it is equicontinuous.
 \end{lem}
 \begin{proof}
-	See Simmond's book on Modern Analysis.
+    See Simmond's book on Modern Analysis.
 \end{proof}
 
 Applying Anzela-Anscoli to our set $\{ T_\epsilon u \given \| u \|_{1, 2} \leq 1 \}$ then proves that it is precompact in $C(C)$.  As a set that is precompact in $C(C)$ is precompact in $L^2(C)$, our theorem is proven.
@@ -1189,34 +1189,34 @@ Applying Anzela-Anscoli to our set $\{ T_\epsilon u \given \| u \|_{1, 2} \leq 1
 
 
 \begin{rem}
-	There are similar results for $i : \dot W^{1, p}(\Omega) \rightarrow L^p(\Omega)$ if $1 < p < \infty$ if $\Omega$ is bounded open.  
+    There are similar results for $i : \dot W^{1, p}(\Omega) \rightarrow L^p(\Omega)$ if $1 < p < \infty$ if $\Omega$ is bounded open.  
 \end{rem}
 
 Recall that $\dot W^{1, 2}(\Omega) \rightarrow L^2(\Omega)$ is compact if $\Omega$ is bounded.
 
 Consider the equation \begin{align}
-	\label{eq:eigenvalue_equation}
-	-\Delta u = \lambda u + f \quad \text{in $\Omega$} \\
-	u = 0 \quad \text{on $\partial \Omega$} \notag
+    \label{eq:eigenvalue_equation}
+    -\Delta u = \lambda u + f \quad \text{in $\Omega$} \\
+    u = 0 \quad \text{on $\partial \Omega$} \notag
 \end{align} with $\Omega$ a \textbf{bounded} domain in $\R^n$.  
 
 For a weak solution, we seek to find $u \in \dot W^{1, 2}(\Omega)$ such that \[
-	\int \grad u \cdot \grad v = \lambda \int u v + \int fv 
+    \int \grad u \cdot \grad v = \lambda \int u v + \int fv 
 \] for all $v \in \dot W^{1, 2}(\Omega)$.  This is equivalent to asking that \[
-	\iprod{u, v} = \lambda \iprod{Bu, v} + \iprod{F, v} \tag{$\star$}
+    \iprod{u, v} = \lambda \iprod{Bu, v} + \iprod{F, v} \tag{$\star$}
 \]  where $\iprod{Bu, v} = (u, v)$ is a bounded bilinear form on $\dot W^{1, 2}(\Omega)$ and $\int fv = \iprod{F, v}$.  Note that $(\star)$ is equivalent to \[
-	u = \lambda Bu + F \tag{$\star \star$}
+    u = \lambda Bu + F \tag{$\star \star$}
 \] whern $u \in \dot W^{1, 2}(\Omega)$.  
 
 Recall that \begin{align*}
-	\left|\iprod{Bu, v}\right| &= \left|\int uv\right| \\
-	&\leq \| u \|_2 \| v \|_2 \\
-	&\leq C \| \grad u \|_2 \| \grad v \|_2 
+    \left|\iprod{Bu, v}\right| &= \left|\int uv\right| \\
+    &\leq \| u \|_2 \| v \|_2 \\
+    &\leq C \| \grad u \|_2 \| \grad v \|_2 
 \end{align*} by \poincare.  Moreover, $B$ is compact, as $\Omega$ is bounded.  This is true as supposing that $u_n$ is a bounded sequence in $\dot W^{1, 2}(\Omega)$..  Then $\{ u_n \}$ has a convergent subsequence in $\dot W^{1, 2}(\Omega)$.  But by Theorem \ref{thm:compactness_of_w12_inclusion}, $\{ u_n \}$ has a subsequence which converges in $L^2(\Omega)$.  Restricting now to the subsequence, for any $u_n, u_m$, we have \begin{align*}
-	\| B u_n - B u_m \|_{1, 2} &= \sup_{\| v \|_{1, 2} \leq 1} \left| \iprod{Bu_n - Bu_m, v} \right| \\
-	&= \sup_{\| v \|_{1, 2} \leq 1} \left| \iprod{B(u_n - u_m), v} \right| \\
-	&\leq \sup_{\| v \|_{1, 2} \leq 1} \left| (u_n - u_m, v) \right| \\
-	&\leq \sup_{\| v \|_{1, 2} \leq 1} \underbrace{\| u_n - u_m \|_2}_{\rightarrow 0} \underbrace{\| v \|_2}_{\leq C \| v \|_{1, 2}} 
+    \| B u_n - B u_m \|_{1, 2} &= \sup_{\| v \|_{1, 2} \leq 1} \left| \iprod{Bu_n - Bu_m, v} \right| \\
+    &= \sup_{\| v \|_{1, 2} \leq 1} \left| \iprod{B(u_n - u_m), v} \right| \\
+    &\leq \sup_{\| v \|_{1, 2} \leq 1} \left| (u_n - u_m, v) \right| \\
+    &\leq \sup_{\| v \|_{1, 2} \leq 1} \underbrace{\| u_n - u_m \|_2}_{\rightarrow 0} \underbrace{\| v \|_2}_{\leq C \| v \|_{1, 2}} 
 \end{align*} by convergence in $L^2(\Omega)$, Cauchy-Swartz and the \poincare inequality.  
 
 So $\| Bu_n - Bu_m \|_{1,2} \rightarrow 0$ as $n,m \rightarrow \infty$, and so $\{ B u_n \}$ converges in $\dot W^{1, 2}(\Omega)$ as required. 
@@ -1225,39 +1225,39 @@ $B$ is also self adjoint as $\iprod{Bu, v} = \int uv$.
 
 
 \begin{thm}
-	The problem $u = \lambda B u $ on $\dot W^{1, 2}(\Omega)$ has an infinite sequence of eigenvalues $\{ \lambda_n \}$ which are all real and $\lambda_n > 0$ and $\lambda_n \rightarrow \infty$ as $n \rightarrow \infty$.  Moreover, $I- \lambda B$ is invertible if $\lambda \neq \lambda_n$ for all $n$.
+    The problem $u = \lambda B u $ on $\dot W^{1, 2}(\Omega)$ has an infinite sequence of eigenvalues $\{ \lambda_n \}$ which are all real and $\lambda_n > 0$ and $\lambda_n \rightarrow \infty$ as $n \rightarrow \infty$.  Moreover, $I- \lambda B$ is invertible if $\lambda \neq \lambda_n$ for all $n$.
 \end{thm}
 \begin{proof}{\ }
-	
+    
 \begin{enumerate}[(i)]
-	\item The eigenvalues are all real as $B$ is self-adjoint.
-	\item
-	Note that the null-space of $B$ is $\{ 0 \}$, since \[
-		\iprod{Bu, u} = (u, u) = \int_\Omega u^2 > 0
-	\] if $u \neq 0$.  
-	
-	Hence \begin{align*}
-		u = \lambda Bu \iff \underbrace{\iprod{u, u}}_{> 0} &= \iprod{\lambda Bu, u} \\
-										&= \lambda \iprod{Bu, u} \\
-										&= \lambda \underbrace{\int u^2}_{> 0}
-	\end{align*} and so all eigenvalues are greater than zero.
-	
-	\item 
-		The smallest eigenvalue is $\inf_{u \neq 0} \frac {\int |\grad u |^2}{\int u^2}$. By Theorem \ref{thm:raleigh_rety}, for any operator $T$ we have \begin{align*}
-			\sup \sigma(T) 	&= \sup_{\| x \| = 1} \iprod{Tx, x} \\
-							&= \sup_{\| x \neq 0 \|} \frac{\iprod{Tx, x}}{\iprod{x, x}} \\
-							\inf \sigma(B) &= \inf_{x \neq 0} \frac{\iprod{x, x}}{\iprod{Bx, x}} \\
-							&= \inf_{u \neq 0} \frac{\iprod{u, u}}{\iprod{Bu, u}}  \\
-							&= \inf_{u \neq 0} \frac{\int |\grad u |^2}{\int u^2}.
-		\end{align*} 
-	\item If $\lambda \neq \lambda_n$, \eqref{eq:eigenvalue_equation} has a unique weak solution for all $f \in L^2(\Omega)$.  If $\lambda = \lambda_n$, \eqref{eq:eigenvalue_equation} has a solution if and only if $(f, \phi_n) = 0$ for all eigenfunctions $\phi_n$ corresponding to $\lambda = \lambda_n$.
-	
-	Recall from Theorem \ref{thm:rangeclosed}, $Tx = y$ has a solution if and only if $f(y) = 0$ for all $f \in \ker T'$.  Note that the this is satisfied if and only if $\iprod{F, \phi_n} = (f, \phi_l) = 0$ for all eigenfunctions $\phi_n$.
-	\item The set of eigenfunctions are an orthogonal basis for $L^2(\Omega)$ and $\dot W^{1, 2}(\Omega)$.
-	
-	This is true for any compact self-adjoint operator.
-	
-	\qedhere
+    \item The eigenvalues are all real as $B$ is self-adjoint.
+    \item
+    Note that the null-space of $B$ is $\{ 0 \}$, since \[
+        \iprod{Bu, u} = (u, u) = \int_\Omega u^2 > 0
+    \] if $u \neq 0$.  
+    
+    Hence \begin{align*}
+        u = \lambda Bu \iff \underbrace{\iprod{u, u}}_{> 0} &= \iprod{\lambda Bu, u} \\
+                                        &= \lambda \iprod{Bu, u} \\
+                                        &= \lambda \underbrace{\int u^2}_{> 0}
+    \end{align*} and so all eigenvalues are greater than zero.
+    
+    \item 
+        The smallest eigenvalue is $\inf_{u \neq 0} \frac {\int |\grad u |^2}{\int u^2}$. By Theorem \ref{thm:raleigh_rety}, for any operator $T$ we have \begin{align*}
+            \sup \sigma(T)  &= \sup_{\| x \| = 1} \iprod{Tx, x} \\
+                            &= \sup_{\| x \neq 0 \|} \frac{\iprod{Tx, x}}{\iprod{x, x}} \\
+                            \inf \sigma(B) &= \inf_{x \neq 0} \frac{\iprod{x, x}}{\iprod{Bx, x}} \\
+                            &= \inf_{u \neq 0} \frac{\iprod{u, u}}{\iprod{Bu, u}}  \\
+                            &= \inf_{u \neq 0} \frac{\int |\grad u |^2}{\int u^2}.
+        \end{align*} 
+    \item If $\lambda \neq \lambda_n$, \eqref{eq:eigenvalue_equation} has a unique weak solution for all $f \in L^2(\Omega)$.  If $\lambda = \lambda_n$, \eqref{eq:eigenvalue_equation} has a solution if and only if $(f, \phi_n) = 0$ for all eigenfunctions $\phi_n$ corresponding to $\lambda = \lambda_n$.
+    
+    Recall from Theorem \ref{thm:rangeclosed}, $Tx = y$ has a solution if and only if $f(y) = 0$ for all $f \in \ker T'$.  Note that the this is satisfied if and only if $\iprod{F, \phi_n} = (f, \phi_l) = 0$ for all eigenfunctions $\phi_n$.
+    \item The set of eigenfunctions are an orthogonal basis for $L^2(\Omega)$ and $\dot W^{1, 2}(\Omega)$.
+    
+    This is true for any compact self-adjoint operator.
+    
+    \qedhere
 \end{enumerate}
 \end{proof}
 
@@ -1371,13 +1371,13 @@ Recall that \[
     Since $u_n \rightarrow u$ and $\parder{u_n}{x_i} \rightarrow \parder{u}{x_i}$ in $L^2$, taking subsequences gives \[
         - \int f(u) \parder{\phi}{x_i} = \int f'(u) \parder{u}{x_i} \phi \qedhere.
     \]  This can be shown as $|f(0) - f(t)| \leq K |s-t|$ by the mean value theorem, and so $|f(u_n(x)) - f(u(x))| \leq K | u_n(x) - u(x) |$.  On the left hand side, it suffices to show that $f(u_n) \rightarrow f(u)$ in $L^1(\Omega)$, then we use the dominated convergence theorem.  We have \begin{align*}
-    	\|f(u_n(x)) - f(u(x)) \|_1 \leq K \| u_n - u \|
+        \|f(u_n(x)) - f(u(x)) \|_1 \leq K \| u_n - u \|
     \end{align*}
 
 On the right hand side, we have $L^2$ convergence if we prove that each term ($\parder{u_n}{x_i}$, $f'(u_n) \phi$) converges in $L^2(\Omega)$,  We have \[
-	\parder{u_n}{x_i} \rightarrow \parder{u}{x_i}
+    \parder{u_n}{x_i} \rightarrow \parder{u}{x_i}
 \] by a lemma of generalised derivatives, and \[
-	f'(u_n) \phi \rightarrow f'(u) \phi
+    f'(u_n) \phi \rightarrow f'(u) \phi
 \] since they are both uniformly bounded and converge pointwise.
     
     More explicitly, we have \begin{align*}
@@ -1385,190 +1385,190 @@ On the right hand side, we have $L^2$ convergence if we prove that each term ($\
         &\leq \underbrace{\left\| f(u) - f(u_n) \right|_2}_{\rightarrow 0} \left\| \parder{\phi}{x_i} \right\|_2
     \end{align*}
 
-	Now, consider the function $f_\epsilon(y)$ given by \[
-		f_\epsilon(y) = \begin{cases}
-			\sqrt{y^2 + \epsilon^2} & y \geq 0 \\
-			0 & y < 0.
-		\end{cases}
-	\]  Then $f_\epsilon \in C^1$, $f'_\epsilon (y) = \frac{y}{\sqrt{y^2 + \epsilon^2}}$, and $|f'_\epsilon (y)| \leq 1$.  
-	
-	If $u \in \dot W^{1, 2}(\Omega)$, then \begin{align*}
-		-\int f_\epsilon (u) \parder{\phi}{x_i} = \int f'_\epsilon(u) \parder{u}{x_i} \phi
-	\end{align*} by the previous step.   
-	
-	Note that $f_\epsilon (y) \rightarrow y^+$ uniformly in $\R$  as $\epsilon \rightarrow 0$, and hence converges in $L^2$.  Thus \[
-		\int f_\epsilon(u) \phi = \int u^+ \phi.
-	\]  
-	
-	Next, note that $f'_\epsilon (y)$ is uniformly bounded and converges pointwise and in $L^2(\Omega)$ to $\mathbf{1}_{y > 0}$.  Thus by Cauchy-Swartz, \[
-		\int f'_\epsilon(u) \parder{u}{x_i} \phi \rightarrow \int \mathbf{1}_{u > 0} \parder{u}{x_i} \phi.
-	\] Hence \[
-		\int u^+ \parder{\phi}{x_l} = \int \mathbf{1}_{u > 0} \parder{u}{x_i} \phi
-	\] and so $\parder{u^+}{x_i}$ exists and is $\mathbf{1}_{u > 0} \parder{u}{x_i}$.
+    Now, consider the function $f_\epsilon(y)$ given by \[
+        f_\epsilon(y) = \begin{cases}
+            \sqrt{y^2 + \epsilon^2} & y \geq 0 \\
+            0 & y < 0.
+        \end{cases}
+    \]  Then $f_\epsilon \in C^1$, $f'_\epsilon (y) = \frac{y}{\sqrt{y^2 + \epsilon^2}}$, and $|f'_\epsilon (y)| \leq 1$.  
+    
+    If $u \in \dot W^{1, 2}(\Omega)$, then \begin{align*}
+        -\int f_\epsilon (u) \parder{\phi}{x_i} = \int f'_\epsilon(u) \parder{u}{x_i} \phi
+    \end{align*} by the previous step.   
+    
+    Note that $f_\epsilon (y) \rightarrow y^+$ uniformly in $\R$  as $\epsilon \rightarrow 0$, and hence converges in $L^2$.  Thus \[
+        \int f_\epsilon(u) \phi = \int u^+ \phi.
+    \]  
+    
+    Next, note that $f'_\epsilon (y)$ is uniformly bounded and converges pointwise and in $L^2(\Omega)$ to $\mathbf{1}_{y > 0}$.  Thus by Cauchy-Swartz, \[
+        \int f'_\epsilon(u) \parder{u}{x_i} \phi \rightarrow \int \mathbf{1}_{u > 0} \parder{u}{x_i} \phi.
+    \] Hence \[
+        \int u^+ \parder{\phi}{x_l} = \int \mathbf{1}_{u > 0} \parder{u}{x_i} \phi
+    \] and so $\parder{u^+}{x_i}$ exists and is $\mathbf{1}_{u > 0} \parder{u}{x_i}$.
 \end{proof}  
 
 \begin{rem}
-	This tells us that $\parder{u^+}{x_i} = 0$ a.e. where $u = 0$, and also that $\parder{u^-}{x_i} = -\mathbf{1}_{u < 0} \parder{u}{x_i}$.
+    This tells us that $\parder{u^+}{x_i} = 0$ a.e. where $u = 0$, and also that $\parder{u^-}{x_i} = -\mathbf{1}_{u < 0} \parder{u}{x_i}$.
 \end{rem}
 
 \begin{rem}
-	If $u \in  W^{1, 2}(\Omega)$m then $u^+ \in W^{1, 2}(\Omega)$ with the same formula for $\parder{u}{x_i}$.  
-	
-	If $N = 1$ and $\dot W^{1, 2}([a, b])$ then there exists $\tilde u$ such that $\tilde u  = u$ almost everywhere and $\tilde u \in C[a, b]$.
-	
-	If $N = 2$ and $u \in \dot W^{1, 2}(\Omega)$, $u \in L^p(\Omega)$ for all $p \geq 1$. 
-	
-	If $N \geq 3$ and $u \in \dot W^{1, 2}(\Omega)$, then $u \in L^{2^*}(\Omega)$ where $2^\star = \frac{2N}{N-2}.$
+    If $u \in  W^{1, 2}(\Omega)$m then $u^+ \in W^{1, 2}(\Omega)$ with the same formula for $\parder{u}{x_i}$.  
+    
+    If $N = 1$ and $\dot W^{1, 2}([a, b])$ then there exists $\tilde u$ such that $\tilde u  = u$ almost everywhere and $\tilde u \in C[a, b]$.
+    
+    If $N = 2$ and $u \in \dot W^{1, 2}(\Omega)$, $u \in L^p(\Omega)$ for all $p \geq 1$. 
+    
+    If $N \geq 3$ and $u \in \dot W^{1, 2}(\Omega)$, then $u \in L^{2^*}(\Omega)$ where $2^\star = \frac{2N}{N-2}.$
 \end{rem}
 
 \begin{exer}
-	If $u \in \dot W^{1, 2}(\Omega)$ and $a > 0$, then \[
-		(u-a)^+ \in \dot W^{1, 2}(\Omega).
-	\]
+    If $u \in \dot W^{1, 2}(\Omega)$ and $a > 0$, then \[
+        (u-a)^+ \in \dot W^{1, 2}(\Omega).
+    \]
 \end{exer}
 
 \begin{rem}
-	In general, if $F$ is Lipschitz on $\R$ with $F(0) = 0$ and $u \in \dot W^{1, 2}(\Omega)$, then \[
-		F(u) \in \dot W^{1, 2}(\Omega).
-	\]
+    In general, if $F$ is Lipschitz on $\R$ with $F(0) = 0$ and $u \in \dot W^{1, 2}(\Omega)$, then \[
+        F(u) \in \dot W^{1, 2}(\Omega).
+    \]
 \end{rem}
 
 \begin{thm}
-	\label{thm:his_thm_7.2}
-	If $n = 1$ and $u \in \dot W^{1, 2}(\Omega)$, then $u \in C(\overline \Omega)$ and $u = 0$ on $\partial \Omega$ (assuming $\Omega$ is bounded and open).  More precisely, there exists $K > 0$ such that if $u \in \dot W^{1, 2}(\Omega)$ there exists $v \in C(\Omega)$ such that $v = 0$ on $\partial \Omega$, $v = u$ almost everywhere, and $\| v \|_\infty \leq K \| u \|_{1, 2}$.  
-	
-	This is true for $\dot W^{1, p}(\Omega)$ if $n = 1$ and $p > 1$.
+    \label{thm:his_thm_7.2}
+    If $n = 1$ and $u \in \dot W^{1, 2}(\Omega)$, then $u \in C(\overline \Omega)$ and $u = 0$ on $\partial \Omega$ (assuming $\Omega$ is bounded and open).  More precisely, there exists $K > 0$ such that if $u \in \dot W^{1, 2}(\Omega)$ there exists $v \in C(\Omega)$ such that $v = 0$ on $\partial \Omega$, $v = u$ almost everywhere, and $\| v \|_\infty \leq K \| u \|_{1, 2}$.  
+    
+    This is true for $\dot W^{1, p}(\Omega)$ if $n = 1$ and $p > 1$.
 \end{thm}
 
 \begin{proof}
-	We prove for $\Omega = (a, b)$, as any open set in $\R$ is a countable union of disjoint intervals.  We prove that there exists $K > 0$ such that if $u \in C^\infty_c((a, b))$, then 
-	\[
-		\| u \|_\infty \leq K \| u \|_{1, 2}.
-		\tag{$\star$}
-	\]  
-	
-	This will be sufficient to prove the theorem.  To show this, suppose that $w \in \dot W^{1, 2}(\Omega)$ and $u_n \in C^\infty_c((a,b))$ such that $u_n \rightarrow w$ in $\dot W^{1, 2}([a,b])$ as $n \rightarrow \infty$, then \begin{align*}
-		\| u_n - u_m \|_\infty &\leq K \| u_n - u_m \|_{1, 2} \quad \text{by ($\star$)}\\
-		&\leq K \left( \| u_n - w \|_{1, 2} + \| u_m - w \|_{1, 2} \right) \\
-		&\rightarrow 0 
-	\end{align*} as $m, n \rightarrow \infty$.  Hence $\sup_{x \in [a, b]} |u_n(x) - u_m(x)| \rightarrow 0$ as $m, n \rightarrow \infty$, and so $\{ u_n \}$ is Cauchy in $C([a, b])$.  Hence there exists $v \in C([a, b])$ such that $u_n \rightarrow v$ uniformly as $n \rightarrow \infty$ and $v(a) = v(b) = 0$.  Since $u_n \rightarrow w$ in $L^2([a,b])$ as $n \rightarrow \infty$, then $u_n(x) \rightarrow w(x)$ almost everywhere as $n \rightarrow \infty$, and so $v = w$ almost everywhere, with $w$ continuous and $w(a) = w(b) = 0$. 
-	
-	So we have \begin{align*}
-		\| u_n \|_\infty &\leq K \| u_n \|_{1, 2} \\
-		\| v \|_\infty &\leq K \| v \|_{1, 2}
-	\end{align*} and this is what we need.  It suffices to prove $(\star)$ for $u \in C^\infty_c((a,b))$.  Let $x, y \in (a, b)$, with $x < y$.  THen \[
-		u(x) - u(y) = \int_x^y u'(t) \, dt
-	\]  So \begin{align*}
-		|u(x) - u(y) | &\leq \left| \int_x^y u'(t) \, dt \right| \\
-		&\leq \left( \int_x^y \, dt \right)^{1/2} \left( \int_x^y |u'(t)|^2 \, dt \right)^{1/2} \\
-		&\leq \left(y-x\right)^{1/2} \left( \int_a^b |u'(t)|^2 \, dt \right)^{1/2} \\
-		&\leq (b-a)^{1/2} \| \grad u \|_2
-	\end{align*} 
+    We prove for $\Omega = (a, b)$, as any open set in $\R$ is a countable union of disjoint intervals.  We prove that there exists $K > 0$ such that if $u \in C^\infty_c((a, b))$, then 
+    \[
+        \| u \|_\infty \leq K \| u \|_{1, 2}.
+        \tag{$\star$}
+    \]  
+    
+    This will be sufficient to prove the theorem.  To show this, suppose that $w \in \dot W^{1, 2}(\Omega)$ and $u_n \in C^\infty_c((a,b))$ such that $u_n \rightarrow w$ in $\dot W^{1, 2}([a,b])$ as $n \rightarrow \infty$, then \begin{align*}
+        \| u_n - u_m \|_\infty &\leq K \| u_n - u_m \|_{1, 2} \quad \text{by ($\star$)}\\
+        &\leq K \left( \| u_n - w \|_{1, 2} + \| u_m - w \|_{1, 2} \right) \\
+        &\rightarrow 0 
+    \end{align*} as $m, n \rightarrow \infty$.  Hence $\sup_{x \in [a, b]} |u_n(x) - u_m(x)| \rightarrow 0$ as $m, n \rightarrow \infty$, and so $\{ u_n \}$ is Cauchy in $C([a, b])$.  Hence there exists $v \in C([a, b])$ such that $u_n \rightarrow v$ uniformly as $n \rightarrow \infty$ and $v(a) = v(b) = 0$.  Since $u_n \rightarrow w$ in $L^2([a,b])$ as $n \rightarrow \infty$, then $u_n(x) \rightarrow w(x)$ almost everywhere as $n \rightarrow \infty$, and so $v = w$ almost everywhere, with $w$ continuous and $w(a) = w(b) = 0$. 
+    
+    So we have \begin{align*}
+        \| u_n \|_\infty &\leq K \| u_n \|_{1, 2} \\
+        \| v \|_\infty &\leq K \| v \|_{1, 2}
+    \end{align*} and this is what we need.  It suffices to prove $(\star)$ for $u \in C^\infty_c((a,b))$.  Let $x, y \in (a, b)$, with $x < y$.  THen \[
+        u(x) - u(y) = \int_x^y u'(t) \, dt
+    \]  So \begin{align*}
+        |u(x) - u(y) | &\leq \left| \int_x^y u'(t) \, dt \right| \\
+        &\leq \left( \int_x^y \, dt \right)^{1/2} \left( \int_x^y |u'(t)|^2 \, dt \right)^{1/2} \\
+        &\leq \left(y-x\right)^{1/2} \left( \int_a^b |u'(t)|^2 \, dt \right)^{1/2} \\
+        &\leq (b-a)^{1/2} \| \grad u \|_2
+    \end{align*} 
 \end{proof}
 
 \begin{thm}
-	\label{thm:his_thm_7.3}
-	If $n > 2$ and $\Omega$ is bounded and open, there exists $C$ depending only on $n$ such that if $u \in \dot W^{1, 2}(\Omega)$ hen $u \in L^{2^\star}(\Omega)$ and $\| u \|_{2^\star} \leq C \| \grad u \|_{1, 2}$.  Here $2^\star = \frac{2n}{n-2}$.   
+    \label{thm:his_thm_7.3}
+    If $n > 2$ and $\Omega$ is bounded and open, there exists $C$ depending only on $n$ such that if $u \in \dot W^{1, 2}(\Omega)$ hen $u \in L^{2^\star}(\Omega)$ and $\| u \|_{2^\star} \leq C \| \grad u \|_{1, 2}$.  Here $2^\star = \frac{2n}{n-2}$.   
 \end{thm}
 
 \begin{rem}
-	There is a similar theorem for $\dot W^{1, 2}(\Omega)$ if $1 \leq p < n$.  Here $p^\star = \frac{np}{n - p}$.
+    There is a similar theorem for $\dot W^{1, 2}(\Omega)$ if $1 \leq p < n$.  Here $p^\star = \frac{np}{n - p}$.
 \end{rem}
 
 \begin{rem}
-	$u \in L^2(\Omega)$ and $u \in L^{2^\star}(\Omega)$ implies that $u \in L^{q}(\Omega)$ for all $2 \leq q \leq 2^\star$ by H\"older's inequality.
+    $u \in L^2(\Omega)$ and $u \in L^{2^\star}(\Omega)$ implies that $u \in L^{q}(\Omega)$ for all $2 \leq q \leq 2^\star$ by H\"older's inequality.
 \end{rem}
 
 \begin{proof}[Proof of Theorem \ref{thm:his_thm_7.3}]{\ }
-	It suffices to assume that $u \in C^\infty_c(\Omega)$.
-	
-	\textbf{Step 1.} 
-	\begin{quote}
-	\begin{lem}
-		If $u \in \dot W^{1, 1}(\Omega)$, then $\| u \|_{1^\star} \leq \| \grad u \|_{1}$, where $\mathbf{1}^\star = \frac{n}{n-1}$.
-	\end{lem}
-	
-	\begin{proof}
-		By H\"older, we have \begin{align*}
-			\int |g_1| \times |g_2| \dots  |g_{n-1}| \leq \left( \int |g_1|^{n-1}\right)^{\frac{1}{n-1}} \dots \left( \int |g_{n-1}|^{n-1} \right)^{\frac{1}{n-1}} \\
-			\left( \int |g_1| \times |g_2| \dots |g_{n-1} \right)^{n-1} \leq \prod_{i=1}^{n-1} \left( \int |g_i|^{n-1} \right) \quad \text{by induction.}
-		\end{align*}
-		For $f \in C^{\infty}_c(\R^n)$, we have \[
-			f(x_1, \dots, x_n) = \int_{-\infty}^{x_i} \parder{f}{x_i}(x_1, \dots, x_{i-1}, t_i, x_{i+1}, \dots, x_n) \, dt_i
-		\]  Then we can estimate $|f|$ by \begin{align*}
-			|f(x_1, \dots, x_n)| &\leq \int_{-\infty}^{x_i} \left| \parder{f}{x_i}(x_1, \dots, x_{i-1}, t_i, x_{i+1}, \dots, x_n) \right| \, dt_i \\
-			&\leq \int_{-\infty}^{\infty} \left| \grad f (x_1, \dots, x_{i-1}, t_i, x_{i+1}, \dots, x_n) \right| \, dt_i
-		\end{align*} and so \[
-			|f|^n \leq \prod_{i=1}^n \int_{-\infty}^{\infty} \left| \grad f (x_1, \dots, x_{i-1}, t_i, x_{i+1}, \dots, x_n) \right| \, dt_i
-		\]  Then taking the $(n-1)$-th root, we obtain \begin{align*}
-			|f|^{1^\star} \leq \prod_{i=1}^n \left( \int_{-\infty}^{\infty} \left| \grad f (x_1, \dots, x_{i-1}, t_i, x_{i+1}, \dots, x_n) \right| \, dt_i \right)^{\frac{1}{n-1}}.
-		\end{align*}  Now, integrating in $x_1$, we have \begin{align*}
-			\int |f|^{1^\star} \, dx_1 \leq \left( \int_{-\infty}^{\infty} |\grad f | \, dt_1 \right)^{\frac{1}{n-1}} \prod_{i=2}^n \left(\int \left|\grad f(x_1, \dots, x_{i-1}, t_i, x_{i+1}, \dots, x_n) \right| \, dt_i \, dx_1 \right)^{\frac{1}{n-1}}
-		\end{align*} 
-		
-		 Now integrating in $x_2$, we have \begin{align*}
-		 			\int |\grad f |^{1^\star} \, dx_1 \, dt_2 \leq \left( \iint \left|\grad f \right| \, dt_1 \, dx_2 \right)^{\frac{1}{n-1}}  \left( \iint \left|\grad f \right| \, dt_1 \, dx_2 \right)^{\frac{1}{n-1}}  \left(\prod_{i=3}^n \iint |\grad f| \, dx_1 \, dx_2 \, dt_i \right)^{\frac{1}{n-1}}
-		 		\end{align*}
-		 % 		
-		By induction, we obtain \begin{align*}			
-			\int |f|^{1^\star} \, dx_1 \dots dx_n  &\leq \left( \prod_{i=1}^n \int |\grad f | \, dx_1 \dots dx_n \right)^{\frac{1}{n-1}} \\
-						&\leq \left( \int |\grad f| \, dx_1 \dots dx_n \right)^{\frac{n}{n-1}}
-		\end{align*}	 and taking $\frac{n-1}{n}$-th roots obtains the required result.
-		\end{proof}
-		
-		We can also show \begin{enumerate}[(i)]
-			\item If $p > n$, then $\dot W^{1, p}(\Omega) \subseteq C(\overline \Omega)$ and $\| u \|_{\infty} \leq C \| \grad u \|_p$.
-			\item If $n \leq 3$, function in $W^{2, 2}(\Omega)$ are continuous on the interior.
-			\item If $u \in W^{1, 2}(\Omega)$ and $u(x) \rightarrow 0$ as $x \rightarrow \partial \Omega$, then $u \in \dot W^{1, 2}(\Omega)$.
-		\end{enumerate}
-	
-	\end{quote}
-	
-	
-	
-	\textbf{Step 2.}
-	\begin{quote}
+    It suffices to assume that $u \in C^\infty_c(\Omega)$.
+    
+    \textbf{Step 1.} 
+    \begin{quote}
+    \begin{lem}
+        If $u \in \dot W^{1, 1}(\Omega)$, then $\| u \|_{1^\star} \leq \| \grad u \|_{1}$, where $\mathbf{1}^\star = \frac{n}{n-1}$.
+    \end{lem}
+    
+    \begin{proof}
+        By H\"older, we have \begin{align*}
+            \int |g_1| \times |g_2| \dots  |g_{n-1}| \leq \left( \int |g_1|^{n-1}\right)^{\frac{1}{n-1}} \dots \left( \int |g_{n-1}|^{n-1} \right)^{\frac{1}{n-1}} \\
+            \left( \int |g_1| \times |g_2| \dots |g_{n-1} \right)^{n-1} \leq \prod_{i=1}^{n-1} \left( \int |g_i|^{n-1} \right) \quad \text{by induction.}
+        \end{align*}
+        For $f \in C^{\infty}_c(\R^n)$, we have \[
+            f(x_1, \dots, x_n) = \int_{-\infty}^{x_i} \parder{f}{x_i}(x_1, \dots, x_{i-1}, t_i, x_{i+1}, \dots, x_n) \, dt_i
+        \]  Then we can estimate $|f|$ by \begin{align*}
+            |f(x_1, \dots, x_n)| &\leq \int_{-\infty}^{x_i} \left| \parder{f}{x_i}(x_1, \dots, x_{i-1}, t_i, x_{i+1}, \dots, x_n) \right| \, dt_i \\
+            &\leq \int_{-\infty}^{\infty} \left| \grad f (x_1, \dots, x_{i-1}, t_i, x_{i+1}, \dots, x_n) \right| \, dt_i
+        \end{align*} and so \[
+            |f|^n \leq \prod_{i=1}^n \int_{-\infty}^{\infty} \left| \grad f (x_1, \dots, x_{i-1}, t_i, x_{i+1}, \dots, x_n) \right| \, dt_i
+        \]  Then taking the $(n-1)$-th root, we obtain \begin{align*}
+            |f|^{1^\star} \leq \prod_{i=1}^n \left( \int_{-\infty}^{\infty} \left| \grad f (x_1, \dots, x_{i-1}, t_i, x_{i+1}, \dots, x_n) \right| \, dt_i \right)^{\frac{1}{n-1}}.
+        \end{align*}  Now, integrating in $x_1$, we have \begin{align*}
+            \int |f|^{1^\star} \, dx_1 \leq \left( \int_{-\infty}^{\infty} |\grad f | \, dt_1 \right)^{\frac{1}{n-1}} \prod_{i=2}^n \left(\int \left|\grad f(x_1, \dots, x_{i-1}, t_i, x_{i+1}, \dots, x_n) \right| \, dt_i \, dx_1 \right)^{\frac{1}{n-1}}
+        \end{align*} 
+        
+         Now integrating in $x_2$, we have \begin{align*}
+                    \int |\grad f |^{1^\star} \, dx_1 \, dt_2 \leq \left( \iint \left|\grad f \right| \, dt_1 \, dx_2 \right)^{\frac{1}{n-1}}  \left( \iint \left|\grad f \right| \, dt_1 \, dx_2 \right)^{\frac{1}{n-1}}  \left(\prod_{i=3}^n \iint |\grad f| \, dx_1 \, dx_2 \, dt_i \right)^{\frac{1}{n-1}}
+                \end{align*}
+         %      
+        By induction, we obtain \begin{align*}          
+            \int |f|^{1^\star} \, dx_1 \dots dx_n  &\leq \left( \prod_{i=1}^n \int |\grad f | \, dx_1 \dots dx_n \right)^{\frac{1}{n-1}} \\
+                        &\leq \left( \int |\grad f| \, dx_1 \dots dx_n \right)^{\frac{n}{n-1}}
+        \end{align*}     and taking $\frac{n-1}{n}$-th roots obtains the required result.
+        \end{proof}
+        
+        We can also show \begin{enumerate}[(i)]
+            \item If $p > n$, then $\dot W^{1, p}(\Omega) \subseteq C(\overline \Omega)$ and $\| u \|_{\infty} \leq C \| \grad u \|_p$.
+            \item If $n \leq 3$, function in $W^{2, 2}(\Omega)$ are continuous on the interior.
+            \item If $u \in W^{1, 2}(\Omega)$ and $u(x) \rightarrow 0$ as $x \rightarrow \partial \Omega$, then $u \in \dot W^{1, 2}(\Omega)$.
+        \end{enumerate}
+    
+    \end{quote}
+    
+    
+    
+    \textbf{Step 2.}
+    \begin{quote}
  Complete the proof.  As before, we construct $u \in C^\infty_c(\R^n)$.  Applying \textbf{Step 1.} to $|u|^\gamma$ where $\gamma > 1$ and $\gamma$ is to be chosen, then \begin{align*}
-		\left( \int \left( |u|^\gamma \right)^{\frac{n}{n-1}} \right)^{\frac{n-1}{n}} &\leq \left\| \gamma |u|^{\gamma - 1} (\grad u) \right\|_1 \\
-		&\leq \gamma \left\| |u|^{\gamma - 1} \grad u \right\|_1 \\
-		&\leq \gamma \left( \int u^{(\gamma - 1) \cdot \frac{p}{p-1}}\right)^{\frac{p-1}{p}} \left( \int \left| \grad u \right|^p \right)^{1/p} \quad \text{by H\"older}
-	\end{align*} 
-	 Then choosing $\gamma$ such that $\gamma \frac{n}{n-1} = \left( \gamma - 1 \right) \frac{p}{p-1} = p^\star$,  we have \begin{align*}
-		\left( \int |u|^{p^\star} \right)^{\frac{n-1}{n}} \leq \gamma \left( |u|^{p^\star} \right)^{\frac{p-1}{p}} \left( \int |\grad u |^p \right)^{\frac{1}{p}}
-	\end{align*}  Then dividing both sides by $\left(\int |u|^{p^\star} \right)^{\frac{p-1}{p}}$ , we have \begin{align*}
-		\left(\int|u|^{p^\star} \right)^{\frac{1}{p^\star}} \leq C(\gamma) \left(\int |\grad u |^p \right)^{\frac{1}{p}}
-	\end{align*}
+        \left( \int \left( |u|^\gamma \right)^{\frac{n}{n-1}} \right)^{\frac{n-1}{n}} &\leq \left\| \gamma |u|^{\gamma - 1} (\grad u) \right\|_1 \\
+        &\leq \gamma \left\| |u|^{\gamma - 1} \grad u \right\|_1 \\
+        &\leq \gamma \left( \int u^{(\gamma - 1) \cdot \frac{p}{p-1}}\right)^{\frac{p-1}{p}} \left( \int \left| \grad u \right|^p \right)^{1/p} \quad \text{by H\"older}
+    \end{align*} 
+     Then choosing $\gamma$ such that $\gamma \frac{n}{n-1} = \left( \gamma - 1 \right) \frac{p}{p-1} = p^\star$,  we have \begin{align*}
+        \left( \int |u|^{p^\star} \right)^{\frac{n-1}{n}} \leq \gamma \left( |u|^{p^\star} \right)^{\frac{p-1}{p}} \left( \int |\grad u |^p \right)^{\frac{1}{p}}
+    \end{align*}  Then dividing both sides by $\left(\int |u|^{p^\star} \right)^{\frac{p-1}{p}}$ , we have \begin{align*}
+        \left(\int|u|^{p^\star} \right)^{\frac{1}{p^\star}} \leq C(\gamma) \left(\int |\grad u |^p \right)^{\frac{1}{p}}
+    \end{align*}
 
-	\end{quote}
+    \end{quote}
 
 \end{proof}
 
 
 \begin{lem}
-	Consider the differential equation \begin{align*}
-		\grad u &= f \quad \text{on $\Omega$} \\
-		u &= 0	\quad \text{on $\partial \Omega$}
-	\end{align*} with $\Omega$ bounded.  This has a weak solution in $\dot W^{1, 2}(\Omega)$.  We claim that any classical solution is also a weak solution.
+    Consider the differential equation \begin{align*}
+        \grad u &= f \quad \text{on $\Omega$} \\
+        u &= 0  \quad \text{on $\partial \Omega$}
+    \end{align*} with $\Omega$ bounded.  This has a weak solution in $\dot W^{1, 2}(\Omega)$.  We claim that any classical solution is also a weak solution.
 \end{lem}
 
 
 Consider a classical solution $u \in C^2(\Omega) \cap C(\overline \Omega)$.  Then a classical solution (if it exists) is a weak solution $u \in \dot W^{1, 2}(\Omega)$ and \[
-	\int \grad u \cdot \grad \phi = \int f \phi
+    \int \grad u \cdot \grad \phi = \int f \phi
 \]  for all $\phi \in C^\infty_c(\Omega)$.  If $u$ is smooth and $\phi$ has compact support, then \[
-	\int \grad u \cdot \grad \phi = - \int \Delta u \phi = \int f \phi
+    \int \grad u \cdot \grad \phi = - \int \Delta u \phi = \int f \phi
 \] if $\grad u = f$. 
 
 We need to check $\grad u \in L^2(\Omega)$ and $u \in \dot W^{1, 2}(\Omega)$.  Consider the function $(u-a)^+ \in W^{1, 2}(\Omega)$ if $a > 0$ that vanishes near $\partial \Omega$.  Then $u - a \in W^{1, 2}(\Omega)$ and so $(u-a)^+ \in W^{1,2}(\Omega)$ on compact sets, as \[
-	\parder{}{x_i}(u-a)^+ = \parder{u}{x_i} \mathbf{1}_{\{ u > a \}}.
+    \parder{}{x_i}(u-a)^+ = \parder{u}{x_i} \mathbf{1}_{\{ u > a \}}.
 \]     Then $(u-a)^+ \in \dot W^{1, 2}(\Omega)$ (by an exercise.)
 
 Using $(u-a)^+$ as a text function, we have \begin{align*}
-	\int \grad u \cdot \grad (u-a)^+ &= \int f (u-a)^+  \\
-									&\leq \leq \| f \|_2 \| (u-a)^+ \|_2 \quad \text{by Cauchy-Swartz} \\
-									&= K
+    \int \grad u \cdot \grad (u-a)^+ &= \int f (u-a)^+  \\
+                                    &\leq \leq \| f \|_2 \| (u-a)^+ \|_2 \quad \text{by Cauchy-Swartz} \\
+                                    &= K
 \end{align*} but \begin{align*}
-	\int \grad u \cdot \grad (u-a)^+ &= \int \left| \grad u \right|^2 \mathbf{1}_{\{ u > a \}} \leq K \\
-		&\rightarrow \int_{u \geq 0} \left| \grad u \right|^2
+    \int \grad u \cdot \grad (u-a)^+ &= \int \left| \grad u \right|^2 \mathbf{1}_{\{ u > a \}} \leq K \\
+        &\rightarrow \int_{u \geq 0} \left| \grad u \right|^2
 \end{align*} by monotone convergence theorem as $a \rightarrow 0$, and so $u^+ \in L^2$.  Similarly, $\grad u^- \in L^2(\Omega)$, and so $\grad u \in L^2(\Omega)$.
 % section further_properties_of_dot_w_1_2_omega_ (end)
 
@@ -1577,13 +1577,13 @@ Using $(u-a)^+$ as a text function, we have \begin{align*}
 \section{Applications to Nonlinear Equations} % (fold)
 \label{sec:applications_to_nonlinear_equations}
 Consider the differential equation \begin{align*}
-	-\Delta u = g(u) \quad \text{in $\Omega$} \\
-	u = 0 \quad \text{on $\partial \Omega$}
+    -\Delta u = g(u) \quad \text{in $\Omega$} \\
+    u = 0 \quad \text{on $\partial \Omega$}
 \end{align*} where $g: \R \rightarrow \R$ is continuous - so $-\Delta u(x) = g(u(x))$.  
 
 We look for weak solutions, that is $u \in \dot W^{1, 2}(\Omega)$ satisfying \begin{equation}
-	\label{eq:his_eq_8.1}
-	\int \grad u \cdot \grad \phi = \int g(u) \phi \quad \text{for all $\phi \in C^\infty_c(\Omega)$.}
+    \label{eq:his_eq_8.1}
+    \int \grad u \cdot \grad \phi = \int g(u) \phi \quad \text{for all $\phi \in C^\infty_c(\Omega)$.}
 \end{equation}
 
 \section{Variational Methods} % (fold)
@@ -1591,126 +1591,126 @@ We look for weak solutions, that is $u \in \dot W^{1, 2}(\Omega)$ satisfying \be
 
 % subsection variational_methods (end)
 Assume that $\Omega$ is bounded and $g$ is continuous and satisfies \[
-		\left| g(y) \right| \leq K_1 | y | + K_2
-	\] on $\R$, and if $G' = g$ we assume that there exists $\mu < \lambda_1$ such that\footnote{Here, $\lambda_1$ is the minimal eigenvalue of the eigenvalue equation \begin{align*}
-			-\Delta u &= \lambda u \quad \text{ on $\Omega$.} \\
-			u &= 0 \quad \text{on $\Omega$}.
-		\end{align*}  Indeed, \[
-			\lambda_1 = \inf \frac{\int |\grad u |^2}{\int u^2}.
-		\]
-		} \[
-		G(y) \leq \frac{1}{2} \mu y^2 
-	\]  for $|y|$ large.   Equivalently, $G(y) \leq \frac{1}{2} \mu y^2 + K_3$.
+        \left| g(y) \right| \leq K_1 | y | + K_2
+    \] on $\R$, and if $G' = g$ we assume that there exists $\mu < \lambda_1$ such that\footnote{Here, $\lambda_1$ is the minimal eigenvalue of the eigenvalue equation \begin{align*}
+            -\Delta u &= \lambda u \quad \text{ on $\Omega$.} \\
+            u &= 0 \quad \text{on $\Omega$}.
+        \end{align*}  Indeed, \[
+            \lambda_1 = \inf \frac{\int |\grad u |^2}{\int u^2}.
+        \]
+        } \[
+        G(y) \leq \frac{1}{2} \mu y^2 
+    \]  for $|y|$ large.   Equivalently, $G(y) \leq \frac{1}{2} \mu y^2 + K_3$.
 
 Consider the \emph{energy} function $E: \dot W^{1, 2}(\Omega) \rightarrow \R$ defined by \begin{equation}
-	\label{eq:energy}
-	\int_\Omega \left( \frac{1}{2} \left| \grad u \right|^2 - G(u) \right).
+    \label{eq:energy}
+    \int_\Omega \left( \frac{1}{2} \left| \grad u \right|^2 - G(u) \right).
 \end{equation}  We prove that there exists $w \in \dot W^{1, 2}(\Omega)$ such that \[
-	E(u) \geq E(w)
+    E(u) \geq E(w)
 \] for all $u \in \dot W^{1, 2}(\Omega)$ and that such a $w$ is a weak solution of our equation.  
 
 \begin{quote}\textbf{Step 1.}
-	We prove that there exists $C_1 > 0$ such that $E(u) \geq - C_1$ for all $u \in \dot W^{1, 2}(\Omega)$.  From \eqref{eq:his_eq_8.1}, we have \begin{align*}
-		E(u) &\geq \int_\Omega \left( \frac{1}{2} \left| \grad u \right|^2 - \frac{1}{2} \mu u^2 - K_3 \right) \tag{$\star \star$} \\
-		&\geq \frac{1}{2} \underbrace{\int \left( \left| \grad u \right|^2 - \mu u^2 \right)}_{\geq 0} - \tilde K_3 \\
-		& \geq - \tilde K_3 \\
-		& \equiv \gamma.
-	\end{align*} since $\lambda_1 = \inf \frac{\int|\grad u |^2}{\int u^2}$ and so $\int |\grad u|^2 \geq \lambda_1 \int u^2$.  Hence \[
-		\int \left( |\grad u |^2 - \mu u^2 \right) \geq (\lambda_1 - \mu) \int u^2 \geq 0.
-	\]  We get a little more, \[
-		E(u) \geq (\lambda_1 - \mu) \left(\int u^2 \right)
- - K_3	\] so if $E(u) \leq K_4$, we have that $\int u^2$ is bounded.  Thus by $(\star \star)$, \[
- 	\int |\grad u|^2
+    We prove that there exists $C_1 > 0$ such that $E(u) \geq - C_1$ for all $u \in \dot W^{1, 2}(\Omega)$.  From \eqref{eq:his_eq_8.1}, we have \begin{align*}
+        E(u) &\geq \int_\Omega \left( \frac{1}{2} \left| \grad u \right|^2 - \frac{1}{2} \mu u^2 - K_3 \right) \tag{$\star \star$} \\
+        &\geq \frac{1}{2} \underbrace{\int \left( \left| \grad u \right|^2 - \mu u^2 \right)}_{\geq 0} - \tilde K_3 \\
+        & \geq - \tilde K_3 \\
+        & \equiv \gamma.
+    \end{align*} since $\lambda_1 = \inf \frac{\int|\grad u |^2}{\int u^2}$ and so $\int |\grad u|^2 \geq \lambda_1 \int u^2$.  Hence \[
+        \int \left( |\grad u |^2 - \mu u^2 \right) \geq (\lambda_1 - \mu) \int u^2 \geq 0.
+    \]  We get a little more, \[
+        E(u) \geq (\lambda_1 - \mu) \left(\int u^2 \right)
+ - K_3  \] so if $E(u) \leq K_4$, we have that $\int u^2$ is bounded.  Thus by $(\star \star)$, \[
+    \int |\grad u|^2
  \] is bounded.  Thus if \[
-	E(u_n) \rightarrow \inf \left\{E(u) \given u \in \dot W^{1, 2}(\Omega) \right\},
+    E(u_n) \rightarrow \inf \left\{E(u) \given u \in \dot W^{1, 2}(\Omega) \right\},
 \] then $\{ u_n \}$ is bounded in $\dot W^{1 ,2}(\Omega)$. 
 
 \begin{lem}
-	 The sequence $\{ u_n \}$ has a subsequence which converges weakly to $w  \in \dot W^{1, 2}(\Omega)$ and $w$ is a minimiser of $E$.
+     The sequence $\{ u_n \}$ has a subsequence which converges weakly to $w  \in \dot W^{1, 2}(\Omega)$ and $w$ is a minimiser of $E$.
 \end{lem}
 \begin{proof}
-	Recall from \S \ref{sec:linear_operators_on_hilbert_spaces} that every bounded sequence in a Hilbert space $\mathcal H$ has a subsequence which converges weakly. Thus our sequence $\{ u_n \}$ has a subsequence that converges weakly to $w$.  
-	
-	We now need only show that $w$ is a minimiser of $E$.   Let $u_n \rightharpoonup w$ in $\dot W^{1, 2}(\Omega)$.  Let $i: \dot W^{1, 2}(\Omega) \rightarrow L^2(\Omega)$ be the inclusion mapping.  Then $i$ is a bounded linear operator, and \[
-		i(u_n) \rightharpoonup i(w)
-	\] in $L^2(\Omega)$.  That is, $u_n \rightarrow w$ in $L^2(\Omega)$.  Since bounded sets in $\dot W^{1, 2}(\Omega)$ are precompact sets in $L^2(\Omega)$, we can choose a subsequence such that $u_n \rightarrow w$ (strongly) in $L^2(\Omega)$.  Hence the weak convergence in $\dot W^{1, 2}(\Omega)$ can be ``converted" into strong convergence in $L^2(\Omega)$.
-	
-	We now need to show that $w$ minimises $E$ and $w$ is a solution to our equation.  We need to show that $E(u_n) \rightarrow E(w) = \gamma$. 
-	Recall that in a Banach space, if $u_n \rightharpoonup u$ weakly, then \[
-		\| u \| \leq \| \liminf_{n \rightarrow \infty} \| u_n \|.
-	\]
-	Now, we then have \[
-		\| w \|_{1, 2} \leq \liminf_{n \rightarrow \infty}  \| u_n \|_{1, 2}
-	\]  Taking squares, we obtain \[
-		\| \grad w \|_2^2 \leq \liminf_{n \rightarrow \infty} \| \grad u_n \|_2^2.
-	\]  We also need to prove that \[
-		\tag{$\star \star \star$}
-		\int G(u_n) \rightarrow \int G(w) \quad \text{as $n \rightarrow \infty$}
-	\]  Then we can show that \[
-		E(u_n) = \frac{1}{2} \int \left| \grad u_n \right|^2 - \int G(u_n)  \rightarrow \gamma 
-	\] and hence \[
-		E(w) = \frac{1}{2} \int \left| \grad w \right|^2 - \int G(w)  \leq \gamma.
-	\] But $E(w) \geq \gamma$, and so $E(w) = \gamma$, that is, $w$ is a minimiser.
-	
-	It thus remains to prove $(\star \star \star)$.  Since $u_n \rightarrow w$ in $L^2(\Omega)$, we can show that $u_n \rightarrow w$ a.e by taking subsequences.  By a result in analysis (Ergerov's theorem), there exists sets $V_k$ of arbitrarily small measure such that \[
-		u_n(x) \rightarrow w(x)
-	\] uniformly on $\Omega \, \backslash \, V_k$ as $n \rightarrow \infty$, again taking subsequences.  We know that $w$ is bounded off a set of  small measure and hence we can find a set $Z$ of small measure so $u_n \rightarrow w$ uniformly on $\Omega \, \backslash \, Z$ and $w$ is bounded on $\Omega \, \backslash \, Z$.  This implies that \[
-		G(u_n) \rightarrow G(w)
-	\]  uniformly on $\Omega \, \backslash \, Z$ the fact that a continuous function on $\R$ is uniformly continuous on bounded sets.  Hence, \[
-		\int_{\Omega \, \backslash \, Z} G(u_n) \rightarrow \int_{\Omega \, \backslash \, Z} G(w).
-	\]  We now prove $\int_Z G(u_n), \int_Z G(w)$ are uniformly small in $Z$ if $Z$ has small measure.  We have \begin{align*}
-		\int_Z G(u_n) &\leq \int_Z \left(\frac{1}{2} \mu u_n^2 + K_3 \right) \\
-					&\leq  \frac{1}{2} \mu \int_Z u_n^2 + K_3 m(Z) 
-	\end{align*} where $m(Z)$ is the measure of $Z$.
-	
-	 Since $u_n$ is bounded in $\dot W^{1, 2}(\Omega)$, by Sobolev's embedding theorem, we can show that $\| u_n \|_{p^\star}$ is bounded for $p^\star > 2$.  So the first term is less than or equal to $\frac{1}{2}\mu \| u_n \|_{2, Z}^2$.  Since \begin{align*}
-		\int_Z u_n^2 &\leq \left( \int_Z \left(|u_n|^2\right)^{q} \right)^\frac{1}{q} \left( \int_Z 1^q \right)^\frac{1}{q'} \\
-	\end{align*}  for $q, q'$ H\"older pairs, so letting $p^\star = 2q$ for $q > 1$, we have \begin{align*}
-		\int_Z u_n^2 &\leq \left( \int_Z |u_n|^{p^\star}\right)^{\frac{1}{q}} \left(m(Z \right)^{\frac{1}{q'}} \\
-		&\leq  \left( \| u_n \|_{p^\star} \right)^{\frac{p^\star}{2}} \left( m(Z) \right)^{\frac{1}{q'}}
-	\end{align*} as required.
-	
-	Recall that since $w$ is a minimizer, we have \begin{align*}
-		E(w + t \phi) \geq E(w) \quad \forall \phi \in C^\infty_c(\Omega)\, \quad \forall t \\
-		\left.\frac{d}{dt} E(w + t \phi) \right|_{t = 0} = 0
-	\end{align*}  if it exists.  We will now prove that the derivative exists and equals \[
-		\int_\Omega \grad w \cdot \grad \phi - g(w) \phi. 
-	\]  In this case, \[
-		\int \grad w \cdot \grad \phi = g(w) \phi \quad \forall \phi \in C^\infty_c(\Omega),
-	\] and so $-\Delta w = g(w)$.
+    Recall from \S \ref{sec:linear_operators_on_hilbert_spaces} that every bounded sequence in a Hilbert space $\mathcal H$ has a subsequence which converges weakly. Thus our sequence $\{ u_n \}$ has a subsequence that converges weakly to $w$.  
+    
+    We now need only show that $w$ is a minimiser of $E$.   Let $u_n \rightharpoonup w$ in $\dot W^{1, 2}(\Omega)$.  Let $i: \dot W^{1, 2}(\Omega) \rightarrow L^2(\Omega)$ be the inclusion mapping.  Then $i$ is a bounded linear operator, and \[
+        i(u_n) \rightharpoonup i(w)
+    \] in $L^2(\Omega)$.  That is, $u_n \rightarrow w$ in $L^2(\Omega)$.  Since bounded sets in $\dot W^{1, 2}(\Omega)$ are precompact sets in $L^2(\Omega)$, we can choose a subsequence such that $u_n \rightarrow w$ (strongly) in $L^2(\Omega)$.  Hence the weak convergence in $\dot W^{1, 2}(\Omega)$ can be ``converted" into strong convergence in $L^2(\Omega)$.
+    
+    We now need to show that $w$ minimises $E$ and $w$ is a solution to our equation.  We need to show that $E(u_n) \rightarrow E(w) = \gamma$. 
+    Recall that in a Banach space, if $u_n \rightharpoonup u$ weakly, then \[
+        \| u \| \leq \| \liminf_{n \rightarrow \infty} \| u_n \|.
+    \]
+    Now, we then have \[
+        \| w \|_{1, 2} \leq \liminf_{n \rightarrow \infty}  \| u_n \|_{1, 2}
+    \]  Taking squares, we obtain \[
+        \| \grad w \|_2^2 \leq \liminf_{n \rightarrow \infty} \| \grad u_n \|_2^2.
+    \]  We also need to prove that \[
+        \tag{$\star \star \star$}
+        \int G(u_n) \rightarrow \int G(w) \quad \text{as $n \rightarrow \infty$}
+    \]  Then we can show that \[
+        E(u_n) = \frac{1}{2} \int \left| \grad u_n \right|^2 - \int G(u_n)  \rightarrow \gamma 
+    \] and hence \[
+        E(w) = \frac{1}{2} \int \left| \grad w \right|^2 - \int G(w)  \leq \gamma.
+    \] But $E(w) \geq \gamma$, and so $E(w) = \gamma$, that is, $w$ is a minimiser.
+    
+    It thus remains to prove $(\star \star \star)$.  Since $u_n \rightarrow w$ in $L^2(\Omega)$, we can show that $u_n \rightarrow w$ a.e by taking subsequences.  By a result in analysis (Ergerov's theorem), there exists sets $V_k$ of arbitrarily small measure such that \[
+        u_n(x) \rightarrow w(x)
+    \] uniformly on $\Omega \, \backslash \, V_k$ as $n \rightarrow \infty$, again taking subsequences.  We know that $w$ is bounded off a set of  small measure and hence we can find a set $Z$ of small measure so $u_n \rightarrow w$ uniformly on $\Omega \, \backslash \, Z$ and $w$ is bounded on $\Omega \, \backslash \, Z$.  This implies that \[
+        G(u_n) \rightarrow G(w)
+    \]  uniformly on $\Omega \, \backslash \, Z$ the fact that a continuous function on $\R$ is uniformly continuous on bounded sets.  Hence, \[
+        \int_{\Omega \, \backslash \, Z} G(u_n) \rightarrow \int_{\Omega \, \backslash \, Z} G(w).
+    \]  We now prove $\int_Z G(u_n), \int_Z G(w)$ are uniformly small in $Z$ if $Z$ has small measure.  We have \begin{align*}
+        \int_Z G(u_n) &\leq \int_Z \left(\frac{1}{2} \mu u_n^2 + K_3 \right) \\
+                    &\leq  \frac{1}{2} \mu \int_Z u_n^2 + K_3 m(Z) 
+    \end{align*} where $m(Z)$ is the measure of $Z$.
+    
+     Since $u_n$ is bounded in $\dot W^{1, 2}(\Omega)$, by Sobolev's embedding theorem, we can show that $\| u_n \|_{p^\star}$ is bounded for $p^\star > 2$.  So the first term is less than or equal to $\frac{1}{2}\mu \| u_n \|_{2, Z}^2$.  Since \begin{align*}
+        \int_Z u_n^2 &\leq \left( \int_Z \left(|u_n|^2\right)^{q} \right)^\frac{1}{q} \left( \int_Z 1^q \right)^\frac{1}{q'} \\
+    \end{align*}  for $q, q'$ H\"older pairs, so letting $p^\star = 2q$ for $q > 1$, we have \begin{align*}
+        \int_Z u_n^2 &\leq \left( \int_Z |u_n|^{p^\star}\right)^{\frac{1}{q}} \left(m(Z \right)^{\frac{1}{q'}} \\
+        &\leq  \left( \| u_n \|_{p^\star} \right)^{\frac{p^\star}{2}} \left( m(Z) \right)^{\frac{1}{q'}}
+    \end{align*} as required.
+    
+    Recall that since $w$ is a minimizer, we have \begin{align*}
+        E(w + t \phi) \geq E(w) \quad \forall \phi \in C^\infty_c(\Omega)\, \quad \forall t \\
+        \left.\frac{d}{dt} E(w + t \phi) \right|_{t = 0} = 0
+    \end{align*}  if it exists.  We will now prove that the derivative exists and equals \[
+        \int_\Omega \grad w \cdot \grad \phi - g(w) \phi. 
+    \]  In this case, \[
+        \int \grad w \cdot \grad \phi = g(w) \phi \quad \forall \phi \in C^\infty_c(\Omega),
+    \] and so $-\Delta w = g(w)$.
 
-	We have \begin{align*}
-		E(w + t \phi) &= \frac{1}{2} \int_\Omega \grad(w + t \phi) \cdot \grad (w + t \phi) - \int_\Omega G(w + t \phi) \\
-		&= \frac{1}{2} \int_\Omega |\grad w|^2 + 2t\grad w \cdot \grad \phi + t^2 |\grad \phi |^2 - \int G(w + t \phi).
-	\end{align*} Therefore \begin{align*}
-		\frac{d}{dt} E(w + t \phi) = \int_\Omega \grad w \cdot \grad \phi + t \int_\Omega |\grad \phi|^2 - \frac{d}{dt} \int G(w + t \phi) \\
-		\frac{d}{dt} E(w + t\phi) |_{t = 0} = \int_\Omega \grad w \cdot \grad \phi - \frac{d}{dt} \int G(w + t \phi). 
-	\end{align*}  We thus need only prove that \[
-		\frac{d}{dt}(\int G(w + t\phi))|_{t = 0} = \int g(w) \phi.
-	\]  Now \begin{align*}
-		\frac{  \int G(w + t \phi) - G(w)}{t} = \int G'(w + \theta(x) t \phi(x)) \phi(x)
-	\end{align*} where $0 \leq \theta(x) \leq 1$.  We need to prove (remembering $G' = g$), that \[
-		\int G'(w + \theta(x) t \phi(x)) \phi(x) \rightarrow \int g(w) \phi(x)
-	\]
-	
-	Choose a set $T$ so that $\mu(\Omega - T)$ is small and $w, \phi$ are bounded on $T$. Then \[
-		g(w + t \theta(x) \phi(x)) \rightarrow g(w(x)) \phi(x)
-	\] uniformly on $T$ as $t \rightarrow 0$ as $g$ is uniformly continuous on bounded sets.  We need only prove that \[
-		\int_{\Omega \backslash T} g(w + t \theta(x) \phi(x)) \phi(x)
-	\] is small for all $t$ small.  
-	
-	.... \emph{CBF finishing this}.
-	
-	\begin{rem}{\ }
-		\begin{enumerate}[(i)]
-			\item If $g(0) = 0$, our minimum may be $u(x) = 0$.  
-			\item If $g(0) = 0$ and $g'(0) > \lambda$, $0$ may not be the minimum and we must have a non-trivial solution.  We only need to find $z \in \dot W^{1, 2}(\Omega)$ with $E(Z) < 0$.  We choose $z = t \phi$, where $t$ is small and positive and $\phi_1$ is the eigenfunctino corresponding to $\lambda_1$.  Then \[
-				G(s) = \frac{1}{2} g'(0) s^2 + m(s),
-			\] where $\frac{m(s)}{s^2} \rightarrow 0$ as $s \rightarrow 0$.  Then \begin{align*}
-			E(t \phi_1) = \frac{1}{2} t^2 \left( \lambda_1 - g'(0) \right) \int_\Omega \phi_1^2 + o(t^2)  < 0	
-			\end{align*} if $t$ is small.
-		\end{enumerate}
-	\end{rem}
+    We have \begin{align*}
+        E(w + t \phi) &= \frac{1}{2} \int_\Omega \grad(w + t \phi) \cdot \grad (w + t \phi) - \int_\Omega G(w + t \phi) \\
+        &= \frac{1}{2} \int_\Omega |\grad w|^2 + 2t\grad w \cdot \grad \phi + t^2 |\grad \phi |^2 - \int G(w + t \phi).
+    \end{align*} Therefore \begin{align*}
+        \frac{d}{dt} E(w + t \phi) = \int_\Omega \grad w \cdot \grad \phi + t \int_\Omega |\grad \phi|^2 - \frac{d}{dt} \int G(w + t \phi) \\
+        \frac{d}{dt} E(w + t\phi) |_{t = 0} = \int_\Omega \grad w \cdot \grad \phi - \frac{d}{dt} \int G(w + t \phi). 
+    \end{align*}  We thus need only prove that \[
+        \frac{d}{dt}(\int G(w + t\phi))|_{t = 0} = \int g(w) \phi.
+    \]  Now \begin{align*}
+        \frac{  \int G(w + t \phi) - G(w)}{t} = \int G'(w + \theta(x) t \phi(x)) \phi(x)
+    \end{align*} where $0 \leq \theta(x) \leq 1$.  We need to prove (remembering $G' = g$), that \[
+        \int G'(w + \theta(x) t \phi(x)) \phi(x) \rightarrow \int g(w) \phi(x)
+    \]
+    
+    Choose a set $T$ so that $\mu(\Omega - T)$ is small and $w, \phi$ are bounded on $T$. Then \[
+        g(w + t \theta(x) \phi(x)) \rightarrow g(w(x)) \phi(x)
+    \] uniformly on $T$ as $t \rightarrow 0$ as $g$ is uniformly continuous on bounded sets.  We need only prove that \[
+        \int_{\Omega \backslash T} g(w + t \theta(x) \phi(x)) \phi(x)
+    \] is small for all $t$ small.  
+    
+    .... \emph{CBF finishing this}.
+    
+    \begin{rem}{\ }
+        \begin{enumerate}[(i)]
+            \item If $g(0) = 0$, our minimum may be $u(x) = 0$.  
+            \item If $g(0) = 0$ and $g'(0) > \lambda$, $0$ may not be the minimum and we must have a non-trivial solution.  We only need to find $z \in \dot W^{1, 2}(\Omega)$ with $E(Z) < 0$.  We choose $z = t \phi$, where $t$ is small and positive and $\phi_1$ is the eigenfunctino corresponding to $\lambda_1$.  Then \[
+                G(s) = \frac{1}{2} g'(0) s^2 + m(s),
+            \] where $\frac{m(s)}{s^2} \rightarrow 0$ as $s \rightarrow 0$.  Then \begin{align*}
+            E(t \phi_1) = \frac{1}{2} t^2 \left( \lambda_1 - g'(0) \right) \int_\Omega \phi_1^2 + o(t^2)  < 0   
+            \end{align*} if $t$ is small.
+        \end{enumerate}
+    \end{rem}
 \end{proof}  
 
 
@@ -1720,114 +1720,114 @@ Consider the \emph{energy} function $E: \dot W^{1, 2}(\Omega) \rightarrow \R$ de
 \section{Fixed Point Methods} % (fold)
 \label{sec:fixed_point_methods}
 \begin{thm}[Brower]
-	$B^n$ is the closed ball in $\R^n$ and $f: B^n \rightarrow B^n$ is continouus then there exists $x \in B^n$ such that $f(x) = x$.  
+    $B^n$ is the closed ball in $\R^n$ and $f: B^n \rightarrow B^n$ is continouus then there exists $x \in B^n$ such that $f(x) = x$.  
 \end{thm}
 
 
 \begin{defn}[Completely continuous]
-	$A: E \rightarrow E$ is completely continuous (cc) if $A$ is continuous and if $D$ is bounded in $E$, then $A(D)$ is compact in $E$.  
+    $A: E \rightarrow E$ is completely continuous (cc) if $A$ is continuous and if $D$ is bounded in $E$, then $A(D)$ is compact in $E$.  
 \end{defn}
 
 \begin{lem}
-	If $E$ is an infinite dimensional Banach space hen $I: E \rightarrow E$ is not cc.  
-	
-	If $A$ is linear, $A : E \rightarrow E$, then $A$ is cc if and only if $A$ is compact.  
-	
-	(Shauder).  If $D$ is closed, bounded and convex in a Banach space $E$ and $A: D \rightarrow E$ is cc and $A(D) \subseteq D$, then there exists $x \in D$ such that $A(x) = x$ (fixed point).
+    If $E$ is an infinite dimensional Banach space hen $I: E \rightarrow E$ is not cc.  
+    
+    If $A$ is linear, $A : E \rightarrow E$, then $A$ is cc if and only if $A$ is compact.  
+    
+    (Shauder).  If $D$ is closed, bounded and convex in a Banach space $E$ and $A: D \rightarrow E$ is cc and $A(D) \subseteq D$, then there exists $x \in D$ such that $A(x) = x$ (fixed point).
 \end{lem}
 
 \begin{exmp}[Example of fixed point methods]
-	Let $g : \R \rightarrow \R$ be continuous and $\frac{g(y)}{y} \rightarrow \tau$ as $|y| \rightarrow \infty$ where $\tau$ is not an eigenvalue of \begin{align*}
-		-\Delta u &= \lambda u \quad \text{on $\Omega$} \\
-		u &= 0 \quad \text{on $\partial \Omega$}
-	\end{align*}  We prove the problem \begin{align*}
-		-\Delta u &= g(u) \quad \text{on $\Omega$} \\
-		u &= 0 \quad \text{on $\partial \Omega$}
-	\end{align*} has a \emph{weak} solution \[
-		g(y) = \tau y + h(y) 
-	\] where $\frac{h(y)}{y} \rightarrow 0$ as $|y| \rightarrow \infty$.  
-	
-	Note that if such a solution exists, then we have \begin{align*}
-		& &- \Delta u &= \tau u + h(u) \\
-		&(\Rightarrow) &(-\Delta - \tau I) u &= h(u) \\
-		&(\Rightarrow) &u &= \left(-\Delta - \tau I \right)^{-1} h(u) \equiv H(u).
- 	\end{align*}
+    Let $g : \R \rightarrow \R$ be continuous and $\frac{g(y)}{y} \rightarrow \tau$ as $|y| \rightarrow \infty$ where $\tau$ is not an eigenvalue of \begin{align*}
+        -\Delta u &= \lambda u \quad \text{on $\Omega$} \\
+        u &= 0 \quad \text{on $\partial \Omega$}
+    \end{align*}  We prove the problem \begin{align*}
+        -\Delta u &= g(u) \quad \text{on $\Omega$} \\
+        u &= 0 \quad \text{on $\partial \Omega$}
+    \end{align*} has a \emph{weak} solution \[
+        g(y) = \tau y + h(y) 
+    \] where $\frac{h(y)}{y} \rightarrow 0$ as $|y| \rightarrow \infty$.  
+    
+    Note that if such a solution exists, then we have \begin{align*}
+        & &- \Delta u &= \tau u + h(u) \\
+        &(\Rightarrow) &(-\Delta - \tau I) u &= h(u) \\
+        &(\Rightarrow) &u &= \left(-\Delta - \tau I \right)^{-1} h(u) \equiv H(u).
+    \end{align*}
 \end{exmp}
 
 \begin{proof}
-	For simplicity, assume $\tau = 0$.  We prove that for large $M$, $H$ maps the set $ Z = \{ u \in L^2(\Omega) \given \| u \|_2 \leq M \}$ into itself and is cc.  
-	
-	If we do this then by the Schauder theorem, we can show that $H$ has a fixed point which is our solution.
-	
-	\textbf{Aside.}  Consider \begin{align*}
-		-\Delta u &= f(x) \quad \text{on $\Omega$} \\
-		u &= 0 \quad \text{on $\partial \Omega$}
-	\end{align*}
-	
-	Then a weak solution satisfies $u \in \dot W^{1, 2}(\Omega)$ and \[
-		\int_\Omega \grad u \cdot \grad \phi = \underbrace{\int_\Omega f \phi}_{\substack{\text{bounded linear functional} \\ \text{on $\dot W^{1,2}(\Omega)$ if $f \in L^2(\Omega)$}}} \quad \forall \phi \in \dot W^{1, 2}(\Omega).
-	\]  Thus \[
-		\iprod{u, \phi} = \iprod{F, \phi}
-	\] and so our solution is $u = F$.
-	
-	  If $n \geq 3$, and if $f \in L^{\frac{2n}{n+2}}(\Omega)$ with $\Omega$ bounded, then it suffices to prove $\int_\Omega f \phi$ is a bounded linear functional on $\dot W^{1,2}(\Omega)$.  We have \begin{align*}
-	  	\left| \int f \phi \right| \leq \| f \|_{\frac{2n}{n+2}} \| \phi \|_{\frac{2n}{n-2}} \quad \text{by H\"older} \\
-	&\leq K \|  \|_{\frac{2n}{n+2}} \| \grad \phi \|_2 \quad \text{by Sobolev embedding}
-	  \end{align*} and so \begin{align*}
-	  \| \grad u \|_2^2 =	\int \left| \grad u \right|^2 \leq C \| f \|_{\frac{2n}{n+2}} \| \grad u \|_2
-	  \end{align*} and hence \[
-	  	\| \grad u \|_2 \leq C \| f \|_{\frac{2n}{n+2}}
-	  \]
-	
-	\textbf{Proof of example.}  We now show that $H$ has the desired properties.  Let $\epsilon > 0$.  Then there exists $K > 0$ such that \[
-		|h(y) | \leq \epsilon |y| + K
-	\]  So we have \begin{align*}
-		\| h(u) \|_2 	&\leq \| \epsilon|u| + K \|_2 \\
-						&\leq \| \epsilon u \|_2 + \| K \|_2 \\
-						&\leq \epsilon \| u \|_2 + K m(\Omega)^{1/2}. \tag{$\star$}
-	\end{align*} Then we have \begin{align*}
-		\| H(u) \|_2 	&= \| (-\Delta^{-1}) h(u) \| \\
-		 				&\leq K_1 \| h(u) \|_2 \\
-						&\leq K_1 \left( \epsilon \| u \|_2 + K m(\Omega)^{1/2} \right) \\
-						&\leq \frac{1}{2} \| u \|_2 + \underbrace{K_2}_{= K_1 K m(\Omega)^{1/2}} \quad \text{letting $\epsilon = \frac{1}{2K_1}$}
-	\end{align*}  Then $H$ maps the set $ Z = \{ u \in L^2(\Omega) \given \| u \|_2 \leq 2 K_2 \}$ into itself (that is, $H(Z) \subseteq Z$.)
-	
-	Secondly, the image under $H$ of this ball lies in a compact set in $L^2(\Omega)$.  It suffices to prove $H$ of this set lies in a bounded set in $\dot W^{1,2}(\Omega)$ and then use the result that the inclusion mapping $i : \dot W^{1, 2}(\Omega) \rightarrow L^2(\Omega)$ is compact.
-	
-	This is easy since $\{ h(u) \given u \in Z \}$ lies in a bounded set in $L^2(\Omega)$ by $(\star)$ and $(-\Delta)^{-1}$ maps bounded sets in $L^2(\Omega)$ to bounded sets in $\dot W^{1, 2}(\Omega)$.  
-	
-	Finally, $H$ is continuos. We prove that the map $u \rightarrow h(u)$ is continuous and $L^2(\Omega) \rightarrow L^{\frac{2n}{n+2}}(\Omega)$.  This suffices since $H = (-\Delta)^{-1} \circ h$.  
-	
-	Suppose that $u_n \rightarrow u$ in $L^2(\Omega)$.  As before, there exists $T$ a set such that $\Omega - T$ has small measure such that $u$ is bounded on $T$ and $u_n \rightarrow u$ uniformly on $T$.  Hence $h(u_n) \rightarrow h(u)$ uniformly on $T$ and so \[
-		\int_T \left| h(u_n) - h(u) \right|^{\frac{2n}{n+2}} \rightarrow 0.
-	\]  We now need only prove \begin{align*}
-		&\int_{\Omega \, \backslash \, T} \left| h(u_m) - h(u) \right|^{\frac{2n}{n+2}} \quad \text{is small for large $m$} \\
-		&= \| h(u_m) - h(u) \|_{\frac{2n}{n+2}, \Omega \, \backslash \, T} \\
-		&\leq \| h(u_m) - h(u) \|_{2, \Omega \, \backslash \, T}^\alpha \left( \int_{\Omega \, \backslash \, T} 1 \right)^\beta \quad \text{by H\"older}
-	\end{align*} where $\frac{1}{\alpha} + \frac{1}{\beta} = 1$.  We need only then bound \begin{align*}
-		\| h(u_m) - h(u) \|_{2, \Omega \, \backslash \, T} &\leq \| h(u_m)\|_2  + \| h(u) \|_2 \\
-		&\leq K_1 \quad \text{by ($\star$)}.
-		\end{align*}
-		
-		This result can also be shown using the result that if $u \in L^1(\Omega)$, $\Omega$ bounded, then given $\epsilon > 0$ there exists $\delta > 0$ such that \[
-			\int_A | u | \leq \epsilon
-		\] if $m(A) \leq \delta$.
+    For simplicity, assume $\tau = 0$.  We prove that for large $M$, $H$ maps the set $ Z = \{ u \in L^2(\Omega) \given \| u \|_2 \leq M \}$ into itself and is cc.  
+    
+    If we do this then by the Schauder theorem, we can show that $H$ has a fixed point which is our solution.
+    
+    \textbf{Aside.}  Consider \begin{align*}
+        -\Delta u &= f(x) \quad \text{on $\Omega$} \\
+        u &= 0 \quad \text{on $\partial \Omega$}
+    \end{align*}
+    
+    Then a weak solution satisfies $u \in \dot W^{1, 2}(\Omega)$ and \[
+        \int_\Omega \grad u \cdot \grad \phi = \underbrace{\int_\Omega f \phi}_{\substack{\text{bounded linear functional} \\ \text{on $\dot W^{1,2}(\Omega)$ if $f \in L^2(\Omega)$}}} \quad \forall \phi \in \dot W^{1, 2}(\Omega).
+    \]  Thus \[
+        \iprod{u, \phi} = \iprod{F, \phi}
+    \] and so our solution is $u = F$.
+    
+      If $n \geq 3$, and if $f \in L^{\frac{2n}{n+2}}(\Omega)$ with $\Omega$ bounded, then it suffices to prove $\int_\Omega f \phi$ is a bounded linear functional on $\dot W^{1,2}(\Omega)$.  We have \begin{align*}
+        \left| \int f \phi \right| \leq \| f \|_{\frac{2n}{n+2}} \| \phi \|_{\frac{2n}{n-2}} \quad \text{by H\"older} \\
+    &\leq K \|  \|_{\frac{2n}{n+2}} \| \grad \phi \|_2 \quad \text{by Sobolev embedding}
+      \end{align*} and so \begin{align*}
+      \| \grad u \|_2^2 =   \int \left| \grad u \right|^2 \leq C \| f \|_{\frac{2n}{n+2}} \| \grad u \|_2
+      \end{align*} and hence \[
+        \| \grad u \|_2 \leq C \| f \|_{\frac{2n}{n+2}}
+      \]
+    
+    \textbf{Proof of example.}  We now show that $H$ has the desired properties.  Let $\epsilon > 0$.  Then there exists $K > 0$ such that \[
+        |h(y) | \leq \epsilon |y| + K
+    \]  So we have \begin{align*}
+        \| h(u) \|_2    &\leq \| \epsilon|u| + K \|_2 \\
+                        &\leq \| \epsilon u \|_2 + \| K \|_2 \\
+                        &\leq \epsilon \| u \|_2 + K m(\Omega)^{1/2}. \tag{$\star$}
+    \end{align*} Then we have \begin{align*}
+        \| H(u) \|_2    &= \| (-\Delta^{-1}) h(u) \| \\
+                        &\leq K_1 \| h(u) \|_2 \\
+                        &\leq K_1 \left( \epsilon \| u \|_2 + K m(\Omega)^{1/2} \right) \\
+                        &\leq \frac{1}{2} \| u \|_2 + \underbrace{K_2}_{= K_1 K m(\Omega)^{1/2}} \quad \text{letting $\epsilon = \frac{1}{2K_1}$}
+    \end{align*}  Then $H$ maps the set $ Z = \{ u \in L^2(\Omega) \given \| u \|_2 \leq 2 K_2 \}$ into itself (that is, $H(Z) \subseteq Z$.)
+    
+    Secondly, the image under $H$ of this ball lies in a compact set in $L^2(\Omega)$.  It suffices to prove $H$ of this set lies in a bounded set in $\dot W^{1,2}(\Omega)$ and then use the result that the inclusion mapping $i : \dot W^{1, 2}(\Omega) \rightarrow L^2(\Omega)$ is compact.
+    
+    This is easy since $\{ h(u) \given u \in Z \}$ lies in a bounded set in $L^2(\Omega)$ by $(\star)$ and $(-\Delta)^{-1}$ maps bounded sets in $L^2(\Omega)$ to bounded sets in $\dot W^{1, 2}(\Omega)$.  
+    
+    Finally, $H$ is continuos. We prove that the map $u \rightarrow h(u)$ is continuous and $L^2(\Omega) \rightarrow L^{\frac{2n}{n+2}}(\Omega)$.  This suffices since $H = (-\Delta)^{-1} \circ h$.  
+    
+    Suppose that $u_n \rightarrow u$ in $L^2(\Omega)$.  As before, there exists $T$ a set such that $\Omega - T$ has small measure such that $u$ is bounded on $T$ and $u_n \rightarrow u$ uniformly on $T$.  Hence $h(u_n) \rightarrow h(u)$ uniformly on $T$ and so \[
+        \int_T \left| h(u_n) - h(u) \right|^{\frac{2n}{n+2}} \rightarrow 0.
+    \]  We now need only prove \begin{align*}
+        &\int_{\Omega \, \backslash \, T} \left| h(u_m) - h(u) \right|^{\frac{2n}{n+2}} \quad \text{is small for large $m$} \\
+        &= \| h(u_m) - h(u) \|_{\frac{2n}{n+2}, \Omega \, \backslash \, T} \\
+        &\leq \| h(u_m) - h(u) \|_{2, \Omega \, \backslash \, T}^\alpha \left( \int_{\Omega \, \backslash \, T} 1 \right)^\beta \quad \text{by H\"older}
+    \end{align*} where $\frac{1}{\alpha} + \frac{1}{\beta} = 1$.  We need only then bound \begin{align*}
+        \| h(u_m) - h(u) \|_{2, \Omega \, \backslash \, T} &\leq \| h(u_m)\|_2  + \| h(u) \|_2 \\
+        &\leq K_1 \quad \text{by ($\star$)}.
+        \end{align*}
+        
+        This result can also be shown using the result that if $u \in L^1(\Omega)$, $\Omega$ bounded, then given $\epsilon > 0$ there exists $\delta > 0$ such that \[
+            \int_A | u | \leq \epsilon
+        \] if $m(A) \leq \delta$.
 \end{proof}
 
 Consider the equation \begin{align*}
-	-\Delta u &= g(u, \grad u) \quad \text{on $\Omega$} \\
-		u &= 0 \quad \text{on $\partial \Omega$.}
+    -\Delta u &= g(u, \grad u) \quad \text{on $\Omega$} \\
+        u &= 0 \quad \text{on $\partial \Omega$.}
 \end{align*}  This has a weak solution if $g$ is continuous and bounded on $\R \times \R^n$ and $\Omega$ is bounded (by Schauder).  It is possible to show that this equation is a mapping of \[
-	\{ u \in \dot W^{1, 2}(\Omega) \given \| u \|_{1, 2} \leq K \}
+    \{ u \in \dot W^{1, 2}(\Omega) \given \| u \|_{1, 2} \leq K \}
 \] into itself.  We need to show that this mapping is compact, as above. 
 
 \begin{lem}[Schauder]
-	If $A$ is a Banach \begin{enumerate}[(i)]
-		\item $A: E \times [0, 1] \rightarrow E$ is completely continuous, and 
-		\item $A(x, 1) = L$ where $L$ is linear and $I - L$ is invertible, and 
-		\item if $x = A(x, t)$ where $0 \leq t \leq 1$, then $\| x \| \leq M$,
-	\end{enumerate}
-	then the equation $x = A(x, 0)$ has a solution.
+    If $A$ is a Banach \begin{enumerate}[(i)]
+        \item $A: E \times [0, 1] \rightarrow E$ is completely continuous, and 
+        \item $A(x, 1) = L$ where $L$ is linear and $I - L$ is invertible, and 
+        \item if $x = A(x, t)$ where $0 \leq t \leq 1$, then $\| x \| \leq M$,
+    \end{enumerate}
+    then the equation $x = A(x, 0)$ has a solution.
 \end{lem} 
 % section fixed_point_methods (end)
 % section lecure_24 (end)
@@ -1836,28 +1836,28 @@ Consider the equation \begin{align*}
 \section{Other Types of Problems} % (fold)
 \label{sec:other_types_of_problems}
 If $\Omega$ is a bounded domain with smooth boundary, and consider the equation \begin{align*}
-	\frac{\partial u}{\partial t} &= \Delta u \quad \text{on $\Omega$} \\
-	u(x, t) &= 0 \quad \text{if $x \in \partial \Omega$}
+    \frac{\partial u}{\partial t} &= \Delta u \quad \text{on $\Omega$} \\
+    u(x, t) &= 0 \quad \text{if $x \in \partial \Omega$}
 \end{align*} with $u(x, 0) = u_0(x) \in L^2(\Omega)$ given.  
 
 Suppose $\phi_i$ are the weak eigenfunctions of $-\Delta$ for the Dirichlet Boundary condition $u(x, t) = 0$ for $x \in \partial \Omega$.  Then $\| \phi_i \|_2 = 1$ and they form a complete orthonormal basis for $L^2(\Omega)$.  Then we can write \[
-	u(x, 0) = \sum_{i=1}^\infty c_i \phi_i(x)
+    u(x, 0) = \sum_{i=1}^\infty c_i \phi_i(x)
 \] where $\sum c_i^2 < \infty$.   
 
 The solution can be then be uniquely written as \[
-	u(x, t) = \sum_{i=1}^\infty c_i e^{-\lambda_i t} \phi_i(x)
+    u(x, t) = \sum_{i=1}^\infty c_i e^{-\lambda_i t} \phi_i(x)
 \]  We can trivially see that \begin{align*}
-	\| u(x, t) - u(x, 0) \|_2 \rightarrow 0 
+    \| u(x, t) - u(x, 0) \|_2 \rightarrow 0 
 \end{align*} as \begin{align*}
-	\| u(x, t) - u(x, 0) \|_2^2 &= \left\| \sum c_i \left( e^{-\lambda_i t} - 1 \right) \phi_i(x)  \right\|_2^2 \\
-	&= \sum c_i^2 \left( e^{-\lambda_i t} - 1 \right)^2 \rightarrow 0.
+    \| u(x, t) - u(x, 0) \|_2^2 &= \left\| \sum c_i \left( e^{-\lambda_i t} - 1 \right) \phi_i(x)  \right\|_2^2 \\
+    &= \sum c_i^2 \left( e^{-\lambda_i t} - 1 \right)^2 \rightarrow 0.
 \end{align*}  Note that $u_0 \in L^2$, but $u(x, t) \in C^\infty$ for all $t > 0$.
 
 Consider now the differential equation \begin{align*}
-	\frac{\partial u}{\partial t} &= -\Delta u \quad \text{on $\Omega$} \\
-	u(x, t) &= 0 \quad \text{if $x \in \partial \Omega$}
+    \frac{\partial u}{\partial t} &= -\Delta u \quad \text{on $\Omega$} \\
+    u(x, t) &= 0 \quad \text{if $x \in \partial \Omega$}
 \end{align*} for $t \geq 0$.  This is equivalent to running the heat equation backwards in time.  Formally, the solution is \[
-	\sum c_i e^{\lambda_i t} \phi_i(x) 
+    \sum c_i e^{\lambda_i t} \phi_i(x) 
 \] for $t \geq 0$, which does not converge in $L^2$.  
 
 It can be shown that there is at most one solution.  This is an \emph{ill-posed} problem.
@@ -1872,20 +1872,20 @@ It can be shown that there is at most one solution.  This is an \emph{ill-posed}
 
 % section various_other_results (end)
 \begin{thm}
-	Eigenfunctions of a compact self-adjoint operator form a complete set 
+    Eigenfunctions of a compact self-adjoint operator form a complete set 
 \end{thm}
 
 \begin{thm}
-	The inverse of the Laplacian is a compact, self-adjoint operator.
+    The inverse of the Laplacian is a compact, self-adjoint operator.
 \end{thm}
 
 Comments on the exam.
 
 \begin{enumerate}[(i)]
-	\item Asked some definitions.
-	\item Asked some simple proofs.
-	\item Asked some problem questions, possibly similar to assignments.
-	\item Look at the assignments for questions.
+    \item Asked some definitions.
+    \item Asked some simple proofs.
+    \item Asked some problem questions, possibly similar to assignments.
+    \item Look at the assignments for questions.
 \end{enumerate} 
 
 

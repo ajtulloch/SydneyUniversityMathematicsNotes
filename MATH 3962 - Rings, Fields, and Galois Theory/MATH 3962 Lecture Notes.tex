@@ -1,8 +1,5 @@
-%
-%  untitled
-%
-%  Created by Andrew Tulloch on 2009-11-04.
-%  Copyright (c) 2009 __MyCompanyName__. All rights reserved.
+%  Created by Andrew Tulloch.
+
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
 
@@ -12,29 +9,24 @@
 \usepackage{fontspec,xltxtra,xunicode}
 \defaultfontfeatures{Mapping=tex-text}
 
-%\setromanfont[Mapping=tex-text,Contextuals= 
-%{NoWordInitial,NoWordFinal,NoLineInitial,NoLineFinal}]{Hoefler Text}
-%\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Hoefler Text}
-%\setmonofont[Scale=MatchLowercase]{Andale Mono}
 
+% AMS Theorems
+\theoremstyle{plain}% default 
+\newtheorem{thm}{Theorem}[section] 
+\newtheorem{lem}[thm]{Lemma} 
+\newtheorem{prop}[thm]{Proposition} 
 
-	% AMS Theorems
-	\theoremstyle{plain}% default 
-	\newtheorem{thm}{Theorem}[section] 
-	\newtheorem{lem}[thm]{Lemma} 
-	\newtheorem{prop}[thm]{Proposition} 
+\theoremstyle{definition} 
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{cor}[thm]{Corollary} 
 
-	\theoremstyle{definition} 
-		\newtheorem{defn}[thm]{Definition}
-		\newtheorem{conj}[thm]{Conjecture}
-		\newtheorem{exmp}[thm]{Example}
-		\newtheorem{cor}[thm]{Corollary} 
-	
-	\theoremstyle{remark} 
-		\newtheorem*{rem}{Remark} 
-		\newtheorem*{note}{Note} 
-		\newtheorem{case}{Case} 
-		
+\theoremstyle{remark} 
+\newtheorem*{rem}{Remark} 
+\newtheorem*{note}{Note} 
+\newtheorem{case}{Case} 
+
 \newcommand{\al}{\alpha}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{Q}}

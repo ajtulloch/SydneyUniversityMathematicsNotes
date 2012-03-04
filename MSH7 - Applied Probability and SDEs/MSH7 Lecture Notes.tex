@@ -10,38 +10,33 @@
 \defaultfontfeatures{Mapping=tex-text}
 
 
-%\setromanfont[Mapping=tex-text,Contextuals= 
-%{NoWordInitial,NoWordFinal,NoLineInitial,NoLineFinal}]{Hoefler Text}
-%\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Hoefler Text}
-%\setmonofont[Scale=MatchLowercase]{Andale Mono}
 
-
-	% AMS Theorems
-	\theoremstyle{plain}% default 
-	\newtheorem{thm}{Theorem}[section] 
-	\newtheorem{lem}[thm]{Lemma} 
-	\newtheorem{prop}[thm]{Proposition} 
-	\newtheorem*{cor}{Corollary} 
+% AMS Theorems
+\theoremstyle{plain}% default 
+\newtheorem{thm}{Theorem}[section] 
+\newtheorem{lem}[thm]{Lemma} 
+\newtheorem{prop}[thm]{Proposition} 
+\newtheorem*{cor}{Corollary} 
 
 
 \newcommand{\res}[2]{\text{Res}(#1,#2)}
-	\theoremstyle{definition} 
-		\newtheorem{defn}[thm]{Definition}
-		\newtheorem{conj}[thm]{Conjecture}
-		\newtheorem{exmp}[thm]{Example}
-	
-	\theoremstyle{remark} 
-		\newtheorem*{rem}{Remark} 
-		\newtheorem*{note}{Note} 
-		\newtheorem{case}{Case} 
+\theoremstyle{definition} 
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{exmp}[thm]{Example}
 
-		\newcommand{\expc}[1]{\mathbb{E}\left(#1\right)}
-		\newcommand{\var}[1]{\text{Var}\left(#1\right)}
-		\newcommand{\cov}[1]{\text{Cov}\left(#1\right)}
-		\newcommand{\prob}[1]{\mathbb{P}(#1)}
-		\newcommand{\given}{ \, | \,}
-		\newcommand{\us}{0 \leq u \leq s}
-		\newcommand{\ts}[1]{\{ #1 \}}
+\theoremstyle{remark} 
+\newtheorem*{rem}{Remark} 
+\newtheorem*{note}{Note} 
+\newtheorem{case}{Case} 
+
+\newcommand{\expc}[1]{\mathbb{E}\left(#1\right)}
+\newcommand{\var}[1]{\text{Var}\left(#1\right)}
+\newcommand{\cov}[1]{\text{Cov}\left(#1\right)}
+\newcommand{\prob}[1]{\mathbb{P}(#1)}
+\newcommand{\given}{ \, | \,}
+\newcommand{\us}{0 \leq u \leq s}
+\newcommand{\ts}[1]{\{ #1 \}}
 
 \newcommand{\dzz}{\, dz}
 \newcommand{\bigo}[1]{\mathcal{O}(#1)}
