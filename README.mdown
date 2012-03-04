@@ -57,5 +57,22 @@ If this free transmission of lecture notes violates copyright law, please send m
 Thanks
 ------
 
-Thanks must go to the excellent lectures at Sydney University, who have made this possible.
+Thanks must go to the excellent lecturers at Sydney University, who have made this possible.
+
+The list of lecturers for the courses are
+
+* [Prof. Marek Rutkowski](http://www.maths.usyd.edu.au/ut/people?who=M_Rutkowski) (AMH3 - Interest Rate Models, STAT 3911 - Stochastic Processes and Time Series Analysis)
+* [Prof. Christian Ewald](http://www.maths.usyd.edu.au/ut/people?who=CO_Ewald) (AMH4 - Advanced Option Pricing, MATH 3975 - Financial Mathematics)
+* Tasos Viglas (COMP 2907 - Algorithms and Complexity)
+* [A/Prof. Laurentiu Paunescu](http://www.maths.usyd.edu.au/ut/people?who=L_Paunescu) (MATH 3961 - Metric Spaces)
+* [Adrian Nelson](http://www.maths.usyd.edu.au/ut/people?who=AM_Nelson) (MATH 3962 - Rings, Fields, and Galois Theory)
+* [Chris Cosgrove](http://www.maths.usyd.edu.au/ut/people?who=CM_Cosgrove) (MATH 3964 - Complex Analysis)
+* [Emma Carberry](http://www.maths.usyd.edu.au/ut/people?who=EE_Carberry) (MATH 3968 - Differential Geometry)
+* [Daniel Daners](http://www.maths.usyd.edu.au/ut/people?who=D_Daners) (MATH 3969 - Measure Theory and Fourier Analysis)
+* [Prof. Neville Weber](http://www.maths.usyd.edu.au/ut/people?who=NC_Weber) (MSH2 - Probability Theory)
+* [A/Prof. Qiying Wang](http://www.maths.usyd.edu.au/ut/people?who=Q_Wang)	(MSH7 - Applied Probability and SDEs)
+* [James Parkinson](http://www.maths.usyd.edu.au/ut/people?who=JW_Parkinson) (PMH3 - Functional Analysis)
+* [Prof. Norman Dancer](http://www.maths.usyd.edu.au/ut/people?who=EN_Dancer) (PMH8 - Spectral Theory and PDEs)
+* [E/Prof. Eugene Seneta](http://www.maths.usyd.edu.au/ut/people?who=E_Seneta) (STAT 3911 - Stochastic Processes and Time Series Analysis)
+
 
