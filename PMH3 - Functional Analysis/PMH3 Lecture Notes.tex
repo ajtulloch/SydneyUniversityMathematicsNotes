@@ -775,7 +775,7 @@ Discussion of Dual operators
 \end{defn}
 
 \begin{thm}[Projection]
-    Let $(\Hil, \langle \cdot, \cdot, \rangle )$ be a Hilbert space.  Let $M \subseteq \Hil$ be closed and convex.  Let $x \in \Hil$.  THen there exists a unique point $m_x \in M$ which is closest to $x$, i.e. \[
+    Let $(\Hil, \langle \cdot, \cdot, \rangle )$ be a Hilbert space.  Let $M \subseteq \Hil$ be closed and convex.  Let $x \in \Hil$.  Then there exists a unique point $m_x \in M$ which is closest to $x$, i.e. \[
         \| x - m_x \| = \inf_{m \in M} \| x - m \| = d
     \]  
 \end{thm}
@@ -1341,7 +1341,7 @@ Now let $p_N(t) = sum_{n=0}^N {\frac{1}{2} \choose n } (t^2 - 1)^n$, and \[
     
     Let \[ 
     \mathcal A_\R = \{ f \in \mathcal A \given \text{$f$ is real valued} \}. 
-    \]  THen $\mathcal A_\R$ is an $\R$-subalgebra of $\mathcal C_\R(X)$.  It is unital, as $1 \in \mathcal A$ and it is real valued. 
+    \]  Then $\mathcal A_\R$ is an $\R$-subalgebra of $\mathcal C_\R(X)$.  It is unital, as $1 \in \mathcal A$ and it is real valued. 
     
     We now show $\mathcal A_\R$ separates points.  If $x \neq y$, there is $f \in \mathcal A$ such that $f(x) \neq f(y)$.  Write $f = u + iv$ with $u,v$ real valued.  Either $u(x) \neq u(y)$ or $v(x) \neq v(y)$, and so $\mathcal A_\R$ separates points.  
     
@@ -2214,7 +2214,7 @@ We now recall definitions of compactness
 \begin{proof}
     $(a) \Rightarrow (b)$ by definition.
     
-    $(b) \Rightarrow (a)$.  Suppose $(b)$ holds.  Let $B_1 \subseteq X$ be bounded.  THen $B_1 \subseteq \alpha B$ for some $\alpha > 0$.  So \[
+    $(b) \Rightarrow (a)$.  Suppose $(b)$ holds.  Let $B_1 \subseteq X$ be bounded.  Then $B_1 \subseteq \alpha B$ for some $\alpha > 0$.  So \[
         \overline{T(B)} \subseteq \overline{T(\alpha B)} = \alpha \overline{T(B)}
     \] which is a closed subset of a compact set, and hence compact.  
     
@@ -2275,14 +2275,14 @@ Recall that the closed unit ball in $X$ is compact if and only if $\dim(X) < \in
 Consider a sequence of compact operators $T_n$.  If $T_n$ is compact and $T_n \rightarrow T$, then $T$ is compact.  
 
 \begin{lem}[Riesz's Lemma]
-    Let $X$ be a normed vector space.  Let $Y \subsetneq X$ be a proper \textbf{closed} subspace.  Let $\theta \in (0, 1)$ be given. THen there exists $x$ with $\| x \| = 1$ such that $\| x - y \| \geq \theta$ for all $y \in Y$.  
+    Let $X$ be a normed vector space.  Let $Y \subsetneq X$ be a proper \textbf{closed} subspace.  Let $\theta \in (0, 1)$ be given. Then there exists $x$ with $\| x \| = 1$ such that $\| x - y \| \geq \theta$ for all $y \in Y$.  
 \end{lem}
 \begin{proof}
-    Pick any $z \in X \backslash Y$.  Let $\alpha = \inf_{y \in Y} \| z - y \| > 0$ since $Y$ is closed.  Then by the definition of the infimum, there is $y_0 \in Y$ with $\alpha \leq \| z - y_0 \| \leq \frac{\alpha}{\theta}$.  Now let $x = \frac{x - y_0}{\| z - y_0 \|}$.  Then $\| x \| = 1$.  
+    Pick any $z \in X \backslash Y$.  Let $\alpha = \inf_{y \in Y} \| z - y \| > 0$ since $Y$ is closed.  Then by the definition of the infimum, there is $y_0 \in Y$ with $\alpha \leq \| z - y_0 \| \leq \frac{\alpha}{\theta}$.  Now let $x = \frac{z - y_0}{\| z - y_0 \|}$.  Then $\| x \| = 1$.  
     
     Now, \begin{align*}
         \| x - y \| &= \left \| \frac{z - y_0}{\| z - y_0 \|} - y \right \| \\
-                    &= \frac{1}{\| z - y_0 \|} \left \| z - y_- + \| z - y_0 \| y \right \| \\
+                    &= \frac{1}{\| z - y_0 \|} \left \| z - y_0 + \| z - y_0 \| y \right \| \\
                     &\geq \frac{\theta}{\alpha} \alpha = \theta
     \end{align*}
 \end{proof}
@@ -2321,7 +2321,7 @@ Let $x_n' = x_n^{(n)}$.  Then $(x'_n)$ is a subsequence of $(x_n^{(1)})$, and $(
 
 We now show $T x'_n$ is Cauchy, and hence converges.  We have \begin{align*}
     \| Tx'_m - T x'_n \| \leq \| T x'_m - T_k x'_m \| + \| T_K x'_m - T_k x'_n \| + T_k x'_n - T x'_n \|
-\end{align*} where $k$ is to be chosen.  Suppose $\| x_n \| \leq M$ for all $n \geq 1$.  THen \begin{align*}
+\end{align*} where $k$ is to be chosen.  Suppose $\| x_n \| \leq M$ for all $n \geq 1$.  Then \begin{align*}
     \| Tx'_m - T x'_n \| \leq 2 M \| T - T_k \| + \| T_k x'+m - T_k x'_n \|
 \end{align*} Let $\epsilon > 0$ be given. Since $\| T - T_k \| \rightarrow 0$ as $ k \rightarrow \infty$, fix a $k$ for which $\| T - T_k \| \leq \frac{\epsilon}{3M}$.  For this fixed $k$, we know $(T_k x'_n)$ converges, and so is Cauchy.  So there exists $N < 0$ such that $\| T_k x'm - T_k x'_n\| < frac{\epsilon}{3}$ for all $m,n < N$.  Hence $\|T x'_m - Tx'_n \| \leq \frac{2M}{\epsilon}{3M} + \frac{\epsilon}{3} = \epsilon$ for all $m , n > N$, so is Cauchy, and so converges. 
 \end{proof}
