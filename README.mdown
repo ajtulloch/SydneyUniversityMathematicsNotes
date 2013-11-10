@@ -76,3 +76,7 @@ The list of lecturers for the courses are:
 * [E/Prof. Eugene Seneta](http://www.maths.usyd.edu.au/ut/people?who=E_Seneta) (STAT 3911 - Stochastic Processes and Time Series Analysis)
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ajtulloch/sydneyuniversitymathematicsnotes/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
