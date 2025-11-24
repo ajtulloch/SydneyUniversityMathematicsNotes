@@ -221,7 +221,7 @@ Let \[
 \mathcal{M} = \{ A \subseteq \R \given m*(S) = m^*(S \cap A) + m^*(S \cap A^c) \text{ for all } S \subseteq \R \}
 \]
 
-The sets in $\mathcal{M}$ are called hte \emph{Lebesgue measurable subsets} of $\R$.  If $A \in \mathcal{M}$, the we write $m(A) = m^*(A)$.  This real number is called the \emph{Lebesgue measure of $A$}.  
+The sets in $\mathcal{M}$ are called the \emph{Lebesgue measurable subsets} of $\R$.  If $A \in \mathcal{M}$, the we write $m(A) = m^*(A)$.  This real number is called the \emph{Lebesgue measure of $A$}.  
 
 We now show that this \sig $\mathcal{M}$ is very large.
 
@@ -881,7 +881,7 @@ We call $g$ the \textbf{density of $\nu$ with respect to $\mu$}.
 \end{thm}
 
 \begin{thm}[Young's inequality]
-    Let $1 \leq p \leq \infty$.  If $f \in L^p(\R^N, \Com)$ and $g \in L^1(\R^N, \Com)$, then $f \star g$ exists almost everywhere and $f \star g \in L^p(\R^N, \Com)$.  Moverover, \[
+    Let $1 \leq p \leq \infty$.  If $f \in L^p(\R^N, \Com)$ and $g \in L^1(\R^N, \Com)$, then $f \star g$ exists almost everywhere and $f \star g \in L^p(\R^N, \Com)$.  Moreover, \[
         \|f \star g \|_p \leq \|f\|_p \|g \|_1
     \]
 \end{thm}
@@ -1044,7 +1044,7 @@ We call $g$ the \textbf{density of $\nu$ with respect to $\mu$}.
     \end{thm}
 
 \begin{prop}
-    There is a unique coninuous linear operator \[
+    There is a unique continuous linear operator \[
         \mathcal{F} : L^2(\R^N) \rightarrow L^2(\R^N)
     \] such that $\mathcal{F} f = \hat f$ for all $f \in L^2(\R^N) \cap L^1(\R^N)$.  Moreover, $\| f \|_2 = \| \mathcal{F} f \|_2$ for all $f \in L^2(\R^N)$.
 \end{prop}
@@ -1081,7 +1081,7 @@ $.
     \] denote the inner product on $L^2(\R^N)$.  Then the above theorem implies \[
         \langle \hat f, \hat g \rangle = \langle f, g \rangle.
     \]
-    Moverover, by approximating $f,g$ by functions in $L^2(\R^N) \cap L^1(\R^N)$ we also have \[
+    Moreover, by approximating $f,g$ by functions in $L^2(\R^N) \cap L^1(\R^N)$ we also have \[
         \langle \hat f, g \rangle = \langle f, \overline{\hat g} \rangle
     \]
 \end{rem}
@@ -1165,7 +1165,7 @@ The converse does not necessarily hold - that is, given two measures $\mu$ and $
 \end{defn}
 
 \begin{prop}
-    Let $\mu, \nu$ be measures defined on a $\sigma$-albegra.  Suppose that $\mu(X), \nu(X) < \infty$.  Set $\lambda = \mu + \nu$.  Then there exists a measurable function $h : X \rightarrow [0,\infty] $ such that \[
+    Let $\mu, \nu$ be measures defined on a $\sigma$-algebra.  Suppose that $\mu(X), \nu(X) < \infty$.  Set $\lambda = \mu + \nu$.  Then there exists a measurable function $h : X \rightarrow [0,\infty] $ such that \[
         \int_X f \, d \nu = \int_X f h \, d \lambda
     \] for all $f \in L^2(X, \lambda)$
 \end{prop}

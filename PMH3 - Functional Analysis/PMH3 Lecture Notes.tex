@@ -1370,7 +1370,7 @@ Now let $p_N(t) = sum_{n=0}^N {\frac{1}{2} \choose n } (t^2 - 1)^n$, and \[
 \end{proof}
 
 \begin{defn}[Trigonometric polynomials]
-    A \textbf{trigonometric polynomail} is an expression \[
+    A \textbf{trigonometric polynomial} is an expression \[
         \sum_{ n \in \Z} c_n e^{i n t}
     \] with finitely many $c_n \neq 0$. So these are polynomials in $s = e^{it}$ and $s^{-1} = \overline s = e^{-it}$.
 \end{defn}
@@ -1961,7 +1961,7 @@ So $\sigma(T)$ is a compact subset of $\{ \lambda \in \Com \given | \lambda | \l
 \end{thm}
 
 \begin{proof}
-    We use Lioville's theorem - a bounded entire function must be constant.  
+    We use Liouville's theorem - a bounded entire function must be constant.  
     
     Let $\phi = \mathcal L(X)'$ (hence $\phi : \mathcal L(X) \rightarrow C$.)  Let \mapping{f_\phi}{\rho(T)}{\Com}{\lambda}{\phi(R(\lambda))} 
     \begin{lem}
@@ -1990,7 +1990,7 @@ So $\sigma(T)$ is a compact subset of $\{ \lambda \in \Com \given | \lambda | \l
                             &\leq \| \phi \| \left \| \sum_{k=0}^\infty \frac{T^k}{\lambda^{k+1}} \right \| \\
                             &\leq \| \phi \| \sum_{k=0}^\infty \frac{\| T \|^k}{| \lambda|^{k+1}} \\
                             &= \frac{ \| \phi \|}{ |\lambda | - \| T \|} \rightarrow 0
-        \end{align*} as $|\lambda| \rightarrow \infty$.  So $f_\phi$ is bounded, entire, and thus $f_\phi = c$ by Lioville's theorem.  By the above, $f_\phi(\lambda) = 0$ for all $\lambda$.  Hence $\phi(R(\lambda)) = 0$ for all $\lambda, \phi$.
+        \end{align*} as $|\lambda| \rightarrow \infty$.  So $f_\phi$ is bounded, entire, and thus $f_\phi = c$ by Liouville's theorem.  By the above, $f_\phi(\lambda) = 0$ for all $\lambda$.  Hence $\phi(R(\lambda)) = 0$ for all $\lambda, \phi$.
         
         Thus from Hahn-Banach, $R(\lambda) = 0$ for all $\lambda$ which is a contradiction, as the zero operator is not invertible if $X \neq \{ 0 \}$.   
     \end{proof}
@@ -2329,7 +2329,7 @@ We now show $T x'_n$ is Cauchy, and hence converges.  We have \begin{align*}
 \begin{exmp}
     Let $K(x, y) \in L^2(\R^2)$.  Define $T : L^2(\R) \rightarrow  L^2(\R)$ by \[
         Tf(x) = \int_\R K(x, y) f(y) \, dy
-    \] (Hilbert-Schimidt Integral operator)
+    \] (Hilbert-Schmidt Integral operator)
 \end{exmp}
 \begin{prop}
     $T$ is compact.  

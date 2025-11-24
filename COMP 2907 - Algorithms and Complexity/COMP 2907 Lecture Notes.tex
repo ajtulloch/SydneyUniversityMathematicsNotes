@@ -219,7 +219,7 @@
 \item For jobs with fixed deadlines and durations to be scheduled on one machine, we can minimize the maximum lateness going by earliest deadline first.
 \item For optimal caching, we evict the item that is requested farthest in the future.
 \item To minimize the number of fuel stops, the truck driver's algorithm chooses the furthest possible stop at each step.
-\item To find the best $k$-clustering, i.e. partition of nodes into $k$ sets which maximizes the minimum distance between nodes in different clusters, we can apply Kruskal's algorithm, ending when there are $k$ connected compnents.
+\item To find the best $k$-clustering, i.e. partition of nodes into $k$ sets which maximizes the minimum distance between nodes in different clusters, we can apply Kruskal's algorithm, ending when there are $k$ connected components.
 \end{itemize}
 % subsection some_simple_greedy_algorithms (end)
 \subsection{Dijkstra's algorithm} % (fold)
@@ -1416,7 +1416,7 @@ In the case of the metric-\textsc{tsp}, where the edge weights satisfy the trian
     \begin{algorithmic}[1]
     \Procedure{Approx-Metric-tsp}{$G$}
         \State Compute a minimal spanning tree $T$ of $G$
-        \State Root $T$ arbitraryily and traverse in pre-order (i.e. \textsc{dfs}): $v_1, v_2, \dots, v_n$.
+        \State Root $T$ arbitrarily and traverse in pre-order (i.e. \textsc{dfs}): $v_1, v_2, \dots, v_n$.
         \State \textbf{return} \textsc{tour: $v_1 \rightarrow v_2 \rightarrow \dots \rightarrow v_n \rightarrow v_1$}
     \EndProcedure
     \end{algorithmic}

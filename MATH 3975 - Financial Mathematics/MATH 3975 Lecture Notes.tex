@@ -159,7 +159,7 @@ Assume the sample space consists of two states, $H$ and $T$, with $\prob{H} = p$
 
 
 \begin{defn}[Trading strategy]
-    A trading strategy $(x,\phi)$ is a pair wheere $x$ is the total initial investment at $t=0$, and $\phi$ denotes the number of shares bought at $t = 0$.  Given a strategy $(x,\phi)$, the agent invests the remaining money $x - \phi S_0$ in a money market account.  We note this amount may be negative (borrowing from the money market account).
+    A trading strategy $(x,\phi)$ is a pair where $x$ is the total initial investment at $t=0$, and $\phi$ denotes the number of shares bought at $t = 0$.  Given a strategy $(x,\phi)$, the agent invests the remaining money $x - \phi S_0$ in a money market account.  We note this amount may be negative (borrowing from the money market account).
 \end{defn}
 
 \begin{defn}[Value process]
@@ -266,7 +266,7 @@ We define the \textbf{discounted value process} $\hat{V}(x,\phi)$ by \begin{alig
     \hat{V}_0 (x,\phi) &= x \\
     \hat{V}_1 (x,\phi) &= (x - \sumni \phi^i S^i_0) + \sumni \phi^i \hat{S}^i_1
 \end{align*}
-and the discounted ains process $\hat{G}(x,\phi)$ as \[
+and the discounted gains process $\hat{G}(x,\phi)$ as \[
     \hat{G}(x,\phi) = \sumni \phi^i \Delta \hat{S}^i
 \] with $\Delta \hat{S}^i = \hat{S}^i_1 - \hat{S}^i_0$.
 \end{defn}
@@ -430,7 +430,7 @@ A financial market is called \textbf{complete} if for any contingent claim $X$ t
 \subsection{Single Period Investment} % (fold)
 \label{sec:single_period_investment}
 
-\begin{defn}A continuously differentialble function $u: \R^+ \rightarrow \R$ is called a risk averse utility function if it has the following two properties:
+\begin{defn}A continuously differentiable function $u: \R^+ \rightarrow \R$ is called a risk averse utility function if it has the following two properties:
     \begin{itemize}
         \item $u$ is strictly increasing - that is, $u'(x) > 0$ for all $x \in \R^+$
         \item $u$ is strictly concave - that is, $u(\lambda x + (1-\lambda)y) > \lambda u(x) + (1-\lambda)u(y)$
@@ -463,7 +463,7 @@ From Jensen's inequality, we have that for every risk averse utility function $u
 \]
 
 \begin{defn}[Certainty equivalent price]
-    The certain value $X_0 \in \R$ that makes an investor indifferent between $X_0$ and a risky payoff $X$ is called the \textbf{certaintly equivalent price} of $X$, that is, \[
+    The certain value $X_0 \in \R$ that makes an investor indifferent between $X_0$ and a risky payoff $X$ is called the \textbf{certainty equivalent price} of $X$, that is, \[
         u(X_0) = \expc{u(X)}
     \] or equivalently, \[
         X_0 = u^{-1} \left(\expc{u(X)}\right)
@@ -508,7 +508,7 @@ We now seek to find the optimal investment in a market, which can be translated 
 \end{prop}
 
 \begin{prop}
-    Let $\tst$ be a solution to the optimal portfolio problem with intial wealth $x$ and utility function $u$, then the measure $\Q$ defined by \[
+    Let $\tst$ be a solution to the optimal portfolio problem with initial wealth $x$ and utility function $u$, then the measure $\Q$ defined by \[
         \Q(\omega) = \frac{\prob{\omega} u'(V_1 \tst(\omega_i))}{\expc{u'(V_1 \tst)}}
     \]
 \end{prop}
@@ -639,7 +639,7 @@ This is the smallest $\sigma$-algebra which contains all the sets $X^{-1}_u([a,b
         A general multi period market model is given by the following data.
         \begin{itemize}
             \item A probability space $(\Sigma, \F, \mathbb{P})$ together with a filtration $(\F_t)_{0 \leq t \leq T}$ of $\F$.
-            \item A money market account $(B_t)$ which evolvs according to $B_t = (1 +r)^t$.
+            \item A money market account $(B_t)$ which evolves according to $B_t = (1 +r)^t$.
             \item A number of financial assets $(S^1_t), \dots, (S^n_t)$ which are assumed to be $(\F_t)$-adapted stochastic processes.  
             \item A set $\mathcal{T}$ of self financing and $(\F_t)$-adapted trading strategies. 
         \end{itemize}
